@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Counter Tool - Count Words & Characters Online | GetAge247</title>
+<meta name="description" content="Free online word counter tool. Count words, characters, sentences, paragraphs instantly. Perfect for writers, students, SEO content.">
+<style>
+body{font-family:Arial,sans-serif;background:#f5f5f5;margin:0;padding:20px}
+.container{max-width:700px;margin:30px auto;background:white;padding:30px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+h1{color:#2563eb;text-align:center}
+textarea{width:100%;height:250px;padding:15px;border:2px solid #ddd;border-radius:5px;font-size:16px;font-family:Arial;resize:vertical;box-sizing:border-box}
+textarea:focus{outline:none;border-color:#2563eb}
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;margin-top:20px}
+.stat-box{background:#e0f2fe;padding:20px;border-radius:8px;text-align:center}
+.stat-number{font-size:32px;font-weight:bold;color:#2563eb}
+.stat-label{font-size:14px;color:#666;margin-top:5px}
+.share-section{text-align:center;margin-top:30px}
+.share-btn{display:inline-block;padding:12px 20px;border-radius:5px;text-decoration:none;color:white;margin:5px;font-weight:bold;transition:0.3s}
+.share-btn:hover{opacity:0.8;transform:scale(1.05)}
+@media(max-width:600px){.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>📝 Word Counter Tool</h1>
+<p style="text-align:center;color:#666">Paste your text below to count words, characters & sentences instantly</p>
+
+<textarea id="textInput" placeholder="Type or paste your text here..." oninput="countWords()"></textarea>
+
+<div class="stats">
+<div class="stat-box">
+<div class="stat-number" id="wordCount">0</div>
+<div class="stat-label">Words</div>
+</div>
+<div class="stat-box">
+<div class="stat-number" id="charCount">0</div>
+<div class="stat-label">Characters</div>
+</div>
+<div class="stat-box">
+<div class="stat-number" id="sentenceCount">0</div>
+<div class="stat-label">Sentences</div>
+</div>
+</div>
+
+<div class="share-section">
+<p style="font-weight:bold;margin-bottom:15px">Share this tool:</p>
+<a id="whatsappBtn" target="_blank" class="share-btn" style="background:#25D366">WhatsApp</a>
+<a id="twitterBtn" target="_blank" class="share-btn" style="background:#1DA1F2">Twitter</a>
+<a id="facebookBtn" target="_blank" class="share-btn" style="background:#1877F2">Facebook</a>
+</div>
+</div>
+
+<script>
+function countWords() {
+    let text = document.getElementById('textInput').value;
+    
+    let words = text.trim() ? text.trim().split(/\s+/).length : 0;
+    let chars = text.length;
+    let charsNoSpace = text.replace(/\s/g, '').length;
+    let sentences = text.trim() ? text.split(/[.!?]+/).filter(s => s.trim().length > 0).length : 0;
+    let paragraphs = text.trim() ? text.split(/\n+/).filter(p => p.trim().length > 0).length : 0;
+    
+    document.getElementById('wordCount').innerText = words;
+    document.getElementById('charCount').innerText = chars;
+    document.getElementById('sentenceCount').innerText = sentences;
+    
+    let shareText = "I counted " + words + " words & " + chars + " characters using this free tool!";
+    document.getElementById('whatsappBtn').href = "https://wa.me/?text=" + encodeURIComponent(shareText + " Try it at getage247.xyz/word-counter.html");
+    document.getElementById('twitterBtn').href = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(shareText) + "&url=https://getage247.xyz/word-counter.html";
+    document.getElementById('facebookBtn').href = "https://www.facebook.com/sharer/sharer.php?u=https://getage247.xyz/word-counter.html";
+}
+
+// Load karte hi function chala do
+countWords();
+</script>
+</body>
+</html>
