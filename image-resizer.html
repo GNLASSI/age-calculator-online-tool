@@ -3,112 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Image Resizer - Resize JPG PNG WebP Online | GetAge247</title>
-<meta name="description" content="Free online image resizer tool. Resize JPG, PNG, WebP images by pixels without losing quality. 100% client-side, no upload to server, fast & secure.">
-<meta name="keywords" content="image resizer, resize image online, resize jpg, resize png, photo resizer free">
-<link rel="canonical" href="https://getage247.xyz/image-resizer.html">
-<!-- Google Analytics G-XXXXXXXXXX -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+<title>KB Image Resizer - GetAge247</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;padding:20px}
-.container{max-width:700px;margin:40px auto;background:white;border-radius:16px;padding:40px;box-shadow:0 10px 40px rgba(0,0,0,0.2)}
-h1{color:#333;text-align:center;margin-bottom:10px;font-size:28px}
-p.subtitle{text-align:center;color:#666;margin-bottom:30px}
-.box{text-align:center}
-input[type="file"]{margin:15px 0;padding:10px;border:2px dashed #667eea;border-radius:8px;width:100%;cursor:pointer}
-input[type="number"]{padding:12px;margin:8px;width:45%;border:2px solid #ddd;border-radius:8px;font-size:16px}
-button{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;border:none;padding:14px 30px;border-radius:8px;font-size:18px;font-weight:bold;cursor:pointer;margin-top:15px;width:100%}
-button:hover{opacity:0.9;transform:translateY(-2px)}
-#output{max-width:100%;margin-top:25px;border-radius:10px;border:3px solid #667eea;display:none}
-.seo-text{margin-top:40px;padding-top:30px;border-top:2px solid #f0f0f0;color:#555;line-height:1.8;font-size:14px}
-.seo-text h2{color:#333;margin:20px 0 10px;font-size:20px}
-@media(max-width:600px){input[type="number"]{width:100%}}
+body{font-family:Arial,sans-serif;background:#f5f5f5;margin:0;padding:20px;display:flex;justify-content:center}
+.container{background:white;padding:25px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.1);max-width:450px;width:100%}
+h2{color:#333;text-align:center;margin-bottom:20px}
+input[type=file]{width:100%;padding:10px;border:2px dashed #ccc;border-radius:8px;margin-bottom:15px;cursor:pointer}
+.form-group{margin-bottom:15px}
+label{display:block;margin-bottom:5px;font-weight:bold;color:#333}
+input[type=number]{width:100%;padding:10px;border:1px solid #ddd;border-radius:6px;font-size:16px;box-sizing:border-box}
+button{background:#007bff;color:white;padding:12px;width:100%;border:none;border-radius:8px;font-size:16px;cursor:pointer;font-weight:bold}
+button:hover{background:#0056b3}
+button:disabled{background:#ccc;cursor:not-allowed}
+#preview{max-width:100%;margin-top:15px;border-radius:8px;display:none}
+.info{font-size:13px;color:#666;margin-top:8px;text-align:center}
+.presets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px;justify-content:center}
+.presets button{flex:1;min-width:80px;padding:8px 10px;font-size:13px;background:#e9ecef;color:#333}
+.presets button:hover{background:#dee2e6}
 </style>
 </head>
 <body>
 <div class="container">
-<h1>Free Online Image Resizer</h1>
-<p class="subtitle">Resize JPG, PNG, WebP images instantly - 100% Private, No Server Upload</p>
+<h2>🖼️ Image Resizer - KB Wala</h2>
+<input type="file" id="imageInput" accept="image/*">
 
-<div class="box">
-<input type="file" id="upload" accept="image/*">
-<br>
-<input type="number" id="width" placeholder="Width in pixels" min="1">
-<input type="number" id="height" placeholder="Height in pixels" min="1">
-<br>
-<button onclick="resize()">Resize & Download Image</button>
-<canvas id="canvas" style="display:none"></canvas>
-<img id="output" alt="Resized image preview">
+<div class="presets">
+<button type="button" onclick="setKB(100)">WhatsApp</button>
+<button type="button" onclick="setKB(200)">Govt Form</button>
+<button type="button" onclick="setKB(500)">Email</button>
+<button type="button" onclick="setKB(1000)">Meta Ads</button>
 </div>
 
-<!-- AdSense ad space -->
-<div style="margin-top:30px;text-align:center;color:#999;font-size:12px;">
-<!-- AdSense code yahan paste karein approval ke baad -->
+<div class="form-group">
+<label>Target File Size KB:</label>
+<input type="number" id="targetKB" placeholder="200" value="200" min="10" max="5000">
+<div class="info">Website/Form wali limit yahan likho</div>
 </div>
 
-<div class="seo-text">
-<h2>About This Image Resizer Tool</h2>
-<p>Our free online image resizer helps you change image dimensions without uploading to any server. All processing happens in your browser, making it 100% private and secure. Simply upload your JPG, PNG, or WebP image, enter desired width and height in pixels, and download the resized image instantly.</p>
-
-<h2>Key Features</h2>
-<p><b>Fast & Free:</b> No registration, no watermark, unlimited use<br>
-<b>Client-Side Processing:</b> Your images never leave your computer<br>
-<b>Mobile Friendly:</b> Works perfectly on phone, tablet, desktop<br>
-<b>Multiple Formats:</b> Supports JPG, JPEG, PNG, WebP, GIF, BMP</p>
-
-<h2>How to Use</h2>
-<p>1. Click "Choose File" and select your image<br>
-2. Enter width and height in pixels<br>
-3. Click "Resize & Download" button<br>
-4. Your resized image will download automatically</p>
+<button id="resizeBtn" disabled>Resize & Download</button>
+<img id="preview">
+<div id="resultInfo" class="info"></div>
 </div>
 
-</div>
 <script>
-function resize(){
-const f=document.getElementById('upload').files[0];
-const w=document.getElementById('width').value;
-const h=document.getElementById('height').value;
-if(!f)return alert('Pehle image select karo');
-if(!w||!h)return alert('Width aur Height dono dalo');
-const img=new Image();
-img.onload=()=>{
-const c=document.getElementById('canvas');
-c.width=w;c.height=h;
-c.getContext('2d').drawImage(img,0,0,w,h);
-const url=c.toDataURL('image/jpeg',0.9);
-document.getElementById('output').src=url;
-document.getElementById('output').style.display='block';
-const a=document.createElement('a');
-a.download='resized-'+w+'x'+h+'.jpg';
-a.href=url;
+let originalImg = new Image();
+let originalFile;
+
+document.getElementById('imageInput').addEventListener('change', function(e){
+const file = e.target.files[0];
+if(!file) return;
+originalFile = file;
+originalImg.onload = function(){
+document.getElementById('resizeBtn').disabled = false;
+document.getElementById('resultInfo').innerText = `Original: ${Math.round(file.size/1024)} KB`;
+}
+originalImg.src = URL.createObjectURL(file);
+});
+
+function setKB(kb){
+document.getElementById('targetKB').value = kb;
+}
+
+document.getElementById('resizeBtn').addEventListener('click', function(){
+const targetKB = parseInt(document.getElementById('targetKB').value);
+if(!targetKB || targetKB < 10){
+alert('Minimum 10 KB likho bhai');
+return;
+}
+
+this.disabled = true;
+this.innerText = 'Processing...';
+
+resizeToTargetKB(originalImg, targetKB, (blob) => {
+const url = URL.createObjectURL(blob);
+document.getElementById('preview').src = url;
+document.getElementById('preview').style.display = 'block';
+document.getElementById('resultInfo').innerText = `Done! New size: ${Math.round(blob.size/1024)} KB`;
+
+const a = document.createElement('a');
+a.href = url;
+a.download = 'resized_' + Math.round(blob.size/1024) + 'KB.jpg';
 a.click();
-};
-img.src=URL.createObjectURL(f);
+
+this.disabled = false;
+this.innerText = 'Resize & Download';
+});
+});
+
+function resizeToTargetKB(img, targetKB, callback){
+let quality = 0.92;
+let scale = 1;
+const canvas = document.createElement('canvas');
+const ctx = canvas.getContext('2d');
+
+function tryResize(){
+canvas.width = img.width * scale;
+canvas.height = img.height * scale;
+ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+canvas.toBlob((blob) => {
+const sizeKB = blob.size / 1024;
+if(sizeKB <= targetKB || scale < 0.1){
+callback(blob);
+} else {
+if(sizeKB > targetKB * 1.2){
+scale *= 0.85;
+} else {
+quality -= 0.05;
+if(quality < 0.4){
+quality = 0.4;
+scale *= 0.95;
+}
+tryResize();
+}
+}, 'image/jpeg', quality);
+}
+tryResize();
 }
 </script>
 </body>
 </html>
-<!-- MERA CODE YAHAN START -->
-<p style="margin:15px 0 5px;color:#333;font-weight:bold">Quick Size:</p>
-<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:15px">
-<button type="button" onclick="setSize(1080,1080)" style="padding:8px 12px;font-size:13px;background:#eee;color:#333;border:none;border-radius:6px;cursor:pointer">Instagram 1:1</button>
-<button type="button" onclick="setSize(1920,1080)" style="padding:8px 12px;font-size:13px;background:#eee;color:#333;border:none;border-radius:6px;cursor:pointer">YouTube Banner</button>
-<button type="button" onclick="setSize(1200,630)" style="padding:8px 12px;font-size:13px;background:#eee;color:#333;border:none;border-radius:6px;cursor:pointer">FB Post</button>
-<button type="button" onclick="setSize(800,800)" style="padding:8px 12px;font-size:13px;background:#eee;color:#333;border:none;border-radius:6px;cursor:pointer">WhatsApp DP</button>
-</div>
-
-<script>
-function setSize(w,h){
-document.getElementById('width').value=w;
-document.getElementById('height').value=h;
-}
-</script>
-<!-- MERA CODE YAHAN END -->
-
-<div class="form-group">
-    <label>Width (px):</label>
-    <input type="number" id="width" placeholder="500">
-</div>
