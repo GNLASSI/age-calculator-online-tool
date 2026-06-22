@@ -91,3 +91,24 @@ img.src=URL.createObjectURL(f);
 </script>
 </body>
 </html>
+<!-- MERA CODE YAHAN START -->
+<p style="margin:15px 0 5px;color:#333;font-weight:bold">Quick Size:</p>
+<div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:15px">
+<button type="button" onclick="setSize(1080,1080)" style="padding:8px 12px;font-size:13px;background:#eee;color:#333;border:none;border-radius:6px;cursor:pointer">Instagram 1:1</button>
+<button type="button" onclick="setSize(1920,1080)" style="padding:8px 12px;font-size:13px;background:#eee;color:#333;border:none;border-radius:6px;cursor:pointer">YouTube Banner</button>
+<button type="button" onclick="setSize(1200,630)" style="padding:8px 12px;font-size:13px;background:#eee;color:#333;border:none;border-radius:6px;cursor:pointer">FB Post</button>
+<button type="button" onclick="setSize(800,800)" style="padding:8px 12px;font-size:13px;background:#eee;color:#333;border:none;border-radius:6px;cursor:pointer">WhatsApp DP</button>
+</div>
+
+<script>
+function setSize(w,h){
+document.getElementById('width').value=w;
+document.getElementById('height').value=h;
+}
+</script>
+<!-- MERA CODE YAHAN END -->
+
+<div class="form-group">
+    <label>Width (px):</label>
+    <input type="number" id="width" placeholder="500">
+</div>
