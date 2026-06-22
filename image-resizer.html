@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Image Resizer - Resize JPG PNG WebP Online | GetAge247</title>
+<meta name="description" content="Free online image resizer tool. Resize JPG, PNG, WebP images by pixels without losing quality. 100% client-side, no upload to server, fast & secure.">
+<meta name="keywords" content="image resizer, resize image online, resize jpg, resize png, photo resizer free">
+<link rel="canonical" href="https://getage247.xyz/image-resizer.html">
+<!-- Google Analytics G-XXXXXXXXXX -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh;padding:20px}
+.container{max-width:700px;margin:40px auto;background:white;border-radius:16px;padding:40px;box-shadow:0 10px 40px rgba(0,0,0,0.2)}
+h1{color:#333;text-align:center;margin-bottom:10px;font-size:28px}
+p.subtitle{text-align:center;color:#666;margin-bottom:30px}
+.box{text-align:center}
+input[type="file"]{margin:15px 0;padding:10px;border:2px dashed #667eea;border-radius:8px;width:100%;cursor:pointer}
+input[type="number"]{padding:12px;margin:8px;width:45%;border:2px solid #ddd;border-radius:8px;font-size:16px}
+button{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;border:none;padding:14px 30px;border-radius:8px;font-size:18px;font-weight:bold;cursor:pointer;margin-top:15px;width:100%}
+button:hover{opacity:0.9;transform:translateY(-2px)}
+#output{max-width:100%;margin-top:25px;border-radius:10px;border:3px solid #667eea;display:none}
+.seo-text{margin-top:40px;padding-top:30px;border-top:2px solid #f0f0f0;color:#555;line-height:1.8;font-size:14px}
+.seo-text h2{color:#333;margin:20px 0 10px;font-size:20px}
+@media(max-width:600px){input[type="number"]{width:100%}}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Free Online Image Resizer</h1>
+<p class="subtitle">Resize JPG, PNG, WebP images instantly - 100% Private, No Server Upload</p>
+
+<div class="box">
+<input type="file" id="upload" accept="image/*">
+<br>
+<input type="number" id="width" placeholder="Width in pixels" min="1">
+<input type="number" id="height" placeholder="Height in pixels" min="1">
+<br>
+<button onclick="resize()">Resize & Download Image</button>
+<canvas id="canvas" style="display:none"></canvas>
+<img id="output" alt="Resized image preview">
+</div>
+
+<!-- AdSense ad space -->
+<div style="margin-top:30px;text-align:center;color:#999;font-size:12px;">
+<!-- AdSense code yahan paste karein approval ke baad -->
+</div>
+
+<div class="seo-text">
+<h2>About This Image Resizer Tool</h2>
+<p>Our free online image resizer helps you change image dimensions without uploading to any server. All processing happens in your browser, making it 100% private and secure. Simply upload your JPG, PNG, or WebP image, enter desired width and height in pixels, and download the resized image instantly.</p>
+
+<h2>Key Features</h2>
+<p><b>Fast & Free:</b> No registration, no watermark, unlimited use<br>
+<b>Client-Side Processing:</b> Your images never leave your computer<br>
+<b>Mobile Friendly:</b> Works perfectly on phone, tablet, desktop<br>
+<b>Multiple Formats:</b> Supports JPG, JPEG, PNG, WebP, GIF, BMP</p>
+
+<h2>How to Use</h2>
+<p>1. Click "Choose File" and select your image<br>
+2. Enter width and height in pixels<br>
+3. Click "Resize & Download" button<br>
+4. Your resized image will download automatically</p>
+</div>
+
+</div>
+<script>
+function resize(){
+const f=document.getElementById('upload').files[0];
+const w=document.getElementById('width').value;
+const h=document.getElementById('height').value;
+if(!f)return alert('Pehle image select karo');
+if(!w||!h)return alert('Width aur Height dono dalo');
+const img=new Image();
+img.onload=()=>{
+const c=document.getElementById('canvas');
+c.width=w;c.height=h;
+c.getContext('2d').drawImage(img,0,0,w,h);
+const url=c.toDataURL('image/jpeg',0.9);
+document.getElementById('output').src=url;
+document.getElementById('output').style.display='block';
+const a=document.createElement('a');
+a.download='resized-'+w+'x'+h+'.jpg';
+a.href=url;
+a.click();
+};
+img.src=URL.createObjectURL(f);
+}
+</script>
+</body>
+</html>
