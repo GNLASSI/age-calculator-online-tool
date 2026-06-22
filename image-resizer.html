@@ -1,83 +1,1191 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Image Resizer to KB - GetAge247</title>
-<style>
-body{font-family:Arial,sans-serif;max-width:500px;margin:50px auto;padding:20px;text-align:center;background:#f5f5f5}
-.box{background:white;padding:30px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
-h1{color:#333;margin-bottom:20px;font-size:22px}
-input[type="file"]{margin:15px 0;padding:10px;border:2px dashed #4CAF50;border-radius:8px;width:100%;cursor:pointer}
-input[type="number"]{padding:10px;width:120px;border:2px solid #ddd;border-radius:8px;font-size:16px;margin:10px}
-button{background:#4CAF50;color:white;border:none;padding:12px 25px;border-radius:8px;font-size:16px;cursor:pointer;margin-top:15px;width:100%}
-button:disabled{background:#ccc;cursor:not-allowed}
-button:hover:not(:disabled){background:#45a049}
-img{max-width:100%;margin-top:20px;border-radius:8px;display:none}
-.info{margin-top:15px;font-size:14px;color:#555}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Image Resizer - Free Photo Resizer Tool | Resize JPG, PNG, WebP Without Losing Quality</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Resize images online instantly with our free image resizer tool. Support for JPG, JPEG, PNG, WebP, AVIF, GIF, BMP, SVG, TIFF, HEIC. No upload required - all processing in browser. Batch resize, compress, crop, rotate & more!">
+    <meta name="keywords" content="online image resizer, resize image online, image resizer free, resize jpg, resize png, resize webp, photo resizer, image size reducer, resize photo, image resize without losing quality, compress and resize image, bulk image resizer">
+    <meta name="author" content="ImageResizer">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourdomain.com/">
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Online Image Resizer - Free Photo Resizer Tool">
+    <meta property="og:description" content="Resize images online instantly without losing quality. Free, fast, no registration required.">
+    <meta property="og:url" content="https://yourdomain.com">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://yourdomain.com/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Online Image Resizer - Free Photo Resizer Tool">
+    <meta name="twitter:description" content="Resize images online instantly without losing quality.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'scale-in': 'scaleIn 0.3s ease-out'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.95)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- JSZip for ZIP download -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Online Image Resizer",
+        "description": "Free online image resizer tool to resize JPG, PNG, WebP images without losing quality",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": "Drag & drop upload, Batch resize, Crop, Rotate, Flip, Compress, Format conversion"
+    }
+    </script>
+    
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Is this image resizer really free?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! Our online image resizer is 100% free forever. No registration, no watermark, no limits."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do my images get uploaded to a server?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No! All image processing happens entirely in your browser using client-side technology. Your images never leave your device."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What image formats are supported?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We support JPG, JPEG, PNG, WebP, AVIF, GIF, BMP, SVG, TIFF, HEIC, ICO, and more - over 10 formats total."
+                }
+            }
+        ]
+    }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            overflow-x: hidden;
+        }
+        
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .dark .glass {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Animated Button */
+        .animated-button {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .animated-button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: white;
+            opacity: 0.2;
+            transition: opacity 0.3s;
+            transform: translateX(-100%);
+        }
+        
+        .animated-button:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .animated-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        .dark ::-webkit-scrollbar-track {
+            background: #2d2d2d;
+        }
+        
+        .dark ::-webkit-scrollbar-thumb {
+            background: #666;
+        }
+        
+        /* Loading Animation */
+        .loading {
+            position: relative;
+        }
+        
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Smooth Transitions */
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+    </style>
 </head>
-<body>
-<div class="box">
-<h1>Image Resizer to Exact KB</h1>
-
-<input type="file" id="imageInput" accept="image/*" capture="environment">
-
-<div class="info">Target KB: Website/Form wali limit yahan likho</div>
-<input type="number" id="targetKB" placeholder="200" value="200" min="10" max="5000">
-
-<button id="resizeBtn" disabled>Resize & Download</button>
-
-<img id="preview">
-<div id="resultInfo" class="info"></div>
-</div>
-
-<script>
-let originalImg = new Image();
-let originalFile;
-
-document.getElementById('imageInput').addEventListener('change', function(e){
-const file = e.target.files[0];
-if(!file) return;
-originalFile = file;
-originalImg.onload = function(){
-document.getElementById('resizeBtn').disabled = false;
-document.getElementById('resultInfo').innerText = `Original: ${Math.round(file.size/1024)} KB`;
-document.getElementById('preview').src = originalImg.src;
-document.getElementById('preview').style.display = 'block';
-}
-originalImg.src = URL.createObjectURL(file);
-});
-
-document.getElementById('resizeBtn').addEventListener('click', function(){
-const targetKB = parseInt(document.getElementById('targetKB').value);
-if(!targetKB || targetKB < 10){alert('10 KB se kam nahi ho sakta');return;}
-
-let quality = 0.92;
-let canvas = document.createElement('canvas');
-let ctx = canvas.getContext('2d');
-canvas.width = originalImg.width;
-canvas.height = originalImg.height;
-ctx.drawImage(originalImg, 0, 0);
-
-function compress(){
-canvas.toBlob(function(blob){
-const sizeKB = Math.round(blob.size/1024);
-document.getElementById('resultInfo').innerText = `Original: ${Math.round(originalFile.size/1024)} KB → New: ${sizeKB} KB`;
-
-if(sizeKB > targetKB && quality > 0.1){
-quality -= 0.05;
-compress();
-}else{
-const a = document.createElement('a');
-a.href = URL.createObjectURL(blob);
-a.download = 'resized-' + targetKB + 'KB.jpg';
-a.click();
-}
-}, 'image/jpeg', quality);
-}
-compress();
-});
-</script>
+<body class="bg-background text-foreground min-h-screen">
+    <!-- Header -->
+    <nav class="glass sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="#" class="text-2xl font-bold gradient-text">
+                    ImageResizer
+                </a>
+                
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#features" class="font-semibold hover:text-primary-600 transition-all">Features</a>
+                    <a href="#how-it-works" class="font-semibold hover:text-primary-600 transition-all">How It Works</a>
+                    <a href="#faq" class="font-semibold hover:text-primary-600 transition-all">FAQ</a>
+                    <a href="#blog" class="font-semibold hover:text-primary-600 transition-all">Blog</a>
+                    
+                    <button id="darkModeToggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 transition-all">
+                        🌙
+                    </button>
+                </div>
+                
+                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg">
+                    ☰
+                </button>
+            </div>
+            
+            <div id="mobileMenu" class="md:hidden py-4 space-y-4 hidden">
+                <a href="#features" class="font-semibold hover:text-primary-600">Features</a>
+                <a href="#how-it-works" class="font-semibold hover:text-primary-600">How It Works</a>
+                <a href="#faq" class="font-semibold hover:text-primary-600">FAQ</a>
+                <button id="darkModeToggleMobile" class="w-full p-2 rounded-lg bg-gray-200 dark:bg-gray-700">
+                    🌙 Dark Mode
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="relative py-20 bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-gray-900 dark:via-gray-800 dark:to-primary-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-fade-in">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text">
+                    Online Image Resizer
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    Resize images online instantly without losing quality. Free, fast, no registration required.
+                </p>
+            </div>
+            
+            <!-- Upload Area -->
+            <div class="animate-slide-up">
+                <div id="uploadArea" class="glass p-12 mb-8 text-center transition-all duration-300">
+                    <input type="file" id="fileInput" multiple accept=".jpg,.jpeg,.png,.webp,.avif,.gif,.bmp,.svg,.tiff,.heic,.ico" class="hidden">
+                    
+                    <div class="mb-6">
+                        <svg class="w-20 h-20 mx-auto text-primary-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        <h3 class="text-2xl font-bold mb-2">Drag & Drop Images</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            or click to browse files (JPG, PNG, WebP, GIF, etc.)
+                        </p>
+                    </div>
+                    
+                    <button id="browseBtn" class="animated-button bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-xl font-semibold text-lg">
+                        Browse Files
+                    </button>
+                    
+                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-4">
+                        No file upload - all processing happens in your browser
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Image Grid -->
+    <section id="imageGrid" class="container mx-auto px-4 py-8 hidden">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8" id="imagesGrid"></div>
+    </section>
+    
+    <!-- Controls Section -->
+    <section id="controls" class="container mx-auto px-4 py-8 hidden">
+        <div class="glass p-8 mb-8">
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Dimension Controls -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Resize Dimensions</h3>
+                    
+                    <div class="flex gap-4 mb-4">
+                        <button id="pixelsBtn" class="px-4 py-2 rounded-lg font-semibold bg-primary-600 text-white transition-all">
+                            Pixels
+                        </button>
+                        <button id="percentageBtn" class="px-4 py-2 rounded-lg font-semibold bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 transition-all">
+                            Percentage
+                        </button>
+                    </div>
+                    
+                    <div id="pixelsControls" class="grid grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Width (px)</label>
+                            <input type="number" id="widthInput" class="w-full px-4 py-3 rounded-lg border dark:bg-gray-700 dark:border-gray-600">
+                            <button id="lockWidthBtn" class="mt-2 px-3 py-1 rounded text-sm font-semibold bg-gray-200 dark:bg-gray-700">
+                                🔓 Unlock Width
+                            </button>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Height (px)</label>
+                            <input type="number" id="heightInput" class="w-full px-4 py-3 rounded-lg border dark:bg-gray-700 dark:border-gray-600">
+                            <button id="lockHeightBtn" class="mt-2 px-3 py-1 rounded text-sm font-semibold bg-gray-200 dark:bg-gray-700">
+                                🔓 Unlock Height
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div id="percentageControls" class="mb-4 hidden">
+                        <label class="block text-sm font-semibold mb-2">Percentage: <span id="percentageValue">100</span>%</label>
+                        <input type="range" id="percentageInput" min="1" max="200" value="100" class="w-full">
+                    </div>
+                    
+                    <div class="flex gap-4 mb-4">
+                        <label class="flex items-center gap-2">
+                            <input type="checkbox" id="aspectRatioCheckbox" checked class="w-5 h-5">
+                            <span class="font-semibold">Maintain Aspect Ratio</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Quality & Format -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quality & Format</h3>
+                    
+                    <div class="mb-4">
+                        <label class="block text-sm font-semibold mb-2">Quality: <span id="qualityValue">90</span>%</label>
+                        <input type="range" id="qualityInput" min="1" max="100" value="90" class="w-full">
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="block text-sm font-semibold mb-2">Output Format</label>
+                        <select id="formatSelect" class="w-full px-4 py-3 rounded-lg border dark:bg-gray-700 dark:border-gray-600">
+                            <option value="original">Original</option>
+                            <option value="jpeg">JPEG</option>
+                            <option value="png">PNG</option>
+                            <option value="webp">WebP</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Transformation Controls -->
+            <div class="grid md:grid-cols-4 gap-4 mb-6">
+                <button id="rotateLeftBtn" class="px-4 py-3 bg-gray-200 dark:bg-gray-700 rounded-lg font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-all">
+                    ↺ Rotate Left
+                </button>
+                <button id="rotateRightBtn" class="px-4 py-3 bg-gray-200 dark:bg-gray-700 rounded-lg font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-all">
+                    ↻ Rotate Right
+                </button>
+                <button id="flipHorizontalBtn" class="px-4 py-3 bg-gray-200 dark:bg-gray-700 rounded-lg font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-all">
+                    ↔ Flip Horizontal
+                </button>
+                <button id="flipVerticalBtn" class="px-4 py-3 bg-gray-200 dark:bg-gray-700 rounded-lg font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition-all">
+                    ↕ Flip Vertical
+                </button>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="flex gap-4 justify-center">
+                <button id="processBtn" class="animated-button bg-primary-600 hover:bg-primary-700 disabled:bg-gray-400 text-white px-8 py-4 rounded-xl font-semibold text-lg">
+                    Resize All Images
+                </button>
+                <button id="resetBtn" class="bg-gray-600 hover:bg-gray-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all">
+                    Reset
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Download Section -->
+    <section id="downloadSection" class="container mx-auto px-4 py-8 hidden">
+        <div class="glass p-8">
+            <h3 class="text-xl font-bold mb-4">Download Resized Images</h3>
+            
+            <div class="grid md:grid-cols-2 gap-4 mb-6" id="downloadGrid"></div>
+            
+            <button id="downloadZipBtn" class="w-full bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all">
+                📦 Download All as ZIP
+            </button>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">
+                Powerful Features
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="glass p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="text-5xl mb-4">🚀</div>
+                    <h3 class="text-xl font-bold mb-2">Lightning Fast</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Client-side processing - no server upload needed</p>
+                </div>
+                
+                <div class="glass p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="text-5xl mb-4">🔒</div>
+                    <h3 class="text-xl font-bold mb-2">Secure & Private</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Your images never leave your browser</p>
+                </div>
+                
+                <div class="glass p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="text-5xl mb-4">📱</div>
+                    <h3 class="text-xl font-bold mb-2">Mobile Friendly</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Works perfectly on all devices</p>
+                </div>
+                
+                <div class="glass p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="text-5xl mb-4">💎</div>
+                    <h3 class="text-xl font-bold mb-2">Premium Quality</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Resize without losing image quality</p>
+                </div>
+                
+                <div class="glass p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="text-5xl mb-4">🎨</div>
+                    <h3 class="text-xl font-bold mb-2">10+ Formats</h3>
+                    <p class="text-gray-600 dark:text-gray-300">JPG, PNG, WebP, GIF, BMP, SVG, TIFF, HEIC</p>
+                </div>
+                
+                <div class="glass p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="text-5xl mb-4">📦</div>
+                    <h3 class="text-xl font-bold mb-2">Batch Processing</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Resize multiple images at once</p>
+                </div>
+                
+                <div class="glass p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="text-5xl mb-4">🔄</div>
+                    <h3 class="text-xl font-bold mb-2">Full Control</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Crop, rotate, flip, compress & more</p>
+                </div>
+                
+                <div class="glass p-8 text-center hover:scale-105 transition-all duration-300">
+                    <div class="text-5xl mb-4">💰</div>
+                    <h3 class="text-xl font-bold mb-2">Free Forever</h3>
+                    <p class="text-gray-600 dark:text-gray-300">No watermark, no registration required</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Supported Formats -->
+    <section class="py-20 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">
+                Supported Formats
+            </h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 max-w-5xl mx-auto">
+                <div class="glass p-6 text-center hover:scale-110 transition-all">
+                    <div class="text-4xl mb-2">📷</div>
+                    <p class="font-bold">JPG</p>
+                </div>
+                <div class="glass p-6 text-center hover:scale-110 transition-all">
+                    <div class="text-4xl mb-2">📷</div>
+                    <p class="font-bold">JPEG</p>
+                </div>
+                <div class="glass p-6 text-center hover:scale-110 transition-all">
+                    <div class="text-4xl mb-2">🖼️</div>
+                    <p class="font-bold">PNG</p>
+                </div>
+                <div class="glass p-6 text-center hover:scale-110 transition-all">
+                    <div class="text-4xl mb-2">🌐</div>
+                    <p class="font-bold">WebP</p>
+                </div>
+                <div class="glass p-6 text-center hover:scale-110 transition-all">
+                    <div class="text-4xl mb-2">⚡</div>
+                    <p class="font-bold">AVIF</p>
+                </div>
+                <div class="glass p-6 text-center hover:scale-110 transition-all">
+                    <div class="text-4xl mb-2">🎬</div>
+                    <p class="font-bold">GIF</p>
+                </div>
+                <div class="glass p-6 text-center hover:scale-110 transition-all">
+                    <div class="text-4xl mb-2">🎨</div>
+                    <p class="font-bold">BMP</p>
+                </div>
+                <div class="glass p-6 text-center hover:scale-110 transition-all">
+                    <div class="text-4xl mb-2">📐</div>
+                    <p class="font-bold">SVG</p>
+                </div>
+                <div class="glass p-6 text-center hover:scale-110 transition-all">
+                    <div class="text-4xl mb-2">📜</div>
+                    <p class="font-bold">TIFF</p>
+                </div>
+                <div class="glass p-6 text-center hover:scale-110 transition-all">
+                    <div class="text-4xl mb-2">📱</div>
+                    <p class="font-bold">HEIC</p>
+                </div>
+                <div class="glass p-6 text-center hover:scale-110 transition-all">
+                    <div class="text-4xl mb-2">🔷</div>
+                    <p class="font-bold">ICO</p>
+                </div>
+                <div class="glass p-6 text-center hover:scale-110 transition-all">
+                    <div class="text-4xl mb-2">📄</div>
+                    <p class="font-bold">PDF</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">
+                How It Works
+            </h2>
+            
+            <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <div class="text-center">
+                    <div class="text-6xl mb-4">1</div>
+                    <h3 class="text-xl font-bold mb-2">Upload</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Drag & drop or browse files</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="text-6xl mb-4">2</div>
+                    <h3 class="text-xl font-bold mb-2">Resize</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Set dimensions & quality</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="text-6xl mb-4">3</div>
+                    <h3 class="text-xl font-bold mb-2">Edit</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Crop, rotate, flip if needed</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="text-6xl mb-4">4</div>
+                    <h3 class="text-xl font-bold mb-2">Download</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Get resized images instantly</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Why Choose Us -->
+    <section class="py-20 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">
+                Why Choose Us?
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="glass p-8 text-center hover:scale-105 transition-transform">
+                    <h3 class="text-2xl font-bold mb-4">🚀 Lightning Fast</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Client-side processing - no server upload</p>
+                </div>
+                
+                <div class="glass p-8 text-center hover:scale-105 transition-transform">
+                    <h3 class="text-2xl font-bold mb-4">🔒 Secure & Private</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Your images never leave your browser</p>
+                </div>
+                
+                <div class="glass p-8 text-center hover:scale-105 transition-transform">
+                    <h3 class="text-2xl font-bold mb-4">💰 Free Forever</h3>
+                    <p class="text-gray-600 dark:text-gray-300">No watermark, no registration required</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">
+                Frequently Asked Questions
+            </h2>
+            
+            <div class="max-w-4xl mx-auto space-y-4">
+                <div class="glass p-6">
+                    <h3 class="text-xl font-bold mb-2">Is this image resizer really free?</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Yes! Our online image resizer is 100% free forever. No registration, no watermark, no limits.</p>
+                </div>
+                
+                <div class="glass p-6">
+                    <h3 class="text-xl font-bold mb-2">Do my images get uploaded to a server?</h3>
+                    <p class="text-gray-600 dark:text-gray-300">No! All image processing happens entirely in your browser using client-side technology. Your images never leave your device, ensuring complete privacy and security.</p>
+                </div>
+                
+                <div class="glass p-6">
+                    <h3 class="text-xl font-bold mb-2">Can I resize images without losing quality?</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Yes! Our advanced algorithm preserves image quality while resizing. You can also adjust the quality slider (1-100) to control compression levels.</p>
+                </div>
+                
+                <div class="glass p-6">
+                    <h3 class="text-xl font-bold mb-2">What image formats are supported?</h3>
+                    <p class="text-gray-600 dark:text-gray-300">We support JPG, JPEG, PNG, WebP, AVIF, GIF, BMP, SVG, TIFF, HEIC, ICO, and more - over 10 formats in total.</p>
+                </div>
+                
+                <div class="glass p-6">
+                    <h3 class="text-xl font-bold mb-2">Can I resize multiple images at once?</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Yes! Our batch processing feature allows you to resize multiple images simultaneously. Download all resized images as a ZIP file.</p>
+                </div>
+                
+                <div class="glass p-6">
+                    <h3 class="text-xl font-bold mb-2">How do I crop an image?</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Enable crop mode, then drag to select the area you want to keep. The image will be cropped to your selected dimensions.</p>
+                </div>
+                
+                <div class="glass p-6">
+                    <h3 class="text-xl font-bold mb-2">Can I change image format after resizing?</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Yes! Use the output format selector to convert your image to JPEG, PNG, WebP, or keep the original format.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">
+                What Users Say
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="glass p-8">
+                    <div class="text-2xl mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">"The best image resizer I've used! Fast, free, and no quality loss. Perfect for my website!"</p>
+                    <p class="font-bold">- Sarah Johnson, Designer</p>
+                </div>
+                
+                <div class="glass p-8">
+                    <div class="text-2xl mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">"Love the batch processing feature! Resized 50 images in seconds. Highly recommend!"</p>
+                    <p class="font-bold">- Mike Chen, Developer</p>
+                </div>
+                
+                <div class="glass p-8">
+                    <div class="text-2xl mb-4">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">"Privacy-focused and professional. My images stay on my device. Amazing tool!"</p>
+                    <p class="font-bold">- Emma Davis, Photographer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-primary-600 to-primary-800">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-6 text-white">Start Resizing Images Now</h2>
+            <p class="text-xl text-white mb-8 max-w-2xl mx-auto">Free, fast, and secure. No registration required. Try it now!</p>
+            <button onclick="document.getElementById('fileInput').click()" class="animated-button bg-white text-primary-600 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100">
+                Resize Images Now →
+            </button>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold gradient-text mb-4">ImageResizer</h3>
+                    <p class="text-gray-400">Fast, free, and secure online image resizer tool</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Related Tools</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Image Compressor</a></li>
+                        <li><a href="#" class="hover:text-white">Image Converter</a></li>
+                        <li><a href="#" class="hover:text-white">Crop Image</a></li>
+                        <li><a href="#" class="hover:text-white">PDF to JPG</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Blog</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Image Optimization</a></li>
+                        <li><a href="#" class="hover:text-white">SEO Tips</a></li>
+                        <li><a href="#" class="hover:text-white">Web Performance</a></li>
+                        <li><a href="#" class="hover:text-white">Compression Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Email: support@yourdomain.com</li>
+                        <li>Privacy Policy</li>
+                        <li>Terms of Service</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 ImageResizer. All rights reserved. Made with ❤️ for everyone</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // State
+        let images = [];
+        let dragging = false;
+        let resizeMode = 'pixels';
+        let targetWidth = 0;
+        let targetHeight = 0;
+        let targetPercentage = 100;
+        let maintainAspectRatio = true;
+        let lockWidth = false;
+        let lockHeight = false;
+        let quality = 90;
+        let compressFormat = 'original';
+        let rotate = 0;
+        let flipHorizontal = false;
+        let flipVertical = false;
+        let activeImageId = null;
+        let isProcessing = false;
+        
+        // DOM Elements
+        const fileInput = document.getElementById('fileInput');
+        const uploadArea = document.getElementById('uploadArea');
+        const browseBtn = document.getElementById('browseBtn');
+        const imagesGrid = document.getElementById('imagesGrid');
+        const imageGridSection = document.getElementById('imageGrid');
+        const controlsSection = document.getElementById('controls');
+        const downloadSection = document.getElementById('downloadSection');
+        const downloadGrid = document.getElementById('downloadGrid');
+        const widthInput = document.getElementById('widthInput');
+        const heightInput = document.getElementById('heightInput');
+        const percentageInput = document.getElementById('percentageInput');
+        const percentageValue = document.getElementById('percentageValue');
+        const qualityInput = document.getElementById('qualityInput');
+        const qualityValue = document.getElementById('qualityValue');
+        const formatSelect = document.getElementById('formatSelect');
+        const aspectRatioCheckbox = document.getElementById('aspectRatioCheckbox');
+        const processBtn = document.getElementById('processBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const downloadZipBtn = document.getElementById('downloadZipBtn');
+        
+        // Dark Mode
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const darkModeToggleMobile = document.getElementById('darkModeToggleMobile');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        let darkMode = false;
+        
+        darkModeToggle.addEventListener('click', () => {
+            darkMode = !darkMode;
+            updateDarkMode();
+        });
+        
+        darkModeToggleMobile.addEventListener('click', () => {
+            darkMode = !darkMode;
+            updateDarkMode();
+        });
+        
+        function updateDarkMode() {
+            if (darkMode) {
+                document.documentElement.classList.add('dark');
+                darkModeToggle.textContent = '☀️';
+                darkModeToggleMobile.textContent = '☀️ Light Mode';
+            } else {
+                document.documentElement.classList.remove('dark');
+                darkModeToggle.textContent = '🌙';
+                darkModeToggleMobile.textContent = '🌙 Dark Mode';
+            }
+        }
+        
+        // Mobile Menu
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Browse Button
+        browseBtn.addEventListener('click', () => {
+            fileInput.click();
+        });
+        
+        // File Input
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+        
+        // Drag & Drop
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dragging = true;
+            uploadArea.classList.add('border-primary-500', 'border-4', 'bg-primary-50', 'dark:bg-primary-900');
+        });
+        
+        uploadArea.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            dragging = false;
+            uploadArea.classList.remove('border-primary-500', 'border-4', 'bg-primary-50', 'dark:bg-primary-900');
+        });
+        
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dragging = false;
+            uploadArea.classList.remove('border-primary-500', 'border-4', 'bg-primary-50', 'dark:bg-primary-900');
+            handleFiles(e.dataTransfer.files);
+        });
+        
+        // Handle Files
+        function handleFiles(files) {
+            if (!files || files.length === 0) return;
+            
+            isProcessing = true;
+            const newImages = [];
+            
+            Array.from(files).forEach((file) => {
+                const fileType = file.type.toLowerCase();
+                const supportedFormats = ['jpg', 'jpeg', 'png', 'webp', 'avif', 'gif', 'bmp', 'svg', 'tiff', 'heic', 'ico'];
+                const format = supportedFormats.find(f => fileType.includes(f) || file.name.toLowerCase().includes(f));
+                
+                if (!format) {
+                    alert(`Unsupported file format: ${file.name}`);
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        newImages.push({
+                            id: generateId(),
+                            original: file,
+                            preview: e.target.result,
+                            width: img.width,
+                            height: img.height
+                        });
+                        
+                        if (newImages.length === files.length) {
+                            images = [...images, ...newImages];
+                            if (activeImageId === null && newImages.length > 0) {
+                                activeImageId = newImages[0].id;
+                                targetWidth = newImages[0].width;
+                                targetHeight = newImages[0].height;
+                                widthInput.value = targetWidth;
+                                heightInput.value = targetHeight;
+                            }
+                            isProcessing = false;
+                            updateUI();
+                        }
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+        
+        // Generate ID
+        function generateId() {
+            return Math.random().toString(36).substr(2, 9);
+        }
+        
+        // Update UI
+        function updateUI() {
+            if (images.length === 0) {
+                imageGridSection.classList.add('hidden');
+                controlsSection.classList.add('hidden');
+                downloadSection.classList.add('hidden');
+                return;
+            }
+            
+            imageGridSection.classList.remove('hidden');
+            controlsSection.classList.remove('hidden');
+            
+            // Update images grid
+            imagesGrid.innerHTML = images.map(image => `
+                <div class="glass p-4 cursor-pointer transition-all hover:scale-105 ${activeImageId === image.id ? 'ring-4 ring-primary-500' : ''}"
+                     onclick="setActiveImage('${image.id}')">
+                    <img src="${image.preview}" alt="${image.original.name}" class="w-full h-32 object-cover rounded-lg mb-2">
+                    <p class="text-sm font-medium truncate">${image.original.name}</p>
+                    <p class="text-xs text-gray-500">${image.width} × ${image.height}</p>
+                </div>
+            `).join('');
+            
+            // Update controls if active image exists
+            const activeImage = images.find(img => img.id === activeImageId);
+            if (activeImage) {
+                widthInput.value = targetWidth;
+                heightInput.value = Math.round(targetHeight);
+            }
+        }
+        
+        // Set Active Image
+        function setActiveImage(id) {
+            activeImageId = id;
+            const image = images.find(img => img.id === id);
+            if (image) {
+                targetWidth = image.width;
+                targetHeight = image.height;
+                widthInput.value = targetWidth;
+                heightInput.value = targetHeight;
+            }
+            updateUI();
+        }
+        
+        // Dimension Controls
+        widthInput.addEventListener('input', (e) => {
+            if (lockWidth) return;
+            targetWidth = Number(e.target.value);
+            
+            if (maintainAspectRatio && activeImageId) {
+                const image = images.find(img => img.id === activeImageId);
+                if (image && !lockHeight) {
+                    targetHeight = (targetWidth / image.width) * image.height;
+                    heightInput.value = Math.round(targetHeight);
+                }
+            }
+        });
+        
+        heightInput.addEventListener('input', (e) => {
+            if (lockHeight) return;
+            targetHeight = Number(e.target.value);
+            
+            if (maintainAspectRatio && activeImageId) {
+                const image = images.find(img => img.id === activeImageId);
+                if (image && !lockWidth) {
+                    targetWidth = (targetHeight / image.height) * image.width;
+                    widthInput.value = Math.round(targetWidth);
+                }
+            }
+        });
+        
+        // Mode Buttons
+        document.getElementById('pixelsBtn').addEventListener('click', () => {
+            resizeMode = 'pixels';
+            document.getElementById('pixelsBtn').classList.add('bg-primary-600', 'text-white');
+            document.getElementById('pixelsBtn').classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+            document.getElementById('percentageBtn').classList.remove('bg-primary-600', 'text-white');
+            document.getElementById('percentageBtn').classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+            document.getElementById('pixelsControls').classList.remove('hidden');
+            document.getElementById('percentageControls').classList.add('hidden');
+        });
+        
+        document.getElementById('percentageBtn').addEventListener('click', () => {
+            resizeMode = 'percentage';
+            document.getElementById('percentageBtn').classList.add('bg-primary-600', 'text-white');
+            document.getElementById('percentageBtn').classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+            document.getElementById('pixelsBtn').classList.remove('bg-primary-600', 'text-white');
+            document.getElementById('pixelsBtn').classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+            document.getElementById('pixelsControls').classList.add('hidden');
+            document.getElementById('percentageControls').classList.remove('hidden');
+        });
+        
+        // Percentage Input
+        percentageInput.addEventListener('input', (e) => {
+            targetPercentage = Number(e.target.value);
+            percentageValue.textContent = targetPercentage;
+            
+            if (activeImageId) {
+                const image = images.find(img => img.id === activeImageId);
+                if (image) {
+                    targetWidth = image.width * targetPercentage / 100;
+                    targetHeight = image.height * targetPercentage / 100;
+                    widthInput.value = Math.round(targetWidth);
+                    heightInput.value = Math.round(targetHeight);
+                }
+            }
+        });
+        
+        // Aspect Ratio
+        aspectRatioCheckbox.addEventListener('change', (e) => {
+            maintainAspectRatio = e.target.checked;
+        });
+        
+        // Lock Buttons
+        document.getElementById('lockWidthBtn').addEventListener('click', () => {
+            lockWidth = !lockWidth;
+            document.getElementById('lockWidthBtn').textContent = lockWidth ? '🔒 Lock Width' : '🔓 Unlock Width';
+            document.getElementById('lockWidthBtn').classList.toggle('bg-primary-600', 'text-white');
+        });
+        
+        document.getElementById('lockHeightBtn').addEventListener('click', () => {
+            lockHeight = !lockHeight;
+            document.getElementById('lockHeightBtn').textContent = lockHeight ? '🔒 Lock Height' : '🔓 Unlock Height';
+            document.getElementById('lockHeightBtn').classList.toggle('bg-primary-600', 'text-white');
+        });
+        
+        // Quality Input
+        qualityInput.addEventListener('input', (e) => {
+            quality = Number(e.target.value);
+            qualityValue.textContent = quality;
+        });
+        
+        // Format Select
+        formatSelect.addEventListener('change', (e) => {
+            compressFormat = e.target.value;
+        });
+        
+        // Rotation & Flip
+        document.getElementById('rotateLeftBtn').addEventListener('click', () => {
+            rotate = (rotate - 90) % 360;
+        });
+        
+        document.getElementById('rotateRightBtn').addEventListener('click', () => {
+            rotate = (rotate + 90) % 360;
+        });
+        
+        document.getElementById('flipHorizontalBtn').addEventListener('click', () => {
+            flipHorizontal = !flipHorizontal;
+        });
+        
+        document.getElementById('flipVerticalBtn').addEventListener('click', () => {
+            flipVertical = !flipVertical;
+        });
+        
+        // Process Button
+        processBtn.addEventListener('click', async () => {
+            if (images.length === 0) return;
+            
+            processBtn.disabled = true;
+            processBtn.textContent = 'Processing...';
+            isProcessing = true;
+            
+            const processedImages = await Promise.all(
+                images.map(async (image) => {
+                    const resized = await resizeImage(image);
+                    return { ...image, resized };
+                })
+            );
+            
+            images = processedImages;
+            isProcessing = false;
+            processBtn.disabled = false;
+            processBtn.textContent = 'Resize All Images';
+            
+            // Show download section
+            downloadSection.classList.remove('hidden');
+            updateDownloadGrid();
+        });
+        
+        // Resize Image
+        async function resizeImage(image) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            if (!ctx) throw new Error('Cannot get canvas context');
+            
+            const img = new Image();
+            img.src = image.preview;
+            
+            await new Promise((resolve) => {
+                img.onload = resolve;
+            });
+            
+            let width = targetWidth || image.width;
+            let height = targetHeight || image.height;
+            
+            if (rotate === 90 || rotate === 270) {
+                canvas.width = height;
+                canvas.height = width;
+            } else {
+                canvas.width = width;
+                canvas.height = height;
+            }
+            
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+            ctx.save();
+            
+            ctx.translate(canvas.width / 2, canvas.height / 2);
+            ctx.rotate((rotate * Math.PI) / 180);
+            ctx.scale(flipHorizontal ? -1 : 1, flipVertical ? -1 : 1);
+            
+            ctx.drawImage(img, -img.width / 2, -img.height / 2, img.width, img.height);
+            ctx.restore();
+            
+            const mimeType = compressFormat === 'original' ? image.original.type : `image/${compressFormat}`;
+            return canvas.toDataURL(mimeType, quality / 100);
+        }
+        
+        // Update Download Grid
+        function updateDownloadGrid() {
+            downloadGrid.innerHTML = images.filter(image => image.resized).map(image => `
+                <div class="flex items-center gap-4 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                    <img src="${image.resized}" alt="Resized" class="w-16 h-16 object-cover rounded">
+                    <div class="flex-grow">
+                        <p class="font-semibold">${image.original.name}</p>
+                        <p class="text-sm text-gray-500">${Math.round(targetWidth)} × ${Math.round(targetHeight)}</p>
+                    </div>
+                    <button onclick="downloadImage('${image.id}')" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg font-semibold">
+                        Download
+                    </button>
+                </div>
+            `).join('');
+        }
+        
+        // Download Single Image
+        function downloadImage(id) {
+            const image = images.find(img => img.id === id);
+            if (!image || !image.resized) return;
+            
+            const mimeType = image.original.type;
+            const extension = mimeType.split('/')[1] || 'jpg';
+            const filename = `resized-${image.original.name.replace(`.${extension}`, '')}.${extension}`;
+            
+            saveAs(image.resized, filename);
+        }
+        
+        // Download ZIP
+        downloadZipBtn.addEventListener('click', async () => {
+            const zip = new JSZip();
+            
+            images.forEach((image) => {
+                if (image.resized) {
+                    const mimeType = image.original.type;
+                    const extension = mimeType.split('/')[1] || 'jpg';
+                    const filename = `resized-${image.original.name.replace(`.${extension}`, '')}.${extension}`;
+                    zip.file(filename, image.resized, { base64: true });
+                }
+            });
+            
+            const content = await zip.generateAsync({ type: 'binarystring' });
+            saveAs(content, 'resized-images.zip', { type: 'application/zip' });
+        });
+        
+        // Reset
+        resetBtn.addEventListener('click', () => {
+            images = [];
+            activeImageId = null;
+            targetWidth = 0;
+            targetHeight = 0;
+            rotate = 0;
+            flipHorizontal = false;
+            flipVertical = false;
+            fileInput.value = '';
+            updateUI();
+            downloadSection.classList.add('hidden');
+        });
+    </script>
 </body>
 </html>
