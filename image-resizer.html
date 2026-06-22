@@ -3,44 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KB Image Resizer - GetAge247</title>
+<title>Image Resizer to KB - GetAge247</title>
 <style>
-body{font-family:Arial,sans-serif;background:#f5f5f5;margin:0;padding:20px;display:flex;justify-content:center}
-.container{background:white;padding:25px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.1);max-width:450px;width:100%}
-h2{color:#333;text-align:center;margin-bottom:20px}
-input[type=file]{width:100%;padding:10px;border:2px dashed #ccc;border-radius:8px;margin-bottom:15px;cursor:pointer}
-.form-group{margin-bottom:15px}
-label{display:block;margin-bottom:5px;font-weight:bold;color:#333}
-input[type=number]{width:100%;padding:10px;border:1px solid #ddd;border-radius:6px;font-size:16px;box-sizing:border-box}
-button{background:#007bff;color:white;padding:12px;width:100%;border:none;border-radius:8px;font-size:16px;cursor:pointer;font-weight:bold}
-button:hover{background:#0056b3}
+body{font-family:Arial,sans-serif;max-width:500px;margin:50px auto;padding:20px;text-align:center;background:#f5f5f5}
+.box{background:white;padding:30px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
+h1{color:#333;margin-bottom:20px;font-size:22px}
+input[type="file"]{margin:15px 0;padding:10px;border:2px dashed #4CAF50;border-radius:8px;width:100%;cursor:pointer}
+input[type="number"]{padding:10px;width:120px;border:2px solid #ddd;border-radius:8px;font-size:16px;margin:10px}
+button{background:#4CAF50;color:white;border:none;padding:12px 25px;border-radius:8px;font-size:16px;cursor:pointer;margin-top:15px;width:100%}
 button:disabled{background:#ccc;cursor:not-allowed}
-#preview{max-width:100%;margin-top:15px;border-radius:8px;display:none}
-.info{font-size:13px;color:#666;margin-top:8px;text-align:center}
-.presets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px;justify-content:center}
-.presets button{flex:1;min-width:80px;padding:8px 10px;font-size:13px;background:#e9ecef;color:#333}
-.presets button:hover{background:#dee2e6}
+button:hover:not(:disabled){background:#45a049}
+img{max-width:100%;margin-top:20px;border-radius:8px;display:none}
+.info{margin-top:15px;font-size:14px;color:#555}
 </style>
 </head>
 <body>
-<div class="container">
-<h2>🖼️ Image Resizer - KB Wala</h2>
-<input type="file" id="imageInput" accept="image/*">
+<div class="box">
+<h1>Image Resizer to Exact KB</h1>
 
-<div class="presets">
-<button type="button" onclick="setKB(100)">WhatsApp</button>
-<button type="button" onclick="setKB(200)">Govt Form</button>
-<button type="button" onclick="setKB(500)">Email</button>
-<button type="button" onclick="setKB(1000)">Meta Ads</button>
-</div>
+<input type="file" id="imageInput" accept="image/*" capture="environment">
 
-<div class="form-group">
-<label>Target File Size KB:</label>
+<div class="info">Target KB: Website/Form wali limit yahan likho</div>
 <input type="number" id="targetKB" placeholder="200" value="200" min="10" max="5000">
-<div class="info">Website/Form wali limit yahan likho</div>
-</div>
 
 <button id="resizeBtn" disabled>Resize & Download</button>
+
 <img id="preview">
 <div id="resultInfo" class="info"></div>
 </div>
@@ -56,70 +43,41 @@ originalFile = file;
 originalImg.onload = function(){
 document.getElementById('resizeBtn').disabled = false;
 document.getElementById('resultInfo').innerText = `Original: ${Math.round(file.size/1024)} KB`;
+document.getElementById('preview').src = originalImg.src;
+document.getElementById('preview').style.display = 'block';
 }
 originalImg.src = URL.createObjectURL(file);
 });
 
-function setKB(kb){
-document.getElementById('targetKB').value = kb;
-}
-
 document.getElementById('resizeBtn').addEventListener('click', function(){
 const targetKB = parseInt(document.getElementById('targetKB').value);
-if(!targetKB || targetKB < 10){
-alert('Minimum 10 KB likho bhai');
-return;
-}
+if(!targetKB || targetKB < 10){alert('10 KB se kam nahi ho sakta');return;}
 
-this.disabled = true;
-this.innerText = 'Processing...';
-
-resizeToTargetKB(originalImg, targetKB, (blob) => {
-const url = URL.createObjectURL(blob);
-document.getElementById('preview').src = url;
-document.getElementById('preview').style.display = 'block';
-document.getElementById('resultInfo').innerText = `Done! New size: ${Math.round(blob.size/1024)} KB`;
-
-const a = document.createElement('a');
-a.href = url;
-a.download = 'resized_' + Math.round(blob.size/1024) + 'KB.jpg';
-a.click();
-
-this.disabled = false;
-this.innerText = 'Resize & Download';
-});
-});
-
-function resizeToTargetKB(img, targetKB, callback){
 let quality = 0.92;
-let scale = 1;
-const canvas = document.createElement('canvas');
-const ctx = canvas.getContext('2d');
+let canvas = document.createElement('canvas');
+let ctx = canvas.getContext('2d');
+canvas.width = originalImg.width;
+canvas.height = originalImg.height;
+ctx.drawImage(originalImg, 0, 0);
 
-function tryResize(){
-canvas.width = img.width * scale;
-canvas.height = img.height * scale;
-ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+function compress(){
+canvas.toBlob(function(blob){
+const sizeKB = Math.round(blob.size/1024);
+document.getElementById('resultInfo').innerText = `Original: ${Math.round(originalFile.size/1024)} KB → New: ${sizeKB} KB`;
 
-canvas.toBlob((blob) => {
-const sizeKB = blob.size / 1024;
-if(sizeKB <= targetKB || scale < 0.1){
-callback(blob);
-} else {
-if(sizeKB > targetKB * 1.2){
-scale *= 0.85;
-} else {
+if(sizeKB > targetKB && quality > 0.1){
 quality -= 0.05;
-if(quality < 0.4){
-quality = 0.4;
-scale *= 0.95;
-}
-tryResize();
+compress();
+}else{
+const a = document.createElement('a');
+a.href = URL.createObjectURL(blob);
+a.download = 'resized-' + targetKB + 'KB.jpg';
+a.click();
 }
 }, 'image/jpeg', quality);
 }
-tryResize();
-}
+compress();
+});
 </script>
 </body>
 </html>
