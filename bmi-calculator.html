@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BMI Calculator - GetAge247</title>
+<meta name="description" content="Free BMI Calculator. Calculate Body Mass Index instantly. Check if your weight is healthy.">
+<style>
+body{font-family:Arial;margin:0;padding:20px;background:#f0fdf4}
+.box{max-width:500px;margin:50px auto;background:white;padding:30px;border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,0.1)}
+input,button{width:100%;padding:12px;margin:10px 0;border:2px solid #ddd;border-radius:8px;font-size:16px}
+button{background:#16a34a;color:white;border:none;cursor:pointer;font-weight:bold}
+button:hover{background:#15803d}
+#result{margin-top:20px;padding:15px;border-radius:8px;display:none;font-weight:bold;text-align:center}
+a.back{display:block;text-align:center;margin-top:20px;color:#16a34a;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="box">
+<h1>BMI Calculator</h1>
+<p>Check if your weight is healthy</p>
+<input type="number" id="weight" placeholder="Weight in KG" step="0.1">
+<input type="number" id="height" placeholder="Height in CM" step="0.1">
+<button onclick="calcBMI()">Calculate BMI</button>
+<div id="result"></div>
+<a href="index.html" class="back">← Back to Home</a>
+</div>
+<script>
+function calcBMI(){
+let w=parseFloat(document.getElementById('weight').value);
+let h=parseFloat(document.getElementById('height').value)/100;
+if(!w||!h){alert('Weight & Height daalo bhai');return;}
+let bmi=(w/(h*h)).toFixed(1);
+let cat=bmi<18.5?'Underweight':bmi<25?'Normal':bmi<30?'Overweight':'Obese';
+let color=bmi<18.5?'#3b82f6':bmi<25?'#16a34a':bmi<30?'#f59e0b':'#dc2626';
+let res=document.getElementById('result');
+res.style.display='block';
+res.style.background=color+'20';
+res.style.color=color;
+res.innerHTML=`Your BMI: <b>${bmi}</b><br>Category: <b>${cat}</b>`;
+}
+</script>
+</body>
+</html>
