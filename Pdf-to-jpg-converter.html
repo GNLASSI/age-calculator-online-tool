@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF to JPG Converter - Free Online Tool | PDF ke Har Page ko Photo Banao</title>
+  <meta name="description" content="Free PDF to JPG converter online. PDF upload karein, har page high quality JPG me convert ho jayega. CNIC scan, assignment, notes ke liye best. No install, no watermark.">
+  <style>
+    body{font-family:Arial,sans-serif;line-height:1.8;max-width:900px;margin:40px auto;padding:20px;background:#f5f7fa;color:#333}
+    h1{color:#c0392b;font-size:28px} h2{color:#27ae60;margin-top:35px;border-bottom:2px solid #ecf0f1;padding-bottom:8px}
+   .box{background:#fff;padding:30px;border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,0.1)}
+   .tool-box{border:3px dashed #3498db;padding:40px;text-align:center;background:#ecf6fd;border-radius:10px;margin:30px 0}
+   .btn{background:#e74c3c;color:white;padding:14px 30px;border:none;border-radius:6px;font-size:16px;cursor:pointer;margin:10px}
+   .btn:hover{background:#c0392b}
+   .steps{background:#e8f8f5;padding:20px;border-radius:8px;margin:20px 0;border-left:4px solid #1abc9c}
+    #output img{max-width:100%;margin:15px 0;border:1px solid #ddd;border-radius:5px}
+    a{color:#2980b9;text-decoration:none;font-weight:bold}
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+  <div class="box">
+    <h1>PDF to JPG Converter - 2 Second me PDF ke Har Page ko Photo Banao</h1>
+
+    <p>PDF file ko JPG image me convert karna mushkil lagta tha? Ab <b>getage247.xyz</b> ka free tool 2 second me kaam kar dega. PDF upload karo, sab pages auto JPG ban jayenge. Koi software install nahi, koi limit nahi.</p>
+
+    <h2>PDF to JPG Tool Yahan Use Karein</h2>
+    <div class="tool-box">
+      <h3>📄 PDF File Select Karein</h3>
+      <input type="file" id="pdfInput" accept=".pdf" style="margin:15px;">
+      <br>
+      <label>Quality: </label>
+      <select id="quality">
+        <option value="2">High - 200 DPI</option>
+        <option value="1.5" selected>Medium - 150 DPI</option>
+        <option value="1">Low - 100 DPI</option>
+      </select>
+      <br><br>
+      <button class="btn" onclick="convertPDF()">Convert to JPG</button>
+      <div id="status" style="margin-top:15px;color:#27ae60;font-weight:bold;"></div>
+    </div>
+
+    <div id="output"></div>
+
+    <h2>PDF to JPG Converter ke 8 Faide</h2>
+
+    <h3>1. CNIC, Domicile, Degree Upload</h3>
+    <p>NADRA, HEC, University wale PDF nahi lete. JPG maangte hain. Tool se PDF upload karo, har page alag JPG download kar lo.</p>
+
+    <h3>2. WhatsApp pe Asaan Share</h3>
+    <p>PDF group me send karo to koi khol nahi pata. PDF ko JPG banao aur photo ki tarah bhejo. 1 click me khul jayegi.</p>
+
+    <h3>3. Assignment aur Notes Print</h3>
+    <p>Print shop wale PDF ke zyada paise lete hain. PDF ko JPG banao, phir photo print karwao. 50% sasta parega Sughar me.</p>
+
+    <h3>4. Social Media Post</h3>
+    <p>PDF ka page Instagram, Facebook pe post nahi hota. JPG banao aur viral karo. Quotes, notes sab post ho jayenge.</p>
+
+    <h3>5. Mobile me Tez Open</h3>
+    <p>Mobile me PDF slow khulti hai aur net zyada khati hai. JPG foran khul jati hai, data bhi bachta hai.</p>
+
+    <h3>6. PowerPoint/Slide Banana</h3>
+    <p>PDF ke pages ko PPT me dalna hai? Pehle JPG banao, phir slide me drag karo. Presentation 2 min me ready.</p>
+
+    <h3>7. Quality Khud Control Karo</h3>
+    <p>High quality chahiye to "High" select karo. Sirf WhatsApp bhejni hai to "Low" kaafi hai. File size chota ho jayega.</p>
+
+    <h3>8. 100% Free + Privacy Safe</h3>
+    <p>Koi signup nahi, koi watermark nahi. Aapki PDF hamare server pe nahi jati. Sab kaam aapke browser me hota hai.</p>
+
+    <div class="steps">
+      <b>Kaise Use Karein:</b>
+      <ol>
+        <li>Upar "PDF File Select Karein" button se PDF choose karo</li>
+        <li>Quality select karo: CNIC ke liye High, WhatsApp ke liye Medium</li>
+        <li>"Convert to JPG" button dabao</li>
+        <li>Har page ki JPG neeche show ho jayegi. Right click > Save Image As</li>
+      </ol>
+    </div>
+
+    <h2>Abhi Age Calculator bhi Check Karein</h2>
+    <p>Doctor dawa age ke hisab se dete hain. <a href="/">Hamara Age Calculator</a> se exact age nikal lein.</p>
+
+    <p><small><b>Note:</b> Bari PDF 50+ pages ki ho to convert hone me 10-20 second lag sakte hain. Sabar rakhein.</small></p>
+  </div>
+
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+async function convertPDF() {
+  const file = document.getElementById('pdfInput').files[0];
+  const scale = parseFloat(document.getElementById('quality').value);
+  const status = document.getElementById('status');
+  const output = document.getElementById('output');
+
+  if (!file) {
+    alert('Pehle PDF file select karein bhai!');
+    return;
+  }
+
+  status.innerHTML = 'PDF read ho rahi hai... Sabar karein ⏳';
+  output.innerHTML = '';
+
+  const fileReader = new FileReader();
+  fileReader.onload = async function() {
+    const typedarray = new Uint8Array(this.result);
+    const pdf = await pdfjsLib.getDocument(typedarray).promise;
+
+    status.innerHTML = pdf.numPages + ' pages mil gaye. Convert ho rahe hain...';
+
+    for (let i = 1; i <= pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      const viewport = page.getViewport({scale: scale});
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+
+      await page.render({canvasContext: context, viewport: viewport}).promise;
+
+      const img = document.createElement('img');
+      img.src = canvas.toDataURL('image/jpeg', 0.9);
+      img.alt = 'Page ' + i;
+
+      const div = document.createElement('div');
+      div.innerHTML = '<h4>Page ' + i + ' - Right click karke Save karein</h4>';
+      div.appendChild(img);
+      output.appendChild(div);
+    }
+
+    status.innerHTML = '✅ Ho gaya! Saare pages JPG ban gaye. Neeche se save kar lein.';
+  };
+  fileReader.readAsArrayBuffer(file);
+}
+</script>
+</body>
+</html>
