@@ -3,27 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GetAge247 - Free Online Age Calculator, Image Resizer & Tools</title>
-  <meta name="description" content="Calculate your exact age. Resize JPG, PNG images from MB to KB. Count words instantly. 100% free online tools. No signup, no watermark.">
+  <title>GetAge247 - 4 Free Online Tools</title>
+  <meta name="description" content="Age Calculator, BMI Calculator, Image Resizer, Word Counter. 100% Free. No Signup.">
   <style>
-    body{font-family:'Segoe UI',Arial,sans-serif;line-height:1.7;margin:0;background:#f4f7f9;color:#222;}
-    .container{max-width:1100px;margin:auto;padding:20px;}
-    header{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;padding:30px 20px;text-align:center;border-radius:0 0 15px 15px;}
-    header h1{margin:0;font-size:32px;}
+    body{font-family:'Segoe UI',Arial,sans-serif;margin:0;background:#f4f7f9;color:#222;}
+    header{background:#2563eb;color:white;padding:30px 20px;text-align:center;}
+    header h1{margin:0;}
     nav a{color:white;margin:0 15px;text-decoration:none;font-weight:600;}
-    .tool-box{background:white;padding:30px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1);margin:30px 0;}
-    .tool-box h2{text-align:center;color:#1e40af;margin-top:0;}
-    .tool-box input, .tool-box select{padding:12px;font-size:16px;width:100%;max-width:300px;border:2px solid #ddd;border-radius:8px;margin:10px 5px;}
-    .tool-box button{background:#2563eb;color:white;border:none;padding:12px 25px;font-size:16px;border-radius:8px;cursor:pointer;font-weight:bold;margin-top:10px;}
-    .tool-box button:hover{background:#1e40af;}
-    #ageResult, #resizerResult{margin-top:20px;font-size:18px;font-weight:bold;color:#1e3a8a;text-align:center;}
-    #imagePreview{max-width:100%;margin-top:15px;border-radius:8px;display:none;}
-    h2.section-title{text-align:center;color:#1e40af;margin-top:40px;font-size:28px;}
-    .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin:30px 0;}
-    .blog-card{background:white;padding:20px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);text-decoration:none;color:#222;transition:0.3s;border-top:4px solid #2563eb;}
-    .blog-card:hover{transform:translateY(-5px);}
-    .blog-card h3{margin:0 0 10px;color:#1d4ed8;font-size:18px;}
-    footer{background:#1e293b;color:#cbd5e1;text-align:center;padding:25px;margin-top:50px;border-radius:12px 12px 0 0;}
+    .container{max-width:1100px;margin:auto;padding:20px;}
+    .tool-box{background:white;padding:25px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.08);margin:25px 0;}
+    .tool-box h2{color:#1e40af;margin-top:0;}
+    .tool-box input, .tool-box select, .tool-box button{padding:12px;font-size:16px;border:2px solid #ddd;border-radius:8px;margin:5px;}
+    .tool-box button{background:#2563eb;color:white;border:none;cursor:pointer;font-weight:bold;}
+    .result{margin-top:15px;font-size:18px;font-weight:bold;color:#1e3a8a;}
+    footer{background:#1e293b;color:#cbd5e1;text-align:center;padding:25px;margin-top:50px;}
     footer a{color:#93c5fd;margin:0 10px;text-decoration:none;}
   </style>
 </head>
@@ -31,117 +24,85 @@
 
 <header>
   <h1>GetAge247.xyz</h1>
-  <p>Free Online Tools for Everyone</p>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/about.html">About</a>
-    <a href="/contact.html">Contact</a>
-    <a href="/privacy-policy.html">Privacy</a>
-  </nav>
+  <nav><a href="/">Home</a> <a href="/about.html">About</a> <a href="/contact.html">Contact</a> <a href="/privacy-policy.html">Privacy</a></nav>
 </header>
 
 <div class="container">
 
-  <!-- 1. AGE CALCULATOR TOOL -->
-  <div class="tool-box" id="age-calculator">
-    <h2>📅 Free Online Age Calculator</h2>
-    <input type="date" id="dob">
-    <button onclick="calculateAge()">Calculate Age</button>
-    <div id="ageResult"></div>
+  <!-- 1. AGE CALCULATOR -->
+  <div class="tool-box" id="age">
+    <h2>📅 Age Calculator</h2>
+    <input type="date" id="dob"><button onclick="calcAge()">Calculate</button>
+    <div class="result" id="ageResult"></div>
   </div>
 
-  <!-- 2. IMAGE RESIZER TOOL -->
-  <div class="tool-box" id="resizer-tool">
-    <h2>🖼️ Free Image Resizer Tool</h2>
-    <p>Reduce JPG, PNG size from MB to KB in seconds</p>
+  <!-- 2. BMI CALCULATOR -->
+  <div class="tool-box" id="bmi">
+    <h2>⚖️ BMI Calculator</h2>
+    <input type="number" id="height" placeholder="Height in CM e.g. 170">
+    <input type="number" id="weight" placeholder="Weight in KG e.g. 70"><br>
+    <button onclick="calcBMI()">Calculate BMI</button>
+    <div class="result" id="bmiResult"></div>
+  </div>
+
+  <!-- 3. IMAGE RESIZER -->
+  <div class="tool-box" id="resizer">
+    <h2>🖼️ Image Resizer</h2>
     <input type="file" id="imageInput" accept="image/*">
-    <input type="number" id="widthInput" placeholder="New Width in Pixels e.g. 800">
-    <select id="formatSelect">
-      <option value="image/jpeg">JPG - Smallest Size</option>
-      <option value="image/png">PNG - Best Quality</option>
-    </select>
-    <br>
-    <button onclick="resizeImage()">Resize & Download</button>
+    <input type="number" id="widthInput" placeholder="New Width e.g. 800">
+    <button onclick="resizeImg()">Resize & Download</button>
     <canvas id="canvas" style="display:none;"></canvas>
-    <img id="imagePreview" alt="Resized Preview">
-    <div id="resizerResult"></div>
+    <div class="result" id="resizerResult"></div>
   </div>
 
-  <!-- 3. BLOG / TOOLS SECTION - ONLY 3 CARDS NOW -->
-  <h2 class="section-title">📚 Free Useful Tools & Guides</h2>
-  <div class="blog-grid">
-    <a href="/age-calculator-guide.html" class="blog-card">
-      <h3>📅 Age Calculator Guide</h3>
-      <p>Learn how to calculate exact age, days lived, and next birthday.</p>
-    </a>
-    <a href="/word-counter-guide.html" class="blog-card">
-      <h3>📝 Word Counter Tool</h3>
-      <p>Count words, characters, sentences instantly. Perfect for SEO.</p>
-    </a>
-    
+  <!-- 4. WORD COUNTER -->
+  <div class="tool-box" id="wordcount">
+    <h2>📝 Word Counter</h2>
+    <textarea id="textInput" rows="5" style="width:95%;padding:10px;" placeholder="Paste your text here..."></textarea><br>
+    <button onclick="countWords()">Count</button>
+    <div class="result" id="wordResult"></div>
   </div>
+
 </div>
 
 <footer>
-  <p>© 2026 GetAge247.xyz | All Rights Reserved</p>
-  <p>
-    <a href="/about.html">About Us</a> | 
-    <a href="/contact.html">Contact Us</a> | 
-    <a href="/privacy-policy.html">Privacy Policy</a> | 
-    <a href="/ads.txt">ads.txt</a>
-  </p>
+  <p>© 2026 GetAge247.xyz</p>
+  <p><a href="/about.html">About</a> | <a href="/contact.html">Contact</a> | <a href="/privacy-policy.html">Privacy</a> | <a href="/ads.txt">ads.txt</a></p>
 </footer>
 
 <script>
-// AGE CALCULATOR JS
-function calculateAge() {
-  const dob = document.getElementById('dob').value;
-  const resultDiv = document.getElementById('ageResult');
-  if (!dob) { resultDiv.innerHTML = "Please select your Date of Birth."; return; }
-  const birthDate = new Date(dob);
-  const today = new Date();
-  let years = today.getFullYear() - birthDate.getFullYear();
-  let months = today.getMonth() - birthDate.getMonth();
-  let days = today.getDate() - birthDate.getDate();
-  if (days < 0) { months--; days += new Date(today.getFullYear(), today.getMonth(), 0).getDate(); }
-  if (months < 0) { years--; months += 12; }
-  resultDiv.innerHTML = `You are ${years} Years, ${months} Months, and ${days} Days old.`;
+// 1. AGE
+function calcAge() {
+  const dob = new Date(document.getElementById('dob').value);
+  if(!dob.getTime()){document.getElementById('ageResult').innerText="Select DOB";return;}
+  const t=new Date();let y=t.getFullYear()-dob.getFullYear(),m=t.getMonth()-dob.getMonth(),d=t.getDate()-dob.getDate();
+  if(d<0){m--;d+=new Date(t.getFullYear(),t.getMonth(),0).getDate();}if(m<0){y--;m+=12;}
+  document.getElementById('ageResult').innerText=`${y}Y ${m}M ${d}D Old`;
 }
-
-// IMAGE RESIZER JS - 100% Browser Based, No Server
-function resizeImage() {
-  const input = document.getElementById('imageInput');
-  const width = parseInt(document.getElementById('widthInput').value);
-  const format = document.getElementById('formatSelect').value;
-  const resultDiv = document.getElementById('resizerResult');
-  const preview = document.getElementById('imagePreview');
-  
-  if (!input.files[0] || !width) {
-    resultDiv.innerHTML = "Please select an image and enter width.";
-    return;
-  }
-
-  const file = input.files[0];
-  const img = new Image();
-  const reader = new FileReader();
-  
-  reader.onload = (e) => { img.src = e.target.result; }
-  img.onload = () => {
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-    const scale = width / img.width;
-    canvas.width = width;
-    canvas.height = img.height * scale;
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    
-    canvas.toBlob((blob) => {
-      const url = URL.createObjectURL(blob);
-      preview.src = url;
-      preview.style.display = 'block';
-      resultDiv.innerHTML = `Done! New Size: ${(blob.size/1024).toFixed(2)} KB <br><a href="${url}" download="resized-image.${format.split('/')[1]}">Click Here to Download</a>`;
-    }, format, 0.9);
-  }
-  reader.readAsDataURL(file);
+// 2. BMI
+function calcBMI(){
+  const h=document.getElementById('height').value/100; const w=document.getElementById('weight').value;
+  if(!h||!w){document.getElementById('bmiResult').innerText="Enter Height & Weight";return;}
+  const bmi=(w/(h*h)).toFixed(1); let status=bmi<18.5?'Underweight':bmi<25?'Normal':bmi<30?'Overweight':'Obese';
+  document.getElementById('bmiResult').innerText=`BMI: ${bmi} - ${status}`;
+}
+// 3. RESIZER
+function resizeImg(){
+  const f=document.getElementById('imageInput').files[0]; const W=parseInt(document.getElementById('widthInput').value);
+  if(!f||!W){document.getElementById('resizerResult').innerText="Select Image & Width";return;}
+  const img=new Image(); const r=new FileReader();
+  r.onload=e=>{img.src=e.target.result}; img.onload=()=>{
+    const c=document.getElementById('canvas'); const ctx=c.getContext('2d'); const S=W/img.width;
+    c.width=W; c.height=img.height*S; ctx.drawImage(img,0,0,c.width,c.height);
+    c.toBlob(b=>{const u=URL.createObjectURL(b); document.getElementById('resizerResult').innerHTML=`Done! ${(b.size/1024).toFixed(1)}KB <a href="${u}" download="resized.jpg">Download</a>`},'image/jpeg',0.9);
+  }; r.readAsDataURL(f);
+}
+// 4. WORD COUNTER
+function countWords(){
+  const t=document.getElementById('textInput').value.trim();
+  const words=t?t.split(/\s+/).filter(w=>w.length>0).length:0;
+  const chars=t.length; const sentences=t.split(/[.!?]+/).filter(s=>s.trim().length>0).length;
+  document.getElementById('wordResult').innerText=`Words: ${words} | Characters: ${chars} | Sentences: ${sentences}`;
 }
 </script>
 
