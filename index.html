@@ -4,107 +4,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GetAge247 - 4 Free Online Tools</title>
-  <meta name="description" content="Age Calculator, BMI Calculator, Image Resizer, Word Counter. 100% Free. No Signup.">
   <style>
-    body{font-family:'Segoe UI',Arial,sans-serif;margin:0;background:#f4f7f9;color:#222;}
-    header{background:#2563eb;color:white;padding:30px 20px;text-align:center;}
-    header h1{margin:0;}
-    nav a{color:white;margin:0 15px;text-decoration:none;font-weight:600;}
-    .container{max-width:1100px;margin:auto;padding:20px;}
-    .tool-box{background:white;padding:25px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.08);margin:25px 0;}
-    .tool-box h2{color:#1e40af;margin-top:0;}
-    .tool-box input, .tool-box select, .tool-box button{padding:12px;font-size:16px;border:2px solid #ddd;border-radius:8px;margin:5px;}
-    .tool-box button{background:#2563eb;color:white;border:none;cursor:pointer;font-weight:bold;}
-    .result{margin-top:15px;font-size:18px;font-weight:bold;color:#1e3a8a;}
-    footer{background:#1e293b;color:#cbd5e1;text-align:center;padding:25px;margin-top:50px;}
-    footer a{color:#93c5fd;margin:0 10px;text-decoration:none;}
+    :root{--p:#2563eb;--d:#1e293b;--l:#f4f7f9}
+    body{font-family:'Segoe UI',Arial,sans-serif;margin:0;background:var(--l);color:#222}
+    header{background:var(--p);color:white;padding:25px 20px;text-align:center}
+    header h1{margin:0} nav a{color:white;margin:0 12px;text-decoration:none;font-weight:600}
+    .container{max-width:1200px;margin:auto;padding:25px 20px}
+    h2{color:var(--d);border-bottom:2px solid var(--p);padding-bottom:10px;margin-top:40px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin:20px 0}
+    .card,.tool-box{background:white;padding:25px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.08)}
+    .card:hover{transform:translateY(-5px)} .card h3,.tool-box h3{color:var(--p);margin-top:0}
+    .tool-box input,.tool-box button{padding:12px;font-size:16px;border:2px solid #ddd;border-radius:8px;margin:5px}
+    .tool-box button{background:var(--p);color:white;border:none;cursor:pointer;font-weight:bold}
+    .result{margin-top:15px;font-size:16px;font-weight:bold;color:var(--d);line-height:1.8;white-space:pre-wrap}
+    .share-btns a{display:inline-block;margin:5px;padding:10px 15px;color:white;text-decoration:none;border-radius:8px;font-weight:bold;font-size:14px}
+    footer{background:var(--d);color:#cbd5e1;text-align:center;padding:25px;margin-top:50px}
+    footer a{color:#93c5fd;margin:0 8px;text-decoration:none}
   </style>
 </head>
 <body>
-
 <header>
   <h1>GetAge247.xyz</h1>
-  <nav><a href="/">Home</a> <a href="/about.html">About</a> <a href="/contact.html">Contact</a> <a href="/privacy-policy.html">Privacy</a></nav>
+  <nav><a href="#tools">Tools</a><a href="#blogs">Blogs</a><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy-policy.html">Privacy</a></nav>
 </header>
-
 <div class="container">
-
-  <!-- 1. AGE CALCULATOR -->
+  <h2 id="tools">🚀 4 Free Tools</h2>
   <div class="tool-box" id="age">
-    <h2>📅 Age Calculator</h2>
-    <input type="date" id="dob"><button onclick="calcAge()">Calculate</button>
+    <h3>📅 Age Calculator</h3>
+    <input type="date" id="dob"><button onclick="calcAge()">Calculate Age</button>
     <div class="result" id="ageResult"></div>
+    <div class="share-btns" id="shareBox" style="display:none;"><p><b>Share:</b></p>
+      <a href="#" id="waShare" style="background:#25D366;">WhatsApp</a>
+      <a href="#" id="fbShare" style="background:#1877F2;">Facebook</a>
+      <a href="#" id="twShare" style="background:#1DA1F2;">Twitter</a>
+    </div>
   </div>
-
-  <!-- 2. BMI CALCULATOR -->
-  <div class="tool-box" id="bmi">
-    <h2>⚖️ BMI Calculator</h2>
-    <input type="number" id="height" placeholder="Height in CM e.g. 170">
-    <input type="number" id="weight" placeholder="Weight in KG e.g. 70"><br>
-    <button onclick="calcBMI()">Calculate BMI</button>
-    <div class="result" id="bmiResult"></div>
+  <div class="tool-box" id="bmi"><h3>⚖️ BMI Calculator</h3><input type="number" id="height" placeholder="Height CM"><input type="number" id="weight" placeholder="Weight KG"><button onclick="calcBMI()">Calculate BMI</button><div class="result" id="bmiResult"></div></div>
+  <div class="tool-box" id="resizer"><h3>🖼️ Image Resizer</h3><input type="file" id="imageInput" accept="image/*"><input type="number" id="widthInput" placeholder="New Width"><button onclick="resizeImg()">Resize & Download</button><canvas id="canvas" style="display:none;"></canvas><div class="result" id="resizerResult"></div></div>
+  <div class="tool-box" id="wordcount"><h3>📝 Word Counter</h3><textarea id="textInput" rows="4" style="width:95%;padding:10px;border:2px solid #ddd;border-radius:8px;" placeholder="Paste text..."></textarea><br><button onclick="countWords()">Count</button><div class="result" id="wordResult"></div></div>
+  <h2 id="blogs">📚 Blogs</h2>
+  <div class="grid">
+    <a href="/blog/age-calculator-ke-fayde.html" class="card"><h3>Age Calculator Ke Fayde</h3><p>Why use Age Calculator?</p></a>
+    <a href="/blog/bmi-healthy-range.html" class="card"><h3>BMI Healthy Range Guide</h3><p>Know ideal weight.</p></a>
+    <a href="/blog.html" class="card" style="background:var(--p);color:white;"><h3 style="color:white;">View All Blogs →</h3></a>
   </div>
-
-  <!-- 3. IMAGE RESIZER -->
-  <div class="tool-box" id="resizer">
-    <h2>🖼️ Image Resizer</h2>
-    <input type="file" id="imageInput" accept="image/*">
-    <input type="number" id="widthInput" placeholder="New Width e.g. 800">
-    <button onclick="resizeImg()">Resize & Download</button>
-    <canvas id="canvas" style="display:none;"></canvas>
-    <div class="result" id="resizerResult"></div>
-  </div>
-
-  <!-- 4. WORD COUNTER -->
-  <div class="tool-box" id="wordcount">
-    <h2>📝 Word Counter</h2>
-    <textarea id="textInput" rows="5" style="width:95%;padding:10px;" placeholder="Paste your text here..."></textarea><br>
-    <button onclick="countWords()">Count</button>
-    <div class="result" id="wordResult"></div>
-  </div>
-
 </div>
-
-<footer>
-  <p>© 2026 GetAge247.xyz</p>
-  <p><a href="/about.html">About</a> | <a href="/contact.html">Contact</a> | <a href="/privacy-policy.html">Privacy</a> | <a href="/ads.txt">ads.txt</a></p>
-</footer>
-
+<footer>© 2026 GetAge247.xyz | <a href="/about.html">About</a> | <a href="/contact.html">Contact</a> | <a href="/privacy-policy.html">Privacy</a></footer>
 <script>
-// 1. AGE
-function calcAge() {
-  const dob = new Date(document.getElementById('dob').value);
-  if(!dob.getTime()){document.getElementById('ageResult').innerText="Select DOB";return;}
-  const t=new Date();let y=t.getFullYear()-dob.getFullYear(),m=t.getMonth()-dob.getMonth(),d=t.getDate()-dob.getDate();
-  if(d<0){m--;d+=new Date(t.getFullYear(),t.getMonth(),0).getDate();}if(m<0){y--;m+=12;}
-  document.getElementById('ageResult').innerText=`${y}Y ${m}M ${d}D Old`;
-}
-// 2. BMI
-function calcBMI(){
-  const h=document.getElementById('height').value/100; const w=document.getElementById('weight').value;
-  if(!h||!w){document.getElementById('bmiResult').innerText="Enter Height & Weight";return;}
-  const bmi=(w/(h*h)).toFixed(1); let status=bmi<18.5?'Underweight':bmi<25?'Normal':bmi<30?'Overweight':'Obese';
-  document.getElementById('bmiResult').innerText=`BMI: ${bmi} - ${status}`;
-}
-// 3. RESIZER
-function resizeImg(){
-  const f=document.getElementById('imageInput').files[0]; const W=parseInt(document.getElementById('widthInput').value);
-  if(!f||!W){document.getElementById('resizerResult').innerText="Select Image & Width";return;}
-  const img=new Image(); const r=new FileReader();
-  r.onload=e=>{img.src=e.target.result}; img.onload=()=>{
-    const c=document.getElementById('canvas'); const ctx=c.getContext('2d'); const S=W/img.width;
-    c.width=W; c.height=img.height*S; ctx.drawImage(img,0,0,c.width,c.height);
-    c.toBlob(b=>{const u=URL.createObjectURL(b); document.getElementById('resizerResult').innerHTML=`Done! ${(b.size/1024).toFixed(1)}KB <a href="${u}" download="resized.jpg">Download</a>`},'image/jpeg',0.9);
-  }; r.readAsDataURL(f);
-}
-// 4. WORD COUNTER
-function countWords(){
-  const t=document.getElementById('textInput').value.trim();
-  const words=t?t.split(/\s+/).filter(w=>w.length>0).length:0;
-  const chars=t.length; const sentences=t.split(/[.!?]+/).filter(s=>s.trim().length>0).length;
-  document.getElementById('wordResult').innerText=`Words: ${words} | Characters: ${chars} | Sentences: ${sentences}`;
-}
+function calcAge(){const d=document.getElementById('dob').value;const r=document.getElementById('ageResult');const s=document.getElementById('shareBox');if(!d){r.innerHTML="Select DOB.";s.style.display='none';return;}const b=new Date(d);const t=new Date();let ms=t-b;const D=Math.floor(ms/86400000);const H=Math.floor(ms/3600000);const M=Math.floor(ms/60000);let Y=t.getFullYear()-b.getFullYear();let Mo=t.getMonth()-b.getMonth();let Da=t.getDate()-b.getDate();if(Da<0){Mo--;Da+=new Date(t.getFullYear(),t.getMonth(),0).getDate();}if(Mo<0){Y--;Mo+=12;}r.innerHTML=`You are ${Y}Y ${Mo}M ${Da}D old.\n\n= ${D.toLocaleString()} Days\n= ${H.toLocaleString()} Hours\n= ${M.toLocaleString()} Minutes`;const U=`https://getage247.xyz/#age`;const X=encodeURIComponent(`I am ${Y}Y ${Mo}M old. Check yours: `);document.getElementById('waShare').href=`https://wa.me/?text=${X}${U}`;document.getElementById('fbShare').href=`https://www.facebook.com/sharer/sharer.php?u=${U}`;document.getElementById('twShare').href=`https://twitter.com/intent/tweet?url=${U}&text=${X}`;s.style.display='block';}
+function calcBMI(){const h=document.getElementById('height').value/100;const w=document.getElementById('weight').value;if(!h||!w){document.getElementById('bmiResult').innerText="Enter H & W";return;}const b=(w/(h*h)).toFixed(1);let st=b<18.5?'Underweight':b<25?'Normal':b<30?'Overweight':'Obese';document.getElementById('bmiResult').innerText=`BMI: ${b} - ${st}`;}
+function resizeImg(){const f=document.getElementById('imageInput').files[0];const W=parseInt(document.getElementById('widthInput').value);if(!f||!W){document.getElementById('resizerResult').innerText="Select Image & Width";return;}const i=new Image();const r=new FileReader();r.onload=e=>{i.src=e.target.result};i.onload=()=>{const c=document.getElementById('canvas');const x=c.getContext('2d');const S=W/i.width;c.width=W;c.height=i.height*S;x.drawImage(i,0,0,c.width,c.height);c.toBlob(b=>{const u=URL.createObjectURL(b);document.getElementById('resizerResult').innerHTML=`Done! ${(b.size/1024).toFixed(1)}KB <a href="${u}" download="resized.jpg">Download</a>`},'image/jpeg',0.9);};r.readAsDataURL(f);}
+function countWords(){const t=document.getElementById('textInput').value.trim();const w=t?t.split(/\s+/).filter(a=>a).length:0;const c=t.length;const s=t.split(/[.!?]+/).filter(a=>a.trim()).length;document.getElementById('wordResult').innerText=`Words: ${w} | Chars: ${c} | Sentences: ${s}`;}
 </script>
-
 </body>
 </html>
