@@ -1,94 +1,115 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Image Resizer KB</title>
+<title>Free Image Resizer & Compressor - getage247.xyz</title>
 <style>
-body{font-family:Arial,sans-serif;max-width:500px;margin:50px auto;padding:20px;background:#f5f5f5}
-.container{background:white;padding:30px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
-h2{text-align:center;color:#333}
-input[type="file"]{width:100%;padding:10px;margin:15px 0;border:2px dashed #ccc;border-radius:5px}
-input[type="number"]{width:100%;padding:10px;margin:10px 0;border:1px solid #ccc;border-radius:5px}
-button{width:100%;padding:12px;background:#007bff;color:white;border:none;border-radius:5px;font-size:16px;cursor:pointer;margin-top:10px}
-button:disabled{background:#ccc;cursor:not-allowed}
-#preview{max-width:100%;margin-top:20px;border-radius:5px}
-#info{margin-top:15px;padding:10px;background:#e7f3ff;border-radius:5px}
+body{font-family:Arial,sans-serif;max-width:700px;margin:40px auto;padding:20px;background:#f4f4f4}
+.container{background:#fff;padding:25px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+h1{color:#333;text-align:center}
+.input-group{margin:15px 0}
+label{display:block;margin-bottom:5px;font-weight:700}
+input[type="number"],select{width:100%;padding:10px;border:1px solid #ccc;border-radius:5px;box-sizing:border-box}
+button{background:#007bff;color:#fff;border:none;padding:12px 20px;border-radius:5px;cursor:pointer;width:100%;font-size:16px;margin-top:10px}
+button:disabled{background:#aaa}
+#downloadLink{display:none;margin-top:15px;text-align:center}
+#downloadLink a{background:#28a745;color:#fff;padding:12px 20px;border-radius:5px;text-decoration:none;display:inline-block}
+small{color:#666}
 </style>
 </head>
 <body>
 <div class="container">
-<h2>Image Resizer KB</h2>
+  <h1>Image Resizer & Compressor</h1>
 
-<input type="file" id="imageInput" accept="image/*">
+  <div class="input-group">
+    <label for="imageInput">1. Upload Image:</label>
+    <input type="file" id="imageInput" accept="image/*">
+  </div>
 
-<label>Target Size KB:</label>
-<input type="number" id="targetKB" value="200" min="10" max="5000">
+  <div class="input-group">
+    <label>2. Resize by Pixels:</label>
+    <input type="number" id="widthInput" placeholder="Width in px">
+    <input type="number" id="heightInput" placeholder="Height in px" style="margin-top:5px;">
+    <small>Khali chhor do agar sirf KB se compress karna hai</small>
+  </div>
 
-<button id="resizeBtn" disabled>Resize & Download</button>
+  <div class="input-group">
+    <label for="targetSizeKB">3. Ya Compress by KB:</label>
+    <input type="number" id="targetSizeKB" placeholder="e.g. 80 for 80KB">
+  </div>
 
-<div id="info"></div>
-<canvas id="canvas" style="display:none"></canvas>
-<img id="preview" style="display:none">
+  <div class="input-group">
+    <label for="formatSelect">4. Convert to Format:</label>
+    <select id="formatSelect">
+      <option value="image/jpeg">JPG</option>
+      <option value="image/png">PNG</option>
+      <option value="image/webp">WebP</option>
+    </select>
+  </div>
+
+  <button id="resizeBtn">Resize & Compress</button>
+
+  <div id="downloadLink"></div>
+  <canvas id="canvas" style="display:none;"></canvas>
+  <img id="originalImg" style="display:none;">
 </div>
 
 <script>
 const imageInput = document.getElementById('imageInput');
-const targetKB = document.getElementById('targetKB');
+const widthInput = document.getElementById('widthInput');
+const heightInput = document.getElementById('heightInput');
+const targetKB = document.getElementById('targetSizeKB');
+const formatSelect = document.getElementById('formatSelect');
 const resizeBtn = document.getElementById('resizeBtn');
-const info = document.getElementById('info');
+const downloadLinkDiv = document.getElementById('downloadLink');
 const canvas = document.getElementById('canvas');
-const preview = document.getElementById('preview');
-let originalImg = new Image();
+const originalImg = document.getElementById('originalImg');
 
-imageInput.addEventListener('change', function(e){
-    const file = e.target.files[0];
-    if(!file) return;
-
-    const reader = new FileReader();
-    reader.onload = function(event){
-        originalImg.onload = function(){
-            info.innerHTML = `Original: ${(file.size/1024).toFixed(2)} KB | ${originalImg.width}x${originalImg.height}px`;
-            resizeBtn.disabled = false;
-        }
-        originalImg.src = event.target.result;
-    }
-    reader.readAsDataURL(file);
+imageInput.addEventListener('change', e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = event => { originalImg.src = event.target.result; };
+  reader.readAsDataURL(file);
 });
 
-resizeBtn.addEventListener('click', function(){
-    const targetSize = targetKB.value * 1024;
-    let quality = 0.9;
-    let width = originalImg.width;
-    let height = originalImg.height;
+resizeBtn.addEventListener('click', () => {
+  if (!originalImg.src) return alert('Pehle image upload karo');
 
-    canvas.width = width;
-    canvas.height = height;
+  resizeBtn.disabled = true;
+  downloadLinkDiv.innerHTML = '';
 
-    function tryResize(){
-        const ctx = canvas.getContext('2d');
-        ctx.clearRect(0,0,width,height);
-        ctx.drawImage(originalImg, 0, 0, width, height);
+  let width = parseInt(widthInput.value) || originalImg.naturalWidth;
+  let height = parseInt(heightInput.value) || originalImg.naturalHeight;
+  const targetSize = parseInt(targetKB.value) * 1024;
+  const format = formatSelect.value;
 
-        canvas.toBlob(function(blob){
-            if(blob.size <= targetSize || quality <= 0.1){
-                const url = URL.createObjectURL(blob);
-                preview.src = url;
-                preview.style.display = 'block';
-                info.innerHTML += `<br>Resized: ${(blob.size/1024).toFixed(2)} KB`;
+  canvas.width = width;
+  canvas.height = height;
 
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'resized-image.jpg';
-                a.click();
-            } else {
-                quality -= 0.05;
-                if(quality < 0.1) quality = 0.1;
-                tryResize();
-            }
-        }, 'image/jpeg', quality);
-    }
-    tryResize();
+  let quality = 0.9; // JPG quality start
+
+  function tryResize() {
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, width, height);
+    ctx.drawImage(originalImg, 0, 0, width, height);
+
+    canvas.toBlob(blob => {
+      // Agar KB target diya hai aur size bara hai, to quality kam karo
+      if (targetSize && blob.size > targetSize && quality > 0.1 && format === 'image/jpeg') {
+        quality -= 0.05;
+        tryResize(); // Loop dobara
+      } else {
+        const url = URL.createObjectURL(blob);
+        downloadLinkDiv.innerHTML = `<a href="${url}" download="resized-image.${format.split('/')[1]}">Download ${Math.round(blob.size/1024)}KB Image</a>`;
+        downloadLinkDiv.style.display = 'block';
+        resizeBtn.disabled = false;
+      }
+    }, format, quality);
+  }
+  tryResize();
 });
 </script>
 </body>
