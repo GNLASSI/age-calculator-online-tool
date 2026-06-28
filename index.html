@@ -43,8 +43,41 @@
   <div class="tool-box" id="resizer"><h3>🖼️ Image Resizer</h3><input type="file" id="imageInput" accept="image/*"><input type="number" id="widthInput" placeholder="New Width"><button onclick="resizeImg()">Resize & Download</button><canvas id="canvas" style="display:none;"></canvas><div class="result" id="resizerResult"></div></div>
   <div class="tool-box" id="wordcount"><h3>📝 Word Counter</h3><textarea id="textInput" rows="4" style="width:95%;padding:10px;border:2px solid #ddd;border-radius:8px;" placeholder="Paste text..."></textarea><br><button onclick="countWords()">Count</button><div class="result" id="wordResult"></div></div>
   
-</div><a href="/blog.html" style="display:block;text-align:center;margin:30px auto;background:#6aa6ff;color:#000;padding:14px 24px;border-radius:10px;text-decoration:none;font-weight:700;max-width:300px;">Online Age Calculator Guide Parhain</a>
-<ahref="/about.html">About</a> | <a href="/contact.html">Contact</a> | <a href="/privacy-policy.html">Privacy</a> | <a href="/disclaimer.html">Disclaimer</a></footer>
+
+<footer>
+  <a href="/about.html">About</a>
+  <a href="/contact.html">Contact</a>
+  <a href="/privacy-policy.html">Privacy Policy</a>
+  <a href="/disclaimer.html">Disclaimer</a>
+  <p>© 2025 GetAge247. All rights reserved.</p>
+</footer>
+
+<style>
+footer {
+  text-align: center; 
+  padding: 20px 10px;
+  margin-top: 40px;
+  border-top: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+footer a {
+  margin: 0 12px;
+  text-decoration: none;
+  color: #444;
+  font-size: 15px;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+footer p {
+  margin-top: 15px;
+  font-size: 14px;
+  color:#777;
+}
+</style>
+
+</body>
+</html>  
 <script>
 function calcAge(){const d=document.getElementById('dob').value;const r=document.getElementById('ageResult');const s=document.getElementById('shareBox');if(!d){r.innerHTML="Select DOB.";s.style.display='none';return;}const b=new Date(d);const t=new Date();let ms=t-b;const D=Math.floor(ms/86400000);const H=Math.floor(ms/3600000);const M=Math.floor(ms/60000);let Y=t.getFullYear()-b.getFullYear();let Mo=t.getMonth()-b.getMonth();let Da=t.getDate()-b.getDate();if(Da<0){Mo--;Da+=new Date(t.getFullYear(),t.getMonth(),0).getDate();}if(Mo<0){Y--;Mo+=12;}r.innerHTML=`You are ${Y}Y ${Mo}M ${Da}D old.\n\n= ${D.toLocaleString()} Days\n= ${H.toLocaleString()} Hours\n= ${M.toLocaleString()} Minutes`;const U=`https://getage247.xyz/#age`;const X=encodeURIComponent(`I am ${Y}Y ${Mo}M old. Check yours: `);document.getElementById('waShare').href=`https://wa.me/?text=${X}${U}`;document.getElementById('fbShare').href=`https://www.facebook.com/sharer/sharer.php?u=${U}`;document.getElementById('twShare').href=`https://twitter.com/intent/tweet?url=${U}&text=${X}`;s.style.display='block';}
 function calcBMI(){const h=document.getElementById('height').value/100;const w=document.getElementById('weight').value;if(!h||!w){document.getElementById('bmiResult').innerText="Enter H & W";return;}const b=(w/(h*h)).toFixed(1);let st=b<18.5?'Underweight':b<25?'Normal':b<30?'Overweight':'Obese';document.getElementById('bmiResult').innerText=`BMI: ${b} - ${st}`;}
