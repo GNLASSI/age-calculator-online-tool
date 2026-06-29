@@ -83,7 +83,7 @@ function calcBMI(){const h=document.getElementById('height').value/100;const w=d
 function resizeImg(){const f=document.getElementById('imageInput').files[0];const W=parseInt(document.getElementById('widthInput').value);if(!f||!W){document.getElementById('resizerResult').innerText="Select Image & Width";return;}const i=new Image();const r=new FileReader();r.onload=e=>{i.src=e.target.result};i.onload=()=>{const c=document.getElementById('canvas');const x=c.getContext('2d');const S=W/i.width;c.width=W;c.height=i.height*S;x.drawImage(i,0,0,c.width,c.height);c.toBlob(b=>{const u=URL.createObjectURL(b);document.getElementById('resizerResult').innerHTML=`Done! ${(b.size/1024).toFixed(1)}KB <a href="${u}" download="resized.jpg">Download</a>`},'image/jpeg',0.9);};r.readAsDataURL(f);}
 function countWords(){const t=document.getElementById('textInput').value.trim();const w=t?t.split(/\s+/).filter(a=>a).length:0;const c=t.length;const s=t.split(/[.!?]+/).filter(a=>a.trim()).length;document.getElementById('wordResult').innerText=`Words: ${w} | Chars: ${c} | Sentences: ${s}`;}
 </script>
-  <a href="/blog.html">Blog</a>
-<a href="/blog/blog-image-resizer.html">Blog Image Resizer Blog</a> 
+  <a href="blog.html">Blog</a>
+<a href="blog/blog-image-resizer.html">Blog Image Resizer Blog</a> 
 </body>
 </html>
