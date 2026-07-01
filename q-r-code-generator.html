@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free QR Code Generator Online | PNG, SVG, WiFi, Email, Phone, SMS, Location</title>
+  <meta name="description" content="Generate QR codes online for URL, text, email, phone, SMS, WiFi, and location. Customize size, colors, error correction, logo, and download PNG or SVG instantly." />
+  <link rel="canonical" href="https://yourdomain.com/qr-code-generator.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Free QR Code Generator Online" />
+  <meta property="og:description" content="Create custom QR codes instantly with colors, sizes, logo upload, live preview, PNG/SVG export, and print support." />
+  <meta property="og:url" content="https://yourdomain.com/qr-code-generator.html" />
+  <meta property="og:image" content="https://yourdomain.com/qr-preview.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Free QR Code Generator Online" />
+  <meta name="twitter:description" content="Create custom QR codes instantly with colors, sizes, logo upload, live preview, PNG/SVG export, and print support." />
+  <meta name="twitter:image" content="https://yourdomain.com/qr-preview.jpg" />
+  <style>
+    :root{
+      --bg:#08111f;
+      --card:rgba(255,255,255,.08);
+      --border:rgba(255,255,255,.14);
+      --text:#eaf2ff;
+      --muted:#a8b7d6;
+      --primary:#6ae4ff;
+      --primary2:#8b7bff;
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:radial-gradient(circle at top, #16305e 0, #08111f 45%, #050913 100%);
+      color:var(--text);
+      min-height:100vh;
+    }
+    .wrap{max-width:1280px;margin:0 auto;padding:24px}
+    .hero{
+      background:linear-gradient(135deg, rgba(106,228,255,.14), rgba(139,123,255,.12));
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(14px);
+    }
+    h1{margin:0 0 10px;font-size:clamp(28px,4vw,52px);line-height:1.1}
+    p{color:var(--muted);line-height:1.7}
+    .grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:22px;
+      margin-top:22px;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(14px);
+    }
+    .tabs,.row,.actions,.mini{
+      display:flex;flex-wrap:wrap;gap:10px
+    }
+    .tab,.btn,.chip{
+      border:none;
+      border-radius:14px;
+      padding:12px 16px;
+      cursor:pointer;
+      color:var(--text);
+      background:rgba(255,255,255,.08);
+      transition:.2s ease;
+      font-weight:600;
+    }
+    .tab.active,.btn.primary{background:linear-gradient(135deg,var(--primary),var(--primary2));color:#07111d}
+    .tab:hover,.btn:hover,.chip:hover{transform:translateY(-1px)}
+    .field{width:100%;margin-top:12px}
+    label{display:block;margin:0 0 8px;font-size:14px;color:#dbe7ff}
+    input,select,textarea{
+      width:100%;
+      background:rgba(255,255,255,.07);
+      color:var(--text);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:13px 14px;
+      outline:none;
+    }
+    textarea{min-height:120px;resize:vertical}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .preview{
+      display:grid;
+      place-items:center;
+      min-height:420px;
+      border:1px dashed rgba(255,255,255,.22);
+      border-radius:20px;
+      background:rgba(0,0,0,.14);
+      position:relative;
+      overflow:hidden;
+    }
+    #qrBox{background:#fff;padding:16px;border-radius:18px}
+    .actions{margin-top:14px}
+    .small{font-size:13px;color:var(--muted)}
+    .section{margin-top:24px}
+    .faq details{
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:14px 16px;
+      margin-bottom:10px;
+    }
+    .faq summary{cursor:pointer;font-weight:700}
+    .footer{margin:28px 0 10px;color:var(--muted);font-size:14px}
+    .hidden{display:none}
+    .loading{
+      width:44px;height:44px;border-radius:50%;
+      border:4px solid rgba(255,255,255,.22);
+      border-top-color:var(--primary);
+      animation:spin 1s linear infinite;
+      margin-bottom:14px;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @media (max-width: 980px){
+      .grid{grid-template-columns:1fr}
+      .two{grid-template-columns:1fr}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "name":"Free QR Code Generator",
+    "url":"https://yourdomain.com/qr-code-generator.html",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://yourdomain.com/qr-code-generator.html?q={search_term_string}",
+      "query-input":"required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Your Brand",
+    "url":"https://yourdomain.com",
+    "logo":"https://yourdomain.com/logo.png"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://yourdomain.com/"},
+      {"@type":"ListItem","position":2,"name":"Tools","item":"https://yourdomain.com/tools/"},
+      {"@type":"ListItem","position":3,"name":"QR Code Generator","item":"https://yourdomain.com/qr-code-generator.html"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"What types of QR codes can I create?",
+        "acceptedAnswer":{"@type":"Answer","text":"You can create URL, text, email, phone, SMS, WiFi, and location QR codes."}
+      },
+      {
+        "@type":"Question",
+        "name":"Can I download QR code as PNG or SVG?",
+        "acceptedAnswer":{"@type":"Answer","text":"Yes, you can export the QR code as PNG or SVG and also print it."}
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>Free QR Code Generator Online</h1>
+      <p>Create beautiful QR codes instantly with URL, text, email, phone, SMS, WiFi, and location support. Customize size, error correction, colors, and logo, then export in PNG or SVG.</p>
+    </section>
+
+    <div class="grid">
+      <section class="card">
+        <div class="tabs" id="tabs">
+          <button class="tab active" data-type="url">Website URL</button>
+          <button class="tab" data-type="text">Text</button>
+          <button class="tab" data-type="email">Email</button>
+          <button class="tab" data-type="phone">Phone</button>
+          <button class="tab" data-type="sms">SMS</button>
+          <button class="tab" data-type="wifi">WiFi</button>
+          <button class="tab" data-type="location">Location</button>
+        </div>
+
+        <div class="field" id="urlField">
+          <label>Website URL</label>
+          <input id="urlInput" placeholder="https://example.com" />
+        </div>
+
+        <div class="field hidden" id="textField">
+          <label>Text</label>
+          <textarea id="textInput" placeholder="Write your text here..."></textarea>
+        </div>
+
+        <div class="field hidden" id="emailFie
