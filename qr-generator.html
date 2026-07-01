@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free QR Code Generator - Create QR Codes Instantly | GetAge247</title>
+<meta name="description" content="Free online QR code generator. Create QR codes for URLs, text, WhatsApp, email, and phone numbers instantly. No signup. Download PNG. Works on mobile and PC.">
+<link rel="canonical" href="https://getage247.xyz/qr-generator.html">
+<style>
+:root{--bg:#0b0d12;--card:#111622;--p:#6aa6ff;--t:#e9eef7;--m:#a7b3c9;--border:#1e2633}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--t);line-height:1.7;min-height:100vh}
+header{padding:16px;background:var(--card);border-bottom:1px solid var(--border)}
+nav{display:flex;gap:10px;flex-wrap:wrap;max-width:900px;margin:0 auto}
+nav a{color:var(--t);text-decoration:none;padding:7px 12px;border-radius:8px;background:#0f1420;font-size:14px}
+nav a:hover{background:#182235}
+.container{max-width:900px;margin:0 auto;padding:24px 16px}
+h1{font-size:28px;color:#fff;margin-bottom:8px;line-height:1.3}
+.subtitle{color:var(--m);font-size:15px;margin-bottom:24px}
+.tool-wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+@media(max-width:650px){.tool-wrap{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px}
+.panel h2{color:var(--p);font-size:17px;margin-bottom:16px}
+label{display:block;color:var(--m);font-size:13px;margin-bottom:5px;margin-top:12px}
+select,input,textarea{width:100%;padding:10px 12px;background:#0b0d12;border:1px solid var(--border);border-radius:8px;color:var(--t);font-size:14px;outline:none}
+select:focus,input:focus,textarea:focus{border-color:var(--p)}
+textarea{resize:vertical;min-height:80px}
+.btn-gen{width:100%;padding:12px;background:var(--p);color:#000;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;margin-top:16px}
+.btn-gen:hover{filter:brightness(1.1)}
+.qr-panel{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:280px}
+#qr-output{background:#fff;border-radius:12px;padding:16px;display:none}
+#qr-output canvas{display:block}
+.btn-dl{display:none;margin-top:14px;padding:10px 24px;background:#22c55e;color:#000;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-size:14px}
+.btn-dl:hover{filter:brightness(1.1)}
+.empty-state{color:var(--m);text-align:center;font-size:14px}
+.empty-state .icon{font-size:48px;margin-bottom:8px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.tab{padding:6px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--m);cursor:pointer;font-size:13px}
+.tab.active{background:var(--p);color:#000;border-color:var(--p);font-weight:600}
+.size-row{display:flex;align-items:center;gap:10px;margin-top:12px}
+.size-row label{margin:0;white-space:nowrap}
+.size-row input{width:80px}
+.size-val{color:var(--p);font-weight:700;font-size:14px;min-width:45px}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:32px}
+.feat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px}
+.feat h3{color:#fff;font-size:14px;margin-bottom:4px}
+.feat p{color:var(--m);font-size:13px}
+footer{padding:20px;text-align:center;color:var(--m);border-top:1px solid var(--border);margin-top:40px;font-size:14px}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<a href="/">Home</a>
+<a href="/about.html">About</a>
+<a href="/contact.html">Contact</a>
+<a href="/blog.html">Blog</a>
+</nav>
+</header>
+<div class="container">
+<h1>Free QR Code Generator</h1>
+<p class="subtitle">Create QR codes for URLs, WhatsApp, email, phone, and text — instantly. No signup. Download free.</p>
+<div class="tool-wrap">
+<div class="panel">
+<h2>⚙️ Customize Your QR Code</h2>
+<label>QR Code Type</label>
+<div class="tabs">
+<button class="tab active" onclick="setType('url',this)">URL</button>
+<button class="tab" onclick="setType('whatsapp',this)">WhatsApp</button>
+<button class="tab" onclick="setType('email',this)">Email</button>
+<button class="tab" onclick="setType('phone',this)">Phone</button>
+<button class="tab" onclick="setType('text',this)">Text</button>
+</div>
+<div id="input-area">
+<label id="input-label">Enter URL</label>
+<input type="text" id="main-input" placeholder="https://example.com">
+</div>
+<div id="extra-area"></div>
+<div class="size-row">
+<label>Size:</label>
+<input type="range" id="qr-size" min="150" max="400" value="220" oninput="document.getElementById('size-val').innerText=this.value+'px'">
+<span class="size-val" id="size-val">220px</span>
+</div>
+<button class="btn-gen" onclick="generateQR()">Generate QR Code</button>
+</div>
+<div class="panel qr-panel">
+<h2>📱 Your QR Code</h2>
+<div class="empty-state" id="empty-msg">
+<div class="icon">🔲</div>
+<p>Fill in the details and click<br>Generate QR Code</p>
+</div>
+<div id="qr-output"></div>
+<button class="btn-dl" id="dl-btn" onclick="downloadQR()">⬇️ Download PNG</button>
+</div>
+</div>
+<div class="features">
+<div class="feat"><h3>🔒 100% Private</h3><p>Your data never leaves your device. Everything runs in your browser.</p></div>
+<div class="feat"><h3>⚡ Instant</h3><p>QR code generates in under 1 second. No waiting, no loading.</p></div>
+<div class="feat"><h3>📱 Mobile Friendly</h3><p>Works perfectly on Android and iPhone. No app download needed.</p></div>
+<div class="feat"><h3>💾 Free Download</h3><p>Download your QR code as a high quality PNG file, completely free.</p></div>
+</div>
+</div>
+<footer>
+<p>© 2026 GetAge247. All Rights Reserved. | <a href="/privacy-policy.html" style="color:var(--m)">Privacy Policy</a></p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+var currentType = 'url';
+function setType(type, btn) {
+  currentType = type;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  var label = document.getElementById('input-label');
+  var input = document.getElementById('main-input');
+  var extra = document.getElementById('extra-area');
+  extra.innerHTML = '';
+  if(type === 'url'){
+    label.innerText = 'Enter URL';
+    input.placeholder = 'https://getage247.xyz';
+    input.type = 'text';
+  } else if(type === 'whatsapp'){
+    label.innerText = 'WhatsApp Number (with country code)';
+    input.placeholder = '+923001234567';
+    input.type = 'tel';
+    extra.innerHTML = '<label>Message (optional)</label><textarea id="wa-msg" placeholder="Hello! I found your contact via QR code."></textarea>';
+  } else if(type === 'email'){
+    label.innerText = 'Email Address';
+    input.placeholder = 'example@gmail.com';
+    input.type = 'email';
+    extra.innerHTML = '<label>Subject (optional)</label><input type="text" id="email-sub" placeholder="Hello"><label>Message (optional)</label><textarea id="email-msg" placeholder="Your message here..."></textarea>';
+  } else if(type === 'phone'){
+    label.innerText = 'Phone Number (with country code)';
+    input.placeholder = '+923001234567';
+    input.type = 'tel';
+  } else if(type === 'text'){
+    label.innerText = 'Enter Text';
+    input.placeholder = 'Type any text here...';
+    input.type = 'text';
+  }
+}
+function buildContent() {
+  var val = document.getElementById('main-input').value.trim();
+  if(!val) return null;
+  if(currentType === 'url') return val;
+  if(currentType === 'whatsapp'){
+    var msg = document.getElementById('wa-msg') ? document.getElementById('wa-msg').value.trim() : '';
+    var num = val.replace(/\D/g,'');
+    return 'https://wa.me/' + num + (msg ? '?text=' + encodeURIComponent(msg) : '');
+  }
+  if(currentType === 'email'){
+    var sub = document.getElementById('email-sub') ? document.getElementById('email-sub').value.trim() : '';
+    var emsg = document.getElementById('email-msg') ? document.getElementById('email-msg').value.trim() : '';
+    return 'mailto:' + val + (sub||emsg ? '?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(emsg) : '');
+  }
+  if(currentType === 'phone') return 'tel:' + val;
+  if(currentType === 'text') return val;
+  return val;
+}
+function generateQR() {
+  var content = buildContent();
+  if(!content){ alert('Please enter a value first.'); return; }
+  var size = parseInt(document.getElementById('qr-size').value);
+  var output = document.getElementById('qr-output');
+  output.innerHTML = '';
+  new QRCode(output, {
+    text: content,
+    width: size,
+    height: size,
+    colorDark: '#000000',
+    colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.H
+  });
+  output.style.display = 'block';
+  document.getElementById('empty-msg').style.display = 'none';
+  document.getElementById('dl-btn').style.display = 'inline-block';
+}
+function downloadQR() {
+  var canvas = document.querySelector('#qr-output canvas');
+  if(!canvas){ alert('Generate a QR code first.'); return; }
+  var link = document.createElement('a');
+  link.download = 'qr-code-getage247.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+</script>
+</body>
+</html>
