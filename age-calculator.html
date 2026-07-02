@@ -23,7 +23,7 @@ button:hover{background:#1d4ed8}
 <p style="text-align:center">Enter your date of birth to calculate exact age</p>
 
 <label>Select Date of Birth:</label>
-<input type="date" id="dob" max="2026-04-22">
+<input type="date" id="dob">
 
 <button onclick="calculateAge()">Calculate Age</button>
 
@@ -49,6 +49,11 @@ function calculateAge() {
     let birthDate = new Date(dob);
     let today = new Date();
     
+    if(birthDate > today) {
+        alert('Date of birth cannot be in the future');
+        return;
+    }
+    
     let years = today.getFullYear() - birthDate.getFullYear();
     let months = today.getMonth() - birthDate.getMonth();
     let days = today.getDate() - birthDate.getDate();
@@ -65,7 +70,7 @@ function calculateAge() {
     document.getElementById('ageOutput').innerHTML = years + " Years, " + months + " Months, " + days + " Days";
     document.getElementById('result').style.display = 'block';
     
-    let shareText = years + " Years, " + months + " Months, " + days + " Days";
+    let shareText = encodeURIComponent(years + " Years, " + months + " Months, " + days + " Days");
     document.getElementById('whatsappBtn').href = "https://wa.me/?text=My age is " + shareText + ". Calculate yours at getage247.xyz";
     document.getElementById('twitterBtn').href = "https://twitter.com/intent/tweet?text=My age is " + shareText + "&url=https://getage247.xyz";
     document.getElementById('facebookBtn').href = "https://www.facebook.com/sharer/sharer.php?u=https://getage247.xyz";
@@ -73,11 +78,3 @@ function calculateAge() {
 </script>
 </body>
 </html>
-<p style="text-align:center;font-weight:bold;margin-top:20px">Share your age:</p>
-<a id="whatsappBtn" target="_blank" class="share-btn" style="background:#25D366">WhatsApp</a>
-<a id="twitterBtn" target="_blank" class="share-btn" style="background:#1DA1F2">Twitter</a>
-<a id="facebookBtn" target="_blank" class="share-btn" style="background:#1877F2">Facebook</a>
-let shareText = years + " Years, " + months + " Months, " + days + " Days";
-document.getElementById('whatsappBtn').href = "https://wa.me/?text=My age is " + shareText + ". Calculate yours at getage247.xyz";
-document.getElementById('twitterBtn').href = "https://twitter.com/intent/tweet?text=My age is " + shareText + "&url=https://getage247.xyz";
-document.getElementById('facebookBtn').href = "https://www.facebook.com/sharer/sharer.php?u=https://getage247.xyz";
