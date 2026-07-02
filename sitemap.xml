@@ -38,9 +38,45 @@
   </url>
 
   <url>
+    <loc>https://getage247.xyz/blog-image-resizer-guide.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://getage247.xyz/blog-qr-code.generator.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://getage247.xyz/qr-generator.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://getage247.xyz/blog/blog-image-resizer.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://getage247.xyz/age-calculator.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://getage247.xyz/bmi-calculator.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://getage247.xyz/image-resizer.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
   <url>
@@ -67,12 +103,10 @@
     <priority>0.5</priority>
   </url>
 
+  <url>
+    <loc>https://getage247.xyz/FAQ.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
 </urlset>
-<url>
-<loc>https://getage247.xyz/qr-generator.html</loc>
-<changefreq>monthly</changefreq>
-<priority>0.8</priority>
-</url>
-<li style="padding:10px 0; border-bottom:1px solid #1e2633;">
-<a href="/blog-qr-code-generator.html" style="color:var(--p); text-decoration:none; font-size:17px;">Free QR Code Generator: What It Is and Why You Need One in 2026</a>
-</li>
