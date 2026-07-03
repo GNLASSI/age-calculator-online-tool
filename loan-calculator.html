@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Loan & Interest Calculator Pakistan | GetAge247</title>
+<meta name="description" content="Free online loan calculator Pakistan. Calculate monthly installments, total interest, and repayment schedule. Works for personal loans, car loans, and home loans.">
+<link rel="canonical" href="https://getage247.xyz/loan-calculator.html">
+<style>
+:root{--p:#2563eb;--d:#1e293b;--l:#f4f7f9;--g:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--l);color:#222;line-height:1.7}
+header{background:var(--p);color:white;padding:20px;text-align:center}
+header h1{margin:0;font-size:24px}
+nav{margin-top:10px}
+nav a{color:white;margin:0 10px;text-decoration:none;font-size:14px;font-weight:600}
+.container{max-width:800px;margin:0 auto;padding:24px 16px}
+h2{color:var(--d);font-size:20px;margin:24px 0 12px;border-bottom:2px solid var(--p);padding-bottom:8px}
+.tool-box{background:white;padding:24px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.08);margin-bottom:24px}
+label{display:block;font-size:14px;font-weight:600;color:var(--d);margin-bottom:5px;margin-top:14px}
+input,select{width:100%;padding:12px;font-size:15px;border:2px solid #ddd;border-radius:8px;outline:none;}
+input:focus,select:focus{border-color:var(--p)}
+.btn{width:100%;padding:14px;background:var(--p);color:white;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;margin-top:16px}
+.btn:hover{background:#1d4ed8}
+.result-box{background:#f0f9ff;border:2px solid var(--p);border-radius:12px;padding:20px;margin-top:20px;display:none}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+@media(max-width:500px){.result-grid{grid-template-columns:1fr}}
+.result-item{background:white;padding:14px;border-radius:8px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.result-item .label{font-size:12px;color:#666;margin-bottom:4px}
+.result-item .value{font-size:20px;font-weight:700;color:var(--p)}
+.result-item.green .value{color:var(--g)}
+.result-item.red .value{color:#dc2626}
+.schedule-table{width:100%;border-collapse:collapse;margin-top:16px;font-size:13px}
+.schedule-table th{background:var(--p);color:white;padding:8px 10px;text-align:left}
+.schedule-table td{padding:8px 10px;border-bottom:1px solid #e5e7eb}
+.schedule-table tr:nth-child(even){background:#f9fafb}
+.note{font-size:12px;color:#666;margin-top:12px;font-style:italic}
+footer{text-align:center;padding:20px;margin-top:40px;border-top:1px solid #ddd;background:#f9f9f9}
+footer a{margin:0 10px;color:#444;text-decoration:none;font-size:14px}
+footer p{margin-top:10px;font-size:13px;color:#777}
+</style>
+</head>
+<body>
+<header>
+  <h1>💰 Loan & Interest Calculator</h1>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
+<div class="container">
+  <div class="tool-box">
+    <h2>Calculate Your Loan Installment</h2>
+    <label>Loan Amount (PKR)</label>
+    <input type="number" id="loanAmount" placeholder="e.g. 500000" min="1">
+    <label>Annual Interest Rate (%)</label>
+    <input type="number" id="interestRate" placeholder="e.g. 18" min="0" max="100" step="0.1">
+    <label>Loan Duration</label>
+    <div style="display:flex;gap:10px;margin-top:5px">
+      <input type="number" id="duration" placeholder="e.g. 3" min="1" style="flex:1">
+      <select id="durationUnit" style="flex:1">
+        <option value="years">Years</option>
+        <option value="months">Months</option>
+      </select>
+    </div>
+    <label>Loan Type</label>
+    <select id="loanType">
+      <option value="reducing">Reducing Balance (Standard Bank Loan)</option>
+      <option value="flat">Flat Rate (Simple Interest)</option>
+    </select>
+    <button class="btn" onclick="calculateLoan()">Calculate Loan</button>
+    <div class="result-box" id="resultBox">
+      <div class="result-grid">
+        <div class="result-item">
+          <div class="label">Monthly Installment</div>
+          <div class="value" id="monthlyPayment">-</div>
+        </div>
+        <div class="result-item green">
+          <div class="label">Total Amount Payable</div>
+          <div class="value" id="totalPayable">-</div>
+        </div>
+        <div class="result-item red">
+          <div class="label">Total Interest</div>
+          <div class="value" id="totalInterest">-</div>
+        </div>
+        <div class="result-item">
+          <div class="label">Loan Duration</div>
+          <div class="value" id="loanDuration">-</div>
+        </div>
+      </div>
+      <h2 style="margin-top:0">Repayment Schedule</h2>
+      <div style="overflow-x:auto">
+        <table class="schedule-table" id="scheduleTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Payment (PKR)</th>
+              <th>Principal (PKR)</th>
+              <th>Interest (PKR)</th>
+              <th>Balance (PKR)</th>
+            </tr>
+          </thead>
+          <tbody id="scheduleBody"></tbody>
+        </table>
+      </div>
+      <p class="note">* This calculator is for estimation purposes only. Actual loan terms may vary by bank or lender. Always confirm with your financial institution.</p>
+    </div>
+  </div>
+</div>
+<footer>
+  <a href="/about.html">About</a>
+  <a href="/contact.html">Contact</a>
+  <a href="/privacy.html">Privacy</a>
+  <a href="/disclaimer.html">Disclaimer</a>
+  <a href="/blog.html">Blog</a>
+  <p>© 2026 GetAge247. All Rights Reserved.</p>
+</footer>
+<script>
+function formatPKR(num){return 'PKR '+num.toLocaleString('en-PK',{minimumFractionDigits:0,maximumFractionDigits:0});}
+function calculateLoan(){
+  const amount=parseFloat(document.getElementById('loanAmount').value);
+  const rate=parseFloat(document.getElementById('interestRate').value);
+  const dur=parseInt(document.getElementById('duration').value);
+  const unit=document.getElementById('durationUnit').value;
+  const type=document.getElementById('loanType').value;
+  if(!amount||amount<=0){alert('Please enter a valid loan amount.');return;}
+  if(isNaN(rate)||rate<0){alert('Please enter a valid interest rate.');return;}
+  if(!dur||dur<=0){alert('Please enter a valid duration.');return;}
+  const months=unit==='years'?dur*12:dur;
+  const monthlyRate=rate/100/12;
+  let monthlyPayment,totalPayable,totalInterest;
+  const tbody=document.getElementById('scheduleBody');
+  tbody.innerHTML='';
+  if(type==='reducing'){
+    if(rate===0){
+      monthlyPayment=amount/months;
+    } else {
+      monthlyPayment=amount*(monthlyRate*Math.pow(1+monthlyRate,months))/(Math.pow(1+monthlyRate,months)-1);
+    }
+    totalPayable=monthlyPayment*months;
+    totalInterest=totalPayable-amount;
+    let balance=amount;
+    for(let i=1;i<=months;i++){
+      const interestPayment=balance*monthlyRate;
+      const principalPayment=monthlyPayment-interestPayment;
+      balance-=principalPayment;
+      if(balance<0)balance=0;
+      const row=document.createElement('tr');
+      row.innerHTML='<td>'+i+'</td><td>'+Math.round(monthlyPayment).toLocaleString()+'</td><td>'+Math.round(principalPayment).toLocaleString()+'</td><td>'+Math.round(interestPayment).toLocaleString()+'</td><td>'+Math.round(balance).toLocaleString()+'</td>';
+      tbody.appendChild(row);
+    }
+  } else {
+    const flatInterest=amount*(rate/100)*(months/12);
+    totalInterest=flatInterest;
+    totalPayable=amount+flatInterest;
+    monthlyPayment=totalPayable/months;
+    const monthlyPrincipal=amount/months;
+    const monthlyInt=flatInterest/months;
+    let balance=amount;
+    for(let i=1;i<=months;i++){
+      balance-=monthlyPrincipal;
+      if(balance<0)balance=0;
+      const row=document.createElement('tr');
+      row.innerHTML='<td>'+i+'</td><td>'+Math.round(monthlyPayment).toLocaleString()+'</td><td>'+Math.round(monthlyPrincipal).toLocaleString()+'</td><td>'+Math.round(monthlyInt).toLocaleString()+'</td><td>'+Math.round(balance).toLocaleString()+'</td>';
+      tbody.appendChild(row);
+    }
+  }
+  document.getElementById('monthlyPayment').innerText=formatPKR(Math.round(monthlyPayment));
+  document.getElementById('totalPayable').innerText=formatPKR(Math.round(totalPayable));
+  document.getElementById('totalInterest').innerText=formatPKR(Math.round(totalInterest));
+  document.getElementById('loanDuration').innerText=months+' Months';
+  document.getElementById('resultBox').style.display='block';
+  document.getElementById('resultBox').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
