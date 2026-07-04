@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free JPG to PDF Converter Online | GetAge247</title>
+<meta name="description" content="Convert JPG, PNG images to PDF free online. No signup, no watermark. Multiple images to one PDF. Works on mobile and PC instantly.">
+<link rel="canonical" href="https://getage247.xyz/jpg-to-pdf.html">
+<style>
+:root{--p:#2563eb;--d:#1e293b;--l:#f4f7f9}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--l);color:#222;line-height:1.7}
+header{background:var(--p);color:white;padding:20px;text-align:center}
+header h1{margin:0;font-size:24px}
+nav{margin-top:10px}
+nav a{color:white;margin:0 10px;text-decoration:none;font-size:14px;font-weight:600}
+.container{max-width:800px;margin:0 auto;padding:24px 16px}
+.tool-box{background:white;padding:24px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.08);margin-bottom:24px}
+h2{color:var(--d);font-size:20px;margin-bottom:16px;border-bottom:2px solid var(--p);padding-bottom:8px}
+.upload-area{border:3px dashed #cbd5e1;border-radius:12px;padding:40px 20px;text-align:center;cursor:pointer;transition:all 0.3s;margin-bottom:16px}
+.upload-area:hover{border-color:var(--p);background:#eff6ff}
+.upload-area p{color:#64748b;margin-top:8px;font-size:14px}
+.upload-icon{font-size:48px}
+input[type=file]{display:none}
+.preview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px;margin:16px 0}
+.preview-item{position:relative;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+.preview-item img{width:100%;height:120px;object-fit:cover;display:block}
+.preview-item .remove{position:absolute;top:4px;right:4px;background:red;color:white;border:none;border-radius:50%;width:22px;height:22px;cursor:pointer;font-size:14px;line-height:22px;text-align:center;padding:0}
+.preview-item .num{position:absolute;bottom:4px;left:4px;background:rgba(0,0,0,0.6);color:white;font-size:11px;padding:2px 6px;border-radius:4px}
+.btn{width:100%;padding:14px;background:var(--p);color:white;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;margin-top:8px}
+.btn:hover{background:#1d4ed8}
+.btn:disabled{background:#94a3b8;cursor:not-allowed}
+.btn-green{background:#16a34a}
+.btn-green:hover{background:#15803d}
+#status{text-align:center;padding:12px;font-weight:600;color:var(--p);display:none}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:24px}
+.feat{background:white;padding:16px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);text-align:center}
+.feat h3{font-size:14px;color:var(--d);margin-bottom:4px}
+.feat p{font-size:13px;color:#64748b}
+footer{text-align:center;padding:20px;margin-top:40px;border-top:1px solid #ddd;background:#f9f9f9}
+footer a{margin:0 10px;color:#444;text-decoration:none;font-size:14px}
+footer p{margin-top:10px;font-size:13px;color:#777}
+</style>
+</head>
+<body>
+<header>
+  <h1>📄 JPG to PDF Converter</h1>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
+<div class="container">
+  <div class="tool-box">
+    <h2>Convert Images to PDF — Free & Instant</h2>
+    <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+      <div class="upload-icon">🖼️</div>
+      <strong>Click to Upload Images</strong>
+      <p>JPG, PNG, WebP supported • Multiple images allowed</p>
+      <p>Your files never leave your device</p>
+    </div>
+    <input type="file" id="fileInput" accept="image/*" multiple onchange="handleFiles(this.files)">
+    <div class="preview-grid" id="previewGrid"></div>
+    <div id="status">⏳ Creating your PDF...</div>
+    <button class="btn" id="convertBtn" onclick="convertToPDF()" disabled>Convert to PDF</button>
+    <button class="btn btn-green" id="downloadBtn" style="display:none" onclick="downloadPDF()">⬇️ Download PDF</button>
+  </div>
+  <div class="features">
+    <div class="feat"><h3>🔒 100% Private</h3><p>Images stay on your device. Nothing uploaded to any server.</p></div>
+    <div class="feat"><h3>📱 Mobile Friendly</h3><p>Works on Android and iPhone. No app needed.</p></div>
+    <div class="feat"><h3>🆓 Always Free</h3><p>No signup, no watermark, no hidden fees.</p></div>
+    <div class="feat"><h3>📚 Multiple Images</h3><p>Combine many photos into one PDF file.</p></div>
+  </div>
+</div>
+<footer>
+  <a href="/about.html">About</a>
+  <a href="/contact.html">Contact</a>
+  <a href="/privacy.html">Privacy</a>
+  <a href="/disclaimer.html">Disclaimer</a>
+  <a href="/blog.html">Blog</a>
+  <p>© 2026 GetAge247. All Rights Reserved.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+let images = [];
+let pdfDoc = null;
+
+function handleFiles(files) {
+  Array.from(files).forEach(file => {
+    if(file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        images.push({src: e.target.result, name: file.name});
+        renderPreviews();
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+}
+
+function renderPreviews() {
+  const grid = document.getElementById('previewGrid');
+  grid.innerHTML = '';
+  images.forEach((img, i) => {
+    const div = document.createElement('div');
+    div.className = 'preview-item';
+    div.innerHTML = '<img src="'+img.src+'"><button class="remove" onclick="removeImage('+i+')">×</button><span class="num">'+(i+1)+'</span>';
+    grid.appendChild(div);
+  });
+  document.getElementById('convertBtn').disabled = images.length === 0;
+  document.getElementById('downloadBtn').style.display = 'none';
+  pdfDoc = null;
+}
+
+function removeImage(index) {
+  images.splice(index, 1);
+  renderPreviews();
+}
+
+async function convertToPDF() {
+  if(images.length === 0) return;
+  document.getElementById('status').style.display = 'block';
+  document.getElementById('convertBtn').disabled = true;
+  await new Promise(r => setTimeout(r, 50));
+  try {
+    const {jsPDF} = window.jspdf;
+    pdfDoc = new jsPDF({unit:'mm', format:'a4'});
+    const pageW = 210;
+    const pageH = 297;
+    for(let i = 0; i < images.length; i++) {
+      if(i > 0) pdfDoc.addPage();
+      const img = new Image();
+      img.src = images[i].src;
+      await new Promise(r => { img.onload = r; });
+      const ratio = Math.min(pageW / img.width, pageH / img.height);
+      const w = img.width * ratio;
+      const h = img.height * ratio;
+      const x = (pageW - w) / 2;
+      const y = (pageH - h) / 2;
+      pdfDoc.addImage(img, 'JPEG', x, y, w, h);
+    }
+    document.getElementById('status').style.display = 'none';
+    document.getElementById('convertBtn').disabled = false;
+    document.getElementById('downloadBtn').style.display = 'block';
+  } catch(e) {
+    document.getElementById('status').innerText = 'Error: Please try again.';
+  }
+}
+
+function downloadPDF() {
+  if(pdfDoc) pdfDoc.save('getage247-images.pdf');
+}
+</script>
+</body>
+</html>
