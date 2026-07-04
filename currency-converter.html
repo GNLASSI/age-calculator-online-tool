@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Currency Converter - Live Exchange Rates | GetAge247</title>
+<meta name="description" content="Free live currency converter. Convert PKR, USD, SAR, AED, GBP, EUR instantly with real-time exchange rates. No signup. Works on mobile and PC.">
+<link rel="canonical" href="https://getage247.xyz/currency-converter.html">
+<style>
+:root{--p:#2563eb;--d:#1e293b;--l:#f4f7f9;--g:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--d);color:#e2e8f0;line-height:1.7;min-height:100vh}
+header{background:linear-gradient(135deg,#1e40af,#2563eb);color:white;padding:20px;text-align:center;box-shadow:0 4px 20px rgba(37,99,235,0.4)}
+header h1{margin:0;font-size:26px;letter-spacing:1px}
+header p{margin:6px 0 0;font-size:14px;opacity:0.85}
+nav{margin-top:12px}
+nav a{color:white;margin:0 10px;text-decoration:none;font-size:14px;opacity:0.85}
+nav a:hover{opacity:1}
+.container{max-width:600px;margin:0 auto;padding:24px 16px}
+.converter-box{background:#1e293b;border-radius:20px;padding:28px;box-shadow:0 8px 32px rgba(0,0,0,0.3);border:1px solid #334155}
+.rate-badge{background:#0f172a;border:1px solid #334155;border-radius:10px;padding:10px 16px;text-align:center;margin-bottom:20px;font-size:13px;color:#94a3b8}
+.rate-badge span{color:#60a5fa;font-weight:600}
+.input-group{margin-bottom:16px}
+label{display:block;font-size:13px;color:#94a3b8;margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+.input-row{display:flex;gap:10px}
+input[type=number]{flex:1;padding:14px 16px;background:#0f172a;border:2px solid #334155;border-radius:12px;color:#e2e8f0;font-size:20px;font-weight:600;outline:none}
+input[type=number]:focus{border-color:#2563eb}
+select{width:130px;padding:14px 10px;background:#0f172a;border:2px solid #334155;border-radius:12px;color:#e2e8f0;font-size:15px;font-weight:600;outline:none;cursor:pointer}
+select:focus{border-color:#2563eb}
+.swap-btn{width:100%;padding:12px;background:#1e293b;border:2px solid #334155;border-radius:12px;color:#60a5fa;font-size:22px;cursor:pointer;margin:4px 0;transition:all 0.2s}
+.swap-btn:hover{background:#334155;border-color:#60a5fa}
+.result-box{background:linear-gradient(135deg,#1e3a5f,#1e40af);border-radius:14px;padding:20px;text-align:center;margin:20px 0;display:none}
+.result-box .amount{font-size:36px;font-weight:700;color:#fff;margin-bottom:4px}
+.result-box .label{font-size:14px;color:#93c5fd}
+.convert-btn{width:100%;padding:16px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;border:none;border-radius:12px;font-size:17px;font-weight:700;cursor:pointer;letter-spacing:0.5px;box-shadow:0 4px 15px rgba(37,99,235,0.4)}
+.convert-btn:hover{background:linear-gradient(135deg,#1d4ed8,#1e40af);transform:translateY(-1px)}
+.popular-rates{background:#0f172a;border-radius:14px;padding:20px;margin-top:20px;border:1px solid #334155}
+.popular-rates h3{font-size:14px;color:#94a3b8;margin-bottom:14px;text-transform:uppercase;letter-spacing:1px}
+.rates-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rate-item{background:#1e293b;padding:12px;border-radius:10px;border:1px solid #334155}
+.rate-item .currency{font-size:12px;color:#94a3b8;margin-bottom:2px}
+.rate-item .rate{font-size:16px;font-weight:700;color:#60a5fa}
+.error{background:#7f1d1d;border:1px solid #dc2626;border-radius:10px;padding:12px;text-align:center;color:#fca5a5;font-size:14px;margin-top:12px;display:none}
+.loading{text-align:center;padding:20px;color:#60a5fa;display:none}
+footer{text-align:center;padding:20px;margin-top:20px;border-top:1px solid #334155;color:#64748b;font-size:14px}
+footer a{color:#64748b;margin:0 8px;text-decoration:none}
+footer a:hover{color:#94a3b8}
+</style>
+</head>
+<body>
+<header>
+  <h1>💱 Live Currency Converter</h1>
+  <p>Real-time exchange rates • 160+ currencies</p>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
+<div class="container">
+  <div class="converter-box">
+    <div class="rate-badge" id="rateBadge">🔄 Loading live rates...</div>
+    <div class="input-group">
+      <label>Amount</label>
+      <div class="input-row">
+        <input type="number" id="amount" value="1" min="0" step="any">
+        <select id="fromCurrency">
+          <option value="PKR">🇵🇰 PKR</option>
+          <option value="USD" selected>🇺🇸 USD</option>
+          <option value="SAR">🇸🇦 SAR</option>
+          <option value="AED">🇦🇪 AED</option>
+          <option value="GBP">🇬🇧 GBP</option>
+          <option value="EUR">🇪🇺 EUR</option>
+          <option value="CAD">🇨🇦 CAD</option>
+          <option value="AUD">🇦🇺 AUD</option>
+          <option value="QAR">🇶🇦 QAR</option>
+          <option value="KWD">🇰🇼 KWD</option>
+          <option value="OMR">🇴🇲 OMR</option>
+          <option value="BHD">🇧🇭 BHD</option>
+          <option value="MYR">🇲🇾 MYR</option>
+          <option value="CNY">🇨🇳 CNY</option>
+          <option value="JPY">🇯🇵 JPY</option>
+          <option value="TRY">🇹🇷 TRY</option>
+          <option value="INR">🇮🇳 INR</option>
+        </select>
+      </div>
+    </div>
+    <button class="swap-btn" onclick="swapCurrencies()">⇅ Swap</button>
+    <div class="input-group">
+      <label>Convert To</label>
+      <div class="input-row">
+        <input type="number" id="result" placeholder="Result" readonly style="background:#0a0f1a;cursor:not-allowed">
+        <select id="toCurrency">
+          <option value="PKR" selected>🇵🇰 PKR</option>
+          <option value="USD">🇺🇸 USD</option>
+          <option value="SAR">🇸🇦 SAR</option>
+          <option value="AED">🇦🇪 AED</option>
+          <option value="GBP">🇬🇧 GBP</option>
+          <option value="EUR">🇪🇺 EUR</option>
+          <option value="CAD">🇨🇦 CAD</option>
+          <option value="AUD">🇦🇺 AUD</option>
+          <option value="QAR">🇶🇦 QAR</option>
+          <option value="KWD">🇰🇼 KWD</option>
+          <option value="OMR">🇴🇲 OMR</option>
+          <option value="BHD">🇧🇭 BHD</option>
+          <option value="MYR">🇲🇾 MYR</option>
+          <option value="CNY">🇨🇳 CNY</option>
+          <option value="JPY">🇯🇵 JPY</option>
+          <option value="TRY">🇹🇷 TRY</option>
+          <option value="INR">🇮🇳 INR</option>
+        </select>
+      </div>
+    </div>
+    <button class="convert-btn" onclick="convertCurrency()">Convert Now</button>
+    <div class="result-box" id="resultBox">
+      <div class="amount" id="resultAmount">-</div>
+      <div class="label" id="resultLabel">-</div>
+    </div>
+    <div class="error" id="errorBox">Unable to fetch rates. Please check your connection and try again.</div>
+  </div>
+  <div class="popular-rates" id="popularRates">
+    <h3>🇵🇰 PKR Live Rates</h3>
+    <div class="rates-grid" id="ratesGrid">
+      <div class="rate-item"><div class="currency">Loading...</div><div class="rate">-</div></div>
+    </div>
+  </div>
+</div>
+<footer>
+  <a href="/about.html">About</a>
+  <a href="/contact.html">Contact</a>
+  <a href="/privacy.html">Privacy</a>
+  <a href="/blog.html">Blog</a>
+  <p style="margin-top:10px">© 2026 GetAge247. All Rights Reserved.</p>
+</footer>
+<script>
+const API_KEY = 'bd77bb5f38ee8ae06ee3c095';
+let rates = {};
+let lastUpdated = '';
+
+async function fetchRates() {
+  try {
+    const res = await fetch('https://v6.exchangerate-api.com/v6/'+API_KEY+'/latest/USD');
+    const data = await res.json();
+    if(data.result === 'success') {
+      rates = data.conversion_rates;
+      lastUpdated = new Date().toLocaleTimeString();
+      document.getElementById('rateBadge').innerHTML = '✅ Live rates • Updated: <span>'+lastUpdated+'</span>';
+      updatePopularRates();
+    } else {
+      showError();
+    }
+  } catch(e) {
+    showError();
+  }
+}
+
+function updatePopularRates() {
+  const pkrRate = rates['PKR'];
+  const pairs = [
+    {from:'USD',to:'PKR',label:'1 USD'},
+    {from:'SAR',to:'PKR',label:'1 SAR'},
+    {from:'AED',to:'PKR',label:'1 AED'},
+    {from:'GBP',to:'PKR',label:'1 GBP'},
+    {from:'EUR',to:'PKR',label:'1 EUR'},
+    {from:'QAR',to:'PKR',label:'1 QAR'},
+  ];
+  const grid = document.getElementById('ratesGrid');
+  grid.innerHTML = '';
+  pairs.forEach(p => {
+    const fromRate = rates[p.from];
+    const toRate = rates[p.to];
+    const converted = (toRate/fromRate).toFixed(2);
+    const div = document.createElement('div');
+    div.className = 'rate-item';
+    div.innerHTML = '<div class="currency">'+p.label+'</div><div class="rate">PKR '+parseFloat(converted).toLocaleString()+'</div>';
+    grid.appendChild(div);
+  });
+}
+
+function convertCurrency() {
+  const amount = parseFloat(document.getElementById('amount').value);
+  const from = document.getElementById('fromCurrency').value;
+  const to = document.getElementById('toCurrency').value;
+  if(!amount || amount <= 0) { alert('Please enter a valid amount.'); return; }
+  if(Object.keys(rates).length === 0) { alert('Rates not loaded yet. Please wait.'); return; }
+  const fromRate = rates[from];
+  const toRate = rates[to];
+  const result = (amount / fromRate) * toRate;
+  document.getElementById('result').value = result.toFixed(4);
+  const box = document.getElementById('resultBox');
+  document.getElementById('resultAmount').innerText = result.toLocaleString('en', {minimumFractionDigits:2, maximumFractionDigits:4}) + ' ' + to;
+  document.getElementById('resultLabel').innerText = amount + ' ' + from + ' = ' + result.toFixed(4) + ' ' + to;
+  box.style.display = 'block';
+}
+
+function swapCurrencies() {
+  const from = document.getElementById('fromCurrency');
+  const to = document.getElementById('toCurrency');
+  const temp = from.value;
+  from.value = to.value;
+  to.value = temp;
+  document.getElementById('result').value = '';
+  document.getElementById('resultBox').style.display = 'none';
+}
+
+function showError() {
+  document.getElementById('rateBadge').innerHTML = '❌ Could not load rates';
+  document.getElementById('errorBox').style.display = 'block';
+}
+
+fetchRates();
+setInterval(fetchRates, 3600000);
+</script>
+</body>
+</html>
