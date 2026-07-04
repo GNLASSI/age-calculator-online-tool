@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Percentage Calculator Online | GetAge247</title>
+<meta name="description" content="Free online percentage calculator. Calculate percentage of a number, percentage increase/decrease, and what percentage one number is of another. Fast and free.">
+<link rel="canonical" href="https://getage247.xyz/percentage-calculator.html">
+<style>
+:root{--p:#2563eb;--d:#1e293b;--l:#f4f7f9;--g:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--l);color:#222;line-height:1.7}
+header{background:var(--p);color:white;padding:20px;text-align:center}
+header h1{margin:0;font-size:24px}
+nav{margin-top:10px}
+nav a{color:white;margin:0 10px;text-decoration:none;font-size:14px;font-weight:600}
+.container{max-width:700px;margin:0 auto;padding:24px 16px}
+.tool-box{background:white;padding:24px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.08);margin-bottom:20px}
+.tool-box h2{color:var(--p);font-size:17px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #e2e8f0}
+label{display:block;font-size:13px;font-weight:600;color:var(--d);margin-bottom:5px;margin-top:12px}
+input{width:100%;padding:12px;font-size:16px;border:2px solid #ddd;border-radius:8px;outline:none}
+input:focus{border-color:var(--p)}
+.btn{width:100%;padding:13px;background:var(--p);color:white;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;margin-top:14px}
+.btn:hover{background:#1d4ed8}
+.result{background:#eff6ff;border:2px solid var(--p);border-radius:10px;padding:16px;text-align:center;margin-top:14px;display:none}
+.result .value{font-size:28px;font-weight:700;color:var(--p)}
+.result .detail{font-size:14px;color:#64748b;margin-top:4px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.tab{padding:8px 14px;border-radius:20px;border:2px solid #ddd;background:white;color:#64748b;cursor:pointer;font-size:13px;font-weight:600}
+.tab.active{background:var(--p);color:white;border-color:var(--p)}
+.section{display:none}
+.section.active{display:block}
+footer{text-align:center;padding:20px;margin-top:20px;border-top:1px solid #ddd;background:#f9f9f9}
+footer a{margin:0 10px;color:#444;text-decoration:none;font-size:14px}
+footer p{margin-top:10px;font-size:13px;color:#777}
+</style>
+</head>
+<body>
+<header>
+  <h1>% Percentage Calculator</h1>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
+<div class="container">
+  <div class="tool-box">
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('t1',this)">% of Number</button>
+      <button class="tab" onclick="showTab('t2',this)">What % is X of Y</button>
+      <button class="tab" onclick="showTab('t3',this)">% Increase/Decrease</button>
+      <button class="tab" onclick="showTab('t4',this)">Add/Remove %</button>
+    </div>
+
+    <!-- Tab 1: Percentage of Number -->
+    <div class="section active" id="t1">
+      <h2>📊 What is X% of Y?</h2>
+      <label>Percentage (%)</label>
+      <input type="number" id="t1_percent" placeholder="e.g. 20">
+      <label>Of Number</label>
+      <input type="number" id="t1_number" placeholder="e.g. 500">
+      <button class="btn" onclick="calc1()">Calculate</button>
+      <div class="result" id="t1_result">
+        <div class="value" id="t1_val"></div>
+        <div class="detail" id="t1_detail"></div>
+      </div>
+    </div>
+
+    <!-- Tab 2: What % is X of Y -->
+    <div class="section" id="t2">
+      <h2>🔢 X is What % of Y?</h2>
+      <label>Value (X)</label>
+      <input type="number" id="t2_x" placeholder="e.g. 50">
+      <label>Total (Y)</label>
+      <input type="number" id="t2_y" placeholder="e.g. 200">
+      <button class="btn" onclick="calc2()">Calculate</button>
+      <div class="result" id="t2_result">
+        <div class="value" id="t2_val"></div>
+        <div class="detail" id="t2_detail"></div>
+      </div>
+    </div>
+
+    <!-- Tab 3: Percentage Increase/Decrease -->
+    <div class="section" id="t3">
+      <h2>📈 Percentage Increase / Decrease</h2>
+      <label>Original Value</label>
+      <input type="number" id="t3_orig" placeholder="e.g. 100">
+      <label>New Value</label>
+      <input type="number" id="t3_new" placeholder="e.g. 120">
+      <button class="btn" onclick="calc3()">Calculate</button>
+      <div class="result" id="t3_result">
+        <div class="value" id="t3_val"></div>
+        <div class="detail" id="t3_detail"></div>
+      </div>
+    </div>
+
+    <!-- Tab 4: Add/Remove Percentage -->
+    <div class="section" id="t4">
+      <h2>➕➖ Add or Remove Percentage</h2>
+      <label>Original Number</label>
+      <input type="number" id="t4_num" placeholder="e.g. 1000">
+      <label>Percentage (%)</label>
+      <input type="number" id="t4_pct" placeholder="e.g. 18">
+      <div style="display:flex;gap:10px;margin-top:14px">
+        <button class="btn" onclick="calc4('add')" style="background:var(--g)">Add %</button>
+        <button class="btn" onclick="calc4('remove')" style="background:#dc2626">Remove %</button>
+      </div>
+      <div class="result" id="t4_result">
+        <div class="value" id="t4_val"></div>
+        <div class="detail" id="t4_detail"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <a href="/about.html">About</a>
+  <a href="/contact.html">Contact</a>
+  <a href="/privacy.html">Privacy</a>
+  <a href="/disclaimer.html">Disclaimer</a>
+  <a href="/blog.html">Blog</a>
+  <p>© 2026 GetAge247. All Rights Reserved.</p>
+</footer>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function showResult(id, val, detail) {
+  document.getElementById(id).style.display = 'block';
+  document.getElementById(id.replace('result','val')).innerText = val;
+  document.getElementById(id.replace('result','detail')).innerText = detail;
+}
+
+function calc1() {
+  const p = parseFloat(document.getElementById('t1_percent').value);
+  const n = parseFloat(document.getElementById('t1_number').value);
+  if(isNaN(p)||isNaN(n)){alert('Please enter both values.');return;}
+  const result = (p/100)*n;
+  showResult('t1_result', result.toLocaleString(), p+'% of '+n.toLocaleString()+' = '+result.toLocaleString());
+}
+
+function calc2() {
+  const x = parseFloat(document.getElementById('t2_x').value);
+  const y = parseFloat(document.getElementById('t2_y').value);
+  if(isNaN(x)||isNaN(y)||y===0){alert('Please enter valid values.');return;}
+  const result = (x/y)*100;
+  showResult('t2_result', result.toFixed(2)+'%', x.toLocaleString()+' is '+result.toFixed(2)+'% of '+y.toLocaleString());
+}
+
+function calc3() {
+  const orig = parseFloat(document.getElementById('t3_orig').value);
+  const newV = parseFloat(document.getElementById('t3_new').value);
+  if(isNaN(orig)||isNaN(newV)||orig===0){alert('Please enter valid values.');return;}
+  const diff = newV - orig;
+  const result = (diff/orig)*100;
+  const type = result >= 0 ? '📈 Increase' : '📉 Decrease';
+  showResult('t3_result', Math.abs(result).toFixed(2)+'%', type+': from '+orig.toLocaleString()+' to '+newV.toLocaleString());
+}
+
+function calc4(type) {
+  const num = parseFloat(document.getElementById('t4_num').value);
+  const pct = parseFloat(document.getElementById('t4_pct').value);
+  if(isNaN(num)||isNaN(pct)){alert('Please enter both values.');return;}
+  const change = (pct/100)*num;
+  const result = type === 'add' ? num+change : num-change;
+  const action = type === 'add' ? 'After adding '+pct+'%' : 'After removing '+pct+'%';
+  showResult('t4_result', result.toLocaleString(), action+' from '+num.toLocaleString()+' = '+result.toLocaleString());
+}
+</script>
+</body>
+</html>
