@@ -125,7 +125,11 @@ footer p{margin-top:10px;font-size:13px;color:#777}
 <div class="form-group"><label>City</label><input type="text" id="city" placeholder="Lahore, Pakistan" oninput="updatePreview()"></div>
 <div class="form-group"><label>LinkedIn / Website</label><input type="text" id="linkedin" placeholder="linkedin.com/in/ali" oninput="updatePreview()"></div>
 </div>
-<div class="form-group"><label>Photo URL (optional)</label><input type="text" id="photo" placeholder="https://..." oninput="updatePreview()"></div>
+<div class="form-group">
+<label>Photo (optional)</label>
+<input type="file" id="photoFile" accept="image/*" onchange="handlePhoto(this)">
+<input type="hidden" id="photo">
+</div>
 <div class="section-title">Professional Summary</div>
 <div class="form-group"><textarea id="summary" placeholder="Write 2-3 sentences about your background and goals..." oninput="updatePreview()" rows="4"></textarea></div>
 <div class="section-title">Work Experience</div>
@@ -160,7 +164,18 @@ footer p{margin-top:10px;font-size:13px;color:#777}
 <a href="/blog.html">Blog</a>
 <p>2026 GetAge247. All Rights Reserved.</p>
 </footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+function handlePhoto(input) {
+  const file = input.files[0];
+  if(file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('photo').value = e.target.result;
+      updatePreview();
+    };
+    reader.readAsDataURL(file);
+  }
+}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 let currentTemplate=1;
