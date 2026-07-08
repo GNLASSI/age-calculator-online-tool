@@ -189,3 +189,8 @@
 <changefreq>monthly</changefreq>
 <priority>0.8</priority>
 </url>
+<url>
+<loc>https://getage247.xyz/terms.html</loc>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
