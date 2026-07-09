@@ -126,7 +126,7 @@ footer p{margin-top:10px;font-size:13px;color:#777}
 <div class="form-group"><label>LinkedIn / Website</label><input type="text" id="linkedin" placeholder="linkedin.com/in/ali" oninput="updatePreview()"></div>
 </div>
 <div class="form-group">
-<label>Photo (optional)</label>
+<label>Upload Photo (optional)</label>
 <input type="file" id="photoFile" accept="image/*" onchange="handlePhoto(this)">
 <input type="hidden" id="photo">
 </div>
@@ -162,20 +162,9 @@ footer p{margin-top:10px;font-size:13px;color:#777}
 <a href="/contact.html">Contact</a>
 <a href="/privacy.html">Privacy</a>
 <a href="/blog.html">Blog</a>
-<p>2026 GetAge247. All Rights Reserved.</p>
+<p>© 2026 GetAge247. All Rights Reserved.</p>
 </footer>
-function handlePhoto(input) {
-  const file = input.files[0];
-  if(file) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      document.getElementById('photo').value = e.target.result;
-      updatePreview();
-    };
-    reader.readAsDataURL(file);
-  }
-}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 let currentTemplate=1;
@@ -184,21 +173,42 @@ let eduEntries=[];
 let skillEntries=[];
 let langEntries=[];
 let achieveEntries=[];
+
+function handlePhoto(input){
+const file=input.files[0];
+if(file){
+const reader=new FileReader();
+reader.onload=function(e){
+document.getElementById('photo').value=e.target.result;
+updatePreview();
+};
+reader.readAsDataURL(file);
+}
+}
+
 function setTemplate(n,btn){currentTemplate=n;document.querySelectorAll('.template-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');updatePreview();}
+
 function addEntry(type){const id=Date.now();if(type==='exp'){expEntries.push({id,title:'',company:'',date:'',desc:''});renderExpList();}else{eduEntries.push({id,degree:'',school:'',date:'',grade:''});renderEduList();}updatePreview();}
 function addSkill(){skillEntries.push({id:Date.now(),name:'',level:80});renderSkillList();updatePreview();}
 function addLang(){langEntries.push({id:Date.now(),name:'',level:'Fluent'});renderLangList();updatePreview();}
 function addAchieve(){achieveEntries.push({id:Date.now(),text:''});renderAchieveList();updatePreview();}
+
 function renderExpList(){const c=document.getElementById('exp-list');c.innerHTML='';expEntries.forEach((e,i)=>{c.innerHTML+=<div class="entry-box"><div class="entry-header"><span>Experience ${i+1}</span><button class="btn-remove" onclick="removeEntry('exp',${e.id})">x</button></div><div class="form-row"><div class="form-group"><label>Job Title</label><input value="${e.title}" oninput="expEntries[${i}].title=this.value;updatePreview()" placeholder="Software Engineer"></div><div class="form-group"><label>Company</label><input value="${e.company}" oninput="expEntries[${i}].company=this.value;updatePreview()" placeholder="ABC Company"></div></div><div class="form-group"><label>Duration</label><input value="${e.date}" oninput="expEntries[${i}].date=this.value;updatePreview()" placeholder="Jan 2022 - Present"></div><div class="form-group"><label>Description</label><textarea oninput="expEntries[${i}].desc=this.value;updatePreview()" placeholder="Key responsibilities...">${e.desc}</textarea></div></div>;});}
+
 function renderEduList(){const c=document.getElementById('edu-list');c.innerHTML='';eduEntries.forEach((e,i)=>{c.innerHTML+=<div class="entry-box"><div class="entry-header"><span>Education ${i+1}</span><button class="btn-remove" onclick="removeEntry('edu',${e.id})">x</button></div><div class="form-row"><div class="form-group"><label>Degree</label><input value="${e.degree}" oninput="eduEntries[${i}].degree=this.value;updatePreview()" placeholder="BS Computer Science"></div><div class="form-group"><label>Institution</label><input value="${e.school}" oninput="eduEntries[${i}].school=this.value;updatePreview()" placeholder="University of Punjab"></div></div><div class="form-row"><div class="form-group"><label>Year</label><input value="${e.date}" oninput="eduEntries[${i}].date=this.value;updatePreview()" placeholder="2018 - 2022"></div><div class="form-group"><label>Grade/CGPA</label><input value="${e.grade}" oninput="eduEntries[${i}].grade=this.value;updatePreview()" placeholder="3.8/4.0"></div></div></div>;});}
+
 function renderSkillList(){const c=document.getElementById('skills-list');c.innerHTML='';skillEntries.forEach((s,i)=>{c.innerHTML+=<div class="entry-box"><div class="entry-header"><span>Skill ${i+1}</span><button class="btn-remove" onclick="removeSkill(${s.id})">x</button></div><div class="form-row"><div class="form-group"><label>Skill Name</label><input value="${s.name}" oninput="skillEntries[${i}].name=this.value;updatePreview()" placeholder="e.g. Python"></div><div class="form-group"><label>Level (${s.level}%)</label><input type="range" min="20" max="100" value="${s.level}" oninput="skillEntries[${i}].level=this.value;updatePreview()"></div></div></div>;});}
+
 function renderLangList(){const c=document.getElementById('lang-list');c.innerHTML='';langEntries.forEach((l,i)=>{c.innerHTML+=<div class="entry-box"><div class="entry-header"><span>Language ${i+1}</span><button class="btn-remove" onclick="removeLang(${l.id})">x</button></div><div class="form-row"><div class="form-group"><label>Language</label><input value="${l.name}" oninput="langEntries[${i}].name=this.value;updatePreview()" placeholder="English"></div><div class="form-group"><label>Level</label><select oninput="langEntries[${i}].level=this.value;updatePreview()"><option ${l.level==='Native'?'selected':''}>Native</option><option ${l.level==='Fluent'?'selected':''}>Fluent</option><option ${l.level==='Intermediate'?'selected':''}>Intermediate</option><option ${l.level==='Basic'?'selected':''}>Basic</option></select></div></div></div>;});}
+
 function renderAchieveList(){const c=document.getElementById('achieve-list');c.innerHTML='';achieveEntries.forEach((a,i)=>{c.innerHTML+=<div class="entry-box"><div class="entry-header"><span>Achievement ${i+1}</span><button class="btn-remove" onclick="removeAchieve(${a.id})">x</button></div><div class="form-group"><input value="${a.text}" oninput="achieveEntries[${i}].text=this.value;updatePreview()" placeholder="e.g. Google Certified 2024"></div></div>;});}
+
 function removeEntry(type,id){if(type==='exp'){expEntries=expEntries.filter(e=>e.id!==id);renderExpList();}else{eduEntries=eduEntries.filter(e=>e.id!==id);renderEduList();}updatePreview();}
 function removeSkill(id){skillEntries=skillEntries.filter(s=>s.id!==id);renderSkillList();updatePreview();}
 function removeLang(id){langEntries=langEntries.filter(l=>l.id!==id);renderLangList();updatePreview();}
 function removeAchieve(id){achieveEntries=achieveEntries.filter(a=>a.id!==id);renderAchieveList();updatePreview();}
 function g(id){return document.getElementById(id).value;}
+
 function updatePreview(){
 const name=g('name')||'Your Name';
 const title=g('title')||'Professional Title';
@@ -217,6 +227,7 @@ const skillsT2=skillEntries.map(s=><div class="skill-bar-wrap"><div class="skill
 const langHTML=langEntries.map(l=><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;"><span>${l.name}</span><span style="color:#6b7280">${l.level}</span></div>).join('');
 const achieveHTML=achieveEntries.map(a=><div style="font-size:12px;margin-bottom:5px;">- ${a.text}</div>).join('');
 const preview=document.getElementById('resumePreview');
+
 if(currentTemplate===1){
 preview.className='resume-wrapper t1';
 preview.innerHTML=<div class="resume-header"><div style="display:flex;align-items:center;gap:16px">${photoHTML}<div><div class="resume-name">${name}</div><div class="resume-title">${title}</div></div></div><div class="resume-contact" style="margin-top:12px">${contactHTML}</div></div><div class="resume-body">${summary?<div class="res-section"><div class="res-section-title">Summary</div><div class="summary-text">${summary}</div></div>:''} ${expEntries.length?<div class="res-section"><div class="res-section-title">Work Experience</div>${expHTML}</div>:''} ${eduEntries.length?<div class="res-section"><div class="res-section-title">Education</div>${eduHTML}</div>:''} ${skillEntries.length?<div class="res-section"><div class="res-section-title">Skills</div><div class="skills-wrap">${skillsT1}</div></div>:''} ${langEntries.length?<div class="res-section"><div class="res-section-title">Languages</div>${langHTML}</div>:''} ${achieveEntries.length?<div class="res-section"><div class="res-section-title">Achievements</div>${achieveHTML}</div>:''}</div>;
@@ -225,6 +236,40 @@ preview.className='resume-wrapper t2';
 preview.innerHTML=<div class="resume-header"><div style="display:flex;align-items:center;gap:16px">${photoHTML}<div><div class="resume-name">${name}</div><div class="resume-title">${title}</div></div></div><div class="resume-contact">${[email,phone,city,linkedin].filter(Boolean).map(c=><div>${c}</div>).join('')}</div></div><div class="resume-body"><div class="res-main">${summary?<div class="res-section"><div class="res-section-title">Summary</div><div class="summary-text">${summary}</div></div>:''} ${expEntries.length?<div class="res-section"><div class="res-section-title">Work Experience</div>${expEntries.map(e=><div class="res-item"><div class="res-item-title">${e.title||'Job Title'}</div><div class="res-item-date">${e.date||''}</div><div class="res-item-sub">${e.company||'Company'}</div>${e.desc?<div class="res-item-desc">${e.desc}</div>:''}</div>).join('')}</div>:''} ${eduEntries.length?<div class="res-section"><div class="res-section-title">Education</div>${eduHTML}</div>:''}</div><div class="res-sidebar">${skillEntries.length?<div class="sidebar-section-title">Skills</div>${skillsT2}:''} ${langEntries.length?<div class="sidebar-section-title">Languages</div>${langHTML}:''} ${achieveEntries.length?<div class="sidebar-section-title">Achievements</div>${achieveHTML}:''}</div></div>;
 }else{
 preview.className='resume-wrapper t3';
-preview.innerHTML=<div class="resume-header"><div style="display:flex;align-items:center;justify-content:space-between">${photoHTML?'':''}  <div><div class="resume-name">${name}</div><div class="resume-title">${title}</div><div class="resume-contact">${contactHTML}</div></div>${photoHTML}</div></div><div class="resume-body">${summary?<div class="res-section"><div class="res-section-title">Summary</div><div class="res-content"><div class="summary-text">${summary}</div></div></div>:''} ${expEntries.length?<div class="res-section"><div class="res-section-title">Experience</div><div class="res-content">${expEntries.map(e=><div class="res-item"><div class="res-item-title">${e.title||'Job Title'}</div><div class="res-item-sub">${e.company||'Company'}</div><div class="res-item-date">${e.date||''}</div>${e.desc?<div class="res-item-desc">${e.desc}</div>:''}</div>).join('')}</div></div>:''} ${eduEntries.length?<div class="res-section"><div class="res-section-title">Education</div><div class="res-content">${eduHTML}</div></div>:''} ${skillEntries.length?<div class="res-section"><div class="res-section-title">Skills</div><div class="res-content"><div class="skills-wrap">${skillEntries.map(s=><span class="skill-tag">${s.name}</span>).join('')}</div></div></div>:''} ${langEntries.length?<div class="res-section"><div class="res-section-title">Languages</div><div class="res-content">${langHTML}</div></div>:''} ${achieveEntries.length?<div class="res-section"><div class="res-section-title">Achievements</div><div class="res-content">${achieveHTML}</div></div>:''}</div>;
+preview.innerHTML=<div class="resume-header"><div style="display:flex;align-items:center;justify-content:space-between"><div><div class="resume-name">${name}</div><div class="resume-title">${title}</div><div class="resume-contact">${contactHTML}</div></div>${photoHTML}</div></div><div class="resume-body">${summary?<div class="res-section"><div class="res-section-title">Summary</div><div class="res-content"><div class="summary-text">${summary}</div></div></div>:''} ${expEntries.length?<div class="res-section"><div class="res-section-title">Experience</div><div class="res-content">${expEntries.map(e=><div class="res-item"><div class="res-item-title">${e.title||'Job Title'}</div><div class="res-item-sub">${e.company||'Company'}</div><div class="res-item-date">${e.date||''}</div>${e.desc?<div class="res-item-desc">${e.desc}</div>:''}</div>).join('')}</div></div>:''} ${eduEntries.length?<div class="res-section"><div class="res-section-title">Education</div><div class="res-content">${eduHTML}</div></div>:''} ${skillEntries.length?<div class="res-section"><div class="res-section-title">Skills</div><div class="res-content"><div class="skills-wrap">${skillEntries.map(s=><span class="skill-tag">${s.name}</span>).join('')}</div></div></div>:''} ${langEntries.length?<div class="res-section"><div class="res-section-title">Languages</div><div class="res-content">${langHTML}</div></div>:''} ${achieveEntries.length?<div class="res-section"><div class="res-section-title">Achievements</div><div class="res-content">${achieveHTML}</div></div>:''}</div>;
 }}
-async function downloadPDF(){const el=document.getElementById('resumePreview');const btn=document.querySelector('.btn-download');btn.innerText='Generating...';btn.disabled=true;try{const canvas=await html2canvas(el,{scale:2,useCORS:true,backgroundColor:'#ffffff'});const{jsPDF}=window.jspdf;const pdf=new jsPDF({unit:'mm',format:'a4'});const imgData=canvas.toDataURL('image/jpeg',0.95);const pageW=210;const imgH=(canvas.height*pageW)/canvas.width;pdf.addImage(i
+
+async function downloadPDF(){
+const el=document.getElementById('resumePreview');
+const btn=document.querySelector('.btn-download');
+btn.innerText='Generating...';
+btn.disabled=true;
+try{
+const canvas=await html2canvas(el,{scale:2,useCORS:true,backgroundColor:'#ffffff'});
+const{jsPDF}=window.jspdf;
+const pdf=new jsPDF({unit:'mm',format:'a4'});
+const imgData=canvas.toDataURL('image/jpeg',0.95);
+const pageW=210;
+const imgH=(canvas.height*pageW)/canvas.width;
+let y=0;
+let remaining=imgH;
+const pageH=297;
+let first=true;
+while(remaining>0){
+if(!first)pdf.addPage();
+pdf.addImage(imgData,'JPEG',0,-y,pageW,imgH);
+y+=pageH;
+remaining-=pageH;
+first=false;
+}
+const name=g('name')||'resume';
+pdf.save(name.replace(/\s+/g,'-').toLowerCase()+'-cv.pdf');
+}catch(e){alert('Error. Please try again.');}
+btn.innerText='Download PDF';
+btn.disabled=false;
+}
+
+window.onload=function(){addEntry('exp');addEntry('edu');addSkill();addSkill();addLang();updatePreview();};
+</script>
+</body>
+</html>
