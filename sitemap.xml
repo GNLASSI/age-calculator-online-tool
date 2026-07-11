@@ -155,12 +155,10 @@
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
 </url>
-<url>
-<loc>https://getage247.xyz/blog-qr-code-guide.html</loc>
-<changefreq>monthly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
+<li style="padding:10px 0; border-bottom:1px solid #1e2633;">
+<a href="/blog-image-resizer-pakistan.html" style="color:var(--p); text-decoration:none; font-size:17px;">Image Resizer for WhatsApp, Facebook, NADRA Forms Pakistan 2026</a>
+</li>
+ <url>
 <loc>https://getage247.xyz/blog-image-resizer-pakistan.html</loc>
 <changefreq>monthly</changefreq>
 <priority>0.8</priority>
