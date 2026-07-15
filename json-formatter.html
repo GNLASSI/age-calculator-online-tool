@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free JSON Formatter & Validator Online | GetAge247</title>
+<meta name="description" content="Free online JSON formatter and validator. Format, beautify, minify and validate JSON instantly. No signup. Works on mobile and PC.">
+<link rel="canonical" href="https://getage247.xyz/json-formatter.html">
+<style>
+:root{--p:#2563eb;--d:#1e293b;--l:#f4f7f9;--g:#16a34a;--r:#dc2626}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.7;min-height:100vh}
+header{background:linear-gradient(135deg,#1e40af,#2563eb);color:white;padding:18px 20px;text-align:center}
+header h1{font-size:24px;margin:0}
+header p{font-size:13px;opacity:0.9;margin-top:4px}
+nav{margin-top:10px}
+nav a{color:white;margin:0 8px;text-decoration:none;font-size:13px;opacity:0.9}
+.container{max-width:1100px;margin:0 auto;padding:20px 16px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.btn{padding:9px 16px;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer}
+.btn-primary{background:var(--p);color:white}
+.btn-primary:hover{background:#1d4ed8}
+.btn-green{background:var(--g);color:white}
+.btn-green:hover{background:#15803d}
+.btn-orange{background:#f59e0b;color:#000}
+.btn-orange:hover{background:#d97706}
+.btn-red{background:var(--r);color:white}
+.btn-red:hover{background:#b91c1c}
+.btn-gray{background:#334155;color:#e2e8f0}
+.btn-gray:hover{background:#475569}
+.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:768px){.editor-grid{grid-template-columns:1fr}}
+.panel{background:#1e293b;border-radius:12px;overflow:hidden;border:1px solid #334155}
+.panel-header{background:#0f172a;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #334155}
+.panel-title{font-size:13px;font-weight:600;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px}
+.panel-actions{display:flex;gap:6px}
+.small-btn{padding:5px 10px;border:none;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;background:#334155;color:#e2e8f0}
+.small-btn:hover{background:#475569}
+textarea{width:100%;height:400px;background:#1e293b;color:#e2e8f0;border:none;padding:14px;font-family:'Courier New',monospace;font-size:13px;line-height:1.6;resize:vertical;outline:none}
+.output-box{width:100%;height:400px;background:#1e293b;color:#4ade80;border:none;padding:14px;font-family:'Courier New',monospace;font-size:13px;line-height:1.6;overflow-y:auto;white-space:pre-wrap;word-break:break-all}
+.status-bar{padding:10px 16px;font-size:12px;border-top:1px solid #334155;display:flex;align-items:center;gap:8px}
+.status-valid{color:#4ade80}
+.status-error{color:#f87171}
+.status-info{color:#94a3b8}
+.stats-bar{background:#1e293b;border-radius:10px;padding:12px 16px;margin-bottom:14px;display:flex;gap:20px;flex-wrap:wrap;border:1px solid #334155}
+.stat{font-size:12px;color:#94a3b8}
+.stat span{color:#60a5fa;font-weight:700}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:20px}
+.feat{background:#1e293b;border:1px solid #334155;border-radius:10px;padding:14px}
+.feat h3{color:#60a5fa;font-size:13px;margin-bottom:4px}
+.feat p{color:#94a3b8;font-size:12px;margin:0}
+footer{text-align:center;padding:20px;margin-top:20px;border-top:1px solid #334155;color:#64748b;font-size:14px}
+footer a{color:#64748b;margin:0 8px;text-decoration:none}
+</style>
+</head>
+<body>
+<header>
+<h1>{ } JSON Formatter & Validator</h1>
+<p>Format, validate, minify and beautify JSON instantly — Free & Private</p>
+<nav>
+<a href="/">Home</a>
+<a href="/about.html">About</a>
+<a href="/blog.html">Blog</a>
+<a href="/contact.html">Contact</a>
+</nav>
+</header>
+
+<div class="container">
+<div class="toolbar">
+<button class="btn btn-primary" onclick="formatJSON()">✨ Format / Beautify</button>
+<button class="btn btn-green" onclick="validateJSON()">✅ Validate</button>
+<button class="btn btn-orange" onclick="minifyJSON()">📦 Minify</button>
+<button class="btn btn-gray" onclick="copyOutput()">📋 Copy Output</button>
+<button class="btn btn-red" onclick="clearAll()">🗑️ Clear</button>
+<button class="btn btn-gray" onclick="loadSample()">📄 Load Sample</button>
+</div>
+
+<div class="stats-bar" id="statsBar">
+<div class="stat">Size: <span id="statSize">0 bytes</span></div>
+<div class="stat">Lines: <span id="statLines">0</span></div>
+<div class="stat">Keys: <span id="statKeys">0</span></div>
+<div class="stat">Status: <span id="statStatus">—</span></div>
+</div>
+
+<div class="editor-grid">
+<div class="panel">
+<div class="panel-header">
+<span class="panel-title">📥 Input JSON</span>
+<div class="panel-actions">
+<button class="small-btn" onclick="clearInput()">Clear</button>
+<button class="small-btn" onclick="pasteFromClipboard()">Paste</button>
+</div>
+</div>
+<textarea id="jsonInput" placeholder='Paste your JSON here...
+
+Example:
+{"name":"Ali","age":25,"city":"Lahore"}' oninput="autoUpdate()"></textarea>
+<div class="status-bar" id="inputStatus">
+<span class="status-info">Paste JSON and click Format or Validate</span>
+</div>
+</div>
+
+<div class="panel">
+<div class="panel-header">
+<span class="panel-title">📤 Output</span>
+<div class="panel-actions">
+<button class="small-btn" onclick="copyOutput()">Copy</button>
+<button class="small-btn" onclick="downloadOutput()">Download</button>
+</div>
+</div>
+<div class="output-box" id="jsonOutput">Your formatted JSON will appear here...</div>
+<div class="status-bar" id="outputStatus">
+<span class="status-info">Ready</span>
+</div>
+</div>
+</div>
+
+<div class="features">
+<div class="feat"><h3>✨ Beautify</h3><p>Format compressed JSON into readable indented structure with proper spacing.</p></div>
+<div class="feat"><h3>✅ Validate</h3><p>Check if your JSON is valid and see exact error location if invalid.</p></div>
+<div class="feat"><h3>📦 Minify</h3><p>Compress formatted JSON into single line to reduce file size.</p></div>
+<div class="feat"><h3>🔒 Private</h3><p>All processing happens in your browser. Your JSON never leaves your device.</p></div>
+<div class="feat"><h3>📋 Copy & Download</h3><p>Copy formatted output to clipboard or download as .json file instantly.</p></div>
+<div class="feat"><h3>📊 Statistics</h3><p>See file size, line count, and key count of your JSON instantly.</p></div>
+</div>
+</div>
+
+<footer>
+<a href="/about.html">About</a>
+<a href="/contact.html">Contact</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/disclaimer.html">Disclaimer</a>
+<a href="/blog.html">Blog</a>
+<p style="margin-top:10px">© 2026 GetAge247. All Rights Reserved.</p>
+</footer>
+
+<script>
+function getInput(){return document.getElementById('jsonInput').value.trim();}
+
+function setOutput(text,isError){
+const out=document.getElementById('jsonOutput');
+out.style.color=isError?'#f87171':'#4ade80';
+out.innerText=text;
+}
+
+function setInputStatus(msg,type){
+const el=document.getElementById('inputStatus');
+el.innerHTML='<span class="status-'+(type||'info')+'">'+msg+'</span>';
+}
+
+function setOutputStatus(msg,type){
+const el=document.getElementById('outputStatus');
+el.innerHTML='<span class="status-'+(type||'info')+'">'+msg+'</span>';
+}
+
+function countKeys(obj){
+let count=0;
+function traverse(o){
+if(typeof o==='object'&&o!==null){
+if(Array.isArray(o)){o.forEach(traverse);}
+else{Object.keys(o).forEach(k=>{count++;traverse(o[k]);});}
+}
+}
+traverse(obj);
+return count;
+}
+
+function updateStats(input,parsed){
+const size=new Blob([input]).size;
+const lines=input.split('\n').length;
+const keys=parsed?countKeys(parsed):0;
+document.getElementById('statSize').innerText=size<1024?size+' bytes':(size/1024).toFixed(1)+' KB';
+document.getElementById('statLines').innerText=lines;
+document.getElementById('statKeys').innerText=keys;
+}
+
+function formatJSON(){
+const input=getInput();
+if(!input){setInputStatus('Please paste some JSON first','error');return;}
+try{
+const parsed=JSON.parse(input);
+const formatted=JSON.stringify(parsed,null,2);
+setOutput(formatted,false);
+setInputStatus('✅ Valid JSON','valid');
+setOutputStatus('✅ Formatted successfully','valid');
+document.getElementById('statStatus').innerText='Valid';
+document.getElementById('statStatus').style.color='#4ade80';
+updateStats(formatted,parsed);
+}catch(e){
+setOutput('Error: '+e.message,true);
+setInputStatus('❌ Invalid JSON: '+e.message,'error');
+setOutputStatus('❌ Fix errors and try again','error');
+document.getElementById('statStatus').innerText='Invalid';
+document.getElementById('statStatus').style.color='#f87171';
+}
+}
+
+function validateJSON(){
+const input=getInput();
+if(!input){setInputStatus('Please paste some JSON first','error');return;}
+try{
+const parsed=JSON.parse(input);
+const keys=countKeys(parsed);
+setOutput('✅ Valid JSON!\n\nType: '+(Array.isArray(parsed)?'Array':'Object')+'\nKeys/Properties: '+keys+'\nSize: '+new Blob([input]).size+' bytes\n\nYour JSON is valid and ready to use.',false);
+setInputStatus('✅ Valid JSON','valid');
+setOutputStatus('✅ Validation passed','valid');
+document.getElementById('statStatus').innerText='Valid';
+document.getElementById('statStatus').style.color='#4ade80';
+updateStats(input,parsed);
+}catch(e){
+const msg=e.message;
+setOutput('❌ Invalid JSON\n\nError: '+msg+'\n\nCommon fixes:\n• Check for missing quotes around keys\n• Check for trailing commas\n• Check for unmatched brackets { } [ ]\n• Make sure strings use double quotes "not single quotes"',true);
+setInputStatus('❌ Invalid: '+msg,'error');
+setOutputStatus('❌ Validation failed','error');
+document.getElementById('statStatus').innerText='Invalid';
+document.getElementById('statStatus').style.color='#f87171';
+}
+}
+
+function minifyJSON(){
+const input=getInput();
+if(!input){setInputStatus('Please paste some JSON first','error');return;}
+try{
+const parsed=JSON.parse(input);
+const minified=JSON.stringify(parsed);
+setOutput(minified,false);
+setInputStatus('✅ Valid JSON','valid');
+setOutputStatus('✅ Minified — '+new Blob([minified]).size+' bytes','valid');
+updateStats(minified,parsed);
+}catch(e){
+setOutput('Error: '+e.message,true);
+setInputStatus('❌ Invalid JSON: '+e.message,'error');
+}
+}
+
+function copyOutput(){
+const text=document.getElementById('jsonOutput').innerText;
+if(text==='Your formatted JSON will appear here...'){alert('Nothing to copy yet. Format your JSON first.');return;}
+navigator.clipboard.writeText(text).then(()=>{
+const btn=event.target;
+const orig=btn.innerText;
+btn.innerText='Copied!';
+setTimeout(()=>btn.innerText=orig,2000);
+});
+}
+
+function downloadOutput(){
+const text=document.getElementById('jsonOutput').innerText;
+if(text==='Your formatted JSON will appear here...'){alert('Nothing to download yet.');return;}
+const blob=new Blob([text],{type:'application/json'});
+const url=URL.createObjectURL(blob);
+const a=document.createElement('a');
+a.href=url;
+a.download='formatted.json';
+a.click();
+URL.revokeObjectURL(url);
+}
+
+function clearAll(){
+document.getElementById('jsonInput').value='';
+document.getElementById('jsonOutput').innerText='Your formatted JSON will appear here...';
+document.getElementById('jsonOutput').style.color='#4ade80';
+setInputStatus('Ready','info');
+setOutputStatus('Ready','info');
+document.getElementById('statSize').innerText='0 bytes';
+document.getElementById('statLines').innerText='0';
+document.getElementById('statKeys').innerText='0';
+document.getElementById('statStatus').innerText='—';
+}
+
+function clearInput(){document.getElementById('jsonInput').value='';}
+
+async function pasteFromClipboard(){
+try{
+const text=await navigator.clipboard.readText();
+document.getElementById('jsonInput').value=text;
+autoUpdate();
+}catch(e){alert('Paste manually using Ctrl+V or Cmd+V');}
+}
+
+function loadSample(){
+const sample={
+"name":"Muhammad Ali Khan",
+"age":28,
+"city":"Lahore",
+"profession":"Software Engineer",
+"skills":["JavaScript","Python","React","Node.js"],
+"address":{"street":"Main Boulevard","area":"Gulberg","country":"Pakistan"},
+"contact":{"email":"ali@example.com","phone":"+92 300 1234567"},
+"active":true,
+"salary":null
+};
+document.getElementById('jsonInput').value=JSON.stringify(sample);
+formatJSON();
+}
+
+function autoUpdate(){
+const input=getInput();
+if(!input)return;
+const size=new Blob([input]).size;
+const lines=input.split('\n').length;
+document.getElementById('statSize').innerText=size<1024?size+' bytes':(size/1024).toFixed(1)+' KB';
+document.getElementById('statLines').innerText=lines;
+try{
+JSON.parse(input);
+setInputStatus('✅ Valid JSON','valid');
+document.getElementById('statStatus').innerText='Valid';
+document.getElementById('statStatus').style.color='#4ade80';
+}catch(e){
+setInputStatus('⚠️ Checking...','info');
+document.getElementById('statStatus').innerText='Checking';
+document.getElementById('statStatus').style.color='#94a3b8';
+}
+}
+</script>
+</body>
+</html>
