@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Text Case Converter Online | GetAge247</title>
+<meta name="description" content="Free online text case converter. Convert text to UPPERCASE, lowercase, Title Case, Sentence case, camelCase, snake_case and more instantly. No signup required.">
+<link rel="canonical" href="https://getage247.xyz/text-case-converter.html">
+<style>
+:root{--p:#2563eb;--d:#1e293b;--l:#f4f7f9;--g:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.7;min-height:100vh}
+header{background:linear-gradient(135deg,#1e40af,#2563eb);color:white;padding:18px 20px;text-align:center}
+header h1{font-size:24px;margin:0}
+header p{font-size:13px;opacity:0.9;margin-top:4px}
+nav{margin-top:10px}
+nav a{color:white;margin:0 8px;text-decoration:none;font-size:13px;opacity:0.9}
+.container{max-width:900px;margin:0 auto;padding:20px 16px}
+.main-box{background:#1e293b;border-radius:16px;padding:24px;border:1px solid #334155;margin-bottom:20px}
+.input-area{margin-bottom:16px}
+.input-label{font-size:13px;color:#94a3b8;margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+textarea{width:100%;height:160px;background:#0f172a;border:2px solid #334155;border-radius:10px;color:#e2e8f0;padding:14px;font-size:15px;font-family:inherit;resize:vertical;outline:none;line-height:1.6}
+textarea:focus{border-color:var(--p)}
+.stats{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.stat{font-size:12px;color:#94a3b8}
+.stat span{color:#60a5fa;font-weight:700}
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:20px}
+.case-btn{background:#0f172a;border:2px solid #334155;border-radius:10px;padding:12px 14px;cursor:pointer;text-align:left;transition:all 0.2s;color:#e2e8f0}
+.case-btn:hover{border-color:var(--p);background:#1e293b}
+.case-btn.active{border-color:var(--p);background:#1e3a5f}
+.case-btn .label{font-size:12px;color:#94a3b8;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px}
+.case-btn .example{font-size:14px;font-weight:600;color:#60a5fa}
+.output-box{background:#0f172a;border:2px solid #334155;border-radius:10px;padding:14px;min-height:100px;font-size:15px;color:#4ade80;line-height:1.6;white-space:pre-wrap;word-break:break-word;margin-bottom:12px}
+.action-row{display:flex;gap:10px;flex-wrap:wrap}
+.btn{padding:10px 18px;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer}
+.btn-primary{background:var(--p);color:white}
+.btn-green{background:var(--g);color:white}
+.btn-gray{background:#334155;color:#e2e8f0}
+.btn:hover{filter:brightness(1.1)}
+.extra-tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:20px}
+.extra-btn{background:#1e293b;border:1px solid #334155;border-radius:10px;padding:12px;cursor:pointer;text-align:center;color:#e2e8f0;font-size:13px;font-weight:600}
+.extra-btn:hover{border-color:var(--p);background:#1e3a5f;color:#60a5fa}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:20px}
+.feat{background:#1e293b;border:1px solid #334155;border-radius:10px;padding:14px}
+.feat h3{color:#60a5fa;font-size:13px;margin-bottom:4px}
+.feat p{color:#94a3b8;font-size:12px;margin:0}
+footer{text-align:center;padding:20px;margin-top:20px;border-top:1px solid #334155;color:#64748b;font-size:14px}
+footer a{color:#64748b;margin:0 8px;text-decoration:none}
+</style>
+</head>
+<body>
+<header>
+<h1>🔤 Text Case Converter</h1>
+<p>Convert text to any case instantly — UPPERCASE, lowercase, Title Case, camelCase & more</p>
+<nav>
+<a href="/">Home</a>
+<a href="/about.html">About</a>
+<a href="/blog.html">Blog</a>
+<a href="/contact.html">Contact</a>
+</nav>
+</header>
+<div class="container">
+<div class="main-box">
+<div class="input-area">
+<div class="input-label">📝 Enter Your Text</div>
+<textarea id="inputText" placeholder="Type or paste your text here..." oninput="updateStats();convertCase()"></textarea>
+</div>
+<div class="stats">
+<div class="stat">Words: <span id="wordCount">0</span></div>
+<div class="stat">Characters: <span id="charCount">0</span></div>
+<div class="stat">Sentences: <span id="sentCount">0</span></div>
+<div class="stat">Lines: <span id="lineCount">0</span></div>
+</div>
+
+<div class="input-label" style="margin-bottom:10px">🎨 Choose Conversion</div>
+<div class="cases-grid">
+<button class="case-btn active" onclick="setCase('upper',this)">
+<div class="label">Uppercase</div>
+<div class="example">HELLO WORLD</div>
+</button>
+<button class="case-btn" onclick="setCase('lower',this)">
+<div class="label">Lowercase</div>
+<div class="example">hello world</div>
+</button>
+<button class="case-btn" onclick="setCase('title',this)">
+<div class="label">Title Case</div>
+<div class="example">Hello World</div>
+</button>
+<button class="case-btn" onclick="setCase('sentence',this)">
+<div class="label">Sentence Case</div>
+<div class="example">Hello world here</div>
+</button>
+<button class="case-btn" onclick="setCase('camel',this)">
+<div class="label">camelCase</div>
+<div class="example">helloWorldHere</div>
+</button>
+<button class="case-btn" onclick="setCase('pascal',this)">
+<div class="label">PascalCase</div>
+<div class="example">HelloWorldHere</div>
+</button>
+<button class="case-btn" onclick="setCase('snake',this)">
+<div class="label">snake_case</div>
+<div class="example">hello_world_here</div>
+</button>
+<button class="case-btn" onclick="setCase('kebab',this)">
+<div class="label">kebab-case</div>
+<div class="example">hello-world-here</div>
+</button>
+<button class="case-btn" onclick="setCase('constant',this)">
+<div class="label">CONSTANT_CASE</div>
+<div class="example">HELLO_WORLD</div>
+</button>
+<button class="case-btn" onclick="setCase('dot',this)">
+<div class="label">dot.case</div>
+<div class="example">hello.world.here</div>
+</button>
+<button class="case-btn" onclick="setCase('alternate',this)">
+<div class="label">aLtErNaTe CaSe</div>
+<div class="example">hElLo WoRlD</div>
+</button>
+<button class="case-btn" onclick="setCase('inverse',this)">
+<div class="label">iNVERSE cASE</div>
+<div class="example">iNVERSE cASE</div>
+</button>
+</div>
+
+<div class="input-label" style="margin-bottom:10px">⚡ Extra Tools</div>
+<div class="extra-tools">
+<button class="extra-btn" onclick="removeExtraSpaces()">🧹 Remove Extra Spaces</button>
+<button class="extra-btn" onclick="removeLineBreaks()">↩️ Remove Line Breaks</button>
+<button class="extra-btn" onclick="reverseText()">🔄 Reverse Text</button>
+<button class="extra-btn" onclick="removeNumbers()">🔢 Remove Numbers</button>
+<button class="extra-btn" onclick="removePunctuation()">✂️ Remove Punctuation</button>
+<button class="extra-btn" onclick="sortLines()">📋 Sort Lines A-Z</button>
+<button class="extra-btn" onclick="removeDuplicates()">🗑️ Remove Duplicates</button>
+<button class="extra-btn" onclick="addLineNumbers()">🔢 Add Line Numbers</button>
+</div>
+
+<div class="input-label" style="margin-bottom:8px">📤 Output</div>
+<div class="output-box" id="outputBox">Your converted text will appear here...</div>
+<div class="action-row">
+<button class="btn btn-green" onclick="copyOutput()">📋 Copy Output</button>
+<button class="btn btn-primary" onclick="swapText()">🔄 Use Output as Input</button>
+<button class="btn btn-gray" onclick="clearAll()">🗑️ Clear All</button>
+<button class="btn btn-gray" onclick="downloadText()">⬇️ Download</button>
+</div>
+</div>
+
+<div class="features">
+<div class="feat"><h3>12 Case Types</h3><p>UPPER, lower, Title, Sentence, camel, Pascal, snake, kebab, CONSTANT, dot, aLtErNaTe, iNVERSE</p></div>
+<div class="feat"><h3>⚡ Extra Tools</h3><p>Remove spaces, line breaks, numbers, punctuation. Sort lines, remove duplicates, reverse text.</p></div>
+<div class="feat"><h3>📊 Live Stats</h3><p>Word count, character count, sentence count and line count update as you type.</p></div>
+<div class="feat"><h3>🔒 100% Private</h3><p>All conversion happens in your browser. Your text never leaves your device.</p></div>
+<div class="feat"><h3>📋 Copy & Download</h3><p>Copy output to clipboard or download as a .txt file instantly.</p></div>
+<div class="feat"><h3>📱 Mobile Ready</h3><p>Works perfectly on Android, iPhone, tablet, and desktop.</p></div>
+</div>
+</div>
+
+<footer>
+<a href="/about.html">About</a>
+<a href="/contact.html">Contact</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/disclaimer.html">Disclaimer</a>
+<a href="/blog.html">Blog</a>
+<p style="margin-top:10px">© 2026 GetAge247. All Rights Reserved.</p>
+</footer>
+
+<script>
+let currentCase='upper';
+
+function setCase(type,btn){
+currentCase=type;
+document.querySelectorAll('.case-btn').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+convertCase();
+}
+
+function convertCase(){
+const text=document.getElementById('inputText').value;
+if(!text){document.getElementById('outputBox').innerText='Your converted text will appear here...';return;}
+let result='';
+switch(currentCase){
+case 'upper': result=text.toUpperCase(); break;
+case 'lower': result=text.toLowerCase(); break;
+case 'title': result=text.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase()); break;
+case 'sentence': result=text.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g,c=>c.toUpperCase()); break;
+case 'camel': result=text.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g,(m,c)=>c.toUpperCase()); break;
+case 'pascal': result=text.toLowerCase().replace(/(^|[^a-zA-Z0-9]+)(.)/g,(m,s,c)=>c.toUpperCase()); break;
+case 'snake': result=text.trim().toLowerCase().replace(/[^a-zA-Z0-9]+/g,'').replace(/^|_$/g,''); break;
+case 'kebab': result=text.trim().toLowerCase().replace(/[^a-zA-Z0-9]+/g,'-').replace(/^-|-$/g,''); break;
+case 'constant': result=text.trim().toUpperCase().replace(/[^A-Z0-9]+/g,'').replace(/^|_$/g,''); break;
+case 'dot': result=text.trim().toLowerCase().replace(/[^a-zA-Z0-9]+/g,'.').replace(/^\.|\.$/g,''); break;
+case 'alternate': result=text.split('').map((c,i)=>i%2===0?c.toLowerCase():c.toUpperCase()).join(''); break;
+case 'inverse': result=text.split('').map(c=>c===c.toUpperCase()?c.toLowerCase():c.toUpperCase()).join(''); break;
+}
+document.getElementById('outputBox').innerText=result;
+}
+
+function updateStats(){
+const text=document.getElementById('inputText').value;
+const words=text.trim()?text.trim().split(/\s+/).length:0;
+const chars=text.length;
+const sents=text.split(/[.!?]+/).filter(s=>s.trim()).length;
+const lines=text.split('\n').length;
+document.getElementById('wordCount').innerText=words;
+document.getElementById('charCount').innerText=chars;
+document.getElementById('sentCount').innerText=sents;
+document.getElementById('lineCount').innerText=lines;
+}
+
+function removeExtraSpaces(){
+const el=document.getElementById('inputText');
+el.value=el.value.replace(/\s+/g,' ').trim();
+updateStats();convertCase();
+}
+
+function removeLineBreaks(){
+const el=document.getElementById('inputText');
+el.value=el.value.replace(/\n/g,' ').replace(/\s+/g,' ').trim();
+updateStats();convertCase();
+}
+
+function reverseText(){
+const el=document.getElementById('inputText');
+el.value=el.value.split('').reverse().join('');
+updateStats();convertCase();
+}
+
+function removeNumbers(){
+const el=document.getElementById('inputText');
+el.value=el.value.replace(/[0-9]/g,'');
+updateStats();convertCase();
+}
+
+function removePunctuation(){
+const el=document.getElementById('inputText');
+el.value=el.value.replace(/[^\w\s]/g,'');
+updateStats();convertCase();
+}
+
+function sortLines(){
+const el=document.getElementById('inputText');
+el.value=el.value.split('\n').filter(l=>l.trim()).sort().join('\n');
+updateStats();convertCase();
+}
+
+function removeDuplicates(){
+const el=document.getElementById('inputText');
+const lines=[...new Set(el.value.split('\n').map(l=>l.trim()).filter(l=>l))];
+el.value=lines.join('\n');
+updateStats();convertCase();
+}
+
+function addLineNumbers(){
+const el=document.getElementById('inputText');
+el.value=el.value.split('\n').map((l,i)=>(i+1)+'. '+l).join('\n');
+updateStats();convertCase();
+}
+
+function copyOutput(){
+const text=document.getElementById('outputBox').innerText;
+if(text==='Your converted text will appear here...'){alert('Enter some text first.');return;}
+navigator.clipboard.writeText(text).then(()=>{
+const btn=event.target;
+const orig=btn.innerText;
+btn.innerText='✅ Copied!';
+setTimeout(()=>btn.innerText=orig,2000);
+});
+}
+
+function swapText(){
+const output=document.getElementById('outputBox').innerText;
+if(output==='Your converted text will appear here...') return;
+document.getElementById('inputText').value=output;
+updateStats();convertCase();
+}
+
+function clearAll(){
+document.getElementById('inputText').value='';
+document.getElementById('outputBox').innerText='Your converted text will appear here...';
+document.getElementById('wordCount').innerText='0';
+document.getElementById('charCount').innerText='0';
+document.getElementById('sentCount').innerText='0';
+document.getElementById('lineCount').innerText='0';
+}
+
+function downloadText(){
+const text=document.getElementById('outputBox').innerText;
+if(text==='Your converted text will appear here...'){alert('Nothing to download.');return;}
+const blob=new Blob([text],{type:'text/plain'});
+const url=URL.createObjectURL(blob);
+const a=document.createElement('a');
+a.href=url;a.download='converted-text.txt';a.click();
+URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>
