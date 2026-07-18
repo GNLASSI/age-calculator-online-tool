@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Base64 Encoder & Decoder Online | GetAge247</title>
+<meta name="description" content="Free online Base64 encoder and decoder. Encode text to Base64 or decode Base64 to text instantly. Copy, download, character counter. No signup. Works on mobile.">
+<link rel="canonical" href="https://getage247.xyz/base64-encoder.html">
+<style>
+:root{
+--bg:#0f172a;--card:#1e293b;--border:#334155;--p:#3b82f6;--ps:#60a5fa;
+--t:#e2e8f0;--m:#94a3b8;--g:#16a34a;--r:#dc2626;--y:#f59e0b;
+--input:#0f172a;--output:#0f172a
+}
+.light-mode{
+--bg:#f4f7f9;--card:#ffffff;--border:#e2e8f0;
+--t:#1e293b;--m:#64748b;--input:#f8fafc;--output:#f8fafc
+}
+*{box-sizing:border-box;margin:0;padding:0;transition:background 0.3s,color 0.2s}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--t);line-height:1.7;min-height:100vh}
+header{background:linear-gradient(135deg,#1e40af,#2563eb);color:white;padding:18px 20px;text-align:center}
+header h1{font-size:24px;margin:0}
+header p{font-size:13px;opacity:0.9;margin-top:4px}
+nav{margin-top:10px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+nav a{color:white;margin:0 8px;text-decoration:none;font-size:13px;opacity:0.9}
+.container{max-width:950px;margin:0 auto;padding:20px 16px}
+
+/* Top Controls */
+.top-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px;justify-content:space-between}
+.mode-toggle{display:flex;background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.mode-btn{padding:8px 18px;border:none;background:transparent;color:var(--m);font-size:13px;font-weight:600;cursor:pointer}
+.mode-btn.active{background:var(--p);color:white}
+.dark-toggle{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 14px;cursor:pointer;color:var(--t);font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px}
+.dark-toggle:hover{border-color:var(--p)}
+
+/* Editor Layout */
+.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:700px){.editor-grid{grid-template-columns:1fr}}
+
+/* Panel */
+.panel{background:var(--card);border-radius:14px;border:1px solid var(--border);overflow:hidden}
+.panel-header{background:var(--bg);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border)}
+.panel-title{font-size:13px;font-weight:700;color:var(--m);text-transform:uppercase;letter-spacing:0.5px}
+.panel-actions{display:flex;gap:6px}
+.small-btn{padding:5px 12px;border:1px solid var(--border);border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;background:transparent;color:var(--t);display:flex;align-items:center;gap:4px}
+.small-btn:hover{border-color:var(--p);color:var(--ps)}
+.small-btn.green{border-color:var(--g);color:var(--g)}
+.small-btn.red{border-color:var(--r);color:var(--r)}
+
+textarea{
+width:100%;height:220px;background:var(--input);color:var(--t);
+border:none;padding:14px;font-size:14px;font-family:'Courier New',monospace;
+resize:vertical;outline:none;line-height:1.6
+}
+.panel-footer{padding:8px 14px;background:var(--bg);border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px}
+.char-info{font-size:12px;color:var(--m)}
+.char-info span{color:var(--ps);font-weight:600}
+
+/* Center Arrow */
+.arrow-col{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:10px 0}
+@media(max-width:700px){.arrow-col{flex-direction:row;padding:0}}
+.arrow-btn{background:var(--p);color:white;border:none;border-radius:10px;padding:12px 14px;cursor:pointer;font-size:18px;line-height:1}
+.arrow-btn:hover{filter:brightness(1.15)}
+
+/* Action Buttons */
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.btn{padding:11px 20px;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px}
+.btn-blue{background:var(--p);color:white}
+.btn-green{background:var(--g);color:white}
+.btn-orange{background:var(--y);color:#000}
+.btn-red{background:var(--r);color:white}
+.btn-gray{background:var(--border);color:var(--t)}
+.btn:hover{filter:brightness(1.1)}
+
+/* Status Bar */
+.status-bar{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 16px;margin-top:14px;display:flex;gap:20px;flex-wrap:wrap}
+.status-item{font-size:12px;color:var(--m)}
+.status-item span{color:var(--ps);font-weight:700}
+.status-valid{color:#4ade80 !important}
+.status-error{color:#f87171 !important}
+
+/* Use Cases */
+.use-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:20px}
+.use-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px}
+.use-card h3{color:var(--ps);font-size:13px;margin-bottom:5px}
+.use-card p{font-size:12px;color:var(--m);margin:0}
+
+/* Notification */
+.notif{position:fixed;top:20px;right:20px;background:#1e3a5f;border:1px solid var(--p);color:var(--ps);padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600;z-index:999;display:none;animation:slideIn 0.3s ease}
+@keyframes slideIn{from{transform:translateX(100px);opacity:0}to{transform:translateX(0);opacity:1}}
+
+footer{text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border);color:var(--m);font-size:14px}
+footer a{color:var(--m);margin:0 8px;text-decoration:none}
+footer a:hover{color:var(--ps)}
+</style>
+</head>
+<body>
+<header>
+<h1>🔐 Base64 Encoder & Decoder</h1>
+<p>Encode text to Base64 or decode Base64 to text — Free, Fast & Private</p>
+<nav>
+<a href="/">Home</a>
+<a href="/about.html">About</a>
+<a href="/blog.html">Blog</a>
+<a href="/contact.html">Contact</a>
+</nav>
+</header>
+
+<div class="notif" id="notif">✅ Copied to clipboard!</div>
+
+<div class="container">
+
+<div class="top-controls">
+<div class="mode-toggle">
+<button class="mode-btn active" id="encodeBtn" onclick="setMode('encode')">🔒 Encode</button>
+<button class="mode-btn" id="decodeBtn" onclick="setMode('decode')">🔓 Decode</button>
+</div>
+<button class="dark-toggle" onclick="toggleTheme()" id="themeBtn">🌙 Dark Mode</button>
+</div>
+
+<div class="editor-grid">
+<div class="panel">
+<div class="panel-header">
+<span class="panel-title" id="inputLabel">📝 Plain Text Input</span>
+<div class="panel-actions">
+<button class="small-btn" onclick="pasteClipboard()">📋 Paste</button>
+<button class="small-btn red" onclick="clearInput()">✕ Clear</button>
+</div>
+</div>
+<textarea id="inputText" placeholder="Type or paste your text here..." oninput="updateAll()"></textarea>
+<div class="panel-footer">
+<div class="char-info">Characters: <span id="inputChars">0</span> | Words: <span id="inputWords">0</span> | Lines: <span id="inputLines">0</span></div>
+</div>
+</div>
+
+<div class="panel">
+<div class="panel-header">
+<span class="panel-title" id="outputLabel">🔐 Base64 Output</span>
+<div class="panel-actions">
+<button class="small-btn green" onclick="copyOutput()">📋 Copy</button>
+<button class="small-btn" onclick="downloadOutput()">⬇️ Download</button>
+<button class="small-btn red" onclick="clearOutput()">✕ Clear</button>
+</div>
+</div>
+<textarea id="outputText" placeholder="Output will appear here..." readonly></textarea>
+<div class="panel-footer">
+<div class="char-info">Characters: <span id="outputChars">0</span> | Size: <span id="outputSize">0 bytes</span></div>
+<div class="char-info" id="statusMsg">Ready</div>
+</div>
+</div>
+</div>
+
+<div class="actions">
+<button class="btn btn-blue" onclick="processText()">⚡ Convert Now</button>
+<button class="btn btn-green" onclick="copyOutput()">📋 Copy Output</button>
+<button class="btn btn-orange" onclick="swapTexts()">🔄 Swap Input/Output</button>
+<button class="btn btn-gray" onclick="downloadOutput()">⬇️ Download .txt</button>
+<button class="btn btn-red" onclick="clearAll()">🗑️ Clear All</button>
+<button class="btn btn-gray" onclick="loadSample()">📄 Load Sample</button>
+</div>
+
+<div class="status-bar">
+<div class="status-item">Mode: <span id="statMode">Encode</span></div>
+<div class="status-item">Input Size: <span id="statInputSize">0 bytes</span></div>
+<div class="status-item">Output Size: <span id="statOutputSize">0 bytes</span></div>
+<div class="status-item">Size Change: <span id="statChange">—</span></div>
+<div class="status-item">Status: <span id="statStatus">Ready</span></div>
+</div>
+
+<div class="use-grid">
+<div class="use-card"><h3>🌐 Web Development</h3><p>Encode images, fonts, and files to embed directly in HTML/CSS without external requests.</p></div>
+<div class="use-card"><h3>📧 Email Attachments</h3><p>MIME standard uses Base64 to encode email attachments for safe transmission.</p></div>
+<div class="use-card"><h3>🔑 API Authentication</h3><p>Basic Auth headers encode credentials as Base64. JWT tokens use Base64URL encoding.</p></div>
+<div class="use-card"><h3>💾 Data Storage</h3><p>Store binary data in text-based formats like JSON, XML, and databases safely.</p></div>
+<div class="use-card"><h3>🔒 Simple Obfuscation</h3><p>Hide readable text from casual viewing — not encryption, but useful for basic obfuscation.</p></div>
+<div class="use-card"><h3>{ } JSON & APIs</h3><p>Encode special characters in API payloads to prevent parsing errors. Works with our <a href="/json-formatter.html" style="color:var(--ps)">JSON Formatter</a>.</p></div>
+</div>
+</div>
+
+<footer>
+<a href="/about.html">About</a>
+<a href="/contact.html">Contact</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/disclaimer.html">Disclaimer</a>
+<a href="/blog.html">Blog</a>
+<p style="margin-top:10px">© 2026 GetAge247. All Rights Reserved.</p>
+</footer>
+
+<script>
+let currentMode = 'encode';
+let isDark = true;
+
+function setMode(mode) {
+  currentMode = mode;
+  const encBtn = document.getElementById('encodeBtn');
+  const decBtn = document.getElementById('decodeBtn');
+  if(mode === 'encode') {
+    encBtn.classList.add('active');
+    decBtn.classList.remove('active');
+    document.getElementById('inputLabel').innerText = '📝 Plain Text Input';
+    document.getElementById('outputLabel').innerText = '🔐 Base64 Output';
+    document.getElementById('inputText').placeholder = 'Type or paste your plain text here...';
+    document.getElementById('outputText').placeholder = 'Base64 encoded output will appear here...';
+    document.getElementById('statMode').innerText = 'Encode';
+  } else {
+    decBtn.classList.add('active');
+    encBtn.classList.remove('active');
+    document.getElementById('inputLabel').innerText = '🔐 Base64 Input';
+    document.getElementById('outputLabel').innerText = '📝 Decoded Text Output';
+    document.getElementById('inputText').placeholder = 'Paste your Base64 encoded string here...';
+    document.getElementById('outputText').placeholder = 'Decoded plain text will appear here...';
+    document.getElementById('statMode').innerText = 'Decode';
+  }
+  processText();
+}
+
+function processText() {
+  const input = document.getElementById('inputText').value;
+  const outputEl = document.getElementById('outputText');
+  const statusEl = document.getElementById('statStatus');
+  const statusMsg = document.getElementById('statusMsg');
+
+  if(!input.trim()) {
+    outputEl.value = '';
+    updateStats('', '');
+    statusEl.innerText = 'Ready';
+    statusEl.className = '';
+    statusMsg.innerText = 'Ready';
+    return;
+  }
+
+  try {
+    let result = '';
+    if(currentMode === 'encode') {
+      result = btoa(unescape(encodeURIComponent(input)));
+      statusEl.innerText = '✅ Encoded';
+      statusEl.className = 'status-valid';
+      statusMsg.innerText = '✅ Encoded successfully';
+    } else {
+      result = decodeURIComponent(escape(atob(input.trim())));
+      statusEl.innerText = '✅ Decoded';
+      statusEl.className = 'status-valid';
+      statusMsg.innerText = '✅ Decoded successfully';
+    }
+    outputEl.value = result;
+    updateStats(input, result);
+  } catch(e) {
+    outputEl.value = '';
+    statusEl.innerText = '❌ Error';
+    statusEl.className = 'status-error';
+    statusMsg.innerText = currentMode === 'decode' ? '❌ Invalid Base64 string' : '❌ Encoding error';
+    updateStats(input, '');
+  }
+}
+
+function updateAll() {
+  processText();
+  const input = document.getElementById('inputText').value;
+  document.getElementById('inputChars').innerText = input.length;
+  document.getElementById('inputWords').innerText = input.trim() ? input.trim().split(/\s+/).length : 0;
+  document.getElementById('inputLines').innerText = input.split('\n').length;
+}
+
+function updateStats(input, output) {
+  const inSize = new Blob([input]).size;
+  const outSize = new Blob([output]).size;
+  document.getElementById('inputChars').innerText = input.length;
+  document.getElementById('inputWords').innerText = input.trim() ? input.trim().split(/\s+/).length : 0;
+  document.getElementById('inputLines').innerText = input ? input.split('\n').length : 0;
+  document.getElementById('outputChars').innerText = output.length;
+  document.getElementById('outputSize').innerText = outSize < 1024 ? outSize + ' bytes' : (outSize/1024).toFixed(1) + ' KB';
+  document.getElementById('statInputSize').innerText = inSize < 1024 ? inSize + ' bytes' : (inSize/1024).toFixed(1) + ' KB';
+  document.getElementById('statOutputSize').innerText = outSize < 1024 ? outSize + ' bytes' : (outSize/1024).toFixed(1) + ' KB';
+  if(inSize > 0 && outSize > 0) {
+    const change = (((outSize - inSize) / inSize) * 100).toFixed(1);
+    document.getElementById('statChange').innerText = (change > 0 ? '+' : '') + change + '%';
+  } else {
+    document.getElementById('statChange').innerText = '—';
+  }
+}
+
+function copyOutput() {
+  const text = document.getElementById('outputText').value;
+  if(!text) { showNotif('⚠️ Nothing to copy!'); return; }
+  navigator.clipboard.writeText(text).then(() => showNotif('✅ Copied to clipboard!'));
+}
+
+function downloadOutput() {
+  const text = document.getElementById('outputText').value;
+  if(!text) { showNotif('⚠️ Nothing to download!'); return; }
+  const blob = new Blob([text], {type: 'text/plain'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = currentMode === 'encode' ? 'encoded-base64.txt' : 'decoded-text.txt';
+  a.click();
+  URL.revokeObjectURL(url);
+  showNotif('✅ Downloaded!');
+}
+
+function swapTexts() {
+  const input = document.getElementById('inputText').value;
+  const output = document.getElementById('outputText').value;
+  if(!output) return;
+  document.getElementById('inputText').value = output;
+  setMode(currentMode === 'encode' ? 'decode' : 'encode');
+}
+
+function clearInput() {
+  document.getElementById('inputText').value = '';
+  updateAll();
+}
+
+function clearOutput() {
+  document.getElementById('outputText').value = '';
+  updateStats(document.getElementById('inputText').value, '');
+}
+
+function clearAll() {
+  document.getElementById('inputText').value = '';
+  document.getElementById('outputText').value = '';
+  updateStats('', '');
+  document.getElementById('statStatus').innerText = 'Ready';
+  document.getElementById('statStatus').className = '';
+  document.getElementById('statusMsg').innerText = 'Ready';
+}
+
+async function pasteClipboard() {
+  try {
+    const text = await navigator.clipboard.readText();
+    document.getElementById('inputText').value = text;
+    updateAll();
+    showNotif('✅ Pasted from clipboard!');
+  } catch(e) {
+    showNotif('⚠️ Paste manually with Ctrl+V');
+  }
+}
+
+function loadSample() {
+  if(currentMode === 'encode') {
+    document.getElementById('inputText').value = 'Hello! This is a sample text for Base64 encoding.\nGetAge247.xyz — Free Online Tools.\nتجربہ متن — Urdu text also works!';
+  } else {
+    document.getElementById('inputText').value = 'SGVsbG8hIFRoaXMgaXMgYSBzYW1wbGUgdGV4dCBmb3IgQmFzZTY0IGVuY29kaW5nLg==';
+  }
+  updateAll();
+  showNotif('✅ Sample loaded!');
+}
+
+function showNotif(msg) {
+  const notif = document.getElementById('notif');
+  notif.innerText = msg;
+  notif.style.display = 'block';
+  setTimeout(() => notif.style.display = 'none', 2500);
+}
+
+function toggleTheme() {
+  isDark = !isDark;
+  document.body.classList.toggle('light-mode', !isDark);
+  document.getElementById('themeBtn').innerText = isDark ? '🌙 Dark Mode' : '☀️ Light Mode';
+}
+</script>
+</body>
+</html>
