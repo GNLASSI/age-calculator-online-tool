@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free UUID Generator Online - Generate UUID v4 Instantly | GetAge247</title>
+<meta name="description" content="Free online UUID generator. Generate 1, 10, 25, 50 or 100 UUID v4 instantly. Copy, download as TXT. No signup. Works on mobile and PC.">
+<link rel="canonical" href="https://getage247.xyz/uuid-generator.html">
+<style>
+:root{
+--bg:#0f172a;--card:#1e293b;--border:#334155;
+--p:#3b82f6;--ps:#60a5fa;--t:#e2e8f0;--m:#94a3b8;
+--g:#16a34a;--r:#dc2626;--y:#f59e0b;--input:#0f172a
+}
+.light{
+--bg:#f1f5f9;--card:#ffffff;--border:#e2e8f0;
+--t:#1e293b;--m:#64748b;--input:#f8fafc
+}
+*{box-sizing:border-box;margin:0;padding:0;transition:background 0.2s,color 0.2s}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--t);min-height:100vh;line-height:1.7}
+header{background:linear-gradient(135deg,#1e40af,#2563eb);color:white;padding:18px 20px;text-align:center}
+header h1{font-size:24px;margin:0}
+header p{font-size:13px;opacity:0.9;margin-top:4px}
+nav{margin-top:10px}
+nav a{color:white;margin:0 8px;text-decoration:none;font-size:13px;opacity:0.9}
+nav a:hover{opacity:1}
+.container{max-width:800px;margin:0 auto;padding:20px 16px}
+
+/* Top Bar */
+.top-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.theme-btn{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:8px 14px;cursor:pointer;color:var(--t);font-size:13px;font-weight:600}
+.theme-btn:hover{border-color:var(--p)}
+
+/* Version Tabs */
+.ver-tabs{display:flex;gap:8px;flex-wrap:wrap}
+.ver-tab{padding:6px 14px;border-radius:16px;border:2px solid var(--border);background:transparent;color:var(--m);font-size:12px;font-weight:700;cursor:pointer;letter-spacing:0.5px}
+.ver-tab.active{background:var(--p);color:white;border-color:var(--p)}
+.ver-tab:hover{border-color:var(--p);color:var(--ps)}
+
+/* Main Card */
+.main-card{background:var(--card);border-radius:16px;border:1px solid var(--border);padding:24px;margin-bottom:16px}
+
+/* Count Selector */
+.count-section{margin-bottom:18px}
+.count-label{font-size:12px;color:var(--m);font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px}
+.count-grid{display:flex;gap:8px;flex-wrap:wrap}
+.count-btn{padding:8px 18px;border-radius:10px;border:2px solid var(--border);background:transparent;color:var(--m);font-size:14px;font-weight:700;cursor:pointer}
+.count-btn.active{background:var(--p);color:white;border-color:var(--p)}
+.count-btn:hover{border-color:var(--p);color:var(--ps)}
+.custom-count{padding:8px 12px;border:2px solid var(--border);border-radius:10px;background:var(--input);color:var(--t);font-size:14px;font-weight:600;width:80px;outline:none;text-align:center}
+.custom-count:focus{border-color:var(--p)}
+
+/* Options */
+.options-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.option-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--m);cursor:pointer}
+.option-item input[type=checkbox]{width:16px;height:16px;cursor:pointer;accent-color:var(--p)}
+
+/* Generate Button */
+.gen-btn{width:100%;padding:14px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;letter-spacing:0.3px;margin-bottom:16px}
+.gen-btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.gen-btn:active{transform:translateY(0)}
+
+/* Stats Bar */
+.stats-bar{background:var(--input);border:1px solid var(--border);border-radius:10px;padding:10px 16px;display:flex;gap:20px;flex-wrap:wrap;margin-bottom:12px}
+.stat-item{font-size:12px;color:var(--m)}
+.stat-item span{color:var(--ps);font-weight:700}
+
+/* Output Area */
+.output-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:8px}
+.output-title{font-size:13px;color:var(--m);font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.output-actions{display:flex;gap:6px}
+.action-btn{padding:6px 14px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--t);font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:4px}
+.action-btn:hover{border-color:var(--p);color:var(--ps)}
+.action-btn.green{border-color:var(--g);color:var(--g)}
+.action-btn.green:hover{background:var(--g);color:white}
+.action-btn.red{border-color:var(--r);color:var(--r)}
+.action-btn.red:hover{background:var(--r);color:white}
+.action-btn.blue{border-color:var(--p);color:var(--ps)}
+.action-btn.blue:hover{background:var(--p);color:white}
+textarea.output{
+width:100%;min-height:220px;max-height:450px;
+background:var(--input);border:2px solid var(--border);
+border-radius:12px;padding:14px;color:#4ade80;
+font-family:'Courier New',Courier,monospace;
+font-size:13px;line-height:2;resize:vertical;outline:none;
+}
+textarea.output:focus{border-color:var(--p)}
+
+/* Single UUID Display */
+.single-uuid{
+background:var(--input);border:2px solid var(--p);
+border-radius:12px;padding:18px 16px;
+font-family:'Courier New',monospace;font-size:16px;
+color:#4ade80;letter-spacing:1px;word-break:break-all;
+text-align:center;margin-bottom:12px;display:none;
+font-weight:700;
+}
+
+/* Format Info */
+.format-info{background:var(--input);border-radius:12px;padding:16px;border:1px solid var(--border);margin-top:16px}
+.format-title{font-size:13px;font-weight:700;color:var(--ps);margin-bottom:8px}
+.uuid-parts{display:flex;flex-wrap:wrap;gap:4px;font-family:monospace;font-size:13px;align-items:center;justify-content:center}
+.p1{color:#f87171}.p2{color:#fb923c}.p3{color:#facc15}.p4{color:#4ade80}.p5{color:#60a5fa}
+.dash{color:var(--m)}
+.parts-legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;justify-content:center}
+.legend-item{font-size:11px;display:flex;align-items:center;gap:4px}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+
+/* Use Cases */
+.use-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:16px}
+.use-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px}
+.use-card h3{color:var(--ps);font-size:13px;margin-bottom:4px}
+.use-card p{color:var(--m);font-size:12px;margin:0}
+
+/* Toast */
+.toast{position:fixed;top:20px;right:20px;background:#1e3a5f;border:1px solid var(--p);color:var(--ps);padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600;z-index:999;display:none;animation:fadeIn 0.3s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+
+footer{text-align:center;padding:20px;margin-top:20px;border-top:1px solid var(--border);color:var(--m);font-size:14px}
+footer a{color:var(--m);margin:0 8px;text-decoration:none}
+footer a:hover{color:var(--ps)}
+</style>
+</head>
+<body>
+<header>
+<h1>🔑 UUID Generator</h1>
+<p>Generate Universally Unique Identifiers instantly — Free, Secure & Private</p>
+<nav>
+<a href="/">Home</a>
+<a href="/about.html">About</a>
+<a href="/blog.html">Blog</a>
+<a href="/contact.html">Contact</a>
+</nav>
+</header>
+
+<div class="toast" id="toast">✅ Copied!</div>
+
+<div class="container">
+<div class="top-bar">
+<div class="ver-tabs">
+<button class="ver-tab active" onclick="setVer('v4',this)">UUID v4</button>
+<button class="ver-tab" onclick="setVer('v1',this)">UUID v1 Style</button>
+<button class="ver-tab" onclick="setVer('short',this)">Short ID</button>
+<button class="ver-tab" onclick="setVer('nano',this)">Nano ID</button>
+</div>
+<button class="theme-btn" id="themeBtn" onclick="toggleTheme()">☀️ Light Mode</button>
+</div>
+
+<div class="main-card">
+<div class="count-section">
+<div class="count-label">How many UUIDs to generate?</div>
+<div class="count-grid">
+<button class="count-btn active" onclick="setCount(1,this)">1</button>
+<button class="count-btn" onclick="setCount(10,this)">10</button>
+<button class="count-btn" onclick="setCount(25,this)">25</button>
+<button class="count-btn" onclick="setCount(50,this)">50</button>
+<button class="count-btn" onclick="setCount(100,this)">100</button>
+<input type="number" class="custom-count" id="customCount" placeholder="Custom" min="1" max="1000" oninput="setCustomCount(this.value)">
+</div>
+</div>
+
+<div class="options-row">
+<label class="option-item">
+<input type="checkbox" id="optUppercase"> UPPERCASE
+</label>
+<label class="option-item">
+<input type="checkbox" id="optNoBraces" checked> No Braces
+</label>
+<label class="option-item">
+<input type="checkbox" id="optNumbered"> Add Line Numbers
+</label>
+<label class="option-item">
+<input type="checkbox" id="optNoDashes"> No Dashes
+</label>
+</div>
+
+<button class="gen-btn" onclick="generateUUIDs()">⚡ Generate UUIDs</button>
+
+<div class="stats-bar" id="statsBar">
+<div class="stat-item">Generated: <span id="statCount">0</span></div>
+<div class="stat-item">Version: <span id="statVer">v4</span></div>
+<div class="stat-item">Format: <span id="statFormat">Standard</span></div>
+<div class="stat-item">Size: <span id="statSize">0 bytes</span></div>
+</div>
+
+<div class="single-uuid" id="singleDisplay"></div>
+
+<div class="output-header">
+<span class="output-title">Output</span>
+<div class="output-actions">
+<button class="action-btn green" onclick="copyAll()">📋 Copy All</button>
+<button class="action-btn blue" onclick="copyFirst()">📋 Copy First</button>
+<button class="action-btn blue" onclick="downloadTxt()">⬇️ Download TXT</button>
+<button class="action-btn red" onclick="clearOutput()">🗑️ Clear</button>
+</div>
+</div>
+<textarea class="output" id="outputArea" readonly placeholder="Click Generate to create UUIDs..."></textarea>
+</div>
+
+<div class="format-info">
+<div class="format-title">UUID v4 Structure</div>
+<div class="uuid-parts">
+<span class="p1">xxxxxxxx</span><span class="dash">-</span>
+<span class="p2">xxxx</span><span class="dash">-</span>
+<span class="p3">4xxx</span><span class="dash">-</span>
+<span class="p4">yxxx</span><span class="dash">-</span>
+<span class="p5">xxxxxxxxxxxx</span>
+</div>
+<div class="parts-legend">
+<div class="legend-item"><span class="dot" style="background:#f87171"></span> 8 random chars</div>
+<div class="legend-item"><span class="dot" style="background:#fb923c"></span> 4 random chars</div>
+<div class="legend-item"><span class="dot" style="background:#facc15"></span> Version (4xxx)</div>
+<div class="legend-item"><span class="dot" style="background:#4ade80"></span> Variant (yxxx)</div>
+<div class="legend-item"><span class="dot" style="background:#60a5fa"></span> 12 random chars</div>
+</div>
+</div>
+
+<div class="use-grid">
+<div class="use-card"><h3>🗄️ Databases</h3><p>Use as primary keys in MySQL, PostgreSQL, MongoDB to avoid ID conflicts across distributed systems.</p></div>
+<div class="use-card"><h3>🔑 API Keys</h3><p>Generate unique API tokens and session IDs for web applications and REST APIs.</p></div>
+<div class="use-card"><h3>📁 File Names</h3><p>Create unique file names to prevent overwrites when uploading user files to servers.</p></div>
+<div class="use-card"><h3>🔐 Tokens</h3><p>Generate password reset tokens, email verification links, and one-time codes.</p></div>
+<div class="use-card"><h3>{ } JSON</h3><p>Use with our <a href="/json-formatter.html" style="color:var(--ps)">JSON Formatter</a> to create unique IDs in JSON data structures.</p></div>
+<div class="use-card"><h3>🔒 Security</h3><p>Combine with our <a href="/password-generator.html" style="color:var(--ps)">Password Generator</a> for maximum security credentials.</p></div>
+</div>
+</div>
+
+<footer>
+<a href="/about.html">About</a>
+<a href="/contact.html">Contact</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/disclaimer.html">Disclaimer</a>
+<a href="/terms.html">Terms</a>
+<a href="/blog.html">Blog</a>
+<p style="margin-top:10px">© 2026 GetAge247. All Rights Reserved.</p>
+</footer>
+
+<script>
+var currentVer = 'v4';
+var currentCount = 1;
+var isDark = true;
+
+function setVer(ver, btn) {
+  currentVer = ver;
+  document.querySelectorAll('.ver-tab').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById('statVer').innerText = ver;
+}
+
+function setCount(n, btn) {
+  currentCount = n;
+  document.querySelectorAll('.count-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById('customCount').value = '';
+}
+
+function setCustomCount(val) {
+  var n = parseInt(val);
+  if(n > 0 && n <= 1000) {
+    currentCount = n;
+    document.querySelectorAll('.count-btn').forEach(function(b){ b.classList.remove('active'); });
+  }
+}
+
+function genV4() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = (Math.random() * 16) | 0;
+    var v = c === 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
+function genV1Style() {
+  var now = Date.now().toString(16).padStart(12, '0');
+  var rand = 'xxxx-xxxx-xxxx'.replace(/[x]/g, function() {
+    return ((Math.random() * 16) | 0).toString(16);
+  });
+  var mac = 'xxxxxxxxxxxx'.replace(/[x]/g, function() {
+    return ((Math.random() * 16) | 0).toString(16);
+  });
+  return now.slice(0,8) + '-' + now.slice(8,12) + '-1' + rand.replace(/-/g,'').slice(0,3) + '-' + (((Math.random()*4)|0)+8).toString(16) + rand.replace(/-/g,'').slice(3,6) + '-' + mac;
+}
+
+function genShortId() {
+  var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var result = '';
+  for(var i = 0; i < 12; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}
+
+function genNanoId() {
+  var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
+  var result = '';
+  for(var i = 0; i < 21; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}
+
+function applyOptions(uuid) {
+  var noDashes = document.getElementById('optNoDashes').checked;
+  var upper = document.getElementById('optUppercase').checked;
+  var noBraces = document.getElementById('optNoBraces').checked;
+  if(noDashes && uuid.includes('-')) uuid = uuid.replace(/-/g, '');
+  if(upper) uuid = uuid.toUpperCase();
+  if(!noBraces) uuid = '{' + uuid + '}';
+  return uuid;
+}
+
+function generateOne() {
+  var raw;
+  if(currentVer === 'v4') raw = genV4();
+  else if(currentVer === 'v1') raw = genV1Style();
+  else if(currentVer === 'short') raw = genShortId();
+  else raw = genNanoId();
+  return applyOptions(raw);
+}
+
+function generateUUIDs() {
+  var results = [];
+  var numbered = document.getElementById('optNumbered').checked;
+  for(var i = 0; i < currentCount; i++) {
+    var uuid = generateOne();
+    if(numbered) {
+      results.push((i + 1) + '. ' + uuid);
+    } else {
+      results.push(uuid);
+    }
+  }
+  var output = results.join('\n');
+  document.getElementById('outputArea').value = output;
+
+  var single = document.getElementById('singleDisplay');
+  if(currentCount === 1) {
+    single.style.display = 'block';
+    single.innerText = results[0];
+  } else {
+    single.style.display = 'none';
+  }
+
+  var size = new Blob([output]).size;
+  document.getElementById('statCount').innerText = currentCount;
+  document.getElementById('statSize').innerText = size < 1024 ? size + ' bytes' : (size/1024).toFixed(1) + ' KB';
+  var fmt = '';
+  if(document.getElementById('optNoDashes').checked) fmt += 'No Dashes ';
+  if(document.getElementById('optUppercase').checked) fmt += 'UPPER ';
+  if(!document.getElementById('optNoBraces').checked) fmt += 'Braces ';
+  document.getElementById('statFormat').innerText = fmt || 'Standard';
+}
+
+function copyAll() {
+  var text = document.getElementById('outputArea').value;
+  if(!text) { showToast('⚠️ Nothing to copy!'); return; }
+  navigator.clipboard.writeText(text).then(function() { showToast('✅ All UUIDs copied!'); });
+}
+
+function copyFirst() {
+  var text = document.getElementById('outputArea').value;
+  if(!text) { showToast('⚠️ Generate first!'); return; }
+  var first = text.split('\n')[0];
+  navigator.clipboard.writeText(first).then(function() { showToast('✅ First UUID copied!'); });
+}
+
+function downloadTxt() {
+  var text = document.getElementById('outputArea').value;
+  if(!text) { showToast('⚠️ Nothing to download!'); return; }
+  var blob = new Blob([text], {type: 'text/plain'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'uuids-' + currentCount + '.txt';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('✅ Downloaded!');
+}
+
+function clearOutput() {
+  document.getElementById('outputArea').value = '';
+  document.getElementById('singleDisplay').style.display = 'none';
+  document.getElementById('statCount').innerText = '0';
+  document.getElementById('statSize').innerText = '0 bytes';
+  document.getElementById('statFormat').innerText = 'Standard';
+}
+
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.innerText = msg;
+  t.style.display = 'block';
+  setTimeout(function(){ t.style.display = 'none'; }, 2500);
+}
+
+function toggleTheme() {
+  isDark = !isDark;
+  document.body.classList.toggle('light', !isDark);
+  document.getElementById('themeBtn').innerText = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+}
+
+window.onload = function() { generateUUIDs(); };
+</script>
+</body>
+</html>
