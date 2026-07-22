@@ -1,116 +1,515 @@
-
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Image Resizer & Compressor - getage247.xyz</title>
+<title>Free Image Resizer Online - Resize, Compress, Passport Photo | GetAge247</title>
+<meta name="description" content="Free online image resizer. Resize images by pixels or KB/MB target size. Passport photo, CNIC, NADRA forms, JPG, PNG support. No signup. 100% private.">
+<link rel="canonical" href="https://getage247.xyz/image-resizer.html">
 <style>
-body{font-family:Arial,sans-serif;max-width:700px;margin:40px auto;padding:20px;background:#f4f4f4}
-.container{background:#fff;padding:25px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.1)}
-h1{color:#333;text-align:center}
-.input-group{margin:15px 0}
-label{display:block;margin-bottom:5px;font-weight:700}
-input[type="number"],select{width:100%;padding:10px;border:1px solid #ccc;border-radius:5px;box-sizing:border-box}
-button{background:#007bff;color:#fff;border:none;padding:12px 20px;border-radius:5px;cursor:pointer;width:100%;font-size:16px;margin-top:10px}
-button:disabled{background:#aaa}
-#downloadLink{display:none;margin-top:15px;text-align:center}
-#downloadLink a{background:#28a745;color:#fff;padding:12px 20px;border-radius:5px;text-decoration:none;display:inline-block}
-small{color:#666}
+:root{--p:#2563eb;--d:#1e293b;--g:#16a34a;--r:#dc2626;--y:#f59e0b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.7;min-height:100vh}
+header{background:linear-gradient(135deg,#1e40af,#2563eb);color:white;padding:18px 20px;text-align:center}
+header h1{font-size:24px;margin:0}
+header p{font-size:13px;opacity:0.9;margin-top:4px}
+nav{margin-top:10px}
+nav a{color:white;margin:0 8px;text-decoration:none;font-size:13px;opacity:0.9}
+.container{max-width:900px;margin:0 auto;padding:20px 16px}
+.mode-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.mode-tab{padding:9px 18px;border-radius:22px;border:2px solid #334155;background:transparent;color:#94a3b8;font-size:13px;font-weight:700;cursor:pointer}
+.mode-tab.active{background:#2563eb;color:white;border-color:#2563eb}
+.mode-tab:hover{border-color:#2563eb;color:#60a5fa}
+.upload-area{border:3px dashed #334155;border-radius:16px;padding:40px 20px;text-align:center;cursor:pointer;margin-bottom:16px;background:#1e293b}
+.upload-area:hover{border-color:#2563eb;background:#1e3a5f}
+.upload-icon{font-size:52px;margin-bottom:10px}
+.upload-title{font-size:18px;font-weight:700;color:#e2e8f0;margin-bottom:6px}
+.upload-sub{font-size:13px;color:#94a3b8}
+input[type=file]{display:none}
+.orig-info{background:#1e293b;border-radius:12px;padding:14px 18px;margin-bottom:16px;border:1px solid #334155;display:none}
+.orig-info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.orig-item{text-align:center}
+.orig-item .val{font-size:15px;font-weight:700;color:#60a5fa}
+.orig-item .lbl{font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:0.5px}
+.preview-thumb{width:80px;height:80px;object-fit:cover;border-radius:8px;border:2px solid #334155;margin:0 auto 8px;display:block}
+.panel{background:#1e293b;border-radius:14px;padding:20px;border:1px solid #334155;margin-bottom:16px;display:none}
+.panel.active{display:block}
+.panel-title{font-size:14px;font-weight:700;color:#60a5fa;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:16px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+@media(max-width:500px){.form-row{grid-template-columns:1fr}}
+.form-group{display:flex;flex-direction:column;gap:5px}
+.form-group label{font-size:12px;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:0.3px}
+.form-group input,.form-group select{padding:10px 12px;background:#0f172a;border:2px solid #334155;border-radius:8px;color:#e2e8f0;font-size:14px;outline:none;width:100%}
+.form-group input:focus,.form-group select:focus{border-color:#2563eb}
+.form-group input[type=range]{padding:6px 0;border:none;background:transparent;accent-color:#2563eb}
+.hint{font-size:11px;color:#64748b;margin-top:3px}
+.preset-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-bottom:16px}
+.preset-btn{background:#0f172a;border:2px solid #334155;border-radius:10px;padding:10px;cursor:pointer;text-align:left;color:#e2e8f0;width:100%}
+.preset-btn:hover{border-color:#2563eb;background:#1e3a5f}
+.preset-btn.active{border-color:#2563eb;background:#1e3a5f}
+.preset-btn .p-name{font-size:12px;font-weight:700;color:#60a5fa;margin-bottom:2px}
+.preset-btn .p-size{font-size:11px;color:#94a3b8}
+.preset-btn .p-dim{font-size:11px;color:#64748b}
+.format-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.fmt-btn{padding:7px 16px;border-radius:8px;border:2px solid #334155;background:transparent;color:#94a3b8;font-size:13px;font-weight:700;cursor:pointer}
+.fmt-btn.active{background:#2563eb;color:white;border-color:#2563eb}
+.fmt-btn:hover{border-color:#2563eb;color:#60a5fa}
+.convert-btn{width:100%;padding:15px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:white;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;margin-bottom:16px}
+.convert-btn:hover{filter:brightness(1.1)}
+.convert-btn:disabled{background:#334155;cursor:not-allowed}
+.result-area{background:#0f172a;border-radius:12px;padding:20px;border:1px solid #334155;display:none;margin-bottom:16px}
+.compare-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.compare-box{background:#1e293b;border-radius:10px;padding:12px;text-align:center;border:1px solid #334155}
+.compare-box img{max-width:100%;max-height:150px;object-fit:contain;border-radius:6px;margin-bottom:8px;display:block;margin:0 auto 8px}
+.compare-label{font-size:12px;color:#94a3b8;font-weight:600}
+.compare-size{font-size:14px;font-weight:700;margin-top:4px}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.result-item{background:#1e293b;border-radius:10px;padding:14px;text-align:center;border:1px solid #334155}
+.result-item .val{font-size:20px;font-weight:700;color:#4ade80}
+.result-item .lbl{font-size:12px;color:#94a3b8;margin-top:3px}
+.download-btn{width:100%;padding:13px;background:#16a34a;color:white;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer}
+.download-btn:hover{background:#15803d}
+.progress{background:#334155;border-radius:10px;height:8px;margin:12px 0;overflow:hidden;display:none}
+.progress-bar{height:100%;background:linear-gradient(90deg,#2563eb,#4ade80);border-radius:10px;width:0%;transition:width 0.3s}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:16px}
+.feat{background:#1e293b;border:1px solid #334155;border-radius:10px;padding:14px}
+.feat h3{color:#60a5fa;font-size:13px;margin-bottom:4px}
+.feat p{color:#94a3b8;font-size:12px;margin:0}
+.toast{position:fixed;top:20px;right:20px;background:#1e3a5f;border:1px solid #2563eb;color:#60a5fa;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600;z-index:999;display:none}
+footer{text-align:center;padding:20px;margin-top:20px;border-top:1px solid #334155;color:#64748b;font-size:14px}
+footer a{color:#64748b;margin:0 8px;text-decoration:none}
 </style>
 </head>
 <body>
+<header>
+<h1>🖼️ Advanced Image Resizer</h1>
+<p>Resize, Compress, Convert — Passport Photo, CNIC, NADRA, Documents — 100% Private</p>
+<nav>
+<a href="/">Home</a>
+<a href="/about.html">About</a>
+<a href="/blog.html">Blog</a>
+<a href="/contact.html">Contact</a>
+</nav>
+</header>
+<div class="toast" id="toast"></div>
 <div class="container">
-  <h1>Image Resizer & Compressor</h1>
-
-  <div class="input-group">
-    <label for="imageInput">1. Upload Image:</label>
-    <input type="file" id="imageInput" accept="image/*">
-  </div>
-
-  <div class="input-group">
-    <label>2. Resize by Pixels:</label>
-    <input type="number" id="widthInput" placeholder="Width in px">
-    <input type="number" id="heightInput" placeholder="Height in px" style="margin-top:5px;">
-    <small>Khali chhor do agar sirf KB se compress karna hai</small>
-  </div>
-
-  <div class="input-group">
-    <label for="targetSizeKB">3. Ya Compress by KB:</label>
-    <input type="number" id="targetSizeKB" placeholder="e.g. 80 for 80KB">
-  </div>
-
-  <div class="input-group">
-    <label for="formatSelect">4. Convert to Format:</label>
-    <select id="formatSelect">
-      <option value="image/jpeg">JPG</option>
-      <option value="image/png">PNG</option>
-      <option value="image/webp">WebP</option>
-    </select>
-  </div>
-
-  <button id="resizeBtn">Resize & Compress</button>
-
-  <div id="downloadLink"></div>
-  <canvas id="canvas" style="display:none;"></canvas>
-  <img id="originalImg" style="display:none;">
+<div class="mode-tabs">
+<button class="mode-tab active" onclick="setMode('custom',this)">✏️ Custom Resize</button>
+<button class="mode-tab" onclick="setMode('preset',this)">🇵🇰 Pakistan Presets</button>
+<button class="mode-tab" onclick="setMode('compress',this)">📦 Compress to KB/MB</button>
+<button class="mode-tab" onclick="setMode('social',this)">📱 Social Media</button>
+<button class="mode-tab" onclick="setMode('bulk',this)">📁 Bulk Resize</button>
 </div>
-
+<div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+<div class="upload-icon">🖼️</div>
+<div class="upload-title">Click or Drag to Upload Image</div>
+<div class="upload-sub">JPG, PNG, WebP, BMP supported • Max 50MB<br>Your files never leave your device</div>
+</div>
+<input type="file" id="fileInput" accept="image/*" onchange="handleFile(this.files[0])">
+<div style="display:none" id="bulkUploadArea">
+<div class="upload-area" onclick="document.getElementById('bulkInput').click()">
+<div class="upload-icon">📁</div>
+<div class="upload-title">Click to Upload Multiple Images</div>
+<div class="upload-sub">Select multiple files at once</div>
+</div>
+<input type="file" id="bulkInput" accept="image/*" multiple onchange="handleBulk(this.files)">
+</div>
+<div class="orig-info" id="origInfo">
+<img id="previewThumb" class="preview-thumb" src="" alt="Preview">
+<div class="orig-info-grid">
+<div class="orig-item"><div class="val" id="origName">—</div><div class="lbl">File Name</div></div>
+<div class="orig-item"><div class="val" id="origW">—</div><div class="lbl">Width</div></div>
+<div class="orig-item"><div class="val" id="origH">—</div><div class="lbl">Height</div></div>
+<div class="orig-item"><div class="val" id="origKB">—</div><div class="lbl">Size</div></div>
+<div class="orig-item"><div class="val" id="origType">—</div><div class="lbl">Format</div></div>
+<div class="orig-item"><div class="val" id="origAspect">—</div><div class="lbl">Ratio</div></div>
+</div>
+</div>
+<div class="panel active" id="panel-custom">
+<div class="panel-title">✏️ Custom Resize</div>
+<div class="form-row">
+<div class="form-group">
+<label>Width (px)</label>
+<input type="number" id="customW" placeholder="e.g. 800" min="1" max="10000">
+<div class="hint">Leave empty to auto-calculate</div>
+</div>
+<div class="form-group">
+<label>Height (px)</label>
+<input type="number" id="customH" placeholder="e.g. 600" min="1" max="10000">
+<div class="hint">Leave empty to auto-calculate</div>
+</div>
+</div>
+<div class="form-group" style="margin-bottom:12px">
+<label>Quality: <span id="qualLabel">85</span>%</label>
+<input type="range" id="qualSlider" min="1" max="100" value="85" oninput="document.getElementById('qualLabel').innerText=this.value">
+</div>
+<div class="form-group" style="margin-bottom:0">
+<label>Aspect Ratio</label>
+<select id="aspectLock">
+<option value="1">Maintain aspect ratio</option>
+<option value="0">Stretch to exact dimensions</option>
+</select>
+</div>
+</div>
+<div class="panel" id="panel-preset">
+<div class="panel-title">🇵🇰 Pakistan Document Presets</div>
+<div class="preset-grid" id="presetGrid"></div>
+<div class="form-group">
+<label>Quality: <span id="presetQualLabel">90</span>%</label>
+<input type="range" id="presetQual" min="1" max="100" value="90" oninput="document.getElementById('presetQualLabel').innerText=this.value">
+</div>
+</div>
+<div class="panel" id="panel-compress">
+<div class="panel-title">📦 Compress to Target Size</div>
+<div class="form-row">
+<div class="form-group">
+<label>Target Size</label>
+<input type="number" id="targetSize" placeholder="e.g. 200" min="1">
+</div>
+<div class="form-group">
+<label>Unit</label>
+<select id="targetUnit">
+<option value="KB">KB (Kilobytes)</option>
+<option value="MB">MB (Megabytes)</option>
+</select>
+</div>
+</div>
+<div class="form-group">
+<label>Max Width (optional)</label>
+<input type="number" id="compressMaxW" placeholder="Leave empty to keep original width">
+<div class="hint">Reducing width also reduces file size</div>
+</div>
+<div id="compressProgress" style="display:none">
+<div style="font-size:13px;color:#94a3b8;margin-bottom:6px">Compressing... finding best quality</div>
+<div class="progress" style="display:block"><div class="progress-bar" id="compPBar"></div></div>
+</div>
+</div>
+<div class="panel" id="panel-social">
+<div class="panel-title">📱 Social Media Sizes</div>
+<div class="preset-grid" id="socialGrid"></div>
+<div class="form-group">
+<label>Quality: <span id="socialQualLabel">90</span>%</label>
+<input type="range" id="socialQual" min="1" max="100" value="90" oninput="document.getElementById('socialQualLabel').innerText=this.value">
+</div>
+</div>
+<div class="panel" id="panel-bulk">
+<div class="panel-title">📁 Bulk Resize</div>
+<div class="form-row">
+<div class="form-group">
+<label>Max Width (px)</label>
+<input type="number" id="bulkW" placeholder="e.g. 1200">
+</div>
+<div class="form-group">
+<label>Quality %</label>
+<input type="number" id="bulkQual" value="85" min="1" max="100">
+</div>
+</div>
+<div id="bulkStatus" style="font-size:13px;color:#94a3b8;margin-bottom:8px"></div>
+</div>
+<div class="panel active" id="formatPanel" style="padding:16px">
+<div class="panel-title" style="margin-bottom:10px">📄 Output Format</div>
+<div class="format-row">
+<button class="fmt-btn active" onclick="setFormat('jpeg',this)">JPG</button>
+<button class="fmt-btn" onclick="setFormat('png',this)">PNG</button>
+<button class="fmt-btn" onclick="setFormat('webp',this)">WebP</button>
+</div>
+</div>
+<button class="convert-btn" id="convertBtn" onclick="processImage()" disabled>🔄 Resize & Convert</button>
+<div class="progress" id="mainProgress"><div class="progress-bar" id="mainPBar"></div></div>
+<div class="result-area" id="resultArea">
+<div class="compare-row">
+<div class="compare-box">
+<img id="origCompare" src="" alt="Original">
+<div class="compare-label">Original</div>
+<div class="compare-size" style="color:#f87171" id="origCompareSize">—</div>
+</div>
+<div class="compare-box">
+<img id="newCompare" src="" alt="Resized">
+<div class="compare-label">Resized</div>
+<div class="compare-size" style="color:#4ade80" id="newCompareSize">—</div>
+</div>
+</div>
+<div class="result-grid">
+<div class="result-item"><div class="val" id="resW">—</div><div class="lbl">New Width</div></div>
+<div class="result-item"><div class="val" id="resH">—</div><div class="lbl">New Height</div></div>
+<div class="result-item"><div class="val" id="resSize">—</div><div class="lbl">New Size</div></div>
+<div class="result-item"><div class="val" id="resSaved">—</div><div class="lbl">Size Reduced</div></div>
+</div>
+<button class="download-btn" id="downloadBtn">⬇️ Download Image</button>
+</div>
+<div id="bulkResults"></div>
+<div class="features">
+<div class="feat"><h3>🇵🇰 Pakistan Presets</h3><p>Passport, CNIC, FPSC, PPSC, NADRA, HEC, NTS, Visa sizes built-in.</p></div>
+<div class="feat"><h3>📦 Target KB/MB</h3><p>Set exact file size. Tool auto-adjusts quality to match your target.</p></div>
+<div class="feat"><h3>📱 Social Media</h3><p>WhatsApp, Facebook, Instagram, YouTube thumbnail sizes.</p></div>
+<div class="feat"><h3>🔄 Format Convert</h3><p>Convert between JPG, PNG, and WebP in one step.</p></div>
+<div class="feat"><h3>📁 Bulk Resize</h3><p>Upload and resize multiple images at once.</p></div>
+<div class="feat"><h3>🔒 100% Private</h3><p>Everything in your browser. No server uploads.</p></div>
+</div>
+</div>
+<footer>
+<a href="/about.html">About</a>
+<a href="/contact.html">Contact</a>
+<a href="/privacy.html">Privacy</a>
+<a href="/disclaimer.html">Disclaimer</a>
+<a href="/blog.html">Blog</a>
+<p style="margin-top:10px">© 2026 GetAge247. All Rights Reserved.</p>
+</footer>
+<canvas id="canvas" style="display:none"></canvas>
+<canvas id="canvas2" style="display:none"></canvas>
 <script>
-const imageInput = document.getElementById('imageInput');
-const widthInput = document.getElementById('widthInput');
-const heightInput = document.getElementById('heightInput');
-const targetKB = document.getElementById('targetSizeKB');
-const formatSelect = document.getElementById('formatSelect');
-const resizeBtn = document.getElementById('resizeBtn');
-const downloadLinkDiv = document.getElementById('downloadLink');
-const canvas = document.getElementById('canvas');
-const originalImg = document.getElementById('originalImg');
-
-imageInput.addEventListener('change', e => {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = event => { originalImg.src = event.target.result; };
-  reader.readAsDataURL(file);
+var currentMode='custom';
+var currentFormat='jpeg';
+var currentFile=null;
+var currentImg=null;
+var originalSize=0;
+var selectedPreset=null;
+var resultBlob=null;
+var presets=[
+{name:'Passport Photo',w:413,h:531,maxKB:50,desc:'35x45mm NADRA/Passport'},
+{name:'CNIC Photo',w:300,h:375,maxKB:30,desc:'25x31mm NADRA CNIC'},
+{name:'FPSC Photo',w:300,h:400,maxKB:50,desc:'FPSC Job Application'},
+{name:'PPSC Photo',w:300,h:400,maxKB:100,desc:'PPSC Application'},
+{name:'Matric Form',w:400,h:500,maxKB:100,desc:'Board Exam Form'},
+{name:'HEC Photo',w:400,h:500,maxKB:300,desc:'University Admission'},
+{name:'NADRA Form',w:400,h:400,maxKB:200,desc:'NADRA Documents'},
+{name:'Visa Photo',w:413,h:531,maxKB:240,desc:'Standard Visa'},
+{name:'NTS Form',w:300,h:400,maxKB:50,desc:'NTS Test Application'},
+{name:'Job App',w:300,h:400,maxKB:100,desc:'General Job Application'}
+];
+var socialPresets=[
+{name:'WhatsApp Profile',w:500,h:500,desc:'Square Profile'},
+{name:'WhatsApp Status',w:1080,h:1920,desc:'9:16 Portrait'},
+{name:'Facebook Profile',w:400,h:400,desc:'Circle Photo'},
+{name:'Facebook Cover',w:820,h:312,desc:'Cover Banner'},
+{name:'Facebook Post',w:1200,h:630,desc:'Link Preview'},
+{name:'Instagram Post',w:1080,h:1080,desc:'Square Feed'},
+{name:'Instagram Story',w:1080,h:1920,desc:'Vertical Story'},
+{name:'Twitter Post',w:1200,h:675,desc:'In-Feed Image'},
+{name:'YouTube Thumb',w:1280,h:720,desc:'16:9 Thumbnail'},
+{name:'LinkedIn Post',w:1200,h:627,desc:'Article Image'}
+];
+function initPresets(){
+var pg=document.getElementById('presetGrid');
+presets.forEach(function(p,i){
+pg.innerHTML+='<button class="preset-btn" onclick="selectPreset('+i+',this)"><div class="p-name">'+p.name+'</div><div class="p-size">Max: '+p.maxKB+'KB</div><div class="p-dim">'+p.w+'x'+p.h+'px</div></button>';
 });
-
-resizeBtn.addEventListener('click', () => {
-  if (!originalImg.src) return alert('Pehle image upload karo');
-
-  resizeBtn.disabled = true;
-  downloadLinkDiv.innerHTML = '';
-
-  let width = parseInt(widthInput.value) || originalImg.naturalWidth;
-  let height = parseInt(heightInput.value) || originalImg.naturalHeight;
-  const targetSize = parseInt(targetKB.value) * 1024;
-  const format = formatSelect.value;
-
-  canvas.width = width;
-  canvas.height = height;
-
-  let quality = 0.9; // JPG quality start
-
-  function tryResize() {
-    const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, width, height);
-    ctx.drawImage(originalImg, 0, 0, width, height);
-
-    canvas.toBlob(blob => {
-      // Agar KB target diya hai aur size bara hai, to quality kam karo
-      if (targetSize && blob.size > targetSize && quality > 0.1 && format === 'image/jpeg') {
-        quality -= 0.05;
-        tryResize(); // Loop dobara
-      } else {
-        const url = URL.createObjectURL(blob);
-        downloadLinkDiv.innerHTML = `<a href="${url}" download="resized-image.${format.split('/')[1]}">Download ${Math.round(blob.size/1024)}KB Image</a>`;
-        downloadLinkDiv.style.display = 'block';
-        resizeBtn.disabled = false;
-      }
-    }, format, quality);
-  }
-  tryResize();
+var sg=document.getElementById('socialGrid');
+socialPresets.forEach(function(p,i){
+sg.innerHTML+='<button class="preset-btn" onclick="selectSocial('+i+',this)"><div class="p-name">'+p.name+'</div><div class="p-size">'+p.w+'x'+p.h+'px</div><div class="p-dim">'+p.desc+'</div></button>';
 });
+}
+function selectPreset(i,btn){
+selectedPreset=presets[i];
+document.querySelectorAll('#presetGrid .preset-btn').forEach(function(b){b.classList.remove('active');});
+btn.classList.add('active');
+}
+function selectSocial(i,btn){
+selectedPreset=socialPresets[i];
+document.querySelectorAll('#socialGrid .preset-btn').forEach(function(b){b.classList.remove('active');});
+btn.classList.add('active');
+}
+function setMode(mode,btn){
+currentMode=mode;
+document.querySelectorAll('.mode-tab').forEach(function(b){b.classList.remove('active');});
+btn.classList.add('active');
+document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
+var panel=document.getElementById('panel-'+mode);
+if(panel)panel.classList.add('active');
+document.getElementById('formatPanel').classList.add('active');
+selectedPreset=null;
+if(mode==='bulk'){
+document.getElementById('uploadArea').style.display='none';
+document.getElementById('bulkUploadArea').style.display='block';
+document.getElementById('origInfo').style.display='none';
+document.getElementById('convertBtn').style.display='none';
+}else{
+document.getElementById('uploadArea').style.display='block';
+document.getElementById('bulkUploadArea').style.display='none';
+document.getElementById('convertBtn').style.display='block';
+}
+}
+function setFormat(fmt,btn){
+currentFormat=fmt;
+document.querySelectorAll('.fmt-btn').forEach(function(b){b.classList.remove('active');});
+btn.classList.add('active');
+}
+function formatSize(bytes){
+if(bytes<1024)return bytes+' B';
+if(bytes<1048576)return (bytes/1024).toFixed(1)+' KB';
+return (bytes/1048576).toFixed(2)+' MB';
+}
+function gcd(a,b){return b?gcd(b,a%b):a;}
+function handleFile(file){
+if(!file)return;
+if(!file.type.startsWith('image/')){showToast('Please select an image file');return;}
+if(file.size>52428800){showToast('File too large. Max 50MB');return;}
+currentFile=file;
+originalSize=file.size;
+var reader=new FileReader();
+reader.onload=function(e){
+var img=new Image();
+img.onload=function(){
+currentImg=img;
+var g=gcd(img.width,img.height);
+document.getElementById('origInfo').style.display='block';
+document.getElementById('previewThumb').src=e.target.result;
+document.getElementById('origName').innerText=file.name.length>12?file.name.substring(0,10)+'..':file.name;
+document.getElementById('origW').innerText=img.width+'px';
+document.getElementById('origH').innerText=img.height+'px';
+document.getElementById('origKB').innerText=formatSize(file.size);
+document.getElementById('origType').innerText=file.type.split('/')[1].toUpperCase();
+document.getElementById('origAspect').innerText=(img.width/g)+':'+(img.height/g);
+document.getElementById('origCompare').src=e.target.result;
+document.getElementById('origCompareSize').innerText=formatSize(file.size);
+document.getElementById('convertBtn').disabled=false;
+document.getElementById('resultArea').style.display='none';
+};
+img.src=e.target.result;
+};
+reader.readAsDataURL(file);
+}
+function processImage(){
+if(!currentImg){showToast('Upload an image first');return;}
+if(currentMode==='compress'){compressToTarget();return;}
+if(currentMode==='preset'||currentMode==='social'){
+if(!selectedPreset){showToast('Select a preset first');return;}
+var qual=currentMode==='preset'?parseInt(document.getElementById('presetQual').value)/100:parseInt(document.getElementById('socialQual').value)/100;
+renderCanvas(selectedPreset.w,selectedPreset.h,qual,false,function(blob,w,h){
+if(currentMode==='preset'&&selectedPreset.maxKB&&blob.size>selectedPreset.maxKB*1024){
+compressBlob(blob,selectedPreset.maxKB*1024,w,h);
+}else{showResult(blob,w,h);}
+});
+return;
+}
+var w=parseInt(document.getElementById('customW').value)||0;
+var h=parseInt(document.getElementById('customH').value)||0;
+var qual=parseInt(document.getElementById('qualSlider').value)/100;
+var lock=document.getElementById('aspectLock').value==='1';
+if(!w&&!h){showToast('Enter at least width or height');return;}
+renderCanvas(w,h,qual,lock,function(blob,rw,rh){showResult(blob,rw,rh);});
+}
+function renderCanvas(tw,th,qual,lockAspect,cb){
+var img=currentImg;
+var rw=tw,rh=th;
+var ratio=img.width/img.height;
+if(!tw&&th){rw=Math.round(th*ratio);}
+else if(tw&&!th){rh=Math.round(tw/ratio);}
+else if(lockAspect&&tw&&th){
+var targetRatio=tw/th;
+if(ratio>targetRatio){rw=tw;rh=Math.round(tw/ratio);}
+else{rh=th;rw=Math.round(th*ratio);}
+}
+if(!rw)rw=tw;
+if(!rh)rh=th;
+var c=document.getElementById('canvas');
+c.width=rw;c.height=rh;
+var ctx=c.getContext('2d');
+ctx.drawImage(img,0,0,rw,rh);
+var mime=currentFormat==='jpeg'?'image/jpeg':'image/'+currentFormat;
+c.toBlob(function(blob){cb(blob,rw,rh);},mime,qual);
+}
+function compressToTarget(){
+var targetVal=parseFloat(document.getElementById('targetSize').value);
+if(!targetVal||targetVal<=0){showToast('Enter target size');return;}
+var unit=document.getElementById('targetUnit').value;
+var targetBytes=unit==='MB'?targetVal*1048576:targetVal*1024;
+var maxW=parseInt(document.getElementById('compressMaxW').value)||0;
+document.getElementById('compressProgress').style.display='block';
+var qual=0.9;
+var attempt=0;
+function tryCompress(){
+attempt++;
+document.getElementById('compPBar').style.width=Math.min(attempt*8,90)+'%';
+renderCanvas(maxW||currentImg.width,0,qual,true,function(blob,w,h){
+if(blob.size<=targetBytes||qual<=0.05){
+document.getElementById('compPBar').style.width='100%';
+document.getElementById('compressProgress').style.display='none';
+showResult(blob,w,h);
+}else{qual=Math.max(qual-0.07,0.05);setTimeout(tryCompress,40);}
+});
+}
+tryCompress();
+}
+function compressBlob(blob,maxBytes,w,h){
+var qual=0.85;
+function tryAgain(){
+var c=document.getElementById('canvas');
+c.toBlob(function(b){
+if(b.size<=maxBytes||qual<=0.05){showResult(b,w,h);}
+else{qual=Math.max(qual-0.1,0.05);setTimeout(tryAgain,30);}
+},'image/'+currentFormat,qual);
+}
+tryAgain();
+}
+function showResult(blob,w,h){
+resultBlob=blob;
+var url=URL.createObjectURL(blob);
+var saved=originalSize-blob.size;
+var savedPct=((saved/originalSize)*100).toFixed(1);
+document.getElementById('newCompare').src=url;
+document.getElementById('newCompareSize').innerText=formatSize(blob.size);
+document.getElementById('resW').innerText=w+'px';
+document.getElementById('resH').innerText=h+'px';
+document.getElementById('resSize').innerText=formatSize(blob.size);
+document.getElementById('resSaved').innerText=saved>0?'-'+savedPct+'%':'+'+Math.abs(savedPct)+'%';
+document.getElementById('resultArea').style.display='block';
+document.getElementById('resultArea').scrollIntoView({behavior:'smooth'});
+var ext=currentFormat==='jpeg'?'jpg':currentFormat;
+document.getElementById('downloadBtn').onclick=function(){
+var a=document.createElement('a');
+a.href=url;a.download='resized-getage247.'+ext;a.click();
+showToast('Downloaded!');
+};
+showToast('Image processed successfully!');
+}
+function handleBulk(files){
+if(!files||!files.length)return;
+var w=parseInt(document.getElementById('bulkW').value)||1200;
+var qual=parseInt(document.getElementById('bulkQual').value)/100||0.85;
+var results=document.getElementById('bulkResults');
+results.innerHTML='<div style="font-size:14px;color:#94a3b8;margin-bottom:12px">Processing '+files.length+' images...</div>';
+var processed=0;
+Array.from(files).forEach(function(file){
+var reader=new FileReader();
+reader.onload=function(e){
+var img=new Image();
+img.onload=function(){
+var ratio=img.width/img.height;
+var rw=Math.min(w,img.width);
+var rh=Math.round(rw/ratio);
+var c=document.getElementById('canvas2');
+c.width=rw;c.height=rh;
+c.getContext('2d').drawImage(img,0,0,rw,rh);
+c.toBlob(function(blob){
+var url=URL.createObjectURL(blob);
+var div=document.createElement('div');
+div.style.cssText='background:#1e293b;border:1px solid #334155;border-radius:10px;padding:12px;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px';
+div.innerHTML='<span style="font-size:13px;color:#e2e8f0">'+file.name+'</span><span style="font-size:12px;color:#94a3b8">'+formatSize(file.size)+' to '+formatSize(blob.size)+'</span><a href="'+url+'" download="resized-'+file.name+'" style="background:#16a34a;color:white;padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;text-decoration:none">Download</a>';
+results.appendChild(div);
+processed++;
+document.getElementById('bulkStatus').innerText=processed+'/'+files.length+' done';
+if(processed===files.length)showToast('All '+files.length+' images done!');
+},'image/jpeg',qual);
+};
+img.src=e.target.result;
+};
+reader.readAsDataURL(file);
+});
+}
+function showToast(msg){
+var t=document.getElementById('toast');
+t.innerText=msg;t.style.display='block';
+setTimeout(function(){t.style.display='none';},2500);
+}
+var ua=document.getElementById('uploadArea');
+ua.addEventListener('dragover',function(e){e.preventDefault();ua.style.borderColor='#2563eb';});
+ua.addEventListener('dragleave',function(){ua.style.borderColor='#334155';});
+ua.addEventListener('drop',function(e){
+e.preventDefault();ua.style.borderColor='#334155';
+if(e.dataTransfer.files[0])handleFile(e.dataTransfer.files[0]);
+});
+initPresets();
 </script>
 </body>
 </html>
