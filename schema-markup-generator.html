@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schema Markup Generator - JSON-LD Tool</title>
+  <meta name="description" content="Free Schema Markup Generator to create JSON-LD for Organization, Website, LocalBusiness, FAQPage, Article, and BreadcrumbList." />
+  <meta name="keywords" content="schema markup generator, JSON-LD generator, FAQ schema, local business schema, article schema" />
+  <meta name="robots" content="index, follow" />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#111a2e;
+      --card2:#0f1729;
+      --text:#e6eefc;
+      --muted:#9eb0d0;
+      --line:rgba(255,255,255,.1);
+      --pri:#5b8cff;
+      --pri2:#7c5cff;
+      --ok:#1fbf75;
+      --warn:#ffcc66;
+      --err:#ff6b6b;
+      --shadow:0 20px 50px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:radial-gradient(circle at top, #15213a 0%, var(--bg) 45%, #050914 100%);
+      color:var(--text);
+      line-height:1.6;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1280px;margin:0 auto;padding:24px}
+    .hero{
+      background:linear-gradient(135deg, rgba(91,140,255,.15), rgba(124,92,255,.12));
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:28px;
+      box-shadow:var(--shadow);
+      margin-bottom:22px;
+    }
+    .hero h1{margin:0 0 8px;font-size:clamp(28px,4vw,44px);line-height:1.1}
+    .hero p{margin:0;color:var(--muted);max-width:900px}
+    .grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:20px;
+      align-items:start;
+    }
+    .panel{
+      background:rgba(17,26,46,.9);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .panel h2{
+      margin:0;
+      padding:18px 20px;
+      border-bottom:1px solid var(--line);
+      font-size:18px;
+      background:rgba(255,255,255,.02);
+    }
+    .panel .body{padding:20px}
+    .tabs{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:18px;
+    }
+    .tab{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:999px;
+      cursor:pointer;
+      transition:.2s;
+      font-weight:600;
+    }
+    .tab.active{background:linear-gradient(135deg,var(--pri),var(--pri2));border-color:transparent}
+    .form-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+    }
+    .full{grid-column:1/-1}
+    label{display:block;font-size:13px;color:var(--muted);margin:0 0 6px}
+    input, textarea, select{
+      width:100%;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:var(--card2);
+      color:var(--text);
+      outline:none;
+    }
+    textarea{min-height:96px;resize:vertical}
+    input::placeholder, textarea::placeholder{color:#7c8cad}
+    .row-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+    }
+    .btn{
+      border:none;
+      background:linear-gradient(135deg,var(--pri),var(--pri2));
+      color:white;
+      padding:12px 16px;
+      border-radius:12px;
+      cursor:pointer;
+      font-weight:700;
+    }
+    .btn.secondary{background:rgba(255,255,255,.06);border:1px solid var(--line)}
+    .btn.ok{background:linear-gradient(135deg,#20c997,#17a2b8)}
+    .btn.warn{background:linear-gradient(135deg,#f59f00,#ff8c00)}
+    pre{
+      margin:0;
+      white-space:pre-wrap;
+      word-break:break-word;
+      background:#09101d;
+      border-top:1px solid var(--line);
+      padding:18px;
+      min-height:560px;
+      color:#d9e6ff;
+      font-size:13px;
+      overflow:auto;
+    }
+    .help{
+      margin-top:14px;
+      padding:14px;
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:14px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    .faq-items,.crumb-items{
+      display:grid;
+      gap:12px;
+      margin-top:10px;
+    }
+    .mini-card{
+      background:rgba(255,255,255,.03);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px;
+    }
+    .mini-head{
+      display:flex;
+      gap:10px;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:10px;
+    }
+    .mini-head strong{font-size:14px}
+    .remove{
+      background:transparent;
+      border:1px solid rgba(255,107,107,.4);
+      color:#ff9a9a;
+      border-radius:10px;
+      padding:6px 10px;
+      cursor:pointer;
+    }
+    .footer{
+      margin-top:22px;
+      color:var(--muted);
+      text-align:center;
+      padding:14px 0 4px;
+      font-size:14px;
+    }
+    .footer a{color:#bcd0ff}
+    .hide{display:none}
+    @media (max-width: 980px){
+      .grid{grid-template-columns:1fr}
+      pre{min-height:320px}
+    }
+    @media (max-width: 640px){
+      .wrap{padding:14px}
+      .hero,.panel{border-radius:18px}
+      .form-grid{grid-template-columns:1fr}
+      .row-actions{display:grid;grid-template-columns:1fr 1fr}
+      .row-actions .btn{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>Schema Markup Generator</h1>
+      <p>Create valid JSON-LD for Organization, Website, LocalBusiness, FAQPage, Article, and BreadcrumbList. Copy the code, paste it into your page head, and improve search engine understanding.</p>
+    </section>
+
+    <div class="grid">
+      <section class="panel">
+        <h2>Generate Schema</h2>
+        <div class="body">
+          <div class="tabs" id="tabs">
+            <button class="tab active" data-type="Organization">Organization</button>
+            <button class="tab" data-type="WebSite">WebSite</button>
+            <button class="tab" data-type="LocalBusiness">LocalBusiness</button>
+            <button class="tab" data-type="FAQPage">FAQPage</button>
+            <button class="tab" data-type="Article">Article</button>
+            <button class="tab" data-type="BreadcrumbList">BreadcrumbList</button>
+          </div>
+
+          <div id="formArea"></div>
+
+          <div class="row-actions">
+            <button class="btn" id="copyBtn">Copy JSON-LD</button>
+            <button class="btn secondary" id="downloadBtn">Download JSON</button>
+            <button class="btn ok" id="sampleBtn">Load Sample</button>
+            <button class="btn warn" id="clearBtn">Clear</button>
+          </div>
+
+          <div class="help" id="helpBox">
+            Fill the fields and the schema will update live. FAQPage needs at least one Q&A. BreadcrumbList uses item name + URL pairs.
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Live Preview</h2>
+        <pre id="output">{}</pre>
+      </section>
+    </div>
+
+    <div class="footer">
+      Built for <a href="https://getage247.xyz" target="_blank" rel="noopener">getage247.xyz</a> •
+      <a href="#"></a>
+    </div>
+  </div>
+
+  <script>
+    const state = {
+      type: 'Organization',
+      data: {}
+    };
+
+    const presets = {
+      Organization: {
+        name: 'GetAge247',
+        url: 'https://getage247.xyz',
+        logo: 'https://getage247.xyz/logo.png',
+        sameAs: 'https://facebook.com/yourpage, https://x.com/yourpage',
+        description: 'A web tools and SEO content website.',
+      },
+      WebSite: {
+        name: 'GetAge247',
+        url: 'https://getage247.xyz',
+        potentialAction: 'https://getage247.xyz/?s={search_term_string}'
+      },
+      LocalBusiness: {
+        name: 'GetAge247 Studio',
+        url: 'https://getage247.xyz',
+        description: 'Web development and content creation services.',
+        telephone: '+92 300 0000000',
+        priceRange: '$$',
+        streetAddress: 'Street Address',
+        addressLocality: 'Islamabad',
+        addressRegion: 'Islamabad Capital Territory',
+        postalCode: '44000',
+        addressCountry: 'PK',
+        latitude: '33.6844',
+        longitude: '73.0479',
+        openingDays: 'Monday,Tuesday,Wednesday,Thursday,Friday',
+        opens: '09:00',
+        closes: '18:00',
+        sameAs: 'https://facebook.com/yourpage, https://x.com/yourpage'
+      },
+      FAQPage: {
+        faqCount: 2
+      },
+      Article: {
+        headline: 'How to Use Schema Markup',
+        url: 'https://getage247.xyz/sample-article',
+        author: 'Ghulam Nabi',
+        datePublished: '2026-07-24',
+        dateModified: '2026-07-24',
+        image: 'https://getage247.xyz/image.jpg',
+        publisherName: 'GetAge247',
+        publisherLogo: 'https://getage247.xyz/logo.png',
+        description: 'An SEO guide about schema markup.'
+      },
+      BreadcrumbList: {
+        breadcrumbCount: 3
+      }
+    };
+
+    const formArea = document.getElementById('formArea');
+    const output = document.getElementById('output');
+    const tabs = document.getElementById('tabs');
+    const helpBox = document.getElementById('helpBox');
+
+    function esc(s){ return String(s || '').trim(); }
+
+    function makeField(id, label, value = '', placeholder = '') {
+      return `
+        <div class="${id === 'description' || id === 'sameAs' ? 'full' : ''}">
+          <label for="${id}">${label}</label>
+          <input id="${id}" placeholder="${placeholder}" value="${value || ''}" />
+        </div>
+      `;
+    }
+
+    function makeTextarea(id, label, value = '', placeholder = '') {
+      return `
+        <div class="full">
+          <label for="${id}">${label}</label>
+          <textarea id="${id}" placeholder="${placeholder}">${value || ''}</textarea>
+        </div>
+      `;
+    }
+
+    function renderForm() {
+      const p = presets[state.type] || {};
+      let html = '';
+
+      if (state.type === 'Organization') {
+        html = `
+          <div class="form-grid">
+            ${makeField('name','Organization Name',p.name,'Enter organization name')}
+            ${makeField('url','Website URL',p.url,'https://example.com')}
+            ${makeField('logo','Logo URL',p.logo,'https://example.com/logo.png')}
+            ${makeField('sameAs','SameAs URLs',p.sameAs,'Comma-separated social links')}
+            ${makeTextarea('description','Description',p.description,'Short description')}
+          </div>
+        `;
+        helpBox.textContent = 'Organization schema works best on homepage or about page. Add logo and social profiles where possible.';
+      }
+
+      if (state.type === 'WebSite') {
+        html = `
+          <div class="form-grid">
+            ${makeField('name','Website Name',p.name,'Enter website name')}
+            ${makeField('url','Website URL',p.url,'https://example.com')}
+            ${makeField('potentialAction','Search URL Template',p.potentialAction,'https://example.com/?s={search_term_string}')}
+          </div>
+        `;
+        helpBox.textContent = 'WebSite schema helps search engines understand your homepage and optional site search.';
+      }
+
+      if (state.type === 'LocalBusiness') {
+        html = `
+          <div class="form-grid">
+            ${makeField('name','Business Name',p.name,'Enter business name')}
+            ${makeField('url','Website URL',p.url,'https://example.com')}
+            ${makeField('telephone','Phone Number',p.telephone,'+92...')}
+            ${makeField('priceRange','Price Range',p.priceRange,'$, $$, $$$')}
+            ${makeField('streetAddress','Street Address',p.streetAddress,'Street address')}
+            ${makeField('addressLocality','City',p.addressLocality,'City')}
+            ${makeField('addressRegion','Region',p.addressRegion,'Region')}
+            ${makeField('postalCode','Postal Code',p.postalCode,'Postal code')}
+            ${makeField('addressCountry','Country',p.addressCountry,'PK')}
+            ${makeField('latitude','Latitude',p.latitude,'33.6844')}
+            ${makeField('longitude','Longitude',p.longitude,'73.0479')}
+            ${makeField('opens','Opens',p.opens,'09:00')}
+            ${makeField('closes','Closes',p.closes,'18:00')}
+            ${makeField('openingDays','Opening Days',p.openingDays,'Monday,Tuesday')}
+            ${makeField('sameAs','SameAs URLs',p.sameAs,'Comma-separated social links')}
+            ${makeTextarea('description','Description',p.description,'Business description')}
+          </div>
+        `;
+        helpBox.textContent = 'LocalBusiness usually performs best when address, phone, geo coordinates, and opening hours are real and visible on the page.';
+      }
+
+      if (state.type === 'FAQPage') {
+        const count = parseInt(p.faqCount || 2, 10);
+        let items = '';
+        for (let i = 1; i <= count; i++) {
+          items += `
+            <div class="mini-card">
+              <div class="mini-head"><strong>FAQ ${i}</strong></div>
+              <label>Question ${i}</label>
+              <input id="q${i}" placeholder="Enter question ${i}" value="What is schema markup?" />
+              <div style="height:10px"></div>
+              <label>Answer ${i}</label>
+              <textarea id="a${i}" placeholder="Enter answer ${i}">Schema markup is structured data that helps search engines understand page content.</textarea>
+            </div>
+          `;
+        }
+        html = `
+          <div class="form-grid">
+            ${makeField('faqCount','Number of FAQs',count,'2')}
+            <div class="full">
+              <div class="faq-items" id="faqItems">${items}</div>
+              <div class="row-actions" style="margin-top:12px">
+                <button class="btn secondary" id="addFaqBtn" type="button">Add FAQ</button>
+              </div>
+            </div>
+          </div>
+        `;
+        helpBox.textContent = 'FAQPage schema should match visible FAQ content on the page and use clear question-answer pairs.';
+      }
+
+      if (state.type === 'Article') {
+        html = `
+          <div class="form-grid">
+            ${makeField('headline','Headline',p.headline,'Article headline')}
+            ${makeField('url','Canonical URL',p.url,'https://example.com/article')}
+            ${makeField('author','Author Name',p.author,'Author name')}
+            ${makeField('datePublished','Date Published',p.datePublished,'2026-07-24')}
+            ${makeField('dateModified','Date Modified',p.dateModified,'2026-07-24')}
+            ${makeField('image','Image URL',p.image,'https://example.com/image.jpg')}
+            ${makeField('publisherName','Publisher Name',p.publisherName,'Publisher name')}
+            ${makeField('publisherLogo','Publisher Logo URL',p.publisherLogo,'https://example.com/logo.png')}
+            ${makeTextarea('description','Description',p.description,'Short article description')}
+          </div>
+        `;
+        helpBox.textContent = 'Article schema works best when title, author, dates, image, and visible article content all match.';
+      }
+
+      if (state.type === 'BreadcrumbList') {
+        const count = parseInt(p.breadcrumbCount || 3, 10);
+        let items = '';
+        for (let i = 1; i <= count; i++) {
+          items += `
+            <div class="mini-card">
+              <div class="mini-head"><strong>Item ${i}</strong></div>
+              <label>Name ${i}</label>
+              <input id="bname${i}" value="${i === 1 ? 'Home' : i === 2 ? 'Tools' : 'Schema Generator'}" />
+              <div style="height:10px"></div>
+              <label>URL ${i}</label>
+              <input id="burl${i}" value="https://getage247.xyz${i === 1 ? '/' : i === 2 ? '/tools' : '/schema-generator.html'}" />
+            </div>
+          `;
+        }
+        html = `
+          <div class="form-grid">
+            ${makeField('breadcrumbCount','Breadcrumb Items',count,'3')}
+            <div class="full">
+              <div class="crumb-items" id="crumbItems">${items}</div>
+              <div class="row-actions" style="margin-top:12px">
+                <button class="btn secondary" id="addCrumbBtn" type="button">Add Item</button>
+              </div>
+            </div>
+          </div>
+        `;
+        helpBox.textContent = 'BreadcrumbList should reflect the visible navigation path on the page.';
+      }
+
+      formArea.innerHTML = html;
+      bindDynamicEvents();
+      collectAndRender();
+    }
+
+    function bindDynamicEvents() {
+      formArea.querySelectorAll('input,textarea,select').forEach(el => {
+        el.addEventListener('input', collectAndRender);
+      });
+
+      const addFaqBtn = document.getElementById('addFaqBtn');
+      if (addFaqBtn) {
+        addFaqBtn.onclick = () => {
+          const faqItems = document.getElementById('faqItems');
+          const idx = faqItems.children.length + 1;
+          const card = document.createElement('div');
+          card.className = 'mini-card';
+          card.innerHTML = `
+            <div class="mini-head"><strong>FAQ ${idx}</strong><button class="remove" type="button">Remove</button></div>
+            <label>Question ${idx}</label>
+            <input id="q${idx}" placeholder="Enter question ${idx}" />
+            <div style="height:10px"></div>
+            <label>Answer ${idx}</label>
+            <textarea id="a${idx}" placeholder="Enter answer ${idx}"></textarea>
+          `;
+          faqItems.appendChild(card);
+          card.querySelector('.remove').onclick = () => { card.remove(); collectAndRender(); };
+          card.querySelectorAll('input,textarea').forEach(el => el.addEventListener('input', collectAndRender));
+          collectAndRender();
+        };
+      }
+
+      const addCrumbBtn = document.getElementById('addCrumbBtn');
+      if (addCrumbBtn) {
+        addCrumbBtn.onclick = () => {
+          const crumbItems = document.getElementById('crumbItems');
+          const idx = crumbItems.children.length + 1;
+          const card = document.createElement('div');
+          card.className = 'mini-card';
+          card.innerHTML = `
+            <div class="mini-head"><strong>Item ${idx}</strong><button class="remove" type="button">Remove</button></div>
+            <label>Name ${idx}</label>
+            <input id="bname${idx}" placeholder="Item name" />
+            <div style="height:10px"></div>
+            <label>URL ${idx}</label>
+            <input id="burl${idx}" placeholder="https://example.com/page" />
+          `;
+          crumbItems.appendChild(card);
+          card.querySelector('.remove').onclick = () => { card.remove(); collectAndRender(); };
+          card.querySelectorAll('input').forEach(el => el.addEventListener('input', collectAndRender));
+          collectAndRender();
+        };
+      }
+    }
+
+    function collectAndRender() {
+      const data = {};
+      formArea.querySelectorAll('input,textarea,select').forEach(el => data[el.id] = el.value.trim());
+      state.data = data;
+
+      let json = {};
+      if (state.type === 'Organization') {
+        json = {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": data.name || "",
+          "url": data.url || "",
+          "logo": data.logo || "",
+          "description": data.description || "",
+          "sameAs": (data.sameAs || "").split(',').map(s => s.trim()).filter(Boolean)
+        };
+      }
+
+      if (state.type === 'WebSite') {
+        json = {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": data.name || "",
+          "url": data.url || "",
+          "potentialAction": data.potentialAction ? {
+            "@type": "SearchAction",
+            "target": data.potentialAction,
+            "query-input": "required name=search_term_string"
+          } : undefined
+        };
+      }
+
+      if (state.type === 'LocalBusiness') {
+        json = {
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": data.name || "",
+          "url": data.url || "",
+          "telephone": data.telephone || "",
+          "priceRange": data.priceRange || "",
+          "description": data.description || "",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": data.streetAddress || "",
+            "addressLocality": data.addressLocality || "",
+            "addressRegion": data.addressRegion || "",
+            "postalCode": data.postalCode || "",
+            "addressCountry": data.addressCountry || ""
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": parseFloat(data.latitude || 0),
+            "longitude": parseFloat(data.longitude || 0)
+          },
+          "openingHoursSpecification": [{
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": (data.openingDays || "").split(',').map(s => s.trim()).filter(Boolean),
+            "opens": data.opens || "",
+            "closes": data.closes || ""
+          }],
+          "sameAs": (data.sameAs || "").split(',').map(s => s.trim()).filter(Boolean)
+        };
+      }
+
+      if (state.type === 'FAQPage') {
+        const items = [];
+        const cards = [...formArea.querySelectorAll('.mini-card')];
+        cards.forEach(card => {
+          const q = card.querySelector('input')?.value.trim();
+          const a = card.querySelector('textarea')?.value.trim();
+          if (q && a) {
+            items.push({
+              "@type": "Question",
+              "name": q,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": a
+              }
+            });
+          }
+        });
+        json = {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": items
+        };
+      }
+
+      if (state.type === 'Article') {
+        json = {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": data.headline || "",
+          "url": data.url || "",
+          "author": {
+            "@type": "Person",
+            "name": data.author || ""
+          },
+          "datePublished": data.datePublished || "",
+          "dateModified": data.dateModified || "",
+          "image": data.image || "",
+          "description": data.description || "",
+          "publisher": {
+            "@type": "Organization",
+            "name": data.publisherName || "",
+            "logo": {
+              "@type": "ImageObject",
+              "url": data.publisherLogo || ""
+            }
+          }
+        };
+      }
+
+      if (state.type === 'BreadcrumbList') {
+        const items = [];
+        const cards = [...formArea.querySelectorAll('.mini-card')];
+        cards.forEach((card, i) => {
+          const name = card.querySelector('input[id^="bname"]')?.value.trim();
+          const url = card.querySelector('input[id^="burl"]')?.value.trim();
+          if (name && url) {
+            items.push({
+              "@type": "ListItem",
+              "position": i + 1,
+              "name": name,
+              "item": url
+            });
+          }
+        });
+        json = {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": items
+        };
+      }
+
+      const cleaned = JSON.parse(JSON.stringify(json, (k, v) => v === "" || v === undefined ? undefined : v, 2));
+      output.textContent = JSON.stringify(cleaned, null, 2);
+    }
+
+    function setActive(type){
+      state.type = type;
+      [...tabs.querySelectorAll('.tab')].forEach(t => t.classList.toggle('active', t.dataset.type === type));
+      renderForm();
+    }
+
+    tabs.addEventListener('click', e => {
+      if (e.target.classList.contains('tab')) setActive(e.target.dataset.type);
+    });
+
+    document.getElementById('copyBtn').addEventListener('click', async () => {
+      await navigator.clipboard.writeText(output.textContent);
+      alert('JSON-LD copied!');
+    });
+
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      const blob = new Blob([output.textContent], {type:'application/json'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'schema.json';
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+
+    document.getElementById('sampleBtn').addEventListener('click', () => {
+      const p = presets[state.type];
+      Object.entries(p || {}).forEach(([k,v]) => {
+        const el = document.getElementById(k);
+        if (el) el.value = v;
+      });
+      collectAndRender();
+    });
+
+    document.getElementById('clearBtn').addEventListener('click', () => {
+      formArea.querySelectorAll('input,textarea').forEach(el => el.value = '');
+      collectAndRender();
+    });
+
+    setActive('Organization');
+  </script>
+</body>
+</html>
