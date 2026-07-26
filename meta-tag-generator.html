@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meta Tags Generator Pro | SEO, Open Graph, Twitter Cards</title>
+  <meta name="description" content="Create SEO meta tags, Open Graph tags, Twitter Cards, favicon, manifest, verification tags, and more with this free API-free Meta Tags Generator Pro." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#05070d" />
+  <meta name="language" content="en" />
+  <style>
+    :root{--bg:#05070d;--bg2:#0a1020;--card:rgba(14,18,32,.92);--line:rgba(255,255,255,.09);--text:#eef4ff;--muted:#b7c4df;--pri:#7d5cff;--pri2:#27d3b9;--shadow:0 24px 70px rgba(0,0,0,.45);--radius:22px;--ok:#20c997;--warn:#ffb84d}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:radial-gradient(circle at top left, rgba(125,92,255,.22), transparent 35%),radial-gradient(circle at top right, rgba(39,211,185,.14), transparent 28%),linear-gradient(180deg,#060810 0%,var(--bg2) 42%,#04050a 100%);line-height:1.7}
+    a{color:#bcd4ff;text-decoration:none}a:hover{text-decoration:underline}
+    .wrap{max-width:1400px;margin:0 auto;padding:14px}
+    header,.hero,.panel,footer,.section{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    header{position:sticky;top:10px;z-index:20;padding:14px 16px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;backdrop-filter:blur(12px)}
+    .brand{font-size:20px;font-weight:900;letter-spacing:.2px}
+    nav{display:flex;gap:14px;flex-wrap:wrap;font-size:14px}
+    .hero{padding:26px 22px;margin-bottom:16px;background:linear-gradient(135deg, rgba(125,92,255,.12), rgba(39,211,185,.08))}
+    h1{margin:0 0 10px;font-size:clamp(30px,5vw,52px);line-height:1.08}
+    .sub{margin:0;color:var(--muted);max-width:980px}
+    .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;align-items:start}
+    .panel h2,.section h2{margin:0;padding:16px 18px;border-bottom:1px solid var(--line);font-size:18px}
+    .panel .body,.section .body{padding:18px}
+    .tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+    .tab{border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--text);padding:10px 14px;border-radius:999px;cursor:pointer;font-weight:700}
+    .tab.active{background:linear-gradient(135deg,var(--pri),var(--pri2));border-color:transparent}
+    .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .full{grid-column:1/-1}
+    label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+    input,textarea,select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:#08101d;color:var(--text);outline:none}
+    textarea{min-height:92px;resize:vertical}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    button{border:none;border-radius:12px;padding:12px 16px;cursor:pointer;font-weight:800}
+    .primary{background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff}.secondary{background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--text)}.ok{background:linear-gradient(135deg,#1fbf75,#20c997);color:#fff}.warn{background:linear-gradient(135deg,#ffb84d,#ff8c42);color:#111}
+    pre{margin:0;background:#08101d;border-top:1px solid var(--line);padding:18px;min-height:700px;color:#dce8ff;overflow:auto;white-space:pre-wrap;word-break:break-word;font-size:13px}
+    .help{margin-top:14px;padding:14px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.04);color:var(--muted);font-size:14px}
+    .box{margin-top:14px;padding:16px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.03)}
+    .faq-item{margin-top:10px;padding:14px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.03)}
+    footer{margin-top:16px;padding:18px;text-align:center;color:var(--muted)}
+    .foot-links{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:8px;font-size:14px}
+    .section{margin-top:16px}
+    .resource-list{display:grid;gap:12px}
+    .resource{padding:14px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.03)}
+    .pill{display:inline-block;padding:7px 11px;border-radius:999px;background:rgba(125,92,255,.15);border:1px solid rgba(125,92,255,.25);font-size:13px;color:#dfe7ff}
+    @media (max-width:980px){.grid{grid-template-columns:1fr}pre{min-height:380px}}
+    @media (max-width:640px){.wrap{padding:12px}.form-grid{grid-template-columns:1fr}.actions{display:grid;grid-template-columns:1fr 1fr}.actions button{width:100%}header{top:8px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">GetAge247</div>
+      <nav>
+        <a href="https://getage247.xyz/">Home</a>
+        <a href="https://getage247.xyz/meta-tag-generator.html">Meta Tag Generator</a>
+        <a href="https://getage247.xyz/schema-markup-generator.html">Schema Generator</a>
+        <a href="https://getage247.xyz/contact.html">Contact</a>
+        <a href="https://getage247.xyz/terms.html">Terms</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Meta Tags Generator Pro</h1>
+      <p class="sub">Build SEO meta tags, Open Graph tags, Twitter Cards, favicon links, manifest links, and verification tags in one fast browser-based tool — no API, no signup, no waiting.</p>
+      <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:10px">
+        <span class="pill">API-Free</span>
+        <span class="pill">Mobile Friendly</span>
+        <span class="pill">AdSense Ready</span>
+        <span class="pill">Live Preview</span>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="panel">
+        <h2>Generator</h2>
+        <div class="body">
+          <div class="tabs" id="tabs">
+            <button class="tab active" data-tab="basic">Basic SEO</button>
+            <button class="tab" data-tab="social">Open Graph</button>
+            <button class="tab" data-tab="twitter">Twitter</button>
+            <button class="tab" data-tab="assets">Icons & Manifest</button>
+            <button class="tab" data-tab="verify">Verification</button>
+            <button class="tab" data-tab="faq">FAQ</button>
+          </div>
+
+          <div id="basicForm"></div>
+          <div id="socialForm" style="display:none"></div>
+          <div id="twitterForm" style="display:none"></div>
+          <div id="assetsForm" style="display:none"></div>
+          <div id="verifyForm" style="display:none"></div>
+          <div id="faqForm" style="display:none"></div>
+
+          <div class="actions">
+            <button class="primary" id="copyBtn">Copy HTML</button>
+            <button class="secondary" id="downloadBtn">Download HTML</button>
+            <button class="ok" id="sampleBtn">Load Sample</button>
+            <button class="warn" id="clearBtn">Clear Form</button>
+          </div>
+
+          <div class="help" id="helpBox">Start with title, description, canonical URL, and robots. Then fill social and verification fields.</div>
+
+          <div class="box">
+            <strong>Legal Pages Placeholder</strong>
+            <p>ABOUT_LINK • CONTACT_LINK • TERMS_LINK • PRIVACY_LINK • DISCLAIMER_LINK • SITEMAP_LINK</p>
+          </div>
+
+          <div class="box">
+            <strong>FAQ Placeholder</strong>
+            <p>FAQ_HEADING • FAQ_QUESTION_1 • FAQ_ANSWER_1 • FAQ_QUESTION_2 • FAQ_ANSWER_2</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Live HTML Preview</h2>
+        <pre id="output">&lt;!-- generated HTML meta block appears here --&gt;</pre>
+      </section>
+    </div>
+
+    <section class="section">
+      <h2>SEO Tips</h2>
+      <div class="body">
+        <div class="resource-list">
+          <div class="resource">Keep the title clear and under about 60 characters where possible.</div>
+          <div class="resource">Write a unique meta description for each page.</div>
+          <div class="resource">Use Open Graph and Twitter tags so shared links look clean.</div>
+          <div class="resource">Add favicon, manifest, and verification tags for full site readiness.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Reference & Resources</h2>
+      <div class="body resource-list">
+        <div class="resource"><a href="https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data" target="_blank" rel="noopener">Google Structured Data Overview</a></div>
+        <div class="resource"><a href="https://developers.google.com/search/docs/appearance/structured-data" target="_blank" rel="noopener">Google Rich Results and Structured Data Docs</a></div>
+        <div class="resource"><a href="https://developers.google.com/search/docs/appearance/structured-data/organization" target="_blank" rel="noopener">Organization Schema Guidance</a></div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="foot-links">
+        <a href="ABOUT_LINK">About</a>
+        <a href="CONTACT_LINK">Contact</a>
+        <a href="TERMS_LINK">Terms</a>
+        <a href="PRIVACY_LINK">Privacy Policy</a>
+        <a href="DISCLAIMER_LINK">Disclaimer</a>
+        <a href="SITEMAP_LINK">Sitemap</a>
+      </div>
+      <div>© 2026 GetAge247</div>
+    </footer>
+  </div>
+
+  <script>
+    const state = {
+      basic: {
+        title: 'Meta Tags Generator Pro',
+        description: 'Create SEO, Open Graph, Twitter, icon, manifest, and verification tags.',
+        keywords: 'meta tag generator, seo tags, open graph, twitter cards',
+        canonical: 'https://getage247.xyz/meta-tag-generator.html',
+        robots: 'index,follow',
+        author: 'GetAge247',
+        language: 'en',
+        charset: 'UTF-8',
+        viewport: 'width=device-width, initial-scale=1.0',
+        themeColor: '#05070d'
+      },
+      social: {
+        ogTitle: 'Meta Tags Generator Pro',
+        ogDescription: 'Create SEO, Open Graph, Twitter, icon, manifest, and verification tags.',
+        ogImage: 'https://getage247.xyz/og-image.jpg',
+        ogUrl: 'https://getage247.xyz/meta-tag-generator.html',
+        ogType: 'website'
+      },
+      twitter: {
+        twitterCard: 'summary_large_image',
+        twitterTitle: 'Meta Tags Generator Pro',
+        twitterDescription: 'Create SEO, Open Graph, Twitter, icon, manifest, and verification tags.',
+        twitterImage: 'https://getage247.xyz/og-image.jpg'
+      },
+      assets: {
+        favicon: 'https://getage247.xyz/favicon.ico',
+        appleTouchIcon: 'https://getage247.xyz/apple-touch-icon.png',
+        manifest: 'https://getage247.xyz/site.webmanifest'
+      },
+      verify: {
+        google: '',
+        bing: '',
+        yandex: '',
+        pinterest: ''
+      },
+      faq: [
+        { q: 'What does this tool generate?', a: 'It generates SEO, Open Graph, Twitter Cards, icons, manifest, and verification tags.' },
+        { q: 'Does it need an API?', a: 'No. Everything runs in the browser.' }
+      ]
+    };
+
+    const $ = s => document.querySelector(s);
+    const $$ = s => [...document.querySelectorAll(s)];
+
+    function field(id, label, value = '', placeholder = '', type = 'text') {
+      return <div class="${id === 'description' || id.includes('Description') ? 'full' : ''}"><label for="${id}">${label}</label>${type === 'textarea' ? `<textarea id="${id}" placeholder="${placeholder}">${value}</textarea> : <input id="${id}" type="${type}" value="${value}" placeholder="${placeholder}">}</div>`;
+    }
+
+    function renderForms() {
+      $('#basicForm').innerHTML = <div class="form-grid">${field('title','Meta Title',state.basic.title,'Page title')}${field('description','Meta Description',state.basic.description,'Page description','textarea')}${field('keywords','Meta Keywords (optional)',state.basic.keywords,'keyword1, keyword2')}${field('canonical','Canonical URL',state.basic.canonical,'https://example.com/page')}${field('robots','Robots',state.basic.robots,'index,follow or noindex,nofollow')}${field('author','Author',state.basic.author,'Author name')}${field('language','Language',state.basic.language,'en')}${field('charset','Charset',state.basic.charset,'UTF-8')}${field('viewport','Viewport',state.basic.viewport,'width=device-width, initial-scale=1.0')}${field('themeColor','Theme Color',state.basic.themeColor,'#05070d')}</div>;
+      $('#socialForm').innerHTML = <div class="form-grid">${field('ogTitle','og:title',state.social.ogTitle,'Open Graph title')}${field('ogDescription','og:description',state.social.ogDescription,'Open Graph description','textarea')}${field('ogImage','og:image',state.social.ogImage,'https://example.com/og.jpg')}${field('ogUrl','og:url',state.social.ogUrl,'https://example.com/page')}${field('ogType','og:type',state.social.ogType,'website')}</div>;
+      $('#twitterForm').innerHTML = <div class="form-grid">${field('twitterCard','twitter:card',state.twitter.twitterCard,'summary_large_image')}${field('twitterTitle','twitter:title',state.twitter.twitterTitle,'Twitter title')}${field('twitterDescription','twitter:description',state.twitter.twitterDescription,'Twitter description','textarea')}${field('twitterImage','twitter:image',state.twitter.twitterImage,'https://example.com/twitter.jpg')}</div>;
+      $('#assetsForm').innerHTML = <div class="form-grid">${field('favicon','Favicon',state.assets.favicon,'https://example.com/favicon.ico')}${field('appleTouchIcon','Apple Touch Icon',state.assets.appleTouchIcon,'https://example.com/apple-touch-icon.png')}${field('manifest','Manifest Link',state.assets.manifest,'https://example.com/site.webmanifest')}</div>;
+      $('#verifyForm').innerHTML = <div class="form-grid">${field('google','Google Verification',state.verify.google,'verification code')}${field('bing','Bing Verification',state.verify.bing,'verification code')}${field('yandex','Yandex Verification',state.verify.yandex,'verification code')}${field('pinterest','Pinterest Verification',state.verify.pinterest,'verification code')}</div>;
+      let faq = '<div class="full">';
+      state.faq.forEach((x,i)=>{ faq += <div class="faq-item"><label>Question ${i+1}</label><input data-faq-q="${i}" value="${escapeHtml(x.q)}"><div style="height:10px"></div><label>Answer ${i+1}</label><textarea data-faq-a="${i}">${escapeHtml(x.a)}</textarea></div>; });
+      faq += <div class="actions" style="margin-top:12px"><button class="secondary" type="button" id="addFaqBtn">Add FAQ</button></div></div>;
+      $('#faqForm').innerHTML = <div class="form-grid">${faq}</div>;
+      bindInputs();
+      collect();
+    }
+
+    function bindInputs(){
+      $('')
+
+      $$('input,textarea').forEach(el=>el.addEventListener('input',collect));
+      $('#addFaqBtn')?.addEventListener('click',()=>{ state.faq.push({q:'',a:''}); renderForms(); });
+      $$('[data-faq-q]').forEach(el=>el.oninput=e=>state.faq[+e.target.dataset.faqQ].q=e.target.value);
+      $$('[data-faq-a]').forEach(el=>el.oninput=e=>state.faq[+e.target.dataset.faqA].a=e.target.value);
+    }
+
+    function escAttr(s){ return String(s ?? '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    function escHtml(s){ return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    function collect(){
+      Object.keys(state.basic).forEach(k=>state.basic[k]=document.getElementById(k)?.value ?? state.basic[k]);
+      Object.keys(state.social).forEach(k=>state.social[k]=document.getElementById(k)?.value ?? state.social[k]);
+      Object.keys(state.twitter).forEach(k=>state.twitter[k]=document.getElementById(k)?.value ?? state.twitter[k]);
+      Object.keys(state.assets).forEach(k=>state.assets[k]=document.getElementById(k)?.value ?? state.assets[k]);
+      Object.keys(state.verify).forEach(k=>state.verify[k]=document.getElementById(k)?.value ?? state.verify[k]);
+
+      const lines = [];
+      lines.push('<!-- Primary SEO Meta Tags -->');
+      lines.push(<meta charset="${escAttr(state.basic.charset)}">);
+      lines.push(<meta name="viewport" content="${escAttr(state.basic.viewport)}">);
+      lines.push(<title>${escHtml(state.basic.title)}</title>);
+      lines.push(<meta name="description" content="${escAttr(state.basic.description)}">);
+      if (state.basic.keywords.trim()) lines.push(<meta name="keywords" content="${escAttr(state.basic.keywords)}">);
+      lines.push(<meta name="robots" content="${escAttr(state.basic.robots)}">);
+      lines.push(<meta name="author" content="${escAttr(state.basic.author)}">);
+      lines.push(<meta name="language" content="${escAttr(state.basic.language)}">);
+      lines.push(<meta name="theme-color" content="${escAttr(state.basic.themeColor)}">);
+      lines.push(<link rel="canonical" href="${escAttr(state.basic.canonical)}">);
+      lines.push('');
+      lines.push('<!-- Icons & Manifest -->');
+      if (state.assets.favicon.trim()) lines.push(<link rel="icon" href="${escAttr(state.assets.favicon)}">);
+      if (state.assets.appleTouchIcon.trim()) lines.push(<link rel="apple-touch-icon" href="${escAttr(state.assets.appleTouchIcon)}">);
+      if (state.assets.manifest.trim()) lines.push(<link rel="manifest" href="${escAttr(state.assets.manifest)}">);
+      lines.push('');
+      lines.push('<!-- Open Graph -->');
+      lines.push(<meta property="og:title" content="${escAttr(state.social.ogTitle || state.basic.title)}">);
+      lines.push(<meta property="og:description" content="${escAttr(state.social.ogDescription || state.basic.description)}">);
+      lines.push(<meta property="og:image" content="${escAttr(state.social.ogImage)}">);
+      lines.push(<meta property="og:url" content="${escAttr(state.social.ogUrl)}">);
+      lines.push(<meta property="og:type" content="${escAttr(state.social.ogType)}">);
+      lines.push('');
+      lines.push('<!-- Twitter Cards -->');
+      lines.push(<meta name="twitter:card" content="${escAttr(state.twitter.twitterCard)}">);
+      lines.push(<meta name="twitter:title" content="${escAttr(state.twitter.twitterTitle || state.basic.title)}">);
+      lines.push(<meta name="twitter:description" content="${escAttr(state.twitter.twitterDescription || state.basic.description)}">);
+      lines.push(<meta name="twitter:image" content="${escAttr(state.twitter.twitterImage)}">);
+      lines.push('');
+      lines.push('<!-- Verification Tags -->');
+      if (state.verify.google.trim()) lines.push(<meta name="google-site-verification" content="${escAttr(state.verify.google)}">);
+      if (state.verify.bing.trim()) lines.push(<meta name="msvalidate.01" content="${escAttr(state.verify.bing)}">);
+      if (state.verify.yandex.trim()) lines.push(<meta name="yandex-verification" content="${escAttr(state.verify.yandex)}">);
+      if (state.verify.pinterest.trim()) lines.push(<meta name="p:domain_verify" content="${escAttr(state.verify.pinterest)}">);
+      lines.push('');
+      lines.push('<!-- Optional FAQ Placeholder -->');
+      lines.push('<!-- FAQ_HEADING -->');
+      lines.push('<!-- FAQ_QUESTION_1 / FAQ_ANSWER_1 -->');
+      lines.push('<!-- FAQ_QUESTION_2 / FAQ_ANSWER_2 -->');
+      $('#output').textContent = lines.join('\
+');
+    }
+
+    function setTab(name){
+      $$('.tab').forEach(t=>t.classList.toggle('active', t.dataset.tab===name));
+      ['basic','social','twitter','assets','verify','faq'].forEach(k=>document.getElementById(k+'Form').style.display = (k===name?'block':'none'));
+      const help = {
+        basic:'Fill title, description, canonical, robots, language, author, and theme color first.',
+        social:'Open Graph controls social previews on Facebook, LinkedIn, and similar platforms.',
+        twitter:'Twitter Card tags improve how your links appear on X/Twitter.',
+        assets:'Add favicon, apple touch icon, and manifest link for a complete site setup.',
+        verify:'Paste your verification codes for Google, Bing, Yandex, and Pinterest.',
+        faq:'Keep FAQ answers short, human, and useful. Add your visible FAQ content on the page too.'
+      };
+      $('#helpBox').textContent = help[name];
+    }
+
+    $('#tabs').addEventListener('click', e=>{ if(e.target.classList.contains('tab')) setTab(e.target.dataset.tab); });
+    $('#copyBtn').onclick = async ()=>{ await navigator.clipboard.writeText($('#output').textContent); alert('Copied!'); };
+    $('#downloadBtn').onclick = ()=>{ const blob = new Blob([$('#output').textContent],{type:'text/html'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='meta-tags.html'; a.click(); URL.revokeObjectURL(a.href); };
+    $('#sampleBtn').onclick = ()=>{ state.basic.title='Meta Tags Generator Pro'; state.basic.description='Create SEO, Open Graph, Twitter, icon, manifest, and verification tags.'; state.social.ogImage='https://getage247.xyz/og-image.jpg'; state.twitter.twitterImage='https://getage247.xyz/og-image.jpg'; state.verify.google='sample-google-code'; renderForms(); setTab('basic'); };
+    $('#clearBtn').onclick = ()=>{ location.reload(); };
+
+    renderForms();
+    setTab('basic');
+  </script>
+</body>
+</html>
