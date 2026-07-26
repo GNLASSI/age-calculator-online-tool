@@ -1,201 +1,1283 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Meta Tag Generator Tool - GetAge247</title>
-<meta name="description" content="Generate SEO meta tags, Open Graph, Twitter Cards & JSON-LD for free. Fast online meta tag generator by GetAge247.">
-<link rel="icon" href="https://getage247.xyz/logo.png">
-<style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:'Segoe UI',Arial,sans-serif;background:#0f172a;color:#e2e8f0}
-  
-  /* HEADER */
-  header{background:#1e293b;border-bottom:1px solid #334155;position:sticky;top:0;z-index:100}
-  .nav{max-width:1300px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:15px 20px}
-  .logo{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:bold;color:#38bdf8}
-  .logo img{height:35px}
-  .nav-links a{color:#cbd5e1;text-decoration:none;margin-left:20px;font-size:14px}
-  .nav-links a:hover{color:#38bdf8}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meta Tag Generator - getage247.xyz</title>
+    <meta name="description" content="Advanced Meta Tag Generator Tool for bloggers & developers. Generate perfect meta tags, Open Graph, Twitter Cards & more. Free & no API required." />
+    <link rel="canonical" href="https://getage247.xyz/" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Meta Tag Generator - getage247.xyz" />
+    <meta property="og:description" content="Advanced Meta Tag Generator Tool for bloggers & developers. Generate perfect meta tags, Open Graph, Twitter Cards & more." />
+    <meta property="og:url" content="https://getage247.xyz/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="getage247.xyz" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Meta Tag Generator - getage247.xyz" />
+    <meta name="twitter:description" content="Advanced Meta Tag Generator Tool for bloggers & developers. Generate perfect meta tags, Open Graph, Twitter Cards & more." />
+    <meta name="twitter:site" content="@getage247" />
+    <meta name="twitter:creator" content="@getage247" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏷️</text></svg>" />
+    <style>
+        /* ========== RESET & BASE ========== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --primary: #6c5ce7;
+            --primary-dark: #5a4bd1;
+            --primary-light: #a29bfe;
+            --bg: #0f0e1a;
+            --bg-card: #1a1830;
+            --bg-card-hover: #221f3d;
+            --text: #f0eeff;
+            --text-muted: #a8a4c8;
+            --border: #2d2a4a;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+        }
+        a {
+            color: var(--primary-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        a:hover {
+            color: #fff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
 
-  /* MAIN */
-  .container{max-width:1300px;margin:30px auto;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  .card{background:#1e293b;padding:20px;border-radius:12px;border:1px solid #334155}
-  h2{color:#38bdf8;margin-top:0;font-size:18px;margin-bottom:15px}
-  label{display:block;margin:12px 0 5px;font-size:14px;color:#94a3b8}
-  input,textarea{width:100%;padding:10px;background:#0f172a;border:1px solid #334155;border-radius:8px;color:#fff}
-  textarea{min-height:80px;resize:vertical}
-  .btn-group button{background:#38bdf8;color:#000;border:none;padding:12px 20px;border-radius:8px;cursor:pointer;font-weight:bold;margin:10px 5px 0 0}
-  .btn-group button:hover{background:#0ea5e9}
-  
-  /* PREVIEW */
-  .preview{background:#fff;color:#000;padding:15px;border-radius:8px;margin-top:10px}
-  .preview-title{color:#1a0dab;font-size:20px}
-  .preview-url{color:#006400;font-size:14px}
-  .og-preview{border:1px solid #ddd;border-radius:8px;overflow:hidden;margin-top:10px;background:#fff}
-  .og-preview img{width:100%;height:200px;object-fit:cover;background:#ccc}
-  .og-text{padding:10px}
-  pre{background:#0f172a;padding:15px;border-radius:8px;overflow-x:auto;font-size:12px;max-height:400px}
+        /* ========== HEADER ========== */
+        header {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            background: rgba(15, 14, 26, 0.92);
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+        .logo span {
+            font-weight: 300;
+            -webkit-text-fill-color: var(--text-muted);
+        }
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 14px;
+        }
+        nav a {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        nav a:hover,
+        nav a.active {
+            color: #fff;
+            border-bottom-color: var(--primary);
+        }
+        nav a.active {
+            color: #fff;
+        }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.6rem;
+            cursor: pointer;
+            padding: 4px 8px;
+        }
 
-  /* FOOTER */
-  footer{background:#1e293b;border-top:1px solid #334155;margin-top:50px;padding:30px 20px}
-  .footer-wrap{max-width:1300px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
-  .footer-col h3{color:#38bdf8;margin-bottom:15px;font-size:16px}
-  .footer-col a{display:block;color:#94a3b8;text-decoration:none;margin:8px 0;font-size:14px}
-  .footer-col a:hover{color:#38bdf8}
-  .copyright{border-top:1px solid #334155;margin-top:20px;padding-top:20px;text-align:center;color:#64748b;font-size:13px}
-  
-  @media(max-width:900px){.container{grid-template-columns:1fr}.footer-wrap{grid-template-columns:1fr}}
-</style>
+        /* ========== MAIN ========== */
+        main {
+            flex: 1;
+            padding: 32px 0 48px;
+        }
+        .page {
+            display: none;
+            animation: fadeUp 0.4s ease;
+        }
+        .page.active {
+            display: block;
+        }
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            text-align: center;
+            padding: 20px 0 32px;
+        }
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: var(--primary-dark);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 3px 14px;
+            border-radius: 40px;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        /* ========== TOOL GRID ========== */
+        .tool-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin-top: 24px;
+        }
+        @media (max-width: 900px) {
+            .tool-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========== CARDS ========== */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            transition: var(--transition);
+        }
+        .card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-title .icon {
+            font-size: 1.3rem;
+        }
+
+        /* ========== FORM ELEMENTS ========== */
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .form-group .hint {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            opacity: 0.7;
+            margin-top: 2px;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px 14px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text);
+            font-size: 0.95rem;
+            transition: var(--transition);
+            font-family: var(--font);
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+        }
+        .form-group textarea {
+            min-height: 70px;
+            resize: vertical;
+        }
+        .form-group select option {
+            background: var(--bg-card);
+        }
+
+        .char-count {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-align: right;
+            margin-top: 2px;
+        }
+        .char-count.warning {
+            color: #fdcb6e;
+        }
+        .char-count.danger {
+            color: #e17055;
+        }
+
+        /* ========== BUTTONS ========== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: var(--font);
+            background: var(--border);
+            color: var(--text);
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.3);
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+        .btn-success {
+            background: #00b894;
+            color: #fff;
+        }
+        .btn-success:hover {
+            background: #00a381;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+        .btn-outline:hover {
+            border-color: var(--primary);
+            background: rgba(108, 92, 231, 0.1);
+        }
+        .btn-sm {
+            padding: 6px 14px;
+            font-size: 0.8rem;
+        }
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        /* ========== OUTPUT ========== */
+        .output-box {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+            max-height: 260px;
+            overflow-y: auto;
+            color: #c8c4e8;
+            margin-top: 12px;
+            position: relative;
+        }
+        .output-box .copy-feedback {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 0.7rem;
+            background: var(--primary);
+            color: #fff;
+            padding: 2px 12px;
+            border-radius: 20px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .output-box .copy-feedback.show {
+            opacity: 1;
+        }
+
+        /* ========== PREVIEW ========== */
+        .preview-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            margin-top: 12px;
+        }
+        .preview-card .preview-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #4a7bff;
+        }
+        .preview-card .preview-url {
+            font-size: 0.8rem;
+            color: #00b894;
+        }
+        .preview-card .preview-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .preview-card .preview-sep {
+            border-top: 1px solid var(--border);
+            margin: 10px 0;
+        }
+
+        /* ========== SEO SCORE ========== */
+        .seo-score {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .seo-score .score-ring {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            border: 4px solid var(--border);
+            flex-shrink: 0;
+        }
+        .seo-score .score-ring.good {
+            border-color: #00b894;
+            color: #00b894;
+        }
+        .seo-score .score-ring.ok {
+            border-color: #fdcb6e;
+            color: #fdcb6e;
+        }
+        .seo-score .score-ring.bad {
+            border-color: #e17055;
+            color: #e17055;
+        }
+        .seo-score .score-details {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .seo-score .score-details strong {
+            color: var(--text);
+        }
+
+        /* ========== PAGE CONTENT (About, Contact, etc) ========== */
+        .page-content {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+        .page-content h2 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #fff, var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .page-content h3 {
+            font-size: 1.2rem;
+            margin: 20px 0 8px;
+            color: #fff;
+        }
+        .page-content p {
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+        .page-content ul {
+            color: var(--text-muted);
+            padding-left: 24px;
+            margin-bottom: 14px;
+        }
+        .page-content ul li {
+            margin-bottom: 4px;
+        }
+        .page-content .card {
+            margin-bottom: 20px;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 28px 0 20px;
+            margin-top: auto;
+        }
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .footer-inner .copy {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 20px;
+        }
+        .footer-links a {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+            nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 12px 0 4px;
+                gap: 4px;
+            }
+            nav.open {
+                display: flex;
+            }
+            nav a {
+                padding: 8px 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid var(--border);
+            }
+            nav a:last-child {
+                border-bottom: none;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .card {
+                padding: 18px 16px;
+            }
+            .btn-group {
+                flex-direction: column;
+            }
+            .btn-group .btn {
+                justify-content: center;
+            }
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-links {
+                justify-content: center;
+            }
+            .seo-score {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 12px;
+            }
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            .output-box {
+                font-size: 0.75rem;
+                padding: 12px 14px;
+            }
+        }
+
+        /* ========== SCROLLBAR ========== */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* ========== UTILITY ========== */
+        .text-center {
+            text-align: center;
+        }
+        .mt-8 {
+            margin-top: 8px;
+        }
+        .mt-16 {
+            margin-top: 16px;
+        }
+        .gap-8 {
+            gap: 8px;
+        }
+        .flex-wrap {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .items-center {
+            align-items: center;
+        }
+        .w-full {
+            width: 100%;
+        }
+        .hidden {
+            display: none !important;
+        }
+    </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="nav">
-    <div class="logo">
-      <img src="https://getage247.xyz/logo.png" alt="GetAge247">
-      GetAge247
-    </div>
-    <div class="nav-links">
-      <a href="/">Home</a>
-      <a href="/about.html">About</a>
-      <a href="/contact.html">Contact</a>
-    </div>
-  </div>
-</header>
+    <!-- ========== HEADER ========== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">MetaGen<span> ⚡</span></div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+            <nav id="mainNav">
+                <a href="#" data-page="home" class="active">Home</a>
+                <a href="#" data-page="about">About</a>
+                <a href="#" data-page="contact">Contact</a>
+                <a href="#" data-page="privacy">Privacy</a>
+                <a href="#" data-page="disclaimer">Disclaimer</a>
+                <a href="#" data-page="terms">Terms</a>
+            </nav>
+        </div>
+    </header>
 
-<!-- MAIN TOOL -->
-<div class="container">
-  <!-- LEFT: FORM -->
-  <div class="card">
-    <h2>Fill Details</h2>
-    <label>Page Title</label>
-    <input type="text" id="title" oninput="generatePreview()">
-    <label>Meta Description</label>
-    <textarea id="description" oninput="generatePreview()"></textarea>
-    <label>Keywords</label>
-    <input type="text" id="keywords" oninput="generatePreview()">
-    <label>Canonical URL</label>
-    <input type="text" id="canonical" oninput="generatePreview()">
-    <label>OG Image URL</label>
-    <input type="text" id="ogImage" oninput="generatePreview()">
-    <label>Twitter @Username</label>
-    <input type="text" id="twitter" oninput="generatePreview()">
-    <label>Favicon URL</label>
-    <input type="text" id="favicon" oninput="generatePreview()">
-    <div class="btn-group">
-      <button onclick="loadSample()">Load Sample</button>
-      <button onclick="copyCode()">Copy All Tags</button>
-      <button onclick="downloadFile()">Download .txt</button>
-      <button onclick="resetForm()">Reset</button>
-    </div>
-  </div>
+    <!-- ========== MAIN ========== -->
+    <main>
+        <div class="container">
 
-  <!-- RIGHT: PREVIEW + CODE -->
-  <div class="card">
-    <h2>1. Google Preview</h2>
-    <div class="preview">
-      <div class="preview-title" id="pTitle">Your Page Title</div>
-      <div class="preview-url" id="pUrl">https://getage247.xyz</div>
-      <div id="pDesc">Your meta description</div>
-    </div>
-    <h2>2. Facebook/OG Preview</h2>
-    <div class="og-preview">
-      <img id="ogImgPreview" src="https://via.placeholder.com/1200x630/334155/fff?text=OG+Image">
-      <div class="og-text">
-        <div style="color:#606770;font-size:12px" id="ogUrlPreview">getage247.xyz</div>
-        <div style="font-weight:bold" id="ogTitlePreview">Your Page Title</div>
-        <div id="ogDescPreview">Your description</div>
-      </div>
-    </div>
-    <h2>3. Twitter Card Preview</h2>
-    <div class="og-preview">
-      <img id="twImgPreview" src="https://via.placeholder.com/1200x630/334155/fff?text=Twitter+Image">
-      <div class="og-text">
-        <div style="font-weight:bold" id="twTitlePreview">Your Page Title</div>
-        <div id="twDescPreview">Your description</div>
-      </div>
-    </div>
-    <h2>Generated Code</h2>
-    <pre id="codeOutput"></pre>
-  </div>
-</div>
+            <!-- ===== HOME PAGE ===== -->
+            <section id="page-home" class="page active">
+                <div class="hero">
+                    <h1>🚀 Meta Tag Generator</h1>
+                    <p>Generate perfect meta tags, Open Graph, Twitter Cards &amp; more — all in one place. Built for bloggers &amp; developers.</p>
+                    <span class="badge">✨ No API Required &bull; 100% Free</span>
+                </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-wrap">
-    <div class="footer-col">
-      <h3>GetAge247</h3>
-      <p style="color:#94a3b8;font-size:14px">Free Online Tools. Fast, Free, No Signup Required. Privacy First.</p>
-    </div>
-    <div class="footer-col">
-      <h3>Legal</h3>
-      <a href="/privacy.html">Privacy</a>
-      <a href="/terms.html">Terms</a>
-    </div>
-    <div class="footer-col">
-      <h3>Company</h3>
-      <a href="/about.html">About</a>
-      <a href="/contact.html">Contact</a>
-    </div>
-  </div>
-  <div class="copyright">
-    © 2026 GetAge247. All Rights Reserved.
-  </div>
-</footer>
+                <div class="tool-grid">
+                    <!-- LEFT: INPUT -->
+                    <div class="card">
+                        <div class="card-title"><span class="icon">📝</span> Enter Your Details</div>
 
-<script>
-function generatePreview(){
-  const title = document.getElementById('title').value || "Your Page Title";
-  const desc = document.getElementById('description').value || "Your meta description";
-  const url = document.getElementById('canonical').value || "https://getage247.xyz";
-  const keywords = document.getElementById('keywords').value;
-  const ogImage = document.getElementById('ogImage').value || "https://via.placeholder.com/1200x630/334155/fff?text=OG+Image";
-  const favicon = document.getElementById('favicon').value;
-  const twitter = document.getElementById('twitter').value;
+                        <div class="form-group">
+                            <label>Page Title</label>
+                            <input type="text" id="metaTitle" placeholder="My Awesome Page | getage247.xyz" maxlength="70" />
+                            <div class="char-count" id="titleCount">0 / 70</div>
+                            <div class="hint">Recommended: 50–60 characters</div>
+                        </div>
 
-  document.getElementById('pTitle').innerText = title;
-  document.getElementById('pUrl').innerText = url;
-  document.getElementById('pDesc').innerText = desc;
-  document.getElementById('ogImgPreview').src = ogImage;
-  document.getElementById('ogUrlPreview').innerText = url.replace("https://","");
-  document.getElementById('ogTitlePreview').innerText = title;
-  document.getElementById('ogDescPreview').innerText = desc;
-  document.getElementById('twImgPreview').src = ogImage;
-  document.getElementById('twTitlePreview').innerText = title;
-  document.getElementById('twDescPreview').innerText = desc;
+                        <div class="form-group">
+                            <label>Meta Description</label>
+                            <textarea id="metaDesc" placeholder="Write a compelling description for search results…" maxlength="160" rows="3"></textarea>
+                            <div class="char-count" id="descCount">0 / 160</div>
+                            <div class="hint">Recommended: 150–160 characters</div>
+                        </div>
 
-  let code = `<title>${title}</title>\n<meta name="description" content="${desc}">\n`;
-  if(keywords) code += `<meta name="keywords" content="${keywords}">\n`;
-  if(url) code += `<link rel="canonical" href="${url}">\n`;
-  if(favicon) code += `<link rel="icon" href="${favicon}">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n\n`;
-  code += `<!-- Open Graph -->\n<meta property="og:title" content="${title}">\n<meta property="og:description" content="${desc}">\n<meta property="og:url" content="${url}">\n<meta property="og:type" content="website">\n`;
-  if(ogImage) code += `<meta property="og:image" content="${ogImage}">\n\n`;
-  code += `<!-- Twitter -->\n<meta name="twitter:card" content="summary_large_image">\n`;
-  if(twitter) code += `<meta name="twitter:site" content="${twitter}">\n`;
-  code += `<meta name="twitter:title" content="${title}">\n<meta name="twitter:description" content="${desc}">\n`;
-  if(ogImage) code += `<meta name="twitter:image" content="${ogImage}">\n\n`;
-  code += `<!-- JSON-LD Schema -->\n<script type="application/ld+json">\n{\n "@context": "https://schema.org",\n "@type": "WebSite",\n "name": "${title}",\n "url": "${url}"\n}\n<\/script>`;
-  document.getElementById('codeOutput').innerText = code;
-}
-function loadSample(){
-  document.getElementById('title').value = "Free Meta Tag Generator - GetAge247";
-  document.getElementById('description').value = "Generate SEO meta tags, Open Graph, Twitter Cards & JSON-LD for free with GetAge247. Fast and accurate meta tag generator.";
-  document.getElementById('keywords').value = "meta tag generator, seo tools, getage247";
-  document.getElementById('canonical').value = "https://getage247.xyz";
-  document.getElementById('ogImage').value = "https://getage247.xyz/logo.png";
-  document.getElementById('favicon').value = "https://getage247.xyz/logo.png";
-  document.getElementById('twitter').value = "@GetAge247";
-  generatePreview();
-}
-function copyCode(){navigator.clipboard.writeText(document.getElementById('codeOutput').innerText);alert("Code Copied!")}
-function downloadFile(){
-  const blob = new Blob([document.getElementById('codeOutput').innerText], {type: 'text/plain'});
-  const a = document.createElement('a');a.href = URL.createObjectURL(blob);a.download = 'meta-tags.txt';a.click();
-}
-function resetForm(){document.querySelectorAll('input,textarea').forEach(el=>el.value='');generatePreview();}
-generatePreview();
-</script>
+                        <div class="form-group">
+                            <label>Meta Keywords <span style="font-weight:400;color:var(--text-muted);font-size:0.75rem;">(comma separated)</span></label>
+                            <input type="text" id="metaKeywords" placeholder="seo, meta tags, generator, getage247" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Author</label>
+                            <input type="text" id="metaAuthor" placeholder="Your Name or Brand" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Robots</label>
+                            <select id="metaRobots">
+                                <option value="index, follow">index, follow (default)</option>
+                                <option value="noindex, follow">noindex, follow</option>
+                                <option value="index, nofollow">index, nofollow</option>
+                                <option value="noindex, nofollow">noindex, nofollow</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Canonical URL</label>
+                            <input type="url" id="metaCanonical" placeholder="https://getage247.xyz/your-page" />
+                        </div>
+
+                        <hr style="border-color:var(--border);margin:16px 0;" />
+
+                        <div class="form-group">
+                            <label>OG Title <span style="font-weight:400;color:var(--text-muted);font-size:0.75rem;">(leave blank to use Page Title)</span></label>
+                            <input type="text" id="ogTitle" placeholder="Open Graph Title" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>OG Description <span style="font-weight:400;color:var(--text-muted);font-size:0.75rem;">(leave blank to use Meta Description)</span></label>
+                            <textarea id="ogDesc" placeholder="Open Graph Description" rows="2"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>OG Image URL</label>
+                            <input type="url" id="ogImage" placeholder="https://getage247.xyz/og-image.jpg" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>OG Type</label>
+                            <select id="ogType">
+                                <option value="website">website</option>
+                                <option value="article">article</option>
+                                <option value="blog">blog</option>
+                                <option value="product">product</option>
+                                <option value="video">video</option>
+                            </select>
+                        </div>
+
+                        <hr style="border-color:var(--border);margin:16px 0;" />
+
+                        <div class="form-group">
+                            <label>Twitter Card Type</label>
+                            <select id="twitterCard">
+                                <option value="summary">summary</option>
+                                <option value="summary_large_image" selected>summary_large_image</option>
+                                <option value="app">app</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Twitter Site <span style="font-weight:400;color:var(--text-muted);font-size:0.75rem;">(@username)</span></label>
+                            <input type="text" id="twitterSite" placeholder="@getage247" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Twitter Creator <span style="font-weight:400;color:var(--text-muted);font-size:0.75rem;">(@username)</span></label>
+                            <input type="text" id="twitterCreator" placeholder="@getage247" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Theme Color (optional)</label>
+                            <input type="text" id="themeColor" placeholder="#6c5ce7" />
+                        </div>
+
+                        <div class="btn-group">
+                            <button class="btn btn-primary" id="generateBtn">⚡ Generate Meta Tags</button>
+                            <button class="btn btn-outline" id="clearBtn">🗑️ Clear All</button>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: OUTPUT & PREVIEW -->
+                    <div>
+                        <div class="card">
+                            <div class="card-title"><span class="icon">📋</span> Generated Meta Tags</div>
+                            <div class="output-box" id="outputBox">
+                                <span style="color:var(--text-muted);">Fill in the fields and click <strong style="color:var(--primary-light);">Generate</strong>.</span>
+                                <span class="copy-feedback" id="copyFeedback">✅ Copied!</span>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn btn-success btn-sm" id="copyBtn">📄 Copy HTML</button>
+                                <button class="btn btn-primary btn-sm" id="downloadBtn">⬇️ Download .html</button>
+                            </div>
+                        </div>
+
+                        <!-- SEO Score -->
+                        <div class="card" style="margin-top:20px;">
+                            <div class="card-title"><span class="icon">📊</span> SEO Score &amp; Preview</div>
+                            <div class="seo-score" id="seoScore">
+                                <div class="score-ring" id="scoreRing">—</div>
+                                <div class="score-details" id="scoreDetails">
+                                    <strong>Score:</strong> <span id="scoreValue">—</span><br />
+                                    <span id="scoreFeedback">Fill in the fields to get a score.</span>
+                                </div>
+                            </div>
+                            <div class="preview-card" id="previewBox">
+                                <div class="preview-title" id="previewTitle">Your Page Title</div>
+                                <div class="preview-url" id="previewUrl">https://getage247.xyz/</div>
+                                <div class="preview-desc" id="previewDesc">Your meta description will appear here…</div>
+                                <div class="preview-sep"></div>
+                                <div style="font-size:0.8rem;color:var(--text-muted);">
+                                    <strong>OG Preview:</strong><br />
+                                    <span id="previewOgTitle" style="color:#fff;">—</span><br />
+                                    <span id="previewOgDesc" style="font-size:0.75rem;">—</span>
+                                </div>
+                                <div style="font-size:0.8rem;color:var(--text-muted);margin-top:6px;">
+                                    <strong>Twitter Card:</strong> <span id="previewTwitter">—</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Tips -->
+                <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+                    <div class="card" style="padding:16px 20px;">
+                        <div style="font-size:1.4rem;">📌</div>
+                        <div style="font-weight:600;margin:4px 0;">Title Tip</div>
+                        <div style="font-size:0.85rem;color:var(--text-muted);">Keep titles under 60 chars. Include your primary keyword near the start.</div>
+                    </div>
+                    <div class="card" style="padding:16px 20px;">
+                        <div style="font-size:1.4rem;">📌</div>
+                        <div style="font-weight:600;margin:4px 0;">Description Tip</div>
+                        <div style="font-size:0.85rem;color:var(--text-muted);">Use 150–160 chars. Include a call-to-action and target keywords.</div>
+                    </div>
+                    <div class="card" style="padding:16px 20px;">
+                        <div style="font-size:1.4rem;">📌</div>
+                        <div style="font-weight:600;margin:4px 0;">OG Image Tip</div>
+                        <div style="font-size:0.85rem;color:var(--text-muted);">Use 1200×630px for best sharing on social platforms.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== ABOUT PAGE ===== -->
+            <section id="page-about" class="page">
+                <div class="page-content">
+                    <h2>📖 About This Tool</h2>
+                    <div class="card">
+                        <p><strong>MetaGen</strong> is a powerful, free meta tag generator built for bloggers, SEO specialists, and web developers. It helps you create perfectly optimized meta tags for better search engine visibility and social sharing.</p>
+                        <h3>🔧 Features</h3>
+                        <ul>
+                            <li><strong>Meta Tags:</strong> Title, Description, Keywords, Author, Robots, Canonical</li>
+                            <li><strong>Open Graph:</strong> OG Title, Description, Image, Type, URL, Site Name</li>
+                            <li><strong>Twitter Cards:</strong> Summary, Summary Large Image, App</li>
+                            <li><strong>Live Preview:</strong> See how your tags will look in search results</li>
+                            <li><strong>SEO Score:</strong> Get instant feedback on your meta tag quality</li>
+                            <li><strong>Copy &amp; Download:</strong> Copy HTML to clipboard or download as .html</li>
+                            <li><strong>No API Required:</strong> Everything runs client-side — 100% free and private</li>
+                        </ul>
+                        <h3>🌐 Why Meta Tags Matter</h3>
+                        <p>Meta tags are the foundation of on-page SEO. They tell search engines what your page is about and control how your content appears in search results and social media shares. Well-crafted meta tags can significantly improve your click-through rates and organic traffic.</p>
+                        <p style="margin-top:8px;font-size:0.9rem;color:var(--primary-light);">Made with ❤️ for the getage247.xyz community.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== CONTACT PAGE ===== -->
+            <section id="page-contact" class="page">
+                <div class="page-content">
+                    <h2>📬 Contact Us</h2>
+                    <div class="card">
+                        <p>Have questions, suggestions, or feedback about the Meta Tag Generator? We'd love to hear from you!</p>
+                        <h3>📧 Email</h3>
+                        <p><a href="mailto:support@getage247.xyz">support@getage247.xyz</a></p>
+                        <h3>🐦 Twitter / X</h3>
+                        <p><a href="https://twitter.com/getage247" target="_blank" rel="noopener">@getage247</a></p>
+                        <h3>🌐 Website</h3>
+                        <p><a href="https://getage247.xyz" target="_blank" rel="noopener">getage247.xyz</a></p>
+                        <hr style="border-color:var(--border);margin:16px 0;" />
+                        <p style="font-size:0.9rem;color:var(--text-muted);">We aim to respond within 24–48 hours. Your feedback helps us improve!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== PRIVACY PAGE ===== -->
+            <section id="page-privacy" class="page">
+                <div class="page-content">
+                    <h2>🔒 Privacy Policy</h2>
+                    <div class="card">
+                        <p><strong>Last updated:</strong> July 26, 2026</p>
+                        <p>At getage247.xyz, we take your privacy seriously. This policy describes how we handle your information when you use our Meta Tag Generator tool.</p>
+                        <h3>📌 Information We Collect</h3>
+                        <p>We do <strong>not</strong> collect, store, or transmit any personal data. All meta tag generation happens entirely in your browser. No information is sent to our servers.</p>
+                        <h3>🍪 Cookies</h3>
+                        <p>We do not use cookies or any tracking mechanisms. Your session is completely anonymous.</p>
+                        <h3>🔗 Third-Party Links</h3>
+                        <p>Our tool may contain links to external websites. We are not responsible for the privacy practices of those sites.</p>
+                        <h3>🛡️ Data Security</h3>
+                        <p>Since no data is collected, there is no risk of data exposure. Your meta tag inputs remain private on your device.</p>
+                        <h3>📧 Contact</h3>
+                        <p>If you have any privacy concerns, please reach out via our <a href="#" data-page="contact">Contact page</a>.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== DISCLAIMER PAGE ===== -->
+            <section id="page-disclaimer" class="page">
+                <div class="page-content">
+                    <h2>⚠️ Disclaimer</h2>
+                    <div class="card">
+                        <p><strong>Last updated:</strong> July 26, 2026</p>
+                        <p>The information provided by <strong>getage247.xyz</strong> and the Meta Tag Generator tool is for general informational purposes only. All information on the site is provided in good faith, however, we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information.</p>
+                        <h3>🔧 Tool Use</h3>
+                        <p>Our meta tag generator is a free tool meant to assist with SEO and social media optimization. We are not responsible for any decisions or actions you take based on the generated meta tags. Always review and test your tags before deploying them.</p>
+                        <h3>🔗 External Links</h3>
+                        <p>Our tool may contain links to external websites that are not provided or maintained by us. We do not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites.</p>
+                        <h3>📧 Contact</h3>
+                        <p>For any questions about this disclaimer, please <a href="#" data-page="contact">contact us</a>.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== TERMS PAGE ===== -->
+            <section id="page-terms" class="page">
+                <div class="page-content">
+                    <h2>📜 Terms of Service</h2>
+                    <div class="card">
+                        <p><strong>Last updated:</strong> July 26, 2026</p>
+                        <p>By using the Meta Tag Generator tool on getage247.xyz, you agree to the following terms:</p>
+                        <h3>✅ Acceptance of Terms</h3>
+                        <p>By accessing or using our tool, you agree to be bound by these Terms. If you disagree with any part, please do not use the tool.</p>
+                        <h3>🆓 Free Use</h3>
+                        <p>Our meta tag generator is provided free of charge. We reserve the right to modify or discontinue the tool at any time without notice.</p>
+                        <h3>📋 User Responsibilities</h3>
+                        <ul>
+                            <li>You are solely responsible for the content you generate and how you use it.</li>
+                            <li>You agree not to use the tool for any unlawful or prohibited purpose.</li>
+                            <li>You agree not to attempt to reverse-engineer or exploit the tool.</li>
+                        </ul>
+                        <h3>📄 Intellectual Property</h3>
+                        <p>The tool's code, design, and content are the property of getage247.xyz. You may use the generated meta tags freely, but you may not copy or redistribute the tool itself without permission.</p>
+                        <h3>⚖️ Limitation of Liability</h3>
+                        <p>We provide the tool "as is" without any warranties. We are not liable for any damages arising from the use of this tool.</p>
+                        <h3>📧 Contact</h3>
+                        <p>For any questions about these Terms, please <a href="#" data-page="contact">contact us</a>.</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="container footer-inner">
+            <div class="copy">&copy; 2026 <a href="https://getage247.xyz" target="_blank">getage247.xyz</a> — Meta Tag Generator</div>
+            <div class="footer-links">
+                <a href="#" data-page="home">Home</a>
+                <a href="#" data-page="about">About</a>
+                <a href="#" data-page="contact">Contact</a>
+                <a href="#" data-page="privacy">Privacy</a>
+                <a href="#" data-page="disclaimer">Disclaimer</a>
+                <a href="#" data-page="terms">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ---------- DOM refs ----------
+            const $ = (s) => document.querySelector(s);
+            const $$ = (s) => document.querySelectorAll(s);
+
+            const metaTitle = $('#metaTitle');
+            const metaDesc = $('#metaDesc');
+            const metaKeywords = $('#metaKeywords');
+            const metaAuthor = $('#metaAuthor');
+            const metaRobots = $('#metaRobots');
+            const metaCanonical = $('#metaCanonical');
+            const ogTitle = $('#ogTitle');
+            const ogDesc = $('#ogDesc');
+            const ogImage = $('#ogImage');
+            const ogType = $('#ogType');
+            const twitterCard = $('#twitterCard');
+            const twitterSite = $('#twitterSite');
+            const twitterCreator = $('#twitterCreator');
+            const themeColor = $('#themeColor');
+
+            const outputBox = $('#outputBox');
+            const copyFeedback = $('#copyFeedback');
+            const generateBtn = $('#generateBtn');
+            const clearBtn = $('#clearBtn');
+            const copyBtn = $('#copyBtn');
+            const downloadBtn = $('#downloadBtn');
+
+            const titleCount = $('#titleCount');
+            const descCount = $('#descCount');
+            const scoreRing = $('#scoreRing');
+            const scoreValue = $('#scoreValue');
+            const scoreFeedback = $('#scoreFeedback');
+            const previewTitle = $('#previewTitle');
+            const previewUrl = $('#previewUrl');
+            const previewDesc = $('#previewDesc');
+            const previewOgTitle = $('#previewOgTitle');
+            const previewOgDesc = $('#previewOgDesc');
+            const previewTwitter = $('#previewTwitter');
+
+            const navToggle = $('#navToggle');
+            const mainNav = $('#mainNav');
+            const navLinks = $$('nav a[data-page]');
+            const pages = {
+                home: $('#page-home'),
+                about: $('#page-about'),
+                contact: $('#page-contact'),
+                privacy: $('#page-privacy'),
+                disclaimer: $('#page-disclaimer'),
+                terms: $('#page-terms'),
+            };
+
+            // ---------- Character counters ----------
+            function updateCounts() {
+                const t = metaTitle.value.length;
+                const d = metaDesc.value.length;
+                titleCount.textContent = t + ' / 70';
+                descCount.textContent = d + ' / 160';
+                titleCount.className = 'char-count' + (t > 60 ? ' warning' : '') + (t > 70 ? ' danger' : '');
+                descCount.className = 'char-count' + (d > 150 ? ' warning' : '') + (d > 160 ? ' danger' : '');
+            }
+            metaTitle.addEventListener('input', updateCounts);
+            metaDesc.addEventListener('input', updateCounts);
+            updateCounts();
+
+            // ---------- Generate ----------
+            function generateMeta() {
+                const title = metaTitle.value.trim() || 'Untitled Page';
+                const desc = metaDesc.value.trim() || 'No description provided.';
+                const keywords = metaKeywords.value.trim();
+                const author = metaAuthor.value.trim() || 'getage247';
+                const robots = metaRobots.value;
+                const canonical = metaCanonical.value.trim() || 'https://getage247.xyz/';
+                const ogTitleVal = ogTitle.value.trim() || title;
+                const ogDescVal = ogDesc.value.trim() || desc;
+                const ogImageVal = ogImage.value.trim() || '';
+                const ogTypeVal = ogType.value;
+                const twitterCardVal = twitterCard.value;
+                const twitterSiteVal = twitterSite.value.trim() || '@getage247';
+                const twitterCreatorVal = twitterCreator.value.trim() || '@getage247';
+                const themeColorVal = themeColor.value.trim() || '#6c5ce7';
+
+                let html = '<!-- ===== META TAGS ===== -->\n';
+                html += `<meta charset="UTF-8" />\n`;
+                html += `<meta name="viewport" content="width=device-width, initial-scale=1.0" />\n`;
+                html += `<title>${escapeHtml(title)}</title>\n`;
+                html += `<meta name="description" content="${escapeHtml(desc)}" />\n`;
+                if (keywords) html += `<meta name="keywords" content="${escapeHtml(keywords)}" />\n`;
+                html += `<meta name="author" content="${escapeHtml(author)}" />\n`;
+                html += `<meta name="robots" content="${robots}" />\n`;
+                html += `<link rel="canonical" href="${escapeHtml(canonical)}" />\n`;
+                if (themeColorVal) html += `<meta name="theme-color" content="${escapeHtml(themeColorVal)}" />\n`;
+
+                html += `\n<!-- ===== OPEN GRAPH ===== -->\n`;
+                html += `<meta property="og:title" content="${escapeHtml(ogTitleVal)}" />\n`;
+                html += `<meta property="og:description" content="${escapeHtml(ogDescVal)}" />\n`;
+                html += `<meta property="og:url" content="${escapeHtml(canonical)}" />\n`;
+                html += `<meta property="og:type" content="${ogTypeVal}" />\n`;
+                html += `<meta property="og:site_name" content="getage247.xyz" />\n`;
+                if (ogImageVal) html += `<meta property="og:image" content="${escapeHtml(ogImageVal)}" />\n`;
+
+                html += `\n<!-- ===== TWITTER CARD ===== -->\n`;
+                html += `<meta name="twitter:card" content="${twitterCardVal}" />\n`;
+                html += `<meta name="twitter:title" content="${escapeHtml(ogTitleVal)}" />\n`;
+                html += `<meta name="twitter:description" content="${escapeHtml(ogDescVal)}" />\n`;
+                html += `<meta name="twitter:site" content="${escapeHtml(twitterSiteVal)}" />\n`;
+                html += `<meta name="twitter:creator" content="${escapeHtml(twitterCreatorVal)}" />\n`;
+                if (ogImageVal) html += `<meta name="twitter:image" content="${escapeHtml(ogImageVal)}" />\n`;
+
+                html += `\n<!-- ===== GENERATED BY getage247.xyz ===== -->\n`;
+
+                outputBox.innerHTML = html + '<span class="copy-feedback" id="copyFeedback">✅ Copied!</span>';
+                // re-attach feedback
+                const fb = outputBox.querySelector('#copyFeedback');
+                if (fb) {
+                    fb.style.display = 'none';
+                    fb.id = 'copyFeedback';
+                }
+
+                // Update preview
+                previewTitle.textContent = title;
+                previewUrl.textContent = canonical;
+                previewDesc.textContent = desc;
+                previewOgTitle.textContent = ogTitleVal;
+                previewOgDesc.textContent = ogDescVal;
+                previewTwitter.textContent = twitterCardVal;
+
+                // SEO Score
+                calculateScore(title, desc, keywords, ogImageVal);
+
+                return html;
+            }
+
+            // ---------- SEO Score ----------
+            function calculateScore(title, desc, keywords, ogImg) {
+                let score = 0;
+                let details = [];
+
+                // Title
+                const tLen = title.length;
+                if (tLen >= 30 && tLen <= 60) { score += 25;
+                    details.push('✅ Title length is optimal'); } else if (tLen > 60 && tLen <= 70) { score += 15;
+                    details.push('⚠️ Title is a bit long (max 60 recommended)'); } else if (tLen < 30 && tLen > 0) { score +=
+                        10;
+                    details.push('⚠️ Title is short (aim for 30–60 chars)'); } else { details.push('❌ Title is empty'); }
+
+                // Description
+                const dLen = desc.length;
+                if (dLen >= 120 && dLen <= 160) { score += 25;
+                    details.push('✅ Description length is optimal'); } else if (dLen >= 80 && dLen < 120) { score += 15;
+                    details.push('⚠️ Description is a bit short'); } else if (dLen > 160) { score += 10;
+                    details.push('⚠️ Description exceeds 160 chars'); } else if (dLen > 0 && dLen < 80) { score += 5;
+                    details.push('⚠️ Description is very short'); } else { details.push('❌ Description is empty'); }
+
+                // Keywords
+                if (keywords && keywords.split(',').filter(k => k.trim()).length > 0) { score += 20;
+                    details.push('✅ Keywords provided'); } else { details.push('⚠️ No keywords added'); }
+
+                // OG Image
+                if (ogImg && ogImg.trim() !== '') { score += 20;
+                    details.push('✅ OG Image set'); } else { details.push('⚠️ OG Image missing (important for social)'); }
+
+                // Title & description presence
+                if (tLen > 0 && dLen > 0) score += 10;
+
+                // Cap at 100
+                score = Math.min(100, score);
+
+                // Update UI
+                scoreValue.textContent = score + '/100';
+                scoreRing.textContent = score;
+                scoreRing.className = 'score-ring';
+                if (score >= 70) scoreRing.classList.add('good');
+                else if (score >= 40) scoreRing.classList.add('ok');
+                else scoreRing.classList.add('bad');
+
+                let feedback = '';
+                if (score >= 80) feedback = '🌟 Excellent! Your meta tags are well optimized.';
+                else if (score >= 60) feedback = '👍 Good! A few tweaks could make it even better.';
+                else if (score >= 40) feedback = '📝 Needs improvement. Review the suggestions below.';
+                else feedback = '⚠️ Your meta tags need work. Follow the recommendations.';
+                scoreFeedback.innerHTML = feedback + '<br /><span style="font-size:0.8rem;">' + details.join(' &bull; ') +
+                    '</span>';
+            }
+
+            // ---------- Escape HTML ----------
+            function escapeHtml(str) {
+                const div = document.createElement('div');
+                div.textContent = str;
+                return div.innerHTML;
+            }
+
+            // ---------- Copy ----------
+            function copyOutput() {
+                const text = outputBox.textContent.replace('✅ Copied!', '').trim();
+                if (!text || text.includes('Fill in the fields')) {
+                    alert('Generate meta tags first!');
+                    return;
+                }
+                navigator.clipboard.writeText(text).then(() => {
+                    const fb = document.getElementById('copyFeedback');
+                    if (fb) {
+                        fb.style.display = 'block';
+                        fb.classList.add('show');
+                        setTimeout(() => { fb.classList.remove('show');
+                            fb.style.display = 'none'; }, 2000);
+                    }
+                }).catch(() => {
+                    // Fallback
+                    const area = document.createElement('textarea');
+                    area.value = text;
+                    document.body.appendChild(area);
+                    area.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(area);
+                    alert('Copied to clipboard!');
+                });
+            }
+
+            // ---------- Download ----------
+            function downloadHtml() {
+                const text = outputBox.textContent.replace('✅ Copied!', '').trim();
+                if (!text || text.includes('Fill in the fields')) {
+                    alert('Generate meta tags first!');
+                    return;
+                }
+                const full = `<!DOCTYPE html>\n<html lang="en">\n<head>\n${text}\n</head>\n<body>\n  <!-- Your page content here -->\n</body>\n</html>`;
+                const blob = new Blob([full], { type: 'text/html;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'meta-tags.html';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+
+            // ---------- Clear ----------
+            function clearAll() {
+                metaTitle.value = '';
+                metaDesc.value = '';
+                metaKeywords.value = '';
+                metaAuthor.value = '';
+                metaRobots.value = 'index, follow';
+                metaCanonical.value = '';
+                ogTitle.value = '';
+                ogDesc.value = '';
+                ogImage.value = '';
+                ogType.value = 'website';
+                twitterCard.value = 'summary_large_image';
+                twitterSite.value = '';
+                twitterCreator.value = '';
+                themeColor.value = '';
+                outputBox.innerHTML =
+                    '<span style="color:var(--text-muted);">Fill in the fields and click <strong style="color:var(--primary-light);">Generate</strong>.</span><span class="copy-feedback" id="copyFeedback">✅ Copied!</span>';
+                updateCounts();
+                scoreRing.textContent = '—';
+                scoreRing.className = 'score-ring';
+                scoreValue.textContent = '—';
+                scoreFeedback.textContent = 'Fill in the fields to get a score.';
+                previewTitle.textContent = 'Your Page Title';
+                previewUrl.textContent = 'https://getage247.xyz/';
+                previewDesc.textContent = 'Your meta description will appear here…';
+                previewOgTitle.textContent = '—';
+                previewOgDesc.textContent = '—';
+                previewTwitter.textContent = '—';
+            }
+
+            // ---------- Navigation ----------
+            function navigateTo(pageId) {
+                // Hide all pages
+                Object.keys(pages).forEach(key => {
+                    pages[key].classList.remove('active');
+                });
+                // Show target
+                if (pages[pageId]) pages[pageId].classList.add('active');
+                // Update nav links
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.dataset.page === pageId);
+                });
+                // Close mobile nav
+                mainNav.classList.remove('open');
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // ---------- Event Listeners ----------
+            generateBtn.addEventListener('click', generateMeta);
+
+            clearBtn.addEventListener('click', clearAll);
+
+            copyBtn.addEventListener('click', copyOutput);
+
+            downloadBtn.addEventListener('click', downloadHtml);
+
+            // Nav links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const page = link.dataset.page;
+                    if (page) navigateTo(page);
+                });
+            });
+
+            // Footer nav links
+            document.querySelectorAll('.footer-links a[data-page]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const page = link.dataset.page;
+                    if (page) navigateTo(page);
+                });
+            });
+
+            // Mobile toggle
+            navToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('open');
+            });
+
+            // Auto-generate on first load with some defaults
+            window.addEventListener('DOMContentLoaded', () => {
+                metaTitle.value = 'Meta Tag Generator | getage247.xyz';
+                metaDesc.value = 'Advanced Meta Tag Generator Tool for bloggers & developers. Generate perfect meta tags, Open Graph, Twitter Cards & more.';
+                metaKeywords.value = 'meta tag generator, seo tool, open graph, twitter cards, getage247';
+                metaAuthor.value = 'getage247';
+                metaCanonical.value = 'https://getage247.xyz/';
+                ogTitle.value = 'Meta Tag Generator - getage247.xyz';
+                ogDesc.value = 'Advanced Meta Tag Generator Tool for bloggers & developers. Generate perfect meta tags, Open Graph, Twitter Cards & more.';
+                ogImage.value = 'https://getage247.xyz/og-image.jpg';
+                twitterSite.value = '@getage247';
+                twitterCreator.value = '@getage247';
+                themeColor.value = '#6c5ce7';
+                updateCounts();
+                generateMeta();
+            });
+
+            // Keyboard shortcut: Ctrl+Enter to generate
+            document.addEventListener('keydown', (e) => {
+                if (e.ctrlKey && e.key === 'Enter') {
+                    e.preventDefault();
+                    generateMeta();
+                }
+            });
+
+        })();
+    </script>
+
 </body>
 </html>
