@@ -6,20 +6,25 @@
 <title>Meta Tag Generator - GetAge247</title>
 <style>
   body{font-family:Arial,sans-serif;background:#0f172a;color:#e2e8f0;margin:0;padding:20px}
-  .container{max-width:1200px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  .card{background:#1e293b;padding:20px;border-radius:12px;border:1px solid #334155}
-  h2{color:#38bdf8;margin-top:0}
+ .container{max-width:1300px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+ .card{background:#1e293b;padding:20px;border-radius:12px;border:1px solid #334155}
+  h2{color:#38bdf8;margin-top:0;font-size:18px}
   label{display:block;margin:12px 0 5px;font-size:14px;color:#94a3b8}
   input,textarea{width:100%;padding:10px;background:#0f172a;border:1px solid #334155;border-radius:8px;color:#fff;box-sizing:border-box}
   textarea{min-height:80px;resize:vertical}
   button{background:#38bdf8;color:#000;border:none;padding:12px 20px;border-radius:8px;cursor:pointer;font-weight:bold;margin:10px 5px 0 0}
   button:hover{background:#0ea5e9}
-  .preview{background:#fff;color:#000;padding:15px;border-radius:8px;margin-top:10px}
-  .preview-title{color:#1a0dab;font-size:20px}
-  .preview-url{color:#006400;font-size:14px}
-  .preview-desc{color:#4d5156;font-size:14px}
-  pre{background:#0f172a;padding:15px;border-radius:8px;overflow-x:auto;font-size:12px}
-  .checkboxes label{display:inline-block;margin-right:15px}
+ .preview{background:#fff;color:#000;padding:15px;border-radius:8px;margin-top:10px}
+ .preview-title{color:#1a0dab;font-size:20px}
+ .preview-url{color:#006400;font-size:14px}
+ .preview-desc{color:#4d5156;font-size:14px}
+ .og-preview{border:1px solid #ddd;border-radius:8px;overflow:hidden;margin-top:10px;background:#fff}
+ .og-preview img{width:100%;height:200px;object-fit:cover;background:#ccc}
+ .og-text{padding:10px}
+ .og-title{font-weight:bold;color:#1d2129}
+ .og-url{color:#606770;font-size:12px;text-transform:uppercase}
+  pre{background:#0f172a;padding:15px;border-radius:8px;overflow-x:auto;font-size:12px;max-height:400px}
+ .checkboxes label{display:inline-block;margin-right:15px}
 </style>
 </head>
 <body>
@@ -29,27 +34,30 @@
   <!-- LEFT: FORM -->
   <div class="card">
     <h2>Fill Details</h2>
-    
+
     <label>Page Title</label>
     <input type="text" id="title" placeholder="Free Age Calculator Online" oninput="generatePreview()">
-    
+
     <label>Meta Description</label>
-    <textarea id="description" placeholder="Calculate your exact age instantly..." oninput="generatePreview()"></textarea>
-    
+    <textarea id="description" placeholder="Calculate your exact age..." oninput="generatePreview()"></textarea>
+
     <label>Keywords</label>
     <input type="text" id="keywords" placeholder="age calculator, calculate age" oninput="generatePreview()">
-    
+
     <label>Canonical URL</label>
     <input type="text" id="canonical" placeholder="https://getage247.xyz" oninput="generatePreview()">
-    
+
     <h2>Open Graph / Social</h2>
     <label>OG Image URL</label>
     <input type="text" id="ogImage" placeholder="https://getage247.xyz/logo.png" oninput="generatePreview()">
-    
+
+    <label>Twitter @Username</label>
+    <input type="text" id="twitter" placeholder="@GetAge247" oninput="generatePreview()">
+
     <h2>Technical</h2>
     <label>Favicon URL</label>
     <input type="text" id="favicon" placeholder="https://getage247.xyz/favicon.ico" oninput="generatePreview()">
-    
+
     <div class="checkboxes">
       <label><input type="checkbox" id="viewport" checked onchange="generatePreview()"> Viewport</label>
       <label><input type="checkbox" id="jsonld" checked onchange="generatePreview()"> JSON-LD Schema</label>
@@ -57,20 +65,40 @@
 
     <button onclick="loadSample()">Load Sample</button>
     <button onclick="copyCode()">Copy All Tags</button>
-    <button onclick="resetForm()">Reset Form</button>
+    <button onclick="downloadFile()">Download.txt</button>
+    <button onclick="resetForm()">Reset</button>
   </div>
 
   <!-- RIGHT: PREVIEW + CODE -->
   <div class="card">
-    <h2>Live Preview</h2>
+    <h2>1. Google Preview</h2>
     <div class="preview" id="googlePreview">
       <div class="preview-title" id="pTitle">Your Page Title</div>
       <div class="preview-url" id="pUrl">https://getage247.xyz</div>
       <div class="preview-desc" id="pDesc">Your meta description will appear here</div>
     </div>
 
+    <h2>2. Facebook/OG Preview</h2>
+    <div class="og-preview">
+      <img id="ogImgPreview" src="https://via.placeholder.com/1200x630/334155/fff?text=OG+Image" alt="OG">
+      <div class="og-text">
+        <div class="og-url" id="ogUrlPreview">getage247.xyz</div>
+        <div class="og-title" id="ogTitlePreview">Your Page Title</div>
+        <div class="preview-desc" id="ogDescPreview">Your description</div>
+      </div>
+    </div>
+
+    <h2>3. Twitter Card Preview</h2>
+    <div class="og-preview">
+      <img id="twImgPreview" src="https://via.placeholder.com/1200x630/334155/fff?text=Twitter+Image" alt="Twitter">
+      <div class="og-text">
+        <div class="og-title" id="twTitlePreview">Your Page Title</div>
+        <div class="preview-desc" id="twDescPreview">Your description</div>
+      </div>
+    </div>
+
     <h2>Generated Code</h2>
-    <pre id="codeOutput"><!-- Code will appear here --></pre>
+    <pre id="codeOutput"></pre>
   </div>
 
 </div>
@@ -81,12 +109,23 @@ function generatePreview(){
   const desc = document.getElementById('description').value || "Your meta description will appear here";
   const url = document.getElementById('canonical').value || "https://getage247.xyz";
   const keywords = document.getElementById('keywords').value;
-  const ogImage = document.getElementById('ogImage').value;
+  const ogImage = document.getElementById('ogImage').value || "https://via.placeholder.com/1200x630/334155/fff?text=OG+Image";
   const favicon = document.getElementById('favicon').value;
-  
+  const twitter = document.getElementById('twitter').value;
+
+  // Google Preview
   document.getElementById('pTitle').innerText = title;
   document.getElementById('pUrl').innerText = url;
   document.getElementById('pDesc').innerText = desc;
+  // OG Preview
+  document.getElementById('ogImgPreview').src = ogImage;
+  document.getElementById('ogUrlPreview').innerText = url.replace("https://","");
+  document.getElementById('ogTitlePreview').innerText = title;
+  document.getElementById('ogDescPreview').innerText = desc;
+  // Twitter Preview
+  document.getElementById('twImgPreview').src = ogImage;
+  document.getElementById('twTitlePreview').innerText = title;
+  document.getElementById('twDescPreview').innerText = desc;
 
   let code = `<title>${title}</title>\n`;
   code += `<meta name="description" content="${desc}">\n`;
@@ -94,7 +133,7 @@ function generatePreview(){
   if(url) code += `<link rel="canonical" href="${url}">\n`;
   if(favicon) code += `<link rel="icon" href="${favicon}">\n`;
   if(document.getElementById('viewport').checked) code += `<meta name="viewport" content="width=device-width, initial-scale=1.0">\n`;
-  
+
   code += `\n<!-- Open Graph -->\n`;
   code += `<meta property="og:title" content="${title}">\n`;
   code += `<meta property="og:description" content="${desc}">\n`;
@@ -104,6 +143,7 @@ function generatePreview(){
 
   code += `\n<!-- Twitter -->\n`;
   code += `<meta name="twitter:card" content="summary_large_image">\n`;
+  if(twitter) code += `<meta name="twitter:site" content="${twitter}">\n`;
   code += `<meta name="twitter:title" content="${title}">\n`;
   code += `<meta name="twitter:description" content="${desc}">\n`;
   if(ogImage) code += `<meta name="twitter:image" content="${ogImage}">\n`;
@@ -111,20 +151,20 @@ function generatePreview(){
   if(document.getElementById('jsonld').checked){
     code += `\n<!-- JSON-LD Schema -->\n`;
     code += `<script type="application/ld+json">\n`;
-    code += `{\n  "@context": "https://schema.org",\n  "@type": "WebSite",\n  "name": "${title}",\n  "url": "${url}"\n}\n`;
+    code += `{\n "@context": "https://schema.org",\n "@type": "WebSite",\n "name": "${title}",\n "url": "${url}"\n}\n`;
     code += `<\/script>`;
   }
-
   document.getElementById('codeOutput').innerText = code;
 }
 
 function loadSample(){
-  document.getElementById('title').value = "Free Age Calculator - Calculate Age in Years, Months, Days";
-  document.getElementById('description').value = "Calculate your exact age instantly with GetAge247. Fast, free, accurate age calculator. No signup needed.";
+  document.getElementById('title').value = "Free Age Calculator - Calculate Age Instantly";
+  document.getElementById('description').value = "Calculate your exact age in years, months and days with GetAge247. 100% free, fast and accurate age calculator tool. No signup.";
   document.getElementById('keywords').value = "age calculator, calculate age, age from dob, getage247";
   document.getElementById('canonical').value = "https://getage247.xyz";
   document.getElementById('ogImage').value = "https://getage247.xyz/logo.png";
   document.getElementById('favicon').value = "https://getage247.xyz/favicon.ico";
+  document.getElementById('twitter').value = "@GetAge247";
   generatePreview();
 }
 
@@ -133,14 +173,22 @@ function copyCode(){
   alert("Code Copied!");
 }
 
+function downloadFile(){
+  const code = document.getElementById('codeOutput').innerText;
+  const blob = new Blob([code], {type: 'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'meta-tags.txt';
+  a.click();
+}
+
 function resetForm(){
   document.querySelectorAll('input,textarea').forEach(el=>el.value='');
   document.getElementById('viewport').checked = true;
   document.getElementById('jsonld').checked = true;
   generatePreview();
 }
-
-generatePreview(); // page load pe chal jaye
+generatePreview();
 </script>
 </body>
 </html>
