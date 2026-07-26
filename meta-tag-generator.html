@@ -39,13 +39,13 @@
 
   /* FOOTER */
   footer{background:#1e293b;border-top:1px solid #334155;margin-top:50px;padding:30px 20px}
-  .footer-wrap{max-width:1300px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}
+  .footer-wrap{max-width:1300px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
   .footer-col h3{color:#38bdf8;margin-bottom:15px;font-size:16px}
   .footer-col a{display:block;color:#94a3b8;text-decoration:none;margin:8px 0;font-size:14px}
   .footer-col a:hover{color:#38bdf8}
   .copyright{border-top:1px solid #334155;margin-top:20px;padding-top:20px;text-align:center;color:#64748b;font-size:13px}
   
-  @media(max-width:900px){.container{grid-template-columns:1fr}.footer-wrap{grid-template-columns:1fr 1fr}}
+  @media(max-width:900px){.container{grid-template-columns:1fr}.footer-wrap{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -59,8 +59,6 @@
     </div>
     <div class="nav-links">
       <a href="/">Home</a>
-      <a href="/calculators.html">Calculators</a>
-      <a href="/generators.html">Generators</a>
       <a href="/about.html">About</a>
       <a href="/contact.html">Contact</a>
     </div>
@@ -132,22 +130,14 @@
       <p style="color:#94a3b8;font-size:14px">Free Online Tools. Fast, Free, No Signup Required. Privacy First.</p>
     </div>
     <div class="footer-col">
-      <h3>Tools</h3>
-      <a href="/age-calculator.html">Age Calculator</a>
-      <a href="/meta-tag-generator.html">Meta Tag Generator</a>
-      <a href="/password-generator.html">Password Generator</a>
-    </div>
-    <div class="footer-col">
       <h3>Legal</h3>
-      <a href="/privacy-policy.html">Privacy Policy</a>
-      <a href="/terms-of-service.html">Terms of Service</a>
-      <a href="/disclaimer.html">Disclaimer</a>
-      <a href="/cookie-policy.html">Cookie Policy</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
     </div>
     <div class="footer-col">
       <h3>Company</h3>
-      <a href="/about.html">About Us</a>
-      <a href="/contact.html">Contact Us</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
     </div>
   </div>
   <div class="copyright">
@@ -190,9 +180,9 @@ function generatePreview(){
   document.getElementById('codeOutput').innerText = code;
 }
 function loadSample(){
-  document.getElementById('title').value = "Free Age Calculator - Calculate Age Instantly";
-  document.getElementById('description').value = "Calculate your exact age in years, months and days with GetAge247. 100% free, fast and accurate age calculator tool. No signup.";
-  document.getElementById('keywords').value = "age calculator, calculate age, getage247";
+  document.getElementById('title').value = "Free Meta Tag Generator - GetAge247";
+  document.getElementById('description').value = "Generate SEO meta tags, Open Graph, Twitter Cards & JSON-LD for free with GetAge247. Fast and accurate meta tag generator.";
+  document.getElementById('keywords').value = "meta tag generator, seo tools, getage247";
   document.getElementById('canonical').value = "https://getage247.xyz";
   document.getElementById('ogImage').value = "https://getage247.xyz/logo.png";
   document.getElementById('favicon').value = "https://getage247.xyz/logo.png";
