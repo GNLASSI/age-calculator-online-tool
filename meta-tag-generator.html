@@ -1,194 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meta Tag Generator - GetAge247</title>
-<style>
-  body{font-family:Arial,sans-serif;background:#0f172a;color:#e2e8f0;margin:0;padding:20px}
- .container{max-width:1300px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:20px}
- .card{background:#1e293b;padding:20px;border-radius:12px;border:1px solid #334155}
-  h2{color:#38bdf8;margin-top:0;font-size:18px}
-  label{display:block;margin:12px 0 5px;font-size:14px;color:#94a3b8}
-  input,textarea{width:100%;padding:10px;background:#0f172a;border:1px solid #334155;border-radius:8px;color:#fff;box-sizing:border-box}
-  textarea{min-height:80px;resize:vertical}
-  button{background:#38bdf8;color:#000;border:none;padding:12px 20px;border-radius:8px;cursor:pointer;font-weight:bold;margin:10px 5px 0 0}
-  button:hover{background:#0ea5e9}
- .preview{background:#fff;color:#000;padding:15px;border-radius:8px;margin-top:10px}
- .preview-title{color:#1a0dab;font-size:20px}
- .preview-url{color:#006400;font-size:14px}
- .preview-desc{color:#4d5156;font-size:14px}
- .og-preview{border:1px solid #ddd;border-radius:8px;overflow:hidden;margin-top:10px;background:#fff}
- .og-preview img{width:100%;height:200px;object-fit:cover;background:#ccc}
- .og-text{padding:10px}
- .og-title{font-weight:bold;color:#1d2129}
- .og-url{color:#606770;font-size:12px;text-transform:uppercase}
-  pre{background:#0f172a;padding:15px;border-radius:8px;overflow-x:auto;font-size:12px;max-height:400px}
- .checkboxes label{display:inline-block;margin-right:15px}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meta Tags Generator Pro</title>
+  <meta name="description" content="Generate SEO meta tags, Open Graph tags, Twitter Cards, favicon links, and verification tags without API." />
+  <style>
+    body{margin:0;font-family:Arial,sans-serif;background:#0b1020;color:#eef4ff}
+    .wrap{max-width:1200px;margin:0 auto;padding:16px}
+    .card{background:#121a33;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px;margin-bottom:16px}
+    h1,h2{margin:0 0 12px}
+    label{display:block;font-size:13px;margin:10px 0 6px;color:#b8c4e0}
+    input,textarea,select{
+      width:100%;box-sizing:border-box;border-radius:10px;border:1px solid rgba(255,255,255,.12);
+      background:#08101f;color:#fff;padding:12px;outline:none
+    }
+    textarea{min-height:90px;resize:vertical}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .full{grid-column:1/-1}
+    .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    button{
+      border:none;border-radius:10px;padding:12px 16px;font-weight:700;cursor:pointer
+    }
+    .primary{background:#6d5dfc;color:#fff}
+    .secondary{background:#23304f;color:#fff}
+    .success{background:#1fbf75;color:#fff}
+    .danger{background:#ffb84d;color:#111}
+    pre{
+      white-space:pre-wrap;word-break:break-word;overflow:auto;background:#08101f;
+      border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px;min-height:420px
+    }
+    .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+    .tab{background:#23304f;color:#fff}
+    .tab.active{background:#6d5dfc}
+    .preview{
+      border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:14px;background:#0f1730
+    }
+    .google-box{max-width:640px}
+    .g-url{color:#9aa7c7;font-size:14px;margin-bottom:6px}
+    .g-title{color:#8ab4f8;font-size:20px;line-height:1.3;margin-bottom:6px}
+    .g-desc{color:#bdc7de;font-size:14px;line-height:1.5}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
-<h1 style="text-align:center;color:#38bdf8">Meta Forge - Meta Tag Generator</h1>
-<div class="container">
-
-  <!-- LEFT: FORM -->
-  <div class="card">
-    <h2>Fill Details</h2>
-
-    <label>Page Title</label>
-    <input type="text" id="title" placeholder="Free Age Calculator Online" oninput="generatePreview()">
-
-    <label>Meta Description</label>
-    <textarea id="description" placeholder="Calculate your exact age..." oninput="generatePreview()"></textarea>
-
-    <label>Keywords</label>
-    <input type="text" id="keywords" placeholder="age calculator, calculate age" oninput="generatePreview()">
-
-    <label>Canonical URL</label>
-    <input type="text" id="canonical" placeholder="https://getage247.xyz" oninput="generatePreview()">
-
-    <h2>Open Graph / Social</h2>
-    <label>OG Image URL</label>
-    <input type="text" id="ogImage" placeholder="https://getage247.xyz/logo.png" oninput="generatePreview()">
-
-    <label>Twitter @Username</label>
-    <input type="text" id="twitter" placeholder="@GetAge247" oninput="generatePreview()">
-
-    <h2>Technical</h2>
-    <label>Favicon URL</label>
-    <input type="text" id="favicon" placeholder="https://getage247.xyz/favicon.ico" oninput="generatePreview()">
-
-    <div class="checkboxes">
-      <label><input type="checkbox" id="viewport" checked onchange="generatePreview()"> Viewport</label>
-      <label><input type="checkbox" id="jsonld" checked onchange="generatePreview()"> JSON-LD Schema</label>
+  <div class="wrap">
+    <div class="card">
+      <h1>Meta Tags Generator Pro</h1>
+      <p>Browser-only tool. No API. No signup. Copy HTML, download file, and preview your meta tags instantly.</p>
     </div>
 
-    <button onclick="loadSample()">Load Sample</button>
-    <button onclick="copyCode()">Copy All Tags</button>
-    <button onclick="downloadFile()">Download.txt</button>
-    <button onclick="resetForm()">Reset</button>
-  </div>
+    <div class="card">
+      <div class="tabs">
+        <button class="tab active" data-tab="basic">Basic</button>
+        <button class="tab" data-tab="social">Open Graph</button>
+        <button class="tab" data-tab="twitter">Twitter</button>
+        <button class="tab" data-tab="assets">Icons</button>
+        <button class="tab" data-tab="verify">Verify</button>
+      </div>
 
-  <!-- RIGHT: PREVIEW + CODE -->
-  <div class="card">
-    <h2>1. Google Preview</h2>
-    <div class="preview" id="googlePreview">
-      <div class="preview-title" id="pTitle">Your Page Title</div>
-      <div class="preview-url" id="pUrl">https://getage247.xyz</div>
-      <div class="preview-desc" id="pDesc">Your meta description will appear here</div>
-    </div>
+      <div id="basicForm"></div>
+      <div id="socialForm" style="display:none"></div>
+      <div id="twitterForm" style="display:none"></div>
+      <div id="assetsForm" style="display:none"></div>
+      <div id="verifyForm" style="display:none"></div>
 
-    <h2>2. Facebook/OG Preview</h2>
-    <div class="og-preview">
-      <img id="ogImgPreview" src="https://via.placeholder.com/1200x630/334155/fff?text=OG+Image" alt="OG">
-      <div class="og-text">
-        <div class="og-url" id="ogUrlPreview">getage247.xyz</div>
-        <div class="og-title" id="ogTitlePreview">Your Page Title</div>
-        <div class="preview-desc" id="ogDescPreview">Your description</div>
+      <div class="btns">
+        <button class="primary" id="copyBtn">Copy HTML</button>
+        <button class="secondary" id="downloadBtn">Download HTML</button>
+        <button class="success" id="sampleBtn">Load Sample</button>
+        <button class="danger" id="clearBtn">Clear</button>
       </div>
     </div>
 
-    <h2>3. Twitter Card Preview</h2>
-    <div class="og-preview">
-      <img id="twImgPreview" src="https://via.placeholder.com/1200x630/334155/fff?text=Twitter+Image" alt="Twitter">
-      <div class="og-text">
-        <div class="og-title" id="twTitlePreview">Your Page Title</div>
-        <div class="preview-desc" id="twDescPreview">Your description</div>
+    <div class="grid">
+      <div class="card">
+        <h2>Live Preview</h2>
+        <div class="preview google-box">
+          <div class="g-url" id="pvUrl">https://example.com/page</div>
+          <div class="g-title" id="pvTitle">Meta Tags Generator Pro</div>
+          <div class="g-desc" id="pvDesc">Create SEO meta tags, Open Graph tags, Twitter Cards, favicon links, and verification tags without API.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Generated HTML</h2>
+        <pre id="output"></pre>
       </div>
     </div>
-
-    <h2>Generated Code</h2>
-    <pre id="codeOutput"></pre>
   </div>
 
-</div>
+  <script>
+    const state = {
+      basic: {
+        title: 'Meta Tags Generator Pro',
+        description: 'Create SEO meta tags, Open Graph tags, Twitter Cards, favicon links, and verification tags without API.',
+        canonical: 'https://example.com/page',
+        robots: 'index,follow',
+        author: 'Your Name',
+        keywords: 'meta tags, seo, open graph, twitter cards',
+        themeColor: '#0b1020'
+      },
+      social: {
+        ogTitle: 'Meta Tags Generator Pro',
+        ogDescription: 'Create SEO meta tags, Open Graph tags, Twitter Cards, favicon links, and verification tags without API.',
+        ogImage: 'https://example.com/og-image.jpg',
+        ogUrl: 'https://example.com/page',
+        ogType: 'website'
+      },
+      twitter: {
+        twitterCard: 'summary_large_image',
+        twitterTitle: 'Meta Tags Generator Pro',
+        twitterDescription: 'Create SEO meta tags, Open Graph tags, Twitter Cards, favicon links, and verification tags without API.',
+        twitterImage: 'https://example.com/og-image.jpg'
+      },
+      assets: {
+        favicon: 'https://example.com/favicon.ico',
+        appleTouchIcon: 'https://example.com/apple-touch-icon.png',
+        manifest: 'https://example.com/site.webmanifest'
+      },
+      verify: {
+        google: '',
+        bing: '',
+        yandex: '',
+        pinterest: ''
+      }
+    };
 
-<script>
-function generatePreview(){
-  const title = document.getElementById('title').value || "Your Page Title";
-  const desc = document.getElementById('description').value || "Your meta description will appear here";
-  const url = document.getElementById('canonical').value || "https://getage247.xyz";
-  const keywords = document.getElementById('keywords').value;
-  const ogImage = document.getElementById('ogImage').value || "https://via.placeholder.com/1200x630/334155/fff?text=OG+Image";
-  const favicon = document.getElementById('favicon').value;
-  const twitter = document.getElementById('twitter').value;
+    const $ = s => document.querySelector(s);
+    const $$ = s => [...document.querySelectorAll(s)];
+    const esc = s => String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 
-  // Google Preview
-  document.getElementById('pTitle').innerText = title;
-  document.getElementById('pUrl').innerText = url;
-  document.getElementById('pDesc').innerText = desc;
-  // OG Preview
-  document.getElementById('ogImgPreview').src = ogImage;
-  document.getElementById('ogUrlPreview').innerText = url.replace("https://","");
-  document.getElementById('ogTitlePreview').innerText = title;
-  document.getElementById('ogDescPreview').innerText = desc;
-  // Twitter Preview
-  document.getElementById('twImgPreview').src = ogImage;
-  document.getElementById('twTitlePreview').innerText = title;
-  document.getElementById('twDescPreview').innerText = desc;
+    function row(id, label, value='', type='text', full=false){
+      return `<div class="${full ? 'full' : ''}">
+        <label for="${id}">${label}</label>
+        ${type === 'textarea'
+          ? <textarea id="${id}">${value}</textarea>
+          : <input id="${id}" type="${type}" value="${value}">}
+      </div>`;
+    }
 
-  let code = `<title>${title}</title>\n`;
-  code += `<meta name="description" content="${desc}">\n`;
-  if(keywords) code += `<meta name="keywords" content="${keywords}">\n`;
-  if(url) code += `<link rel="canonical" href="${url}">\n`;
-  if(favicon) code += `<link rel="icon" href="${favicon}">\n`;
-  if(document.getElementById('viewport').checked) code += `<meta name="viewport" content="width=device-width, initial-scale=1.0">\n`;
+    function render(){
+      $('#basicForm').innerHTML = `<div class="grid">
+        ${row('title','Meta Title',state.basic.title)}
+        ${row('canonical','Canonical URL',state.basic.canonical)}
+        ${row('description','Meta Description',state.basic.description,'textarea',true)}
+        ${row('keywords','Keywords',state.basic.keywords)}
+        ${row('robots','Robots',state.basic.robots)}
+        ${row('author','Author',state.basic.author)}
+        ${row('themeColor','Theme Color',state.basic.themeColor)}
+      </div>`;
 
-  code += `\n<!-- Open Graph -->\n`;
-  code += `<meta property="og:title" content="${title}">\n`;
-  code += `<meta property="og:description" content="${desc}">\n`;
-  code += `<meta property="og:url" content="${url}">\n`;
-  code += `<meta property="og:type" content="website">\n`;
-  if(ogImage) code += `<meta property="og:image" content="${ogImage}">\n`;
+      $('#socialForm').innerHTML = `<div class="grid">
+        ${row('ogTitle','og:title',state.social.ogTitle)}
+        ${row('ogUrl','og:url',state.social.ogUrl)}
+        ${row('ogDescription','og:description',state.social.ogDescription,'textarea',true)}
+        ${row('ogImage','og:image',state.social.ogImage)}
+        ${row('ogType','og:type',state.social.ogType)}
+      </div>`;
 
-  code += `\n<!-- Twitter -->\n`;
-  code += `<meta name="twitter:card" content="summary_large_image">\n`;
-  if(twitter) code += `<meta name="twitter:site" content="${twitter}">\n`;
-  code += `<meta name="twitter:title" content="${title}">\n`;
-  code += `<meta name="twitter:description" content="${desc}">\n`;
-  if(ogImage) code += `<meta name="twitter:image" content="${ogImage}">\n`;
+      $('#twitterForm').innerHTML = `<div class="grid">
+        ${row('twitterCard','twitter:card',state.twitter.twitterCard)}
+        ${row('twitterTitle','twitter:title',state.twitter.twitterTitle)}
+        ${row('twitterDescription','twitter:description',state.twitter.twitterDescription,'textarea',true)}
+        ${row('twitterImage','twitter:image',state.twitter.twitterImage)}
+      </div>`;
 
-  if(document.getElementById('jsonld').checked){
-    code += `\n<!-- JSON-LD Schema -->\n`;
-    code += `<script type="application/ld+json">\n`;
-    code += `{\n "@context": "https://schema.org",\n "@type": "WebSite",\n "name": "${title}",\n "url": "${url}"\n}\n`;
-    code += `<\/script>`;
-  }
-  document.getElementById('codeOutput').innerText = code;
-}
+      $('#assetsForm').innerHTML = `<div class="grid">
+        ${row('favicon','Favicon URL',state.assets.favicon)}
+        ${row('appleTouchIcon','Apple Touch Icon',state.assets.appleTouchIcon)}
+        ${row('manifest','Manifest URL',state.assets.manifest,'text',true)}
+      </div>`;
 
-function loadSample(){
-  document.getElementById('title').value = "Free Age Calculator - Calculate Age Instantly";
-  document.getElementById('description').value = "Calculate your exact age in years, months and days with GetAge247. 100% free, fast and accurate age calculator tool. No signup.";
-  document.getElementById('keywords').value = "age calculator, calculate age, age from dob, getage247";
-  document.getElementById('canonical').value = "https://getage247.xyz";
-  document.getElementById('ogImage').value = "https://getage247.xyz/logo.png";
-  document.getElementById('favicon').value = "https://getage247.xyz/favicon.ico";
-  document.getElementById('twitter').value = "@GetAge247";
-  generatePreview();
-}
+      $('#verifyForm').innerHTML = `<div class="grid">
+        ${row('google','Google Verification',state.verify.google)}
+        ${row('bing','Bing Verification',state.verify.bing)}
+        ${row('yandex','Yandex Verification',state.verify.yandex)}
+        ${row('pinterest','Pinterest Verification',state.verify.pinterest)}
+      </div>`;
 
-function copyCode(){
-  navigator.clipboard.writeText(document.getElementById('codeOutput').innerText);
-  alert("Code Copied!");
-}
+      $$('input,textarea').forEach(el => el.addEventListener('input', collect));
+      collect();
+    }
 
-function downloadFile(){
-  const code = document.getElementById('codeOutput').innerText;
-  const blob = new Blob([code], {type: 'text/plain'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'meta-tags.txt';
-  a.click();
-}
+    function collect(){
+      Object.keys(state.basic).forEach(k => state.basic[k] = document.getElementById(k)?.value ?? state.basic[k]);
+      Object.keys(state.social).forEach(k => state.social[k] = document.getElementById(k)?.value ?? state.social[k]);
+      Object.keys(state.twitter).forEach(k => state.twitter[k] = document.getElementById(k)?.value ?? state.twitter[k]);
+      Object.keys(state.assets).forEach(k => state.assets[k] = document.getElementById(k)?.value ?? state.assets[k]);
+      Object.keys(state.verify).forEach(k => state.verify[k] = document.getElementById(k)?.value ?? state.verify[k]);
 
-function resetForm(){
-  document.querySelectorAll('input,textarea').forEach(el=>el.value='');
-  document.getElementById('viewport').checked = true;
-  document.getElementById('jsonld').checked = true;
-  generatePreview();
-}
-generatePreview();
-</script>
+      $('#pvUrl').textContent = state.basic.canonical;
+      $('#pvTitle').textContent = state.basic.title;
+      $('#pvDesc').textContent = state.basic.description;
+
+      const html = [
+        '<!-- Basic SEO -->',
+        <title>${esc(state.basic.title)}</title>,
+        <meta name="description" content="${esc(state.basic.description)}">,
+        <meta name="keywords" content="${esc(state.basic.keywords)}">,
+        <meta name="robots" content="${esc(state.basic.robots)}">,
+        <meta name="author" content="${esc(state.basic.author)}">,
+        <meta name="theme-color" content="${esc(state.basic.themeColor)}">,
+        <link rel="canonical" href="${esc(state.basic.canonical)}">,
+        '',
+        '<!-- Open Graph -->',
+        <meta property="og:title" content="${esc(state.social.ogTitle)}">,
+        <meta property="og:description" content="${esc(state.social.ogDescription)}">,
+        <meta property="og:image" content="${esc(state.social.ogImage)}">,
+        <meta property="og:url" content="${esc(state.social.ogUrl)}">,
+        <meta property="og:type" content="${esc(state.social.ogType)}">,
+        '',
+        '<!-- Twitter Cards -->',
+        <meta name="twitter:card" content="${esc(state.twitter.twitterCard)}">,
+        <meta name="twitter:title" content="${esc(state.twitter.twitterTitle)}">,
+        <meta name="twitter:description" content="${esc(state.twitter.twitterDescription)}">,
+        <meta name="twitter:image" content="${esc(state.twitter.twitterImage)}">,
+        '',
+        '<!-- Icons & Manifest -->',
+        <link rel="icon" href="${esc(state.assets.favicon)}">,
+        <link rel="apple-touch-icon" href="${esc(state.assets.appleTouchIcon)}">,
+        <link rel="manifest" href="${esc(state.assets.manifest)}">,
+        '',
+        '<!-- Verification -->',
+        state.verify.google ? <meta name="google-site-verification" content="${esc(state.verify.google)}"> : '',
+        state.verify.bing ? <meta name="msvalidate.01" content="${esc(state.verify.bing)}"> : '',
+        state.verify.yandex ? <meta name="yandex-verification" content="${esc(state.verify.yandex)}"> : '',
+        state.verify.pinterest ? <meta name="p:domain_verify" content="${esc(state.verify.pinterest)}"> : ''
+      ].filter(Boolean).join('
+');
+
+      $('#output').textContent = html;
+    }
+
+    function setTab(name){
+      $$('.tab').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
+      ['basic','social','twitter','assets','verify'].forEach(x => document.getElementById(x + 'Form').style.display = x === name ? 'block' : 'none');
+    }
+
+    async function copyText(text){
+      try{
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+          alert('Copied!');
+          return;
+        }
+      }catch(e){}
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      alert('Copied!');
+    }
+
+    function downloadText(filename, content){
+      const blob = new Blob([content], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    $('#tabs')?.addEventListener('click', e => {
+      if (e.target.classList.contains('tab')) setTab(e.target.dataset.tab);
+    });
+
+    $('#copyBtn').addEventListener('click', () => copyText($('#output').textContent));
+    $('#downloadBtn').addEventListener('click', () => downloadText('meta-tags.html', $('#output').textContent));
+    $('#sampleBtn').addEventListener('click', () => { render(); });
+    $('#clearBtn').addEventListener('click', () => location.reload());
+
+    render();
+    setTab('basic');
+  </script>
 </body>
 </html>
