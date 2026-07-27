@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robots.txt Generator & Validator – Free SEO Tool | getage247.xyz</title>
+    <meta name="description" content="Generate and validate robots.txt files instantly. Free SEO tool for developers and bloggers. No API required, 100% client-side.">
+    <link rel="canonical" href="https://getage247.xyz/robots-txt-generator">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Robots.txt Generator & Validator – Free SEO Tool | getage247.xyz">
+    <meta property="og:description" content="Generate and validate robots.txt files instantly. Free SEO tool for developers and bloggers. No API required.">
+    <meta property="og:url" content="https://getage247.xyz/robots-txt-generator">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="getage247.xyz">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Robots.txt Generator & Validator – Free SEO Tool">
+    <meta name="twitter:description" content="Generate and validate robots.txt files instantly. Free SEO tool for developers and bloggers.">
+    <meta name="twitter:site" content="@getage247">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #0a0a12;
+            --bg-secondary: #12121f;
+            --bg-card: #1a1a2e;
+            --bg-card-hover: #24243a;
+            --border: #2a2a44;
+            --text-primary: #f0eeff;
+            --text-secondary: #b8b4d6;
+            --text-muted: #7a77a0;
+            --accent: #7c5cfc;
+            --accent-glow: #9d7cff;
+            --shadow: 0 8px 32px rgba(0,0,0,0.6);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --green: #00b894;
+            --yellow: #fdcb6e;
+            --red: #e17055;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font);
+            background: var(--bg-primary);
+            background-image: radial-gradient(circle at 10% 20%, rgba(124,92,252,0.08) 0%, transparent 50%),
+                              radial-gradient(circle at 90% 80%, rgba(124,92,252,0.06) 0%, transparent 50%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+        }
+        a { color: var(--accent-glow); text-decoration: none; transition: all 0.3s ease; }
+        a:hover { color: #fff; text-shadow: 0 0 12px rgba(124,92,252,0.5); }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        /* ===== HEADER ===== */
+        header {
+            background: rgba(10,10,18,0.85);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-glow), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+        .logo span { font-weight: 300; -webkit-text-fill-color: var(--text-muted); }
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+        }
+        nav a {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+        }
+        nav a:hover, nav a.active { color: #fff; border-bottom-color: var(--accent); }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0 8px;
+        }
+
+        /* ===== MAIN ===== */
+        main { flex: 1; padding: 40px 0 60px; }
+
+        .hero {
+            text-align: center;
+            padding: 20px 0 32px;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, var(--accent-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 3px 18px;
+            border-radius: 40px;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        /* ===== TABS ===== */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 10px 24px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: var(--radius-sm);
+            transition: 0.3s;
+            font-family: var(--font);
+        }
+        .tab-btn:hover { color: #fff; background: var(--bg-card); }
+        .tab-btn.active {
+            color: #fff;
+            background: var(--accent);
+            box-shadow: 0 4px 16px rgba(124,92,252,0.3);
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeUp 0.3s ease; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ===== TOOL CARD ===== */
+        .tool-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px 40px;
+            box-shadow: var(--shadow);
+            margin-top: 16px;
+        }
+        @media (max-width: 768px) { .tool-card { padding: 20px 16px; } }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-family: var(--font);
+            transition: 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(124,92,252,0.2);
+        }
+        .form-group textarea { min-height: 120px; resize: vertical; font-family: 'Courier New', monospace; }
+
+        .rule-group {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        .rule-group .rule-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .rule-group .rule-header h4 {
+            color: var(--accent-glow);
+            font-size: 1rem;
+        }
+        .rule-group .rule-header .remove-btn {
+            background: none;
+            border: none;
+            color: var(--red);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        .rule-group .rule-header .remove-btn:hover { color: #fff; }
+
+        .rule-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .rule-row select, .rule-row input {
+            flex: 1;
+            min-width: 100px;
+            padding: 6px 10px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-family: var(--font);
+        }
+        .rule-row select:focus, .rule-row input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .rule-row .add-rule-btn {
+            background: var(--accent);
+            border: none;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .rule-row .add-rule-btn:hover { background: var(--accent-glow); }
+
+        .btn {
+            padding: 10px 24px;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: var(--font);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary { background: var(--accent); color: #fff; }
+        .btn-primary:hover { background: var(--accent-glow); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(124,92,252,0.4); }
+        .btn-success { background: var(--green); color: #fff; }
+        .btn-success:hover { background: #00a381; transform: translateY(-2px); }
+        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-secondary); }
+        .btn-outline:hover { border-color: var(--accent); color: #fff; background: var(--bg-card); }
+        .btn-danger { background: var(--red); color: #fff; }
+        .btn-danger:hover { background: #d63031; }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        /* ===== OUTPUT ===== */
+        .output-box {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+            max-height: 300px;
+            overflow-y: auto;
+            color: var(--text-secondary);
+            margin-top: 12px;
+        }
+
+        /* ===== VALIDATION RESULTS ===== */
+        .validation-report {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            margin-top: 12px;
+        }
+        .validation-report .report-item {
+            padding: 6px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .validation-report .report-item:last-child { border-bottom: none; }
+        .validation-report .report-item .icon { font-size: 1.2rem; flex-shrink: 0; }
+        .validation-report .report-item .msg { color: var(--text-secondary); }
+        .validation-report .report-item .msg strong { color: #fff; }
+
+        /* ===== INTERNAL LINKS ===== */
+        .internal-links {
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .internal-links h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .link-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 14px;
+        }
+        .link-grid a {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 4px 18px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: 0.3s;
+        }
+        .link-grid a:hover {
+            border-color: var(--accent);
+            color: #fff;
+            background: var(--bg-card-hover);
+        }
+        .link-grid a.active-link { border-color: var(--accent); color: #fff; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: rgba(10,10,18,0.95);
+            border-top: 1px solid var(--border);
+            padding: 32px 0 24px;
+            margin-top: auto;
+        }
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .footer-inner .copy { color: var(--text-muted); font-size: 0.85rem; }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 22px;
+        }
+        .footer-links a { color: var(--text-muted); font-size: 0.85rem; }
+        .footer-links a:hover { color: #fff; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 12px 0 4px;
+                gap: 2px;
+            }
+            nav.open { display: flex; }
+            nav a {
+                padding: 8px 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid var(--border);
+            }
+            nav a:last-child { border-bottom: none; }
+            .hero h1 { font-size: 2rem; }
+            .tool-card { padding: 16px; }
+            .rule-row { flex-direction: column; }
+            .rule-row select, .rule-row input { min-width: 100%; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 14px; }
+            .hero h1 { font-size: 1.7rem; }
+            .tab-btn { padding: 8px 16px; font-size: 0.9rem; }
+            .btn-group .btn { flex: 1; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">getage<span>247</span></div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+            <nav id="mainNav">
+                <a href="https://getage247.xyz/" target="_blank">Home</a>
+                <a href="https://getage247.xyz/about" target="_blank">About</a>
+                <a href="https://getage247.xyz/contact" target="_blank">Contact</a>
+                <a href="https://getage247.xyz/privacy" target="_blank">Privacy</a>
+                <a href="https://getage247.xyz/cookie-policy" target="_blank">Cookie Policy</a>
+                <a href="https://getage247.xyz/disclaimer" target="_blank">Disclaimer</a>
+                <a href="https://getage247.xyz/terms" target="_blank">Terms</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main>
+        <div class="container">
+            <div class="hero">
+                <h1>🤖 Robots.txt Generator & Validator</h1>
+                <p>Create and validate robots.txt files instantly. Free SEO tool for developers and bloggers. No API, no sign-up.</p>
+                <span class="badge">✨ 100% Client-Side &amp; Private</span>
+            </div>
+
+            <div class="tool-card">
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="generator">⚙️ Generator</button>
+                    <button class="tab-btn" data-tab="validator">🔍 Validator</button>
+                </div>
+
+                <!-- ===== GENERATOR TAB ===== -->
+                <div class="tab-content active" id="tab-generator">
+                    <p style="color: var(--text-muted); margin-bottom: 16px;">Build your robots.txt file by adding user-agents and rules. Then copy or download.</p>
+
+                    <div id="generatorContainer">
+                        <!-- User-agents will be appended here -->
+                        <div id="userAgentsList"></div>
+
+                        <!-- Add User-agent button -->
+                        <button class="btn btn-primary" id="addUserAgentBtn" style="margin-top: 8px;">+ Add User-agent</button>
+
+                        <!-- Global settings -->
+                        <div class="form-group" style="margin-top: 20px;">
+                            <label>🌐 Sitemap URL (optional)</label>
+                            <input type="url" id="sitemapInput" placeholder="https://getage247.xyz/sitemap.xml">
+                        </div>
+                        <div class="form-group">
+                            <label>⏱️ Crawl-delay (optional)</label>
+                            <input type="number" id="crawlDelayInput" placeholder="e.g., 5" min="0" step="0.1">
+                        </div>
+                        <div class="form-group">
+                            <label>🏠 Host (optional)</label>
+                            <input type="text" id="hostInput" placeholder="getage247.xyz">
+                        </div>
+                        <div class="form-group">
+                            <label>🧹 Clean-param (optional)</label>
+                            <input type="text" id="cleanParamInput" placeholder="sessionid / utm_source">
+                        </div>
+
+                        <!-- Generate Button -->
+                        <div class="btn-group">
+                            <button class="btn btn-primary" id="generateBtn">⚡ Generate robots.txt</button>
+                            <button class="btn btn-success" id="copyBtn">📄 Copy</button>
+                            <button class="btn btn-outline" id="downloadBtn">⬇️ Download .txt</button>
+                            <button class="btn btn-outline" id="resetBtn">🔄 Reset All</button>
+                        </div>
+
+                        <!-- Output -->
+                        <div class="output-box" id="outputBox">
+                            <!-- Generated content will appear here -->
+                            <span style="color: var(--text-muted);">Add user-agents and rules, then click Generate.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== VALIDATOR TAB ===== -->
+                <div class="tab-content" id="tab-validator">
+                    <p style="color: var(--text-muted); margin-bottom: 16px;">Paste your robots.txt content below and click Validate to check for issues.</p>
+
+                    <div class="form-group">
+                        <label>📝 Paste robots.txt content</label>
+                        <textarea id="validatorInput" placeholder="User-agent: *&#10;Disallow: /admin/&#10;Sitemap: https://getage247.xyz/sitemap.xml"></textarea>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary" id="validateBtn">🔍 Validate</button>
+                        <button class="btn btn-outline" id="clearValidatorBtn">🗑️ Clear</button>
+                    </div>
+
+                    <div id="validationResults" class="validation-report" style="display:none;">
+                        <!-- Results will be rendered here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== INTERNAL LINKS ===== -->
+            <div class="internal-links">
+                <h3>🔗 Explore More Free Tools &amp; Blogs</h3>
+                <div class="link-grid">
+                    <a href="https://getage247.xyz/meta-tag-generator" target="_blank">🏷️ Meta Tag Generator</a>
+                    <a href="https://getage247.xyz/meta-tag-analyzer" target="_blank">🔍 Meta Tag Analyzer</a>
+                    <a href="https://getage247.xyz/schema-markup-generator" target="_blank">🧩 Schema Markup Generator</a>
+                    <a href="https://getage247.xyz/age-calculator" target="_blank">📅 Age Calculator</a>
+                    <a href="https://getage247.xyz/bmi-calculator" target="_blank">⚖️ BMI Calculator</a>
+                    <a href="https://getage247.xyz/unit-converter" target="_blank">📏 Unit Converter</a>
+                    <a href="https://getage247.xyz/image-resizer" target="_blank">🖼️ Image Resizer</a>
+                    <a href="https://getage247.xyz/password-generator" target="_blank">🔐 Password Generator</a>
+                    <a href="https://getage247.xyz/qr-generator" target="_blank">📱 QR Code Generator</a>
+                    <a href="https://getage247.xyz/currency-converter" target="_blank">💱 Currency Converter</a>
+                    <a href="https://getage247.xyz/loan-calculator" target="_blank">💰 Loan Calculator</a>
+                    <a href="https://getage247.xyz/json-formatter" target="_blank">📋 JSON Formatter</a>
+                    <a href="https://getage247.xyz/text-case-converter" target="_blank">🔤 Text Case Converter</a>
+                    <a href="https://getage247.xyz/base64-encoder" target="_blank">🔢 Base64 Enc/Dec</a>
+                    <a href="https://getage247.xyz/jpg-to-pdf" target="_blank">📄 JPG to PDF</a>
+                    <a href="https://getage247.xyz/percentage-calculator" target="_blank">📊 Percentage Calc</a>
+                    <a href="https://getage247.xyz/word-counter" target="_blank">📝 Word Counter</a>
+                    <a href="https://getage247.xyz/uuid-generator" target="_blank">🆔 UUID Generator</a>
+                    <a href="https://getage247.xyz/robots-txt-generator" target="_blank" class="active-link">🤖 Robots.txt Tool</a>
+                    
+                    <!-- Blogs -->
+                    <a href="https://getage247.xyz/blog-meta-tag-generator.html" target="_blank">📖 Meta Tag Generator Guide</a>
+                    <a href="https://getage247.xyz/blog-meta-tag-adsense-guide.html" target="_blank">📖 AdSense Meta Tag Guide</a>
+                    <a href="https://getage247.xyz/schema-markup-generator-guide.html" target="_blank">📖 Schema Markup Guide</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container footer-inner">
+            <div class="copy">&copy; 2026 <a href="https://getage247.xyz/" target="_blank">getage247.xyz</a> — Free Online Tools</div>
+            <div class="footer-links">
+                <a href="https://getage247.xyz/" target="_blank">Home</a>
+                <a href="https://getage247.xyz/about" target="_blank">About</a>
+                <a href="https://getage247.xyz/contact" target="_blank">Contact</a>
+                <a href="https://getage247.xyz/privacy" target="_blank">Privacy</a>
+                <a href="https://getage247.xyz/cookie-policy" target="_blank">Cookie Policy</a>
+                <a href="https://getage247.xyz/disclaimer" target="_blank">Disclaimer</a>
+                <a href="https://getage247.xyz/terms" target="_blank">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ===== STATE =====
+            let userAgents = [
+                { id: 1, name: '*', rules: [{ type: 'Disallow', path: '/admin/' }] }
+            ];
+            let nextId = 2;
+
+            // ===== DOM REFS =====
+            const container = document.getElementById('userAgentsList');
+            const outputBox = document.getElementById('outputBox');
+            const sitemapInput = document.getElementById('sitemapInput');
+            const crawlDelayInput = document.getElementById('crawlDelayInput');
+            const hostInput = document.getElementById('hostInput');
+            const cleanParamInput = document.getElementById('cleanParamInput');
+            const generateBtn = document.getElementById('generateBtn');
+            const copyBtn = document.getElementById('copyBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const addUserAgentBtn = document.getElementById('addUserAgentBtn');
+
+            // Validator
+            const validatorInput = document.getElementById('validatorInput');
+            const validateBtn = document.getElementById('validateBtn');
+            const clearValidatorBtn = document.getElementById('clearValidatorBtn');
+            const validationResults = document.getElementById('validationResults');
+
+            // Tabs
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = {
+                generator: document.getElementById('tab-generator'),
+                validator: document.getElementById('tab-validator')
+            };
+
+            // ===== RENDER =====
+            function render() {
+                container.innerHTML = '';
+                userAgents.forEach((ua, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'rule-group';
+                    div.dataset.index = index;
+
+                    div.innerHTML = `
+                        <div class="rule-header">
+                            <h4>User-agent: <input type="text" value="${ua.name}" class="ua-name-input" style="background:transparent;border:none;color:var(--accent-glow);font-weight:600;font-size:1rem;width:auto;display:inline-block;border-bottom:1px solid var(--border);" placeholder="e.g., * or Googlebot" /></h4>
+                            <button class="remove-btn" data-id="${ua.id}" title="Remove this user-agent">✕</button>
+                        </div>
+                        <div class="rules-container">
+                            ${ua.rules.map((rule, rIdx) => `
+                                <div class="rule-row" data-rule-index="${rIdx}">
+                                    <select class="rule-type-select">
+                                        <option value="Allow" ${rule.type === 'Allow' ? 'selected' : ''}>Allow</option>
+                                        <option value="Disallow" ${rule.type === 'Disallow' ? 'selected' : ''}>Disallow</option>
+                                    </select>
+                                    <input type="text" class="rule-path-input" value="${rule.path}" placeholder="/path" />
+                                    <button class="remove-rule-btn" style="background:none;border:none;color:var(--red);cursor:pointer;font-size:1.1rem;">✕</button>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="rule-row" style="margin-top:8px;">
+                            <button class="add-rule-btn" data-ua-id="${ua.id}">+ Add Rule</button>
+                        </div>
+                    `;
+                    container.appendChild(div);
+                });
+
+                // Attach events
+                container.querySelectorAll('.remove-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = parseInt(this.dataset.id);
+                        removeUserAgent(id);
+                    });
+                });
+
+                container.querySelectorAll('.add-rule-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = parseInt(this.dataset.uaId);
+                        addRule(id);
+                    });
+                });
+
+                container.querySelectorAll('.remove-rule-btn').forEach((btn, idx) => {
+                    btn.addEventListener('click', function() {
+                        const parentRow = this.closest('.rule-row');
+                        const uaGroup = parentRow.closest('.rule-group');
+                        const uaIndex = Array.from(container.children).indexOf(uaGroup);
+                        const ruleIndex = Array.from(uaGroup.querySelectorAll('.rule-row')).indexOf(parentRow);
+                        if (uaIndex !== -1 && ruleIndex !== -1) {
+                            userAgents[uaIndex].rules.splice(ruleIndex, 1);
+                            render();
+                        }
+                    });
+                });
+
+                // Live update on input change
+                container.querySelectorAll('.ua-name-input').forEach((input, idx) => {
+                    input.addEventListener('change', function() {
+                        userAgents[idx].name = this.value || '*';
+                    });
+                });
+
+                container.querySelectorAll('.rule-type-select').forEach((sel, idx) => {
+                    sel.addEventListener('change', function() {
+                        const parentRow = this.closest('.rule-row');
+                        const uaGroup = parentRow.closest('.rule-group');
+                        const uaIndex = Array.from(container.children).indexOf(uaGroup);
+                        const ruleIndex = Array.from(uaGroup.querySelectorAll('.rule-row')).indexOf(parentRow);
+                        if (uaIndex !== -1 && ruleIndex !== -1) {
+                            userAgents[uaIndex].rules[ruleIndex].type = this.value;
+                        }
+                    });
+                });
+
+                container.querySelectorAll('.rule-path-input').forEach((input, idx) => {
+                    input.addEventListener('change', function() {
+                        const parentRow = this.closest('.rule-row');
+                        const uaGroup = parentRow.closest('.rule-group');
+                        const uaIndex = Array.from(container.children).indexOf(uaGroup);
+                        const ruleIndex = Array.from(uaGroup.querySelectorAll('.rule-row')).indexOf(parentRow);
+                        if (uaIndex !== -1 && ruleIndex !== -1) {
+                            userAgents[uaIndex].rules[ruleIndex].path = this.value || '/';
+                        }
+                    });
+                });
+            }
+
+            // ===== USER-AGENT MANAGEMENT =====
+            function addUserAgent() {
+                userAgents.push({ id: nextId++, name: '*', rules: [{ type: 'Disallow', path: '' }] });
+                render();
+            }
+
+            function removeUserAgent(id) {
+                userAgents = userAgents.filter(ua => ua.id !== id);
+                if (userAgents.length === 0) {
+                    userAgents.push({ id: nextId++, name: '*', rules: [{ type: 'Disallow', path: '' }] });
+                }
+                render();
+            }
+
+            function addRule(uaId) {
+                const ua = userAgents.find(u => u.id === uaId);
+                if (ua) {
+                    ua.rules.push({ type: 'Disallow', path: '' });
+                    render();
+                }
+            }
+
+            // ===== GENERATE =====
+            function generate() {
+                let lines = [];
+                userAgents.forEach(ua => {
+                    if (ua.name.trim()) {
+                        lines.push(`User-agent: ${ua.name.trim()}`);
+                        ua.rules.forEach(rule => {
+                            if (rule.path.trim()) {
+                                lines.push(`${rule.type}: ${rule.path.trim()}`);
+                            }
+                        });
+                        lines.push(''); // blank line between user-agents
+                    }
+                });
+
+                // Global directives
+                const sitemap = sitemapInput.value.trim();
+                if (sitemap) lines.push(`Sitemap: ${sitemap}`);
+
+                const crawlDelay = crawlDelayInput.value.trim();
+                if (crawlDelay) lines.push(`Crawl-delay: ${crawlDelay}`);
+
+                const host = hostInput.value.trim();
+                if (host) lines.push(`Host: ${host}`);
+
+                const cleanParam = cleanParamInput.value.trim();
+                if (cleanParam) lines.push(`Clean-param: ${cleanParam}`);
+
+                // Remove trailing blank lines
+                while (lines.length > 0 && lines[lines.length - 1] === '') lines.pop();
+
+                const result = lines.join('\n');
+                outputBox.textContent = result || 'No directives defined.';
+                return result;
+            }
+
+            // ===== COPY =====
+            function copyOutput() {
+                const text = outputBox.textContent;
+                if (!text || text.includes('Add user-agents')) {
+                    alert('Generate robots.txt first!');
+                    return;
+                }
+                navigator.clipboard.writeText(text).then(() => {
+                    const original = outputBox.textContent;
+                    outputBox.textContent = '✅ Copied!';
+                    setTimeout(() => { outputBox.textContent = original; }, 1500);
+                }).catch(() => {
+                    // fallback
+                    const area = document.createElement('textarea');
+                    area.value = text;
+                    document.body.appendChild(area);
+                    area.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(area);
+                    alert('Copied to clipboard!');
+                });
+            }
+
+            // ===== DOWNLOAD =====
+            function download() {
+                const text = outputBox.textContent;
+                if (!text || text.includes('Add user-agents')) {
+                    alert('Generate robots.txt first!');
+                    return;
+                }
+                const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'robots.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+
+            // ===== RESET =====
+            function resetAll() {
+                userAgents = [{ id: 1, name: '*', rules: [{ type: 'Disallow', path: '/admin/' }] }];
+                nextId = 2;
+                sitemapInput.value = '';
+                crawlDelayInput.value = '';
+                hostInput.value = '';
+                cleanParamInput.value = '';
+                outputBox.innerHTML = '<span style="color: var(--text-muted);">Add user-agents and rules, then click Generate.</span>';
+                render();
+            }
+
+            // ===== VALIDATOR =====
+            function validateRobots() {
+                const content = validatorInput.value.trim();
+                if (!content) {
+                    validationResults.style.display = 'block';
+                    validationResults.innerHTML = `<div class="report-item"><span class="icon">⚠️</span><span class="msg">Please paste some robots.txt content to validate.</span></div>`;
+                    return;
+                }
+
+                const lines = content.split('\n').map(l => l.trim()).filter(l => l !== '');
+                const issues = [];
+                let hasUserAgent = false;
+                let hasSitemap = false;
+                let directives = {};
+
+                lines.forEach((line, idx) => {
+                    if (line.startsWith('User-agent:')) {
+                        hasUserAgent = true;
+                        const ua = line.replace('User-agent:', '').trim();
+                        if (!ua) issues.push(`Line ${idx+1}: User-agent is empty.`);
+                        if (directives[ua]) {
+                            issues.push(`Line ${idx+1}: Duplicate User-agent "${ua}".`);
+                        } else {
+                            directives[ua] = [];
+                        }
+                    } else if (line.startsWith('Sitemap:')) {
+                        hasSitemap = true;
+                        const url = line.replace('Sitemap:', '').trim();
+                        if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                            issues.push(`Line ${idx+1}: Sitemap URL should start with http:// or https://.`);
+                        }
+                    } else if (line.startsWith('Allow:') || line.startsWith('Disallow:')) {
+                        const parts = line.split(':');
+                        if (parts.length < 2 || !parts[1].trim()) {
+                            issues.push(`Line ${idx+1}: Missing path after ${parts[0]}.`);
+                        }
+                    } else if (line.startsWith('Crawl-delay:')) {
+                        const delay = line.replace('Crawl-delay:', '').trim();
+                        if (isNaN(delay) || parseFloat(delay) < 0) {
+                            issues.push(`Line ${idx+1}: Crawl-delay should be a positive number.`);
+                        }
+                    } else if (line.startsWith('Host:')) {
+                        const host = line.replace('Host:', '').trim();
+                        if (!host) issues.push(`Line ${idx+1}: Host is empty.`);
+                    } else if (line.startsWith('Clean-param:')) {
+                        const param = line.replace('Clean-param:', '').trim();
+                        if (!param) issues.push(`Line ${idx+1}: Clean-param is empty.`);
+                    } else {
+                        // Unknown directive
+                        issues.push(`Line ${idx+1}: Unknown directive "${line}".`);
+                    }
+                });
+
+                if (!hasUserAgent) issues.push('No User-agent found in the file.');
+                if (!hasSitemap) issues.push('No Sitemap directive found (recommended).');
+
+                // Display results
+                validationResults.style.display = 'block';
+                if (issues.length === 0) {
+                    validationResults.innerHTML = `<div class="report-item"><span class="icon">✅</span><span class="msg"><strong>Valid!</strong> No issues found. Your robots.txt is well-formed.</span></div>`;
+                } else {
+                    let html = `<div class="report-item"><span class="icon">⚠️</span><span class="msg"><strong>Found ${issues.length} issue(s):</strong></span></div>`;
+                    issues.forEach(issue => {
+                        html += `<div class="report-item"><span class="icon">•</span><span class="msg">${issue}</span></div>`;
+                    });
+                    validationResults.innerHTML = html;
+                }
+            }
+
+            // ===== TAB SWITCHING =====
+            function switchTab(tabId) {
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+                document.querySelector(`.tab-btn[data-tab="${tabId}"]`).classList.add('active');
+                Object.keys(tabContents).forEach(id => {
+                    tabContents[id].classList.toggle('active', id === tabId);
+                });
+            }
+
+            // ===== EVENT LISTENERS =====
+            generateBtn.addEventListener('click', generate);
+            copyBtn.addEventListener('click', copyOutput);
+            downloadBtn.addEventListener('click', download);
+            resetBtn.addEventListener('click', resetAll);
+            addUserAgentBtn.addEventListener('click', addUserAgent);
+
+            validateBtn.addEventListener('click', validateRobots);
+            clearValidatorBtn.addEventListener('click', function() {
+                validatorInput.value = '';
+                validationResults.style.display = 'none';
+            });
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    switchTab(this.dataset.tab);
+                });
+            });
+
+            // Initial render
+            render();
+
+            // Auto-generate on first load
+            setTimeout(() => {
+                generate();
+            }, 300);
+
+            // Mobile nav toggle
+            const toggle = document.getElementById('navToggle');
+            const nav = document.getElementById('mainNav');
+            if (toggle && nav) {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    nav.classList.toggle('open');
+                });
+                nav.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        nav.classList.remove('open');
+                    });
+                });
+                document.addEventListener('click', function(e) {
+                    if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+                        nav.classList.remove('open');
+                    }
+                });
+            }
+
+        })();
+    </script>
+
+</body>
+</html>
