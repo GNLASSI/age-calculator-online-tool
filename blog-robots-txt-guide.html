@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robots.txt Generator – Complete Guide to Crawl Control & SEO</title>
+    <meta name="description" content="Learn how to create and validate robots.txt files. Complete guide with a free generator tool. Improve your SEO and crawl efficiency.">
+    <link rel="canonical" href="https://getage247.xyz/blog/robots-txt-guide">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Robots.txt Generator – Complete Guide to Crawl Control & SEO">
+    <meta property="og:description" content="Learn how to create and validate robots.txt files. Complete guide with a free generator tool. Improve your SEO and crawl efficiency.">
+    <meta property="og:url" content="https://getage247.xyz/blog/robots-txt-guide">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="getage247.xyz">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Robots.txt Generator – Complete Guide to Crawl Control & SEO">
+    <meta name="twitter:description" content="Learn how to create and validate robots.txt files. Complete guide with a free generator tool.">
+    <meta name="twitter:site" content="@getage247">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #0a0a12;
+            --bg-secondary: #12121f;
+            --bg-card: #1a1a2e;
+            --bg-card-hover: #24243a;
+            --border: #2a2a44;
+            --text-primary: #f0eeff;
+            --text-secondary: #b8b4d6;
+            --text-muted: #7a77a0;
+            --accent: #7c5cfc;
+            --accent-glow: #9d7cff;
+            --shadow: 0 8px 32px rgba(0,0,0,0.6);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font);
+            background: var(--bg-primary);
+            background-image: radial-gradient(circle at 10% 20%, rgba(124,92,252,0.08) 0%, transparent 50%),
+                              radial-gradient(circle at 90% 80%, rgba(124,92,252,0.06) 0%, transparent 50%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+        }
+        a { color: var(--accent-glow); text-decoration: none; transition: all 0.3s ease; }
+        a:hover { color: #fff; text-shadow: 0 0 12px rgba(124,92,252,0.5); }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        /* ===== HEADER ===== */
+        header {
+            background: rgba(10,10,18,0.85);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-glow), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+        .logo span { font-weight: 300; -webkit-text-fill-color: var(--text-muted); }
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+        }
+        nav a {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+        }
+        nav a:hover, nav a.active { color: #fff; border-bottom-color: var(--accent); }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0 8px;
+        }
+
+        /* ===== MAIN BLOG ===== */
+        main { flex: 1; padding: 40px 0 60px; }
+        .blog-article {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px 48px;
+            box-shadow: var(--shadow);
+            margin-top: 16px;
+        }
+        @media (max-width: 768px) { .blog-article { padding: 24px 18px; } }
+
+        .blog-article h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, var(--accent-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        .blog-article .meta-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            display: block;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+        }
+        .blog-article h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 32px 0 12px;
+            color: #fff;
+        }
+        .blog-article h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 24px 0 8px;
+            color: var(--accent-glow);
+        }
+        .blog-article p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+        .blog-article ul, .blog-article ol {
+            color: var(--text-secondary);
+            padding-left: 26px;
+            margin-bottom: 18px;
+        }
+        .blog-article ul li, .blog-article ol li { margin-bottom: 6px; }
+        .blog-article strong { color: #fff; }
+        .blog-article .highlight-box {
+            background: var(--bg-card);
+            border-left: 4px solid var(--accent);
+            padding: 16px 22px;
+            border-radius: var(--radius-sm);
+            margin: 20px 0;
+        }
+        .blog-article .highlight-box p { margin-bottom: 0; }
+        .blog-article .code-box {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            white-space: pre-wrap;
+            word-break: break-all;
+            margin: 12px 0;
+            overflow-x: auto;
+        }
+        .blog-article .warning-box {
+            background: rgba(225,112,85,0.15);
+            border-left: 4px solid #e17055;
+            padding: 16px 22px;
+            border-radius: var(--radius-sm);
+            margin: 20px 0;
+        }
+        .blog-article .warning-box p { margin-bottom: 0; color: #f8a99a; }
+
+        /* ===== TOOLS MINI ===== */
+        .tools-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+            margin: 16px 0;
+        }
+        .tools-mini a {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 4px 16px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: 0.3s;
+        }
+        .tools-mini a:hover {
+            border-color: var(--accent);
+            color: #fff;
+            background: var(--bg-card-hover);
+        }
+
+        /* ===== INTERNAL LINKS ===== */
+        .internal-links {
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .internal-links h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .link-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 14px;
+        }
+        .link-grid a {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 4px 18px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: 0.3s;
+        }
+        .link-grid a:hover {
+            border-color: var(--accent);
+            color: #fff;
+            background: var(--bg-card-hover);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: rgba(10,10,18,0.95);
+            border-top: 1px solid var(--border);
+            padding: 32px 0 24px;
+            margin-top: auto;
+        }
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .footer-inner .copy { color: var(--text-muted); font-size: 0.85rem; }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 22px;
+        }
+        .footer-links a { color: var(--text-muted); font-size: 0.85rem; }
+        .footer-links a:hover { color: #fff; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 12px 0 4px;
+                gap: 2px;
+            }
+            nav.open { display: flex; }
+            nav a {
+                padding: 8px 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid var(--border);
+            }
+            nav a:last-child { border-bottom: none; }
+            .blog-article h1 { font-size: 2rem; }
+            .blog-article h2 { font-size: 1.5rem; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 14px; }
+            .blog-article { padding: 18px 14px; }
+            .blog-article h1 { font-size: 1.7rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">getage<span>247</span></div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+            <nav id="mainNav">
+                <a href="https://getage247.xyz/" target="_blank">Home</a>
+                <a href="https://getage247.xyz/about" target="_blank">About</a>
+                <a href="https://getage247.xyz/contact" target="_blank">Contact</a>
+                <a href="https://getage247.xyz/privacy" target="_blank">Privacy</a>
+                <a href="https://getage247.xyz/cookie-policy" target="_blank">Cookie Policy</a>
+                <a href="https://getage247.xyz/disclaimer" target="_blank">Disclaimer</a>
+                <a href="https://getage247.xyz/terms" target="_blank">Terms</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main>
+        <div class="container">
+            <article class="blog-article">
+
+                <h1>🤖 Robots.txt Generator – Complete Guide to Crawl Control &amp; SEO</h1>
+                <span class="meta-date">📅 Published: July 28, 2026 · 10 min read</span>
+
+                <p>If you've ever wondered why some of your pages aren't showing up in Google, or why your site's crawl stats are dropping, the answer might be hiding in a small text file called <strong>robots.txt</strong>.</p>
+
+                <p>This simple file controls how search engines interact with your site. One wrong directive can block your most important pages. But when configured correctly, it can significantly improve your SEO performance.</p>
+
+                <p>In this comprehensive guide, I'll show you everything you need to know about robots.txt, common mistakes, and how to use the <strong><a href="https://getage247.xyz/robots-txt-generator" target="_blank">Robots.txt Generator &amp; Validator</a></strong> to create and validate your file with ease.</p>
+
+                <div class="highlight-box">
+                    <p><strong>⚡ Quick Tip:</strong> Access the tool directly: <a href="https://getage247.xyz/robots-txt-generator" target="_blank"><strong>getage247.xyz/robots-txt-generator</strong></a></p>
+                </div>
+
+                <h2>What Is Robots.txt and Why Does It Matter?</h2>
+                <p>A <strong>robots.txt</strong> file is a plain text file placed in your website's root directory. It instructs search engine crawlers (like Googlebot, Bingbot, and others) about which parts of your site they can access and which they should ignore.</p>
+
+                <p>Here's why it's crucial for every website:</p>
+
+                <ul>
+                    <li><strong>✅ Crawl Budget Optimization</strong> – Search engines allocate a limited crawl budget to each site. A properly configured robots.txt ensures they spend that budget on your most valuable pages.</li>
+                    <li><strong>✅ Prevent Duplicate Content</strong> – Block duplicate or irrelevant pages (like admin sections, staging environments, or filtered search results) from being indexed.</li>
+                    <li><strong>✅ Protect Sensitive Content</strong> – While robots.txt is not a security measure, it helps prevent accidental indexing of private areas.</li>
+                    <li><strong>✅ Sitemap Submission</strong> – You can reference your sitemap directly in robots.txt, helping search engines discover all your pages.</li>
+                    <li><strong>✅ Faster Indexing</strong> – By guiding crawlers to your important pages, new content gets indexed more quickly.</li>
+                </ul>
+
+                <h2>Common Robots.txt Mistakes That Hurt SEO</h2>
+
+                <h3>❌ Mistake 1: Blocking All Crawlers</h3>
+                <div class="code-box">User-agent: *
+Disallow: /</div>
+                <p>This tells every search engine to stay away. Unless your site is under development or you want to deindex it, this is a fatal error.</p>
+
+                <h3>❌ Mistake 2: Blocking CSS and JavaScript</h3>
+                <p>Some developers block assets like CSS and JS thinking they're not important. However, Google needs these to render pages correctly for mobile usability and Core Web Vitals. Blocking them can hurt your ranking.</p>
+
+                <h3>❌ Mistake 3: Misusing Allow and Disallow</h3>
+                <div class="code-box">User-agent: *
+Disallow: /blog/
+Allow: /blog/important-post/</div>
+                <p>The <code>Allow</code> directive overrides <code>Disallow</code>. Many developers get this backward, unintentionally blocking content they wanted to index.</p>
+
+                <h3>❌ Mistake 4: Forgetting the Sitemap Directive</h3>
+                <div class="code-box">User-agent: *
+Disallow: /admin/
+Sitemap: https://getage247.xyz/sitemap.xml</div>
+                <p>Without a sitemap reference, search engines might miss new or updated pages.</p>
+
+                <h3>❌ Mistake 5: Overcomplicating with Multiple User-Agents</h3>
+                <p>While you can target specific crawlers, most sites only need a single <code>User-agent: *</code> directive. Overcomplicating leads to confusion and errors.</p>
+
+                <h2>How to Create the Perfect Robots.txt</h2>
+
+                <h3>Step 1: Identify What to Block</h3>
+                <p>Before writing your robots.txt, consider:</p>
+                <ul>
+                    <li><strong>Which pages should never appear in search?</strong> (Admin, staging, thank-you pages, etc.)</li>
+                    <li><strong>Which files can be safely blocked?</strong> (Private images, temp files, etc.)</li>
+                    <li><strong>What is your main content?</strong> (Blog posts, tools, homepage — these must be indexable)</li>
+                </ul>
+
+                <h3>Step 2: Use the Robots.txt Generator</h3>
+                <p>Instead of manually writing and testing your file, use the <strong><a href="https://getage247.xyz/robots-txt-generator" target="_blank">Robots.txt Generator</a></strong>. It's free, client-side, and handles all the syntax for you.</p>
+
+                <h3>Step 3: Test Your Robots.txt</h3>
+                <p>After generating, validate your file using:</p>
+                <ul>
+                    <li>Google Search Console's robots.txt tester</li>
+                    <li>The built-in validator in our tool</li>
+                </ul>
+
+                <h3>Step 4: Upload to Root Directory</h3>
+                <p>Place the file at the root of your domain, e.g., <code>https://getage247.xyz/robots.txt</code>.</p>
+
+                <h2>Example: getage247.xyz's Robots.txt</h2>
+                <p>Here's the actual robots.txt I use for my own site:</p>
+                <div class="code-box">User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /logs/
+Disallow: /config/
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Sitemap: https://getage247.xyz/sitemap.xml
+Crawl-delay: 5
+Host: getage247.xyz</div>
+                <p>This allows all crawlers to index everything except the specified folders. It also includes the sitemap and sets a crawl delay to reduce server load.</p>
+
+                <h2>Why I Built This Robots.txt Generator &amp; Validator</h2>
+                <p>After debugging my own robots.txt issues, I realized two things:</p>
+                <ol>
+                    <li><strong>Manual writing is error-prone</strong> – One wrong character can break your site's indexing.</li>
+                    <li><strong>Validation is a hassle</strong> – You need to know exact syntax rules.</li>
+                </ol>
+                <p>So I built a tool that:</p>
+                <ul>
+                    <li><strong>✅ Generates clean, error-free robots.txt</strong> – Just add your user-agents and rules.</li>
+                    <li><strong>✅ Validates existing robots.txt</strong> – Paste your file and get instant feedback.</li>
+                    <li><strong>✅ Works entirely in your browser</strong> – No data is sent to any server. Your privacy is protected.</li>
+                    <li><strong>✅ Is completely free</strong> – No sign-ups, no hidden costs, no API keys.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>🔒 Privacy First:</strong> The tool runs entirely client-side. Your data never leaves your browser.</p>
+                </div>
+
+                <h2>How to Use the Generator</h2>
+
+                <h3>Generator Tab</h3>
+                <ul>
+                    <li><strong>Add User-agents</strong> – Start with <code>*</code> for all crawlers, or add specific ones like <code>Googlebot</code>.</li>
+                    <li><strong>Add Rules</strong> – For each user-agent, add Allow or Disallow rules with the correct path.</li>
+                    <li><strong>Add Global Directives</strong> – Optionally add Sitemap, Crawl-delay, Host, or Clean-param.</li>
+                    <li><strong>Generate</strong> – Instantly see your robots.txt code.</li>
+                    <li><strong>Copy or Download</strong> – One-click copy to clipboard or download as a <code>.txt</code> file.</li>
+                </ul>
+
+                <h3>Validator Tab</h3>
+                <ul>
+                    <li><strong>Paste Your Robots.txt</strong> – Copy your existing file content.</li>
+                    <li><strong>Click Validate</strong> – Get a detailed report of issues (missing user-agent, duplicate rules, invalid directives, etc.).</li>
+                    <li><strong>Fix Issues</strong> – Use the feedback to correct errors.</li>
+                </ul>
+
+                <h2>SEO Benefits of a Proper Robots.txt</h2>
+
+                <h3>1. Improved Crawl Efficiency</h3>
+                <p>By preventing crawlers from wasting time on irrelevant pages, you maximize the value of every crawl request. This is especially important for large sites.</p>
+
+                <h3>2. Faster Indexing</h3>
+                <p>When crawlers can focus on your important content, new pages get discovered and indexed faster. This is critical for time-sensitive content like news or product launches.</p>
+
+                <h3>3. Better Rankings</h3>
+                <p>When search engines can effectively crawl and understand your site structure, you're more likely to rank for your target keywords.</p>
+
+                <h3>4. Reduced Server Load</h3>
+                <p>Blocking unnecessary crawling reduces server load, improving site speed and user experience — both ranking factors.</p>
+
+                <h2>Integrating Robots.txt with Other SEO Tools</h2>
+
+                <h3>Meta Tag Generator</h3>
+                <p>While robots.txt controls what gets crawled, <strong>meta tags</strong> control how pages appear in search results. Use both for maximum impact:</p>
+                <p>👉 <strong><a href="https://getage247.xyz/meta-tag-generator" target="_blank">Meta Tag Generator</a></strong></p>
+
+                <h3>Schema Markup Generator</h3>
+                <p>Schema markup helps search engines understand your content. Use it alongside robots.txt for comprehensive SEO:</p>
+                <p>👉 <strong><a href="https://getage247.xyz/schema-markup-generator" target="_blank">Schema Markup Generator</a></strong></p>
+
+                <h2>Complete Free Toolkit on getage247.xyz</h2>
+                <p>Beyond the Robots.txt Generator, I offer a full suite of free, privacy-first tools:</p>
+                <div class="tools-mini">
+                    <a href="https://getage247.xyz/meta-tag-generator" target="_blank">🏷️ Meta Tag Generator</a>
+                    <a href="https://getage247.xyz/schema-markup-generator" target="_blank">🧩 Schema Markup</a>
+                    <a href="https://getage247.xyz/robots-txt-generator" target="_blank">🤖 Robots.txt</a>
+                    <a href="https://getage247.xyz/age-calculator" target="_blank">📅 Age Calculator</a>
+                    <a href="https://getage247.xyz/bmi-calculator" target="_blank">⚖️ BMI Calculator</a>
+                    <a href="https://getage247.xyz/unit-converter" target="_blank">📏 Unit Converter</a>
+                    <a href="https://getage247.xyz/image-resizer" target="_blank">🖼️ Image Resizer</a>
+                    <a href="https://getage247.xyz/password-generator" target="_blank">🔐 Password Generator</a>
+                    <a href="https://getage247.xyz/qr-generator" target="_blank">📱 QR Code Generator</a>
+                    <a href="https://getage247.xyz/currency-converter" target="_blank">💱 Currency Converter</a>
+                    <a href="https://getage247.xyz/loan-calculator" target="_blank">💰 Loan Calculator</a>
+                    <a href="https://getage247.xyz/json-formatter" target="_blank">📋 JSON Formatter</a>
+                    <a href="https://getage247.xyz/text-case-converter" target="_blank">🔤 Text Case Converter</a>
+                    <a href="https://getage247.xyz/base64-encoder" target="_blank">🔢 Base64 Enc/Dec</a>
+                    <a href="https://getage247.xyz/jpg-to-pdf" target="_blank">📄 JPG to PDF</a>
+                    <a href="https://getage247.xyz/percentage-calculator" target="_blank">📊 Percentage Calc</a>
+                    <a href="https://getage247.xyz/word-counter" target="_blank">📝 Word Counter</a>
+                    <a href="https://getage247.xyz/uuid-generator" target="_blank">🆔 UUID Generator</a>
+                </div>
+
+                <h2>📚 Our Other Blog Posts</h2>
+                <ul>
+                    <li><strong><a href="https://getage247.xyz/blog-meta-tag-generator.html" target="_blank">Meta Tag Generator – The Ultimate Free SEO Tool for Bloggers &amp; Developers</a></strong></li>
+                    <li><strong><a href="https://getage247.xyz/blog-meta-tag-adsense-guide.html" target="_blank">How to Write High-Ranking Meta Tags – Complete Guide for AdSense Publishers</a></strong></li>
+                    <li><strong><a href="https://getage247.xyz/schema-markup-generator-guide.html" target="_blank">Schema Markup Generator – Boost SEO with Structured Data</a></strong></li>
+                </ul>
+
+                <h2>Final Thoughts – Start Optimizing Today</h2>
+                <p>Robots.txt is one of the most overlooked yet powerful SEO tools. A single mistake can cost you traffic, but with the right approach and the right tools, you can master it.</p>
+
+                <p>The <strong>Robots.txt Generator &amp; Validator</strong> makes this process simple, error-free, and private. No technical skills required. No sign-ups. No hidden costs.</p>
+
+                <p><strong>👉 Try it now:</strong> <a href="https://getage247.xyz/robots-txt-generator" target="_blank"><strong>getage247.xyz/robots-txt-generator</strong></a></p>
+
+                <div class="highlight-box">
+                    <p><strong>🌟 Pro Tip:</strong> Check your robots.txt every time you publish new content. Consistency is key to SEO success.</p>
+                </div>
+
+                <p style="margin-top: 24px; color: var(--text-muted); font-size: 0.95rem;">— Built with ❤️ by the getage247.xyz team. All tools are 100% free, private, and open for everyone.</p>
+
+            </article>
+        </div>
+    </main>
+
+    <!-- ===== INTERNAL LINKS SECTION ===== -->
+    <div class="container">
+        <div class="internal-links">
+            <h3>🔗 Explore More Free Tools &amp; Blogs</h3>
+            <div class="link-grid">
+                <!-- Tools -->
+                <a href="https://getage247.xyz/meta-tag-generator" target="_blank">🏷️ Meta Tag Generator</a>
+                <a href="https://getage247.xyz/schema-markup-generator" target="_blank">🧩 Schema Markup Generator</a>
+                <a href="https://getage247.xyz/robots-txt-generator" target="_blank">🤖 Robots.txt Tool</a>
+                <a href="https://getage247.xyz/age-calculator" target="_blank">📅 Age Calculator</a>
+                <a href="https://getage247.xyz/bmi-calculator" target="_blank">⚖️ BMI Calculator</a>
+                <a href="https://getage247.xyz/unit-converter" target="_blank">📏 Unit Converter</a>
+                <a href="https://getage247.xyz/image-resizer" target="_blank">🖼️ Image Resizer</a>
+                <a href="https://getage247.xyz/password-generator" target="_blank">🔐 Password Generator</a>
+                <a href="https://getage247.xyz/qr-generator" target="_blank">📱 QR Code Generator</a>
+                <a href="https://getage247.xyz/currency-converter" target="_blank">💱 Currency Converter</a>
+                <a href="https://getage247.xyz/loan-calculator" target="_blank">💰 Loan Calculator</a>
+                <a href="https://getage247.xyz/json-formatter" target="_blank">📋 JSON Formatter</a>
+                <a href="https://getage247.xyz/text-case-converter" target="_blank">🔤 Text Case Converter</a>
+                <a href="https://getage247.xyz/base64-encoder" target="_blank">🔢 Base64 Enc/Dec</a>
+                <a href="https://getage247.xyz/jpg-to-pdf" target="_blank">📄 JPG to PDF</a>
+                <a href="https://getage247.xyz/percentage-calculator" target="_blank">📊 Percentage Calc</a>
+                <a href="https://getage247.xyz/word-counter" target="_blank">📝 Word Counter</a>
+                <a href="https://getage247.xyz/uuid-generator" target="_blank">🆔 UUID Generator</a>
+                
+                <!-- Blogs -->
+                <a href="https://getage247.xyz/blog-meta-tag-generator.html" target="_blank">📖 Meta Tag Generator Guide</a>
+                <a href="https://getage247.xyz/blog-meta-tag-adsense-guide.html" target="_blank">📖 AdSense Meta Tag Guide</a>
+                <a href="https://getage247.xyz/schema-markup-generator-guide.html" target="_blank">📖 Schema Markup Guide</a>
+                <a href="https://getage247.xyz/blog/robots-txt-guide" target="_blank">📖 Robots.txt Guide</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container footer-inner">
+            <div class="copy">&copy; 2026 <a href="https://getage247.xyz/" target="_blank">getage247.xyz</a> — Free Online Tools</div>
+            <div class="footer-links">
+                <a href="https://getage247.xyz/" target="_blank">Home</a>
+                <a href="https://getage247.xyz/about" target="_blank">About</a>
+                <a href="https://getage247.xyz/contact" target="_blank">Contact</a>
+                <a href="https://getage247.xyz/privacy" target="_blank">Privacy</a>
+                <a href="https://getage247.xyz/cookie-policy" target="_blank">Cookie Policy</a>
+                <a href="https://getage247.xyz/disclaimer" target="_blank">Disclaimer</a>
+                <a href="https://getage247.xyz/terms" target="_blank">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== MOBILE NAV TOGGLE ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.getElementById('navToggle');
+            const nav = document.getElementById('mainNav');
+            if (toggle && nav) {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    nav.classList.toggle('open');
+                });
+                nav.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        nav.classList.remove('open');
+                    });
+                });
+                document.addEventListener('click', function(e) {
+                    if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+                        nav.classList.remove('open');
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
