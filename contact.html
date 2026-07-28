@@ -1,140 +1,608 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact Us | GetAge247 - Free Online Tools</title>
-<meta name="description" content="Contact GetAge247.xyz for support, bug reports, feature requests, or advertising inquiries. We respond within 24-48 hours.">
-<style>
-:root{--p:#2563eb;--d:#1e293b;--l:#f4f7f9}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',Arial,sans-serif;background:var(--l);color:#222;line-height:1.8}
-header{background:var(--p);color:white;padding:20px;text-align:center}
-header h1{margin:0;font-size:22px}
-nav{margin-top:10px}
-nav a{color:white;margin:0 10px;text-decoration:none;font-size:14px;font-weight:600}
-.container{max-width:800px;margin:0 auto;padding:30px 20px}
-.card{background:white;padding:32px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.08)}
-h1{color:var(--p);font-size:28px;border-bottom:3px solid var(--p);padding-bottom:12px;margin-bottom:20px}
-h2{color:var(--d);font-size:20px;margin:28px 0 10px}
-p,li{font-size:15.5px;color:#444;margin-bottom:10px}
-ul{padding-left:22px}
-li{margin:8px 0}
-.contact-box{background:#eff6ff;border-left:4px solid var(--p);border-radius:0 10px 10px 0;padding:20px 24px;margin:20px 0}
-.email-box{background:white;border:2px solid var(--p);border-radius:10px;padding:20px;text-align:center;margin:16px 0}
-.email-box a{color:var(--p);font-size:17px;font-weight:700;text-decoration:none}
-.email-box a:hover{text-decoration:underline}
-.response-time{font-size:13px;color:#64748b;margin-top:6px}
-.topics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0}
-.topic-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px}
-.topic-item h3{color:var(--p);font-size:14px;margin-bottom:5px}
-.topic-item p{font-size:13px;color:#555;margin:0}
-.note-box{background:#fefce8;border:1px solid #fde047;border-radius:10px;padding:16px 20px;margin:20px 0;font-size:14px;color:#713f12}
-a{color:var(--p);text-decoration:none}
-a:hover{text-decoration:underline}
-footer{text-align:center;padding:20px;margin-top:40px;border-top:1px solid #ddd;background:#f9f9f9}
-footer a{margin:0 10px;color:#444;text-decoration:none;font-size:14px}
-footer p{margin-top:10px;font-size:13px;color:#777}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us – getage247.xyz | Free Online Tools</title>
+    <meta name="description" content="Get in touch with getage247.xyz. Have questions, suggestions, or feedback about our free SEO tools? Contact us today.">
+    <link rel="canonical" href="https://getage247.xyz/contact">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Contact Us – getage247.xyz">
+    <meta property="og:description" content="Get in touch with getage247.xyz. Have questions, suggestions, or feedback about our free SEO tools? Contact us today.">
+    <meta property="og:url" content="https://getage247.xyz/contact">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="getage247.xyz">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact Us – getage247.xyz">
+    <meta name="twitter:description" content="Get in touch with getage247.xyz. Have questions, suggestions, or feedback? Contact us today.">
+    <meta name="twitter:site" content="@getage247">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #0a0a12;
+            --bg-secondary: #12121f;
+            --bg-card: #1a1a2e;
+            --bg-card-hover: #24243a;
+            --border: #2a2a44;
+            --text-primary: #f0eeff;
+            --text-secondary: #b8b4d6;
+            --text-muted: #7a77a0;
+            --accent: #7c5cfc;
+            --accent-glow: #9d7cff;
+            --shadow: 0 8px 32px rgba(0,0,0,0.6);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --green: #00b894;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font);
+            background: var(--bg-primary);
+            background-image: radial-gradient(circle at 10% 20%, rgba(124,92,252,0.08) 0%, transparent 50%),
+                              radial-gradient(circle at 90% 80%, rgba(124,92,252,0.06) 0%, transparent 50%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+        }
+        a { color: var(--accent-glow); text-decoration: none; transition: all 0.3s ease; }
+        a:hover { color: #fff; text-shadow: 0 0 12px rgba(124,92,252,0.5); }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        /* ===== HEADER ===== */
+        header {
+            background: rgba(10,10,18,0.85);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-glow), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+        .logo span { font-weight: 300; -webkit-text-fill-color: var(--text-muted); }
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+        }
+        nav a {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+        }
+        nav a:hover, nav a.active { color: #fff; border-bottom-color: var(--accent); }
+        nav a.active { color: #fff; }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0 8px;
+        }
+
+        /* ===== MAIN ===== */
+        main { flex: 1; padding: 40px 0 60px; }
+
+        .page-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px 48px;
+            box-shadow: var(--shadow);
+            margin-top: 16px;
+        }
+        @media (max-width: 768px) { .page-card { padding: 24px 18px; } }
+
+        .page-card h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, var(--accent-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+        .page-card .subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 28px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+        }
+        .page-card h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 32px 0 12px;
+            color: #fff;
+        }
+        .page-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 20px 0 8px;
+            color: var(--accent-glow);
+        }
+        .page-card p {
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+            font-size: 1.05rem;
+        }
+        .page-card ul, .page-card ol {
+            color: var(--text-secondary);
+            padding-left: 26px;
+            margin-bottom: 18px;
+        }
+        .page-card ul li, .page-card ol li { margin-bottom: 6px; }
+        .page-card strong { color: #fff; }
+
+        .page-card .highlight-box {
+            background: var(--bg-card);
+            border-left: 4px solid var(--accent);
+            padding: 16px 22px;
+            border-radius: var(--radius-sm);
+            margin: 20px 0;
+        }
+        .page-card .highlight-box p { margin-bottom: 0; }
+
+        /* ===== CONTACT GRID ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 16px;
+        }
+        @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+
+        /* ===== FORM ===== */
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px 14px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-family: var(--font);
+            transition: 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(124,92,252,0.2);
+        }
+        .form-group textarea { min-height: 120px; resize: vertical; }
+        .form-group select option { background: var(--bg-card); }
+
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: var(--font);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: var(--accent-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(124,92,252,0.4);
+        }
+
+        /* ===== CONTACT INFO ===== */
+        .contact-info {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 24px;
+        }
+        .contact-info .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .contact-info .info-item:last-child { border-bottom: none; }
+        .contact-info .info-item .icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .contact-info .info-item .text { color: var(--text-secondary); }
+        .contact-info .info-item .text strong { color: #fff; }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .social-links a {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 6px 18px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: 0.3s;
+        }
+        .social-links a:hover {
+            border-color: var(--accent);
+            color: #fff;
+            background: var(--bg-card-hover);
+        }
+
+        /* ===== INTERNAL LINKS ===== */
+        .internal-links {
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .internal-links h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .link-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 14px;
+        }
+        .link-grid a {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 4px 18px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: 0.3s;
+        }
+        .link-grid a:hover {
+            border-color: var(--accent);
+            color: #fff;
+            background: var(--bg-card-hover);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: rgba(10,10,18,0.95);
+            border-top: 1px solid var(--border);
+            padding: 32px 0 24px;
+            margin-top: auto;
+        }
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .footer-inner .copy { color: var(--text-muted); font-size: 0.85rem; }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 22px;
+        }
+        .footer-links a { color: var(--text-muted); font-size: 0.85rem; }
+        .footer-links a:hover { color: #fff; }
+        .footer-links a.active { color: #fff; border-bottom: 2px solid var(--accent); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 12px 0 4px;
+                gap: 2px;
+            }
+            nav.open { display: flex; }
+            nav a {
+                padding: 8px 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid var(--border);
+            }
+            nav a:last-child { border-bottom: none; }
+            .page-card h1 { font-size: 2rem; }
+            .page-card h2 { font-size: 1.4rem; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 14px; }
+            .page-card { padding: 18px 14px; }
+            .page-card h1 { font-size: 1.7rem; }
+        }
+    </style>
 </head>
 <body>
-<header>
-  <h1>GetAge247.xyz</h1>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/about.html">About</a>
-    <a href="/privacy.html">Privacy</a>
-    <a href="/disclaimer.html">Disclaimer</a>
-    <a href="/blog.html">Blog</a>
-  </nav>
-</header>
-<div class="container">
-<div class="card">
-<h1>Contact Us</h1>
-<p>We value your feedback and are here to help with any questions, suggestions, or concerns about GetAge247.xyz and our free online tools. Whether you have found a bug, want to request a new tool, or have a general question — we want to hear from you.</p>
 
-<div class="contact-box">
-<h2>📧 Get in Touch</h2>
-<p>The fastest way to reach us is by email. We read every message and respond personally.</p>
-<div class="email-box">
-<a href="mailto:gnlassi.786@gmail.com">gnlassi.786@gmail.com</a>
-<div class="response-time">⏱️ Response time: 24 to 48 hours on business days</div>
-</div>
-</div>
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">getage<span>247</span></div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+            <nav id="mainNav">
+                <a href="https://getage247.xyz/" target="_blank">Home</a>
+                <a href="https://getage247.xyz/about" target="_blank">About</a>
+                <a href="https://getage247.xyz/contact" class="active">Contact</a>
+                <a href="https://getage247.xyz/privacy" target="_blank">Privacy</a>
+                <a href="https://getage247.xyz/cookie-policy" target="_blank">Cookie Policy</a>
+                <a href="https://getage247.xyz/disclaimer" target="_blank">Disclaimer</a>
+                <a href="https://getage247.xyz/terms" target="_blank">Terms</a>
+            </nav>
+        </div>
+    </header>
 
-<h2>What Can You Contact Us For?</h2>
-<div class="topics-grid">
-<div class="topic-item">
-<h3>🔧 Technical Support</h3>
-<p>Having trouble with any of our tools? Tell us which tool, your device, and browser — we will fix it fast.</p>
-</div>
-<div class="topic-item">
-<h3>🐛 Bug Reports</h3>
-<p>Found an error or glitch? We appreciate bug reports — they help us improve the experience for everyone.</p>
-</div>
-<div class="topic-item">
-<h3>💡 Feature Requests</h3>
-<p>Have an idea for a new tool or feature? We regularly add tools based on user suggestions.</p>
-</div>
-<div class="topic-item">
-<h3>🔒 Privacy Questions</h3>
-<p>Questions about how we handle your data? Read our <a href="/privacy.html">Privacy Policy</a> or contact us directly.</p>
-</div>
-<div class="topic-item">
-<h3>📢 Advertising</h3>
-<p>Interested in advertising on GetAge247.xyz? Contact us for partnership and advertising inquiries.</p>
-</div>
-<div class="topic-item">
-<h3>✍️ General Feedback</h3>
-<p>Any suggestions to improve our website, tools, or blog content — we read all feedback carefully.</p>
-</div>
-</div>
+    <!-- ===== MAIN ===== -->
+    <main>
+        <div class="container">
+            <div class="page-card">
 
-<h2>Before You Email Us</h2>
-<p>To help us resolve your issue faster, please include the following in your email:</p>
-<ul>
-<li>Which tool or page you were using</li>
-<li>Your device type (Android, iPhone, PC, etc.)</li>
-<li>Your browser name (Chrome, Firefox, Safari, etc.)</li>
-<li>A brief description of the issue or question</li>
-</ul>
+                <h1>📬 Contact Us</h1>
+                <p class="subtitle">Have questions, suggestions, or feedback? We'd love to hear from you.</p>
 
-<div class="note-box">
-<strong>Please Note:</strong> GetAge247.xyz is a free tools website. We do not provide phone support. Email is the most efficient way to reach us. We do not respond to spam, promotional emails, or irrelevant requests.
-</div>
+                <div class="contact-grid">
 
-<h2>Our Free Tools</h2>
-<p>While you wait for a response, explore our free tools available at <a href="/">getage247.xyz</a>:</p>
-<ul>
-<li><a href="/">📅 Age Calculator</a> — Calculate exact age in years, months, and days</li>
-<li><a href="/#bmi">⚖️ BMI Calculator</a> — Check your Body Mass Index</li>
-<li><a href="/#resizer">🖼️ Image Resizer</a> — Resize images by width or quality</li>
-<li><a href="/#wordcount">📝 Word Counter</a> — Count words, characters, sentences</li>
-<li><a href="/qr-generator.html">🔲 QR Code Generator</a> — Create QR codes free</li>
-<li><a href="/loan-calculator.html">💰 Loan Calculator</a> — Calculate installments and interest</li>
-<li><a href="/currency-converter.html">💱 Currency Converter</a> — Live PKR exchange rates</li>
-<li><a href="/percentage-calculator.html">% Percentage Calculator</a> — All percentage types</li>
-<li><a href="/password-generator.html">🔐 Password Generator</a> — Strong secure passwords</li>
-<li><a href="/jpg-to-pdf.html">📄 JPG to PDF</a> — Convert images to PDF</li>
-  <li><a href="/json-formatter.html">{ } JSON Formatter</a> — Format, validate and minify JSON</li>
-<li><a href="/text-case-converter.html">🔤 Text Case Converter</a> — 12 case types instantly</li>
-  <li><a href="/base64-encoder.html">🔐 Base64 Encoder & Decoder</a> — Encode and decode Base64 text instantly</li>
-  <li><a href="/unit-converter.html">🔄 Unit Converter</a> — Convert length, weight, temperature and more</li>
-  <li>📄 <a href="/schema-markup-generator.html">Schema Markup Generator Tool</a> — Generate SEO schema code instantly</li>
-</ul>
-  
+                    <!-- ===== CONTACT FORM ===== -->
+                    <div>
+                        <h2>📝 Send a Message</h2>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">Fill out the form below and we'll get back to you within 24–48 hours.</p>
 
-<p style="margin-top:20px">Thank you for using GetAge247.xyz. We appreciate your support and feedback!</p>
-</div>
-</div>
-<footer>
-  <a href="/">Home</a>
-  <a href="/about.html">About</a>
-  <a href="/privacy.html">Privacy</a>
-  <a href="/disclaimer.html">Disclaimer</a>
-  <a href="/terms.html">Terms</a>
-  <a href="/blog.html">Blog</a>
-  <p>© 2026 GetAge247. All Rights Reserved.</p>
-</footer>
+                        <form id="contactForm" onsubmit="handleSubmit(event)">
+                            <div class="form-group">
+                                <label for="name">Your Name *</label>
+                                <input type="text" id="name" placeholder="Enter your full name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" placeholder="you@example.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <select id="subject">
+                                    <option value="general">General Inquiry</option>
+                                    <option value="feedback">Feedback / Suggestion</option>
+                                    <option value="bug">Bug Report</option>
+                                    <option value="feature">Feature Request</option>
+                                    <option value="partnership">Partnership / Collaboration</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" placeholder="Write your message here..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">✉️ Send Message</button>
+                        </form>
+
+                        <div id="formSuccess" style="display:none; margin-top:16px; padding:16px; background: rgba(0,184,148,0.15); border:1px solid var(--green); border-radius:var(--radius-sm); color:var(--green);">
+                            ✅ Your message has been sent successfully! We'll get back to you soon.
+                        </div>
+                    </div>
+
+                    <!-- ===== CONTACT INFO ===== -->
+                    <div>
+                        <h2>📌 Get in Touch</h2>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">Reach out to us through any of the following channels.</p>
+
+                        <div class="contact-info">
+                            <div class="info-item">
+                                <span class="icon">📧</span>
+                                <div class="text">
+                                    <strong>Email</strong><br>
+                                    <a href="mailto:gnlassi.786@gmail.com">gnlassi.786@gmail.com</a>
+                                </div>
+                            </div>
+
+                            <div class="info-item">
+                                <span class="icon">🐦</span>
+                                <div class="text">
+                                    <strong>X / Twitter</strong><br>
+                                    <a href="https://twitter.com/getage247" target="_blank" rel="noopener">@getage247</a>
+                                </div>
+                            </div>
+
+                            <div class="info-item">
+                                <span class="icon">🌐</span>
+                                <div class="text">
+                                    <strong>Website</strong><br>
+                                    <a href="https://getage247.xyz/" target="_blank">getage247.xyz</a>
+                                </div>
+                            </div>
+
+                            <div class="info-item">
+                                <span class="icon">🕐</span>
+                                <div class="text">
+                                    <strong>Response Time</strong><br>
+                                    We aim to respond within 24–48 hours.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 16px;">
+                            <h3>🔗 Connect With Us</h3>
+                            <div class="social-links">
+                                <a href="https://twitter.com/getage247" target="_blank" rel="noopener">🐦 X</a>
+                                <a href="https://github.com/getage247" target="_blank" rel="noopener">🐙 GitHub</a>
+                                <a href="mailto:gnlassi.786@gmail.com">📧 Email</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ===== INTERNAL LINKS (TOOLS & BLOGS) ===== -->
+                <div class="internal-links">
+                    <h3>🔗 Explore More Free Tools &amp; Blogs</h3>
+                    <div class="link-grid">
+                        <!-- Tools -->
+                        <a href="https://getage247.xyz/meta-tag-generator" target="_blank">🏷️ Meta Tag Generator</a>
+                        <a href="https://getage247.xyz/schema-markup-generator" target="_blank">🧩 Schema Markup Generator</a>
+                        <a href="https://getage247.xyz/robots-txt-generator" target="_blank">🤖 Robots.txt Tool</a>
+                        <a href="https://getage247.xyz/age-calculator" target="_blank">📅 Age Calculator</a>
+                        <a href="https://getage247.xyz/bmi-calculator" target="_blank">⚖️ BMI Calculator</a>
+                        <a href="https://getage247.xyz/unit-converter" target="_blank">📏 Unit Converter</a>
+                        <a href="https://getage247.xyz/image-resizer" target="_blank">🖼️ Image Resizer</a>
+                        <a href="https://getage247.xyz/password-generator" target="_blank">🔐 Password Generator</a>
+                        <a href="https://getage247.xyz/qr-generator" target="_blank">📱 QR Code Generator</a>
+                        <a href="https://getage247.xyz/currency-converter" target="_blank">💱 Currency Converter</a>
+                        <a href="https://getage247.xyz/loan-calculator" target="_blank">💰 Loan Calculator</a>
+                        <a href="https://getage247.xyz/json-formatter" target="_blank">📋 JSON Formatter</a>
+                        <a href="https://getage247.xyz/text-case-converter" target="_blank">🔤 Text Case Converter</a>
+                        <a href="https://getage247.xyz/base64-encoder" target="_blank">🔢 Base64 Enc/Dec</a>
+                        <a href="https://getage247.xyz/jpg-to-pdf" target="_blank">📄 JPG to PDF</a>
+                        <a href="https://getage247.xyz/percentage-calculator" target="_blank">📊 Percentage Calc</a>
+                        <a href="https://getage247.xyz/word-counter" target="_blank">📝 Word Counter</a>
+                        <a href="https://getage247.xyz/uuid-generator" target="_blank">🆔 UUID Generator</a>
+                        
+                        <!-- Blogs -->
+                        <a href="https://getage247.xyz/blog-meta-tag-generator.html" target="_blank">📖 Meta Tag Generator Guide</a>
+                        <a href="https://getage247.xyz/blog-meta-tag-adsense-guide.html" target="_blank">📖 AdSense Meta Tag Guide</a>
+                        <a href="https://getage247.xyz/schema-markup-generator-guide.html" target="_blank">📖 Schema Markup Guide</a>
+                        <a href="https://getage247.xyz/blog/robots-txt-guide" target="_blank">📖 Robots.txt Guide</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container footer-inner">
+            <div class="copy">&copy; 2026 <a href="https://getage247.xyz/" target="_blank">getage247.xyz</a> — Free Online Tools</div>
+            <div class="footer-links">
+                <a href="https://getage247.xyz/" target="_blank">Home</a>
+                <a href="https://getage247.xyz/about" target="_blank">About</a>
+                <a href="https://getage247.xyz/contact" class="active">Contact</a>
+                <a href="https://getage247.xyz/privacy" target="_blank">Privacy</a>
+                <a href="https://getage247.xyz/cookie-policy" target="_blank">Cookie Policy</a>
+                <a href="https://getage247.xyz/disclaimer" target="_blank">Disclaimer</a>
+                <a href="https://getage247.xyz/terms" target="_blank">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ===== FORM HANDLER =====
+        function handleSubmit(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            if (!email.includes('@') || !email.includes('.')) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            // Build mailto link
+            const mailtoLink = `mailto:gnlassi.786@gmail.com?subject=${encodeURIComponent('Contact Form: ' + subject)}&body=${encodeURIComponent(
+                'Name: ' + name + '\n' +
+                'Email: ' + email + '\n\n' +
+                'Message:\n' + message
+            )}`;
+
+            // Open email client
+            window.location.href = mailtoLink;
+
+            // Show success message
+            document.getElementById('formSuccess').style.display = 'block';
+            document.getElementById('contactForm').reset();
+
+            // Hide success after 5 seconds
+            setTimeout(() => {
+                document.getElementById('formSuccess').style.display = 'none';
+            }, 5000);
+        }
+
+        // ===== MOBILE NAV TOGGLE =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.getElementById('navToggle');
+            const nav = document.getElementById('mainNav');
+            if (toggle && nav) {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    nav.classList.toggle('open');
+                });
+                nav.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        nav.classList.remove('open');
+                    });
+                });
+                document.addEventListener('click', function(e) {
+                    if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+                        nav.classList.remove('open');
+                    }
+                });
+            }
+        });
+    </script>
+
 </body>
 </html>
