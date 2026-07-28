@@ -260,27 +260,6 @@
         .contact-info .info-item .text { color: var(--text-secondary); }
         .contact-info .info-item .text strong { color: #fff; }
 
-        .social-links {
-            display: flex;
-            gap: 12px;
-            margin-top: 12px;
-            flex-wrap: wrap;
-        }
-        .social-links a {
-            background: var(--bg-primary);
-            border: 1px solid var(--border);
-            border-radius: 40px;
-            padding: 6px 18px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            transition: 0.3s;
-        }
-        .social-links a:hover {
-            border-color: var(--accent);
-            color: #fff;
-            background: var(--bg-card-hover);
-        }
-
         /* ===== INTERNAL LINKS ===== */
         .internal-links {
             margin-top: 40px;
@@ -415,12 +394,12 @@
                             <div class="form-group">
                                 <label for="subject">Subject</label>
                                 <select id="subject">
-                                    <option value="general">General Inquiry</option>
-                                    <option value="feedback">Feedback / Suggestion</option>
-                                    <option value="bug">Bug Report</option>
-                                    <option value="feature">Feature Request</option>
-                                    <option value="partnership">Partnership / Collaboration</option>
-                                    <option value="other">Other</option>
+                                    <option value="General Inquiry">General Inquiry</option>
+                                    <option value="Feedback / Suggestion">Feedback / Suggestion</option>
+                                    <option value="Bug Report">Bug Report</option>
+                                    <option value="Feature Request">Feature Request</option>
+                                    <option value="Partnership / Collaboration">Partnership / Collaboration</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
 
@@ -440,7 +419,7 @@
                     <!-- ===== CONTACT INFO ===== -->
                     <div>
                         <h2>📌 Get in Touch</h2>
-                        <p style="color: var(--text-muted); font-size: 0.95rem;">Reach out to us through any of the following channels.</p>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">Reach out to us through the following channels.</p>
 
                         <div class="contact-info">
                             <div class="info-item">
@@ -448,14 +427,6 @@
                                 <div class="text">
                                     <strong>Email</strong><br>
                                     <a href="mailto:gnlassi.786@gmail.com">gnlassi.786@gmail.com</a>
-                                </div>
-                            </div>
-
-                            <div class="info-item">
-                                <span class="icon">🐦</span>
-                                <div class="text">
-                                    <strong>X / Twitter</strong><br>
-                                    <a href="https://twitter.com/getage247" target="_blank" rel="noopener">@getage247</a>
                                 </div>
                             </div>
 
@@ -473,13 +444,6 @@
                                     <strong>Response Time</strong><br>
                                     We aim to respond within 24–48 hours.
                                 </div>
-                            </div>
-                        </div>
-
-                        <div style="margin-top: 16px;">
-                            <h3>🔗 Connect With Us</h3>
-                            <div class="social-links">
-                                <a href="mailto:gnlassi.786@gmail.com">📧 Email</a>
                             </div>
                         </div>
                     </div>
@@ -559,12 +523,16 @@
                 return;
             }
 
-            // Build mailto link
-            const mailtoLink = `mailto:gnlassi.786@gmail.com?subject=${encodeURIComponent('Contact Form: ' + subject)}&body=${encodeURIComponent(
-                'Name: ' + name + '\n' +
-                'Email: ' + email + '\n\n' +
-                'Message:\n' + message
-            )}`;
+            // Build mailto link with all fields
+            const mailtoLink = 
+                'mailto:gnlassi.786@gmail.com' +
+                '?subject=' + encodeURIComponent('Contact Form: ' + subject) +
+                '&body=' + encodeURIComponent(
+                    'Name: ' + name + '\n' +
+                    'Email: ' + email + '\n' +
+                    'Subject: ' + subject + '\n\n' +
+                    'Message:\n' + message
+                );
 
             // Open email client
             window.location.href = mailtoLink;
