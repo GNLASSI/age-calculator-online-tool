@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEO Kit Generator – All-in-One Free SEO Tool | getage247.xyz</title>
+    <title>SEO Kit Generator – Advanced All-in-One Free SEO Tool | getage247.xyz</title>
     <meta name="description" content="Generate Meta Tags, Schema Markup, Robots.txt, Sitemap, Open Graph & Twitter Cards – all in one free SEO tool. No API required.">
     <link rel="canonical" href="https://getage247.xyz/seo-kit-generator">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="SEO Kit Generator – All-in-One Free SEO Tool">
+    <meta property="og:title" content="SEO Kit Generator – Advanced All-in-One Free SEO Tool">
     <meta property="og:description" content="Generate Meta Tags, Schema Markup, Robots.txt, Sitemap, Open Graph & Twitter Cards – all in one free SEO tool.">
     <meta property="og:url" content="https://getage247.xyz/seo-kit-generator">
     <meta property="og:type" content="website">
@@ -16,7 +16,7 @@
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="SEO Kit Generator – All-in-One Free SEO Tool">
+    <meta name="twitter:title" content="SEO Kit Generator – Advanced All-in-One Free SEO Tool">
     <meta name="twitter:description" content="Generate Meta Tags, Schema Markup, Robots.txt, Sitemap, Open Graph & Twitter Cards – all in one free SEO tool.">
     <meta name="twitter:site" content="@getage247">
 
@@ -223,6 +223,9 @@
             text-align: right;
             margin-top: 2px;
         }
+        .form-group .char-count.good { color: var(--green); }
+        .form-group .char-count.warning { color: var(--yellow); }
+        .form-group .char-count.danger { color: var(--red); }
         .form-group .hint {
             font-size: 0.75rem;
             color: var(--text-muted);
@@ -247,6 +250,8 @@
         .btn-success:hover { background: #00a381; transform: translateY(-2px); }
         .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-secondary); }
         .btn-outline:hover { border-color: var(--accent); color: #fff; background: var(--bg-card); }
+        .btn-danger { background: var(--red); color: #fff; }
+        .btn-danger:hover { background: #d63031; }
         .btn-group {
             display: flex;
             flex-wrap: wrap;
@@ -267,20 +272,187 @@
             overflow-y: auto;
             color: var(--text-secondary);
             margin-top: 12px;
+            position: relative;
         }
-        .output-box .copy-feedback {
-            position: absolute;
-            top: 8px;
-            right: 12px;
-            font-size: 0.7rem;
-            background: var(--accent);
+
+        /* ===== SEO SCORE ===== */
+        .seo-score-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            margin: 12px 0;
+        }
+        .seo-score-section .score-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .seo-score-section .score-badge {
+            display: inline-block;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        .seo-score-section .score-badge.excellent { background: rgba(0,184,148,0.2); color: var(--green); }
+        .seo-score-section .score-badge.good { background: rgba(253,203,110,0.2); color: var(--yellow); }
+        .seo-score-section .score-badge.needs-improvement { background: rgba(225,112,85,0.2); color: var(--red); }
+
+        /* ===== LIVE PREVIEWS ===== */
+        .preview-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 16px;
+        }
+        @media (max-width: 768px) { .preview-section { grid-template-columns: 1fr; } }
+
+        .preview-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+        }
+        .preview-card h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        /* Google Preview */
+        .google-preview .title {
+            font-size: 1.1rem;
+            color: #1a0dab;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+        .google-preview .url {
+            font-size: 0.8rem;
+            color: #006621;
+            margin-bottom: 2px;
+        }
+        .google-preview .desc {
+            font-size: 0.85rem;
+            color: #545454;
+        }
+
+        /* Facebook Preview */
+        .fb-preview {
+            max-width: 100%;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+        .fb-preview .fb-image {
+            height: 120px;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .fb-preview .fb-body {
+            padding: 12px 14px;
+        }
+        .fb-preview .fb-body .fb-title {
+            font-size: 1rem;
+            font-weight: 600;
             color: #fff;
-            padding: 2px 12px;
-            border-radius: 20px;
-            opacity: 0;
-            transition: var(--transition);
         }
-        .output-box .copy-feedback.show { opacity: 1; }
+        .fb-preview .fb-body .fb-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .fb-preview .fb-body .fb-url {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* Twitter Preview */
+        .twitter-preview {
+            max-width: 100%;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+        }
+        .twitter-preview .tw-image {
+            height: 120px;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .twitter-preview .tw-body {
+            padding: 12px 14px;
+        }
+        .twitter-preview .tw-body .tw-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        .twitter-preview .tw-body .tw-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .twitter-preview .tw-body .tw-handle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .faq-section {
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .faq-section h3 {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        .faq-item .faq-question {
+            padding: 14px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s;
+        }
+        .faq-item .faq-question:hover { background: var(--bg-card-hover); }
+        .faq-item .faq-question .arrow { transition: 0.3s; }
+        .faq-item .faq-question.active .arrow { transform: rotate(180deg); }
+        .faq-item .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: 0.3s ease;
+            color: var(--text-secondary);
+        }
+        .faq-item .faq-answer.open {
+            padding: 14px 20px;
+            max-height: 500px;
+        }
+        .faq-item .faq-answer p { margin-bottom: 8px; }
+        .faq-item .faq-answer p:last-child { margin-bottom: 0; }
 
         /* ===== INTERNAL LINKS ===== */
         .internal-links {
@@ -361,6 +533,7 @@
             .btn-group .btn { flex: 1; justify-content: center; }
             .footer-inner { flex-direction: column; text-align: center; }
             .footer-links { justify-content: center; }
+            .preview-section { grid-template-columns: 1fr; }
         }
         @media (max-width: 480px) {
             .container { padding: 0 14px; }
@@ -406,22 +579,73 @@
                     <button class="tab-btn" data-tab="sitemap">🗺️ Sitemap</button>
                     <button class="tab-btn" data-tab="og">📱 Open Graph</button>
                     <button class="tab-btn" data-tab="twitter">🐦 Twitter Cards</button>
+                    <button class="tab-btn" data-tab="breadcrumb">🍞 Breadcrumb</button>
                 </div>
 
                 <!-- ===== META TAGS ===== -->
                 <div class="tab-content active" id="tab-meta">
-                    <p style="color:var(--text-muted); margin-bottom:16px;">Generate complete meta tags including title, description, keywords, robots, and canonical.</p>
+                    <p style="color:var(--text-muted); margin-bottom:16px;">Generate complete meta tags with real-time SEO score and live previews.</p>
+
                     <div class="form-group">
                         <label>Page Title</label>
                         <input type="text" id="metaTitle" placeholder="My Awesome Page | getage247.xyz" maxlength="70">
-                        <div class="char-count" id="metaTitleCount">0 / 70</div>
+                        <div class="char-count" id="metaTitleCount">0 / 60</div>
+                        <div class="hint">Recommended: 50–60 characters for better click-through rate.</div>
                     </div>
                     <div class="form-group">
                         <label>Meta Description</label>
                         <textarea id="metaDesc" placeholder="Write a compelling description…" maxlength="160" rows="2"></textarea>
                         <div class="char-count" id="metaDescCount">0 / 160</div>
+                        <div class="hint">Recommended: 150–160 characters for optimal display in search results.</div>
                     </div>
-                    <div class="form-group">
+
+                    <!-- SEO Score -->
+                    <div class="seo-score-section" id="seoScoreSection">
+                        <div class="score-row">
+                            <span style="font-weight:600;">📊 SEO Score:</span>
+                            <span class="score-badge" id="seoScoreBadge">—</span>
+                            <span id="seoScoreText" style="color:var(--text-muted); font-size:0.9rem;">Fill in the fields to get a score.</span>
+                        </div>
+                    </div>
+
+                    <!-- Live Previews -->
+                    <div class="preview-section">
+                        <!-- Google Preview -->
+                        <div class="preview-card google-preview">
+                            <h4>🔍 Google Search Preview</h4>
+                            <div class="title" id="googleTitle">Your Page Title</div>
+                            <div class="url" id="googleUrl">https://getage247.xyz/</div>
+                            <div class="desc" id="googleDesc">Your meta description will appear here…</div>
+                        </div>
+
+                        <!-- Facebook Preview -->
+                        <div class="preview-card">
+                            <h4>📱 Facebook Preview</h4>
+                            <div class="fb-preview">
+                                <div class="fb-image" id="fbImage">🖼️ No Image</div>
+                                <div class="fb-body">
+                                    <div class="fb-title" id="fbTitle">Your Page Title</div>
+                                    <div class="fb-desc" id="fbDesc">Your description will appear here…</div>
+                                    <div class="fb-url" id="fbUrl">getage247.xyz</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Twitter Preview -->
+                        <div class="preview-card">
+                            <h4>🐦 Twitter Preview</h4>
+                            <div class="twitter-preview">
+                                <div class="tw-image" id="twImage">🖼️ No Image</div>
+                                <div class="tw-body">
+                                    <div class="tw-title" id="twTitle">Your Page Title</div>
+                                    <div class="tw-desc" id="twDesc">Your description will appear here…</div>
+                                    <div class="tw-handle" id="twHandle">@getage247</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top:16px;">
                         <label>Keywords (comma separated)</label>
                         <input type="text" id="metaKeywords" placeholder="seo, generator, tools">
                     </div>
@@ -442,10 +666,13 @@
                         <label>Canonical URL</label>
                         <input type="url" id="metaCanonical" placeholder="https://getage247.xyz/your-page">
                     </div>
+
                     <div class="btn-group">
                         <button class="btn btn-primary" id="metaGenerate">⚡ Generate Meta Tags</button>
                         <button class="btn btn-success" id="metaCopy">📄 Copy</button>
-                        <button class="btn btn-outline" id="metaClear">🗑️ Clear</button>
+                        <button class="btn btn-outline" id="metaDownloadHTML">⬇️ Download HTML</button>
+                        <button class="btn btn-outline" id="metaDownloadTXT">⬇️ Download TXT</button>
+                        <button class="btn btn-danger" id="metaReset">🔄 Reset</button>
                     </div>
                     <div class="output-box" id="metaOutput"><span style="color:var(--text-muted);">Fill in the fields and click Generate.</span></div>
                 </div>
@@ -477,13 +704,12 @@
                         <label>Image URL</label>
                         <input type="url" id="schemaImage" placeholder="https://getage247.xyz/image.jpg">
                     </div>
-                    <div class="form-group" id="schemaExtraFields">
-                        <!-- Dynamic fields will be shown based on type -->
-                    </div>
+                    <div class="form-group" id="schemaExtraFields"></div>
                     <div class="btn-group">
                         <button class="btn btn-primary" id="schemaGenerate">⚡ Generate Schema</button>
                         <button class="btn btn-success" id="schemaCopy">📄 Copy</button>
-                        <button class="btn btn-outline" id="schemaClear">🗑️ Clear</button>
+                        <button class="btn btn-outline" id="schemaDownloadJSON">⬇️ Download JSON</button>
+                        <button class="btn btn-danger" id="schemaReset">🔄 Reset</button>
                     </div>
                     <div class="output-box" id="schemaOutput"><span style="color:var(--text-muted);">Fill in the fields and click Generate.</span></div>
                 </div>
@@ -518,7 +744,8 @@
                     <div class="btn-group">
                         <button class="btn btn-primary" id="robotsGenerate">⚡ Generate robots.txt</button>
                         <button class="btn btn-success" id="robotsCopy">📄 Copy</button>
-                        <button class="btn btn-outline" id="robotsClear">🗑️ Clear</button>
+                        <button class="btn btn-outline" id="robotsDownloadTXT">⬇️ Download TXT</button>
+                        <button class="btn btn-danger" id="robotsReset">🔄 Reset</button>
                     </div>
                     <div class="output-box" id="robotsOutput"><span style="color:var(--text-muted);">Fill in the fields and click Generate.</span></div>
                 </div>
@@ -537,7 +764,8 @@
                     <div class="btn-group">
                         <button class="btn btn-primary" id="sitemapGenerate">⚡ Generate Sitemap</button>
                         <button class="btn btn-success" id="sitemapCopy">📄 Copy</button>
-                        <button class="btn btn-outline" id="sitemapClear">🗑️ Clear</button>
+                        <button class="btn btn-outline" id="sitemapDownloadXML">⬇️ Download XML</button>
+                        <button class="btn btn-danger" id="sitemapReset">🔄 Reset</button>
                     </div>
                     <div class="output-box" id="sitemapOutput"><span style="color:var(--text-muted);">Fill in the fields and click Generate.</span></div>
                 </div>
@@ -577,7 +805,8 @@
                     <div class="btn-group">
                         <button class="btn btn-primary" id="ogGenerate">⚡ Generate OG Tags</button>
                         <button class="btn btn-success" id="ogCopy">📄 Copy</button>
-                        <button class="btn btn-outline" id="ogClear">🗑️ Clear</button>
+                        <button class="btn btn-outline" id="ogDownloadHTML">⬇️ Download HTML</button>
+                        <button class="btn btn-danger" id="ogReset">🔄 Reset</button>
                     </div>
                     <div class="output-box" id="ogOutput"><span style="color:var(--text-muted);">Fill in the fields and click Generate.</span></div>
                 </div>
@@ -616,17 +845,172 @@
                     <div class="btn-group">
                         <button class="btn btn-primary" id="twitterGenerate">⚡ Generate Twitter Cards</button>
                         <button class="btn btn-success" id="twitterCopy">📄 Copy</button>
-                        <button class="btn btn-outline" id="twitterClear">🗑️ Clear</button>
+                        <button class="btn btn-outline" id="twitterDownloadHTML">⬇️ Download HTML</button>
+                        <button class="btn btn-danger" id="twitterReset">🔄 Reset</button>
                     </div>
                     <div class="output-box" id="twitterOutput"><span style="color:var(--text-muted);">Fill in the fields and click Generate.</span></div>
                 </div>
+
+                <!-- ===== BREADCRUMB SCHEMA ===== -->
+                <div class="tab-content" id="tab-breadcrumb">
+                    <p style="color:var(--text-muted); margin-bottom:16px;">Generate BreadcrumbList schema markup for better search visibility.</p>
+                    <div class="form-group">
+                        <label>Website URL</label>
+                        <input type="url" id="breadcrumbBase" value="https://getage247.xyz" placeholder="https://getage247.xyz">
+                    </div>
+                    <div class="form-group">
+                        <label>Breadcrumb Paths (one per line, format: Name | URL)</label>
+                        <textarea id="breadcrumbPaths" placeholder="Home | /&#10;Blog | /blog&#10;SEO Tools | /blog/seo-tools" rows="5"></textarea>
+                        <div class="hint">Example: "Home | /" or "Blog | /blog" or "SEO Tools | /blog/seo-tools"</div>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" id="breadcrumbGenerate">⚡ Generate Breadcrumb</button>
+                        <button class="btn btn-success" id="breadcrumbCopy">📄 Copy</button>
+                        <button class="btn btn-outline" id="breadcrumbDownloadJSON">⬇️ Download JSON</button>
+                        <button class="btn btn-danger" id="breadcrumbReset">🔄 Reset</button>
+                    </div>
+                    <div class="output-box" id="breadcrumbOutput"><span style="color:var(--text-muted);">Add breadcrumb paths and click Generate.</span></div>
+                </div>
+            </div>
+
+            <!-- ===== FAQ SECTION ===== -->
+            <div class="faq-section">
+                <h3>❓ Frequently Asked Questions (SEO)</h3>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What are meta tags and why are they important for SEO?
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Meta tags are HTML elements that provide information about your webpage to search engines and visitors. The most important meta tags include:</p>
+                        <ul style="color:var(--text-secondary); padding-left:20px; margin-bottom:8px;">
+                            <li><strong>Title Tag</strong> – Appears in search results as the clickable headline. Keep it under 60 characters.</li>
+                            <li><strong>Meta Description</strong> – The short description that appears below your title in search results. Keep it under 160 characters.</li>
+                            <li><strong>Robots Tag</strong> – Tells search engines how to crawl your pages (index/follow).</li>
+                        </ul>
+                        <p>Proper meta tags improve your click-through rate (CTR) and help search engines understand your content.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What is Schema Markup and how does it help SEO?
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Schema Markup (structured data) is code that helps search engines understand your content more deeply. Benefits include:</p>
+                        <ul style="color:var(--text-secondary); padding-left:20px; margin-bottom:8px;">
+                            <li><strong>Rich Snippets</strong> – Star ratings, prices, and availability appear directly in search results.</li>
+                            <li><strong>Higher CTR</strong> – Rich snippets attract more clicks because they stand out.</li>
+                            <li><strong>Better Understanding</strong> – Google uses schema to grasp relationships between entities.</li>
+                            <li><strong>Voice Search</strong> – Structured data helps voice assistants find and read your content.</li>
+                        </ul>
+                        <p>Common schema types include Article, Product, Recipe, FAQPage, and LocalBusiness.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What is Open Graph and why do I need it?
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Open Graph (OG) tags control how your content appears when shared on social media platforms like Facebook, LinkedIn, and WhatsApp. Key benefits:</p>
+                        <ul style="color:var(--text-secondary); padding-left:20px; margin-bottom:8px;">
+                            <li><strong>Control the title</strong> – What people see when sharing your content.</li>
+                            <li><strong>Control the description</strong> – The text that appears below the title.</li>
+                            <li><strong>Control the image</strong> – A high-quality image increases engagement by up to 10x.</li>
+                            <li><strong>Professional appearance</strong> – Your shared links look polished and trustworthy.</li>
+                        </ul>
+                        <p>Without OG tags, social platforms will guess what to display—often with poor results.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What is Robots.txt and how do I use it?
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Robots.txt is a text file that tells search engine crawlers which parts of your website they can or cannot access. Key uses:</p>
+                        <ul style="color:var(--text-secondary); padding-left:20px; margin-bottom:8px;">
+                            <li><strong>Block duplicate content</strong> – Prevent indexing of admin sections, staging environments, or filtered search results.</li>
+                            <li><strong>Save crawl budget</strong> – Focus search engines on your most important pages.</li>
+                            <li><strong>Submit sitemap</strong> – Reference your sitemap directly in robots.txt.</li>
+                            <li><strong>Set crawl-delay</strong> – Control how frequently crawlers access your site.</li>
+                        </ul>
+                        <p>Always test your robots.txt using Google Search Console's robots.txt tester.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What is a Sitemap and why is it important?
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A sitemap is an XML file that lists all the important pages on your website. Benefits include:</p>
+                        <ul style="color:var(--text-secondary); padding-left:20px; margin-bottom:8px;">
+                            <li><strong>Faster indexing</strong> – Search engines discover your new pages more quickly.</li>
+                            <li><strong>Better crawl efficiency</strong> – Helps search engines understand your site structure.</li>
+                            <li><strong>Index all pages</strong> – Ensures even deeply nested pages get indexed.</li>
+                            <li><strong>Provide metadata</strong> – Include last modification dates and priority levels.</li>
+                        </ul>
+                        <p>Submit your sitemap to Google Search Console and Bing Webmaster Tools for best results.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What is Breadcrumb Schema and how does it help?
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Breadcrumb Schema adds structured breadcrumb navigation to your search results. Benefits include:</p>
+                        <ul style="color:var(--text-secondary); padding-left:20px; margin-bottom:8px;">
+                            <li><strong>Enhanced SERP appearance</strong> – Breadcrumbs appear below your title in search results.</li>
+                            <li><strong>Better user experience</strong> – Helps visitors understand where they are on your site.</li>
+                            <li><strong>Higher CTR</strong> – Breadcrumb-rich results stand out and attract more clicks.</li>
+                            <li><strong>Improved site structure</strong> – Search engines understand your site's hierarchy.</li>
+                        </ul>
+                        <p>Breadcrumb markup is especially useful for e-commerce sites, blogs, and large websites with deep navigation.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        How do I use the SEO Kit Generator tool effectively?
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Follow this step-by-step workflow for the best results:</p>
+                        <ol style="color:var(--text-secondary); padding-left:20px; margin-bottom:8px;">
+                            <li><strong>Start with Meta Tags</strong> – Enter your title and description. Check the SEO score and live previews.</li>
+                            <li><strong>Generate Open Graph</strong> – Add OG tags to control social media sharing.</li>
+                            <li><strong>Add Twitter Cards</strong> – Ensure your content looks great on X/Twitter.</li>
+                            <li><strong>Create Schema Markup</strong> – Choose the right schema type for your content.</li>
+                            <li><strong>Generate Robots.txt</strong> – Control search engine crawling behavior.</li>
+                            <li><strong>Create a Sitemap</strong> – List all your important URLs.</li>
+                            <li><strong>Add Breadcrumb Schema</strong> – Enhance your search results with breadcrumbs.</li>
+                            <li><strong>Download or Copy</strong> – Use the download buttons to save your work.</li>
+                        </ol>
+                        <p>Use the <strong>Reset</strong> button to clear all fields and start fresh.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== BLOG LINK ===== -->
+            <div style="margin-top: 20px; padding: 16px 20px; background: var(--bg-card); border-radius: var(--radius-sm); border: 1px solid var(--border); text-align: center;">
+                <p style="color: var(--text-secondary);">
+                    📖 <a href="https://getage247.xyz/blog/how-to-use-seo-kit-generator" target="_blank" style="font-weight:600;">How to Use SEO Kit Generator – Complete Guide</a>
+                </p>
             </div>
 
             <!-- ===== INTERNAL LINKS ===== -->
             <div class="internal-links">
                 <h3>🔗 Explore More Free Tools &amp; Blogs</h3>
                 <div class="link-grid">
-                    <!-- Tools -->
                     <a href="https://getage247.xyz/meta-tag-generator" target="_blank">🏷️ Meta Tag Generator</a>
                     <a href="https://getage247.xyz/schema-markup-generator" target="_blank">🧩 Schema Markup Generator</a>
                     <a href="https://getage247.xyz/robots-txt-generator" target="_blank">🤖 Robots.txt Tool</a>
@@ -686,7 +1070,7 @@
             function copyOutput(outputId) {
                 const output = document.getElementById(outputId);
                 const text = output.textContent.trim();
-                if (!text || text.includes('Fill in the fields')) {
+                if (!text || text.includes('Fill in the fields') || text.includes('Add breadcrumb')) {
                     alert('Generate content first!');
                     return;
                 }
@@ -712,18 +1096,79 @@
                 });
             }
 
+            function downloadContent(content, filename, type) {
+                const blob = new Blob([content], { type: type });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+
             // ===== META TAGS =====
             const metaTitle = document.getElementById('metaTitle');
             const metaDesc = document.getElementById('metaDesc');
             const metaTitleCount = document.getElementById('metaTitleCount');
             const metaDescCount = document.getElementById('metaDescCount');
 
-            metaTitle.addEventListener('input', function() {
-                metaTitleCount.textContent = this.value.length + ' / 70';
-            });
-            metaDesc.addEventListener('input', function() {
-                metaDescCount.textContent = this.value.length + ' / 160';
-            });
+            function updateMetaCounts() {
+                const tLen = metaTitle.value.length;
+                const dLen = metaDesc.value.length;
+                metaTitleCount.textContent = tLen + ' / 60';
+                metaDescCount.textContent = dLen + ' / 160';
+                metaTitleCount.className = 'char-count' + (tLen > 60 ? ' danger' : '');
+                metaDescCount.className = 'char-count' + (dLen > 160 ? ' danger' : '');
+                updateMetaScore();
+                updateMetaPreviews();
+            }
+
+            metaTitle.addEventListener('input', updateMetaCounts);
+            metaDesc.addEventListener('input', updateMetaCounts);
+
+            function updateMetaScore() {
+                const title = metaTitle.value.trim();
+                const desc = metaDesc.value.trim();
+                const tLen = title.length;
+                const dLen = desc.length;
+                let score = 0;
+                let label = '—';
+                let text = 'Fill in the fields to get a score.';
+                let badgeClass = '';
+
+                if (tLen >= 30 && tLen <= 60) score += 50;
+                else if (tLen > 0) score += 25;
+
+                if (dLen >= 120 && dLen <= 160) score += 50;
+                else if (dLen > 0) score += 25;
+
+                if (score >= 80) { label = 'Excellent'; text = '🌟 Your meta tags are well optimized!'; badgeClass = 'excellent'; }
+                else if (score >= 50) { label = 'Good'; text = '👍 Good! A few tweaks could make it even better.'; badgeClass = 'good'; }
+                else if (score > 0) { label = 'Needs Improvement'; text = '📝 Your meta tags need improvement. Follow the recommendations.'; badgeClass = 'needs-improvement'; }
+
+                document.getElementById('seoScoreBadge').textContent = label;
+                document.getElementById('seoScoreBadge').className = 'score-badge ' + badgeClass;
+                document.getElementById('seoScoreText').textContent = text;
+            }
+
+            function updateMetaPreviews() {
+                const title = metaTitle.value.trim() || 'Your Page Title';
+                const desc = metaDesc.value.trim() || 'Your meta description will appear here…';
+                const url = document.getElementById('metaCanonical').value.trim() || 'https://getage247.xyz/';
+
+                document.getElementById('googleTitle').textContent = title;
+                document.getElementById('googleDesc').textContent = desc;
+                document.getElementById('googleUrl').textContent = url;
+
+                document.getElementById('fbTitle').textContent = title;
+                document.getElementById('fbDesc').textContent = desc;
+                document.getElementById('fbUrl').textContent = url.replace(/^https?:\/\//, '');
+
+                document.getElementById('twTitle').textContent = title;
+                document.getElementById('twDesc').textContent = desc;
+            }
 
             document.getElementById('metaGenerate').addEventListener('click', function() {
                 const title = metaTitle.value.trim() || 'Untitled';
@@ -744,11 +1189,33 @@
             });
 
             document.getElementById('metaCopy').addEventListener('click', function() { copyOutput('metaOutput'); });
-            document.getElementById('metaClear').addEventListener('click', function() {
+            document.getElementById('metaDownloadHTML').addEventListener('click', function() {
+                const content = document.getElementById('metaOutput').textContent;
+                if (content.includes('Fill in the fields')) { alert('Generate content first!'); return; }
+                const full = `<!DOCTYPE html>\n<html>\n<head>\n${content}\n</head>\n<body>\n<!-- Your content here -->\n</body>\n</html>`;
+                downloadContent(full, 'meta-tags.html', 'text/html');
+            });
+            document.getElementById('metaDownloadTXT').addEventListener('click', function() {
+                const content = document.getElementById('metaOutput').textContent;
+                if (content.includes('Fill in the fields')) { alert('Generate content first!'); return; }
+                downloadContent(content, 'meta-tags.txt', 'text/plain');
+            });
+            document.getElementById('metaReset').addEventListener('click', function() {
                 clearFields(['metaTitle', 'metaDesc', 'metaKeywords', 'metaAuthor', 'metaCanonical']);
                 document.getElementById('metaOutput').innerHTML = '<span style="color:var(--text-muted);">Fill in the fields and click Generate.</span>';
-                metaTitleCount.textContent = '0 / 70';
+                metaTitleCount.textContent = '0 / 60';
                 metaDescCount.textContent = '0 / 160';
+                metaTitleCount.className = 'char-count';
+                metaDescCount.className = 'char-count';
+                document.getElementById('seoScoreBadge').textContent = '—';
+                document.getElementById('seoScoreBadge').className = 'score-badge';
+                document.getElementById('seoScoreText').textContent = 'Fill in the fields to get a score.';
+                document.getElementById('googleTitle').textContent = 'Your Page Title';
+                document.getElementById('googleDesc').textContent = 'Your meta description will appear here…';
+                document.getElementById('fbTitle').textContent = 'Your Page Title';
+                document.getElementById('fbDesc').textContent = 'Your description will appear here…';
+                document.getElementById('twTitle').textContent = 'Your Page Title';
+                document.getElementById('twDesc').textContent = 'Your description will appear here…';
             });
 
             // ===== SCHEMA MARKUP =====
@@ -819,7 +1286,6 @@
                 };
                 if (image) schema.image = image;
 
-                // Type-specific fields
                 if (type === 'Product') {
                     const price = document.getElementById('schemaPrice').value.trim();
                     const currency = document.getElementById('schemaCurrency').value.trim() || 'USD';
@@ -870,10 +1336,15 @@
             });
 
             document.getElementById('schemaCopy').addEventListener('click', function() { copyOutput('schemaOutput'); });
-            document.getElementById('schemaClear').addEventListener('click', function() {
+            document.getElementById('schemaDownloadJSON').addEventListener('click', function() {
+                const content = document.getElementById('schemaOutput').textContent;
+                if (content.includes('Fill in the fields')) { alert('Generate content first!'); return; }
+                const json = content.replace(/<script type="application\/ld\+json">\n?/, '').replace(/\n?<\/script>/, '');
+                downloadContent(json, 'schema-markup.json', 'application/json');
+            });
+            document.getElementById('schemaReset').addEventListener('click', function() {
                 clearFields(['schemaName', 'schemaDesc', 'schemaImage']);
                 document.getElementById('schemaOutput').innerHTML = '<span style="color:var(--text-muted);">Fill in the fields and click Generate.</span>';
-                // Clear extra fields
                 document.querySelectorAll('#schemaExtraFields input, #schemaExtraFields textarea').forEach(el => el.value = '');
             });
 
@@ -903,7 +1374,12 @@
             });
 
             document.getElementById('robotsCopy').addEventListener('click', function() { copyOutput('robotsOutput'); });
-            document.getElementById('robotsClear').addEventListener('click', function() {
+            document.getElementById('robotsDownloadTXT').addEventListener('click', function() {
+                const content = document.getElementById('robotsOutput').textContent;
+                if (content.includes('Fill in the fields') || content.includes('No directives')) { alert('Generate content first!'); return; }
+                downloadContent(content, 'robots.txt', 'text/plain');
+            });
+            document.getElementById('robotsReset').addEventListener('click', function() {
                 clearFields(['robotsUserAgents', 'robotsAllow', 'robotsDisallow', 'robotsSitemap', 'robotsCrawlDelay', 'robotsHost']);
                 document.getElementById('robotsOutput').innerHTML = '<span style="color:var(--text-muted);">Fill in the fields and click Generate.</span>';
             });
@@ -924,7 +1400,12 @@
             });
 
             document.getElementById('sitemapCopy').addEventListener('click', function() { copyOutput('sitemapOutput'); });
-            document.getElementById('sitemapClear').addEventListener('click', function() {
+            document.getElementById('sitemapDownloadXML').addEventListener('click', function() {
+                const content = document.getElementById('sitemapOutput').textContent;
+                if (content.includes('Please add')) { alert('Generate content first!'); return; }
+                downloadContent(content, 'sitemap.xml', 'application/xml');
+            });
+            document.getElementById('sitemapReset').addEventListener('click', function() {
                 clearFields(['sitemapBaseUrl', 'sitemapPages']);
                 document.getElementById('sitemapOutput').innerHTML = '<span style="color:var(--text-muted);">Fill in the fields and click Generate.</span>';
             });
@@ -949,7 +1430,12 @@
             });
 
             document.getElementById('ogCopy').addEventListener('click', function() { copyOutput('ogOutput'); });
-            document.getElementById('ogClear').addEventListener('click', function() {
+            document.getElementById('ogDownloadHTML').addEventListener('click', function() {
+                const content = document.getElementById('ogOutput').textContent;
+                if (content.includes('Fill in the fields')) { alert('Generate content first!'); return; }
+                downloadContent(content, 'open-graph-tags.html', 'text/html');
+            });
+            document.getElementById('ogReset').addEventListener('click', function() {
                 clearFields(['ogTitle', 'ogDesc', 'ogImage', 'ogUrl', 'ogSiteName']);
                 document.getElementById('ogOutput').innerHTML = '<span style="color:var(--text-muted);">Fill in the fields and click Generate.</span>';
             });
@@ -974,10 +1460,77 @@
             });
 
             document.getElementById('twitterCopy').addEventListener('click', function() { copyOutput('twitterOutput'); });
-            document.getElementById('twitterClear').addEventListener('click', function() {
+            document.getElementById('twitterDownloadHTML').addEventListener('click', function() {
+                const content = document.getElementById('twitterOutput').textContent;
+                if (content.includes('Fill in the fields')) { alert('Generate content first!'); return; }
+                downloadContent(content, 'twitter-cards.html', 'text/html');
+            });
+            document.getElementById('twitterReset').addEventListener('click', function() {
                 clearFields(['twitterTitle', 'twitterDesc', 'twitterImage', 'twitterSite', 'twitterCreator']);
                 document.getElementById('twitterOutput').innerHTML = '<span style="color:var(--text-muted);">Fill in the fields and click Generate.</span>';
             });
+
+            // ===== BREADCRUMB SCHEMA =====
+            document.getElementById('breadcrumbGenerate').addEventListener('click', function() {
+                const base = document.getElementById('breadcrumbBase').value.trim() || 'https://getage247.xyz';
+                const paths = document.getElementById('breadcrumbPaths').value.split('\n').map(s => s.trim()).filter(Boolean);
+                if (!paths.length) { document.getElementById('breadcrumbOutput').textContent = 'Please add at least one breadcrumb path.'; return; }
+
+                const items = [];
+                paths.forEach((path, index) => {
+                    const parts = path.split('|').map(s => s.trim());
+                    if (parts.length >= 2) {
+                        const name = parts[0];
+                        let url = parts[1];
+                        if (!url.startsWith('http')) {
+                            url = base + (url.startsWith('/') ? url : '/' + url);
+                        }
+                        items.push({
+                            '@type': 'ListItem',
+                            'position': index + 1,
+                            'name': name,
+                            'item': url
+                        });
+                    }
+                });
+
+                if (!items.length) { document.getElementById('breadcrumbOutput').textContent = 'No valid breadcrumb paths found. Use format: Name | URL'; return; }
+
+                const schema = {
+                    '@context': 'https://schema.org',
+                    '@type': 'BreadcrumbList',
+                    'itemListElement': items
+                };
+
+                const json = JSON.stringify(schema, null, 2);
+                const script = `<script type="application/ld+json">\n${json}\n<\/script>`;
+                document.getElementById('breadcrumbOutput').textContent = script;
+            });
+
+            document.getElementById('breadcrumbCopy').addEventListener('click', function() { copyOutput('breadcrumbOutput'); });
+            document.getElementById('breadcrumbDownloadJSON').addEventListener('click', function() {
+                const content = document.getElementById('breadcrumbOutput').textContent;
+                if (content.includes('Add breadcrumb') || content.includes('No valid')) { alert('Generate content first!'); return; }
+                const json = content.replace(/<script type="application\/ld\+json">\n?/, '').replace(/\n?<\/script>/, '');
+                downloadContent(json, 'breadcrumb-schema.json', 'application/json');
+            });
+            document.getElementById('breadcrumbReset').addEventListener('click', function() {
+                clearFields(['breadcrumbBase', 'breadcrumbPaths']);
+                document.getElementById('breadcrumbOutput').innerHTML = '<span style="color:var(--text-muted);">Add breadcrumb paths and click Generate.</span>';
+            });
+
+            // ===== FAQ TOGGLE =====
+            window.toggleFAQ = function(el) {
+                const answer = el.nextElementSibling;
+                const arrow = el.querySelector('.arrow');
+                el.classList.toggle('active');
+                answer.classList.toggle('open');
+                if (answer.classList.contains('open')) {
+                    arrow.textContent = '▲';
+                } else {
+                    arrow.textContent = '▼';
+                }
+            };
 
             // ===== TABS =====
             const tabBtns = document.querySelectorAll('.tab-btn');
@@ -1010,6 +1563,9 @@
                     }
                 });
             }
+
+            // ===== INIT =====
+            updateMetaCounts();
 
         })();
     </script>
