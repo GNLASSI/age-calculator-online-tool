@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Kit Generator – All-in-One Free SEO Tool | getage247.xyz</title>
+    <meta name="description" content="Generate Meta Tags, Schema Markup, Robots.txt, Sitemap, Open Graph & Twitter Cards – all in one free SEO tool. No API required.">
+    <link rel="canonical" href="https://getage247.xyz/seo-kit-generator">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="SEO Kit Generator – All-in-One Free SEO Tool">
+    <meta property="og:description" content="Generate Meta Tags, Schema Markup, Robots.txt, Sitemap, Open Graph & Twitter Cards – all in one free SEO tool.">
+    <meta property="og:url" content="https://getage247.xyz/seo-kit-generator">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="getage247.xyz">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SEO Kit Generator – All-in-One Free SEO Tool">
+    <meta name="twitter:description" content="Generate Meta Tags, Schema Markup, Robots.txt, Sitemap, Open Graph & Twitter Cards – all in one free SEO tool.">
+    <meta name="twitter:site" content="@getage247">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #0a0a12;
+            --bg-secondary: #12121f;
+            --bg-card: #1a1a2e;
+            --bg-card-hover: #24243a;
+            --border: #2a2a44;
+            --text-primary: #f0eeff;
+            --text-secondary: #b8b4d6;
+            --text-muted: #7a77a0;
+            --accent: #7c5cfc;
+            --accent-glow: #9d7cff;
+            --shadow: 0 8px 32px rgba(0,0,0,0.6);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --green: #00b894;
+            --yellow: #fdcb6e;
+            --red: #e17055;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font);
+            background: var(--bg-primary);
+            background-image: radial-gradient(circle at 10% 20%, rgba(124,92,252,0.08) 0%, transparent 50%),
+                              radial-gradient(circle at 90% 80%, rgba(124,92,252,0.06) 0%, transparent 50%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+        }
+        a { color: var(--accent-glow); text-decoration: none; transition: all 0.3s ease; }
+        a:hover { color: #fff; text-shadow: 0 0 12px rgba(124,92,252,0.5); }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        /* ===== HEADER ===== */
+        header {
+            background: rgba(10,10,18,0.85);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-glow), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+        .logo span { font-weight: 300; -webkit-text-fill-color: var(--text-muted); }
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+        }
+        nav a {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+        }
+        nav a:hover, nav a.active { color: #fff; border-bottom-color: var(--accent); }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0 8px;
+        }
+
+        /* ===== MAIN ===== */
+        main { flex: 1; padding: 40px 0 60px; }
+
+        .hero {
+            text-align: center;
+            padding: 20px 0 32px;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, var(--accent-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 3px 18px;
+            border-radius: 40px;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        /* ===== TABS ===== */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-radius: var(--radius-sm);
+            transition: 0.3s;
+            font-family: var(--font);
+            white-space: nowrap;
+        }
+        .tab-btn:hover { color: #fff; background: var(--bg-card); }
+        .tab-btn.active {
+            color: #fff;
+            background: var(--accent);
+            box-shadow: 0 4px 16px rgba(124,92,252,0.3);
+        }
+        .tab-content { display: none; animation: fadeUp 0.3s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ===== TOOL CARD ===== */
+        .tool-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px 40px;
+            box-shadow: var(--shadow);
+            margin-top: 16px;
+        }
+        @media (max-width: 768px) { .tool-card { padding: 20px 16px; } }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px 14px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-family: var(--font);
+            transition: 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(124,92,252,0.2);
+        }
+        .form-group textarea { min-height: 80px; resize: vertical; font-family: 'Courier New', monospace; }
+        .form-group .char-count {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-align: right;
+            margin-top: 2px;
+        }
+        .form-group .hint {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .btn {
+            padding: 10px 24px;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: var(--font);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary { background: var(--accent); color: #fff; }
+        .btn-primary:hover { background: var(--accent-glow); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(124,92,252,0.4); }
+        .btn-success { background: var(--green); color: #fff; }
+        .btn-success:hover { background: #00a381; transform: translateY(-2px); }
+        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-secondary); }
+        .btn-outline:hover { border-color: var(--accent); color: #fff; background: var(--bg-card); }
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .output-box {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+            max-height: 300px;
+            overflow-y: auto;
+            color: var(--text-secondary);
+            margin-top: 12px;
+        }
+        .output-box .copy-feedback {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 0.7rem;
+            background: var(--accent);
+            color: #fff;
+            padding: 2px 12px;
+            border-radius: 20px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .output-box .copy-feedback.show { opacity: 1; }
+
+        /* ===== INTERNAL LINKS ===== */
+        .internal-links {
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .internal-links h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .link-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 14px;
+        }
+        .link-grid a {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 4px 18px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: 0.3s;
+        }
+        .link-grid a:hover {
+            border-color: var(--accent);
+            color: #fff;
+            background: var(--bg-card-hover);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: rgba(10,10,18,0.95);
+            border-top: 1px solid var(--border);
+            padding: 32px 0 24px;
+            margin-top: auto;
+        }
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .footer-inner .copy { color: var(--text-muted); font-size: 0.85rem; }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 22px;
+        }
+        .footer-links a { color: var(--text-muted); font-size: 0.85rem; }
+        .footer-links a:hover { color: #fff; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 12px 0 4px;
+                gap: 2px;
+            }
+            nav.open { display: flex; }
+            nav a {
+                padding: 8px 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid var(--border);
+            }
+            nav a:last-child { border-bottom: none; }
+            .hero h1 { font-size: 2rem; }
+            .tool-card { padding: 16px; }
+            .tab-btn { padding: 8px 14px; font-size: 0.8rem; }
+            .btn-group .btn { flex: 1; justify-content: center; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 14px; }
+            .hero h1 { font-size: 1.7rem; }
+            .output-box { font-size: 0.75rem; padding: 12px 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">getage<span>247</span></div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+            <nav id="mainNav">
+                <a href="https://getage247.xyz/" target="_blank">Home</a>
+                <a href="https://getage247.xyz/about" target="_blank">About</a>
+                <a href="https://getage247.xyz/contact" target="_blank">Contact</a>
+                <a href="https://getage247.xyz/privacy" target="_blank">Privacy</a>
+                <a href="https://getage247.xyz/cookie-policy" target="_blank">Cookie Policy</a>
+                <a href="https://getage247.xyz/disclaimer" target="_blank">Disclaimer</a>
+                <a href="https://getage247.xyz/terms" target="_blank">Terms</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main>
+        <div class="container">
+            <div class="hero">
+                <h1>🛠️ SEO Kit Generator</h1>
+                <p>Generate Meta Tags, Schema Markup, Robots.txt, Sitemap, Open Graph &amp; Twitter Cards – all in one tool. 100% free, no API required.</p>
+                <span class="badge">✨ All-in-One &amp; Privacy-First</span>
+            </div>
+
+            <div class="tool-card">
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="meta">🏷️ Meta Tags</button>
+                    <button class="tab-btn" data-tab="schema">🧩 Schema</button>
+                    <button class="tab-btn" data-tab="robots">🤖 Robots.txt</button>
+                    <button class="tab-btn" data-tab="sitemap">🗺️ Sitemap</button>
+                    <button class="tab-btn" data-tab="og">📱 Open Graph</button>
+                    <button class="tab-btn" data-tab="twitter">🐦 Twitter Cards</button>
+                </div>
+
+                <!-- ===== META TAGS ===== -->
+                <div class="tab-content active" id="tab-meta">
+                    <p style="color:var(--text-muted); margin-bottom:16px;">Generate complete meta tags including title, description, keywords, robots, and canonical.</p>
+                    <div class="form-group">
+                        <label>Page Title</label>
+                        <input type="text" id="metaTitle" placeholder="My Awesome Page | getage247.xyz" maxlength="70">
+                        <div class="char-count" id="metaTitleCount">0 / 70</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Meta Description</label>
+                        <textarea id="metaDesc" placeholder="Write a compelling description…" maxlength="160" rows="2"></textarea>
+                        <div class="char-count" id="metaDescCount">0 / 160</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Keywords (comma separated)</label>
+                        <input type="text" id="metaKeywords" placeholder="seo, generator, tools">
+                    </div>
+                    <div class="form-group">
+                        <label>Author</label>
+                        <input type="text" id="metaAuthor" placeholder="Your Name or Brand">
+                    </div>
+                    <div class="form-group">
+                        <label>Robots</label>
+                        <select id="metaRobots">
+                            <option value="index, follow">index, follow</option>
+                            <option value="noindex, follow">noindex, follow</option>
+                            <option value="index, nofollow">index, nofollow</option>
+                            <option value="noindex, nofollow">noindex, nofollow</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Canonical URL</label>
+                        <input type="url" id="metaCanonical" placeholder="https://getage247.xyz/your-page">
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" id="metaGenerate">⚡ Generate Meta Tags</button>
+                        <button class="btn btn-success" id="metaCopy">📄 Copy</button>
+                        <button class="btn btn-outline" id="metaClear">🗑️ Clear</button>
+                    </div>
+                    <div class="output-box" id="metaOutput"><span style="color:var(--text-muted);">Fill in the fields and click Generate.</span></div>
+                </div>
+
+                <!-- ===== SCHEMA MARKUP ===== -->
+                <div class="tab-content" id="tab-schema">
+                    <p style="color:var(--text-muted); margin-bottom:16px;">Generate JSON-LD schema markup for articles, products, recipes, and more.</p>
+                    <div class="form-group">
+                        <label>Schema Type</label>
+                        <select id="schemaType">
+                            <option value="Article">Article</option>
+                            <option value="Product">Product</option>
+                            <option value="Recipe">Recipe</option>
+                            <option value="FAQPage">FAQPage</option>
+                            <option value="LocalBusiness">LocalBusiness</option>
+                            <option value="Person">Person</option>
+                            <option value="Event">Event</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Headline / Name</label>
+                        <input type="text" id="schemaName" placeholder="Article headline or product name">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="schemaDesc" placeholder="Short description…" rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Image URL</label>
+                        <input type="url" id="schemaImage" placeholder="https://getage247.xyz/image.jpg">
+                    </div>
+                    <div class="form-group" id="schemaExtraFields">
+                        <!-- Dynamic fields will be shown based on type -->
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" id="schemaGenerate">⚡ Generate Schema</button>
+                        <button class="btn btn-success" id="schemaCopy">📄 Copy</button>
+                        <button class="btn btn-outline" id="schemaClear">🗑️ Clear</button>
+                    </div>
+                    <div class="output-box" id="schemaOutput"><span style="color:var(--text-muted);">Fill in the fields and click Generate.</span></div>
+                </div>
+
+                <!-- ===== ROBOTS.TXT ===== -->
+                <div class="tab-content" id="tab-robots">
+                    <p style="color:var(--text-muted); margin-bottom:16px;">Generate a robots.txt file with user-agents, rules, and global directives.</p>
+                    <div class="form-group">
+                        <label>User-agent (comma separated for multiple)</label>
+                        <input type="text" id="robotsUserAgents" value="*" placeholder="*, Googlebot, Bingbot">
+                    </div>
+                    <div class="form-group">
+                        <label>Allow paths (one per line)</label>
+                        <textarea id="robotsAllow" placeholder="/&#10;/blog/&#10;/tools/" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Disallow paths (one per line)</label>
+                        <textarea id="robotsDisallow" placeholder="/admin/&#10;/private/&#10;/tmp/" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Sitemap URL</label>
+                        <input type="url" id="robotsSitemap" placeholder="https://getage247.xyz/sitemap.xml">
+                    </div>
+                    <div class="form-group">
+                        <label>Crawl-delay (seconds)</label>
+                        <input type="number" id="robotsCrawlDelay" placeholder="5" min="0" step="0.5">
+                    </div>
+                    <div class="form-group">
+                        <label>Host</label>
+                        <input type="text" id="robotsHost" placeholder="getage247.xyz">
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" id="robotsGenerate">⚡ Generate robots.txt</button>
+                        <button class="btn btn-success" id="robotsCopy">📄 Copy</button>
+                        <button class="btn btn-outline" id="robotsClear">🗑️ Clear</button>
+                    </div>
+                    <div class="output-box" id="robotsOutput"><span style="color:var(--text-muted);">Fill in the fields and click Generate.</span></div>
+                </div>
+
+                <!-- ===== SITEMAP ===== -->
+                <div class="tab-content" id="tab-sitemap">
+                    <p style="color:var(--text-muted); margin-bottom:16px;">Generate a simple sitemap.xml with all your important URLs.</p>
+                    <div class="form-group">
+                        <label>Website URL</label>
+                        <input type="url" id="sitemapBaseUrl" value="https://getage247.xyz" placeholder="https://getage247.xyz">
+                    </div>
+                    <div class="form-group">
+                        <label>Pages (one per line, relative paths like /about, /blog/post)</label>
+                        <textarea id="sitemapPages" placeholder="/&#10;/about&#10;/contact&#10;/privacy&#10;/terms" rows="6"></textarea>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" id="sitemapGenerate">⚡ Generate Sitemap</button>
+                        <button class="btn btn-success" id="sitemapCopy">📄 Copy</button>
+                        <button class="btn btn-outline" id="sitemapClear">🗑️ Clear</button>
+                    </div>
+                    <div class="output-box" id="sitemapOutput"><span style="color:var(--text-muted);">Fill in the fields and click Generate.</span></div>
+                </div>
+
+                <!-- ===== OPEN GRAPH ===== -->
+                <div class="tab-content" id="tab-og">
+                    <p style="color:var(--text-muted); margin-bottom:16px;">Generate Open Graph meta tags for better social media sharing.</p>
+                    <div class="form-group">
+                        <label>OG Title</label>
+                        <input type="text" id="ogTitle" placeholder="Open Graph Title">
+                    </div>
+                    <div class="form-group">
+                        <label>OG Description</label>
+                        <textarea id="ogDesc" placeholder="Open Graph Description" rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>OG Image URL</label>
+                        <input type="url" id="ogImage" placeholder="https://getage247.xyz/og-image.jpg">
+                    </div>
+                    <div class="form-group">
+                        <label>OG URL</label>
+                        <input type="url" id="ogUrl" placeholder="https://getage247.xyz/page">
+                    </div>
+                    <div class="form-group">
+                        <label>OG Type</label>
+                        <select id="ogType">
+                            <option value="website">website</option>
+                            <option value="article">article</option>
+                            <option value="product">product</option>
+                            <option value="video">video</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Site Name</label>
+                        <input type="text" id="ogSiteName" value="getage247.xyz">
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" id="ogGenerate">⚡ Generate OG Tags</button>
+                        <button class="btn btn-success" id="ogCopy">📄 Copy</button>
+                        <button class="btn btn-outline" id="ogClear">🗑️ Clear</button>
+                    </div>
+                    <div class="output-box" id="ogOutput"><span style="color:var(--text-muted);">Fill in the fields and click Generate.</span></div>
+                </div>
+
+                <!-- ===== TWITTER CARDS ===== -->
+                <div class="tab-content" id="tab-twitter">
+                    <p style="color:var(--text-muted); margin-bottom:16px;">Generate Twitter Card meta tags for better Twitter sharing.</p>
+                    <div class="form-group">
+                        <label>Twitter Card Type</label>
+                        <select id="twitterCardType">
+                            <option value="summary">summary</option>
+                            <option value="summary_large_image" selected>summary_large_image</option>
+                            <option value="app">app</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Twitter Title</label>
+                        <input type="text" id="twitterTitle" placeholder="Twitter Title">
+                    </div>
+                    <div class="form-group">
+                        <label>Twitter Description</label>
+                        <textarea id="twitterDesc" placeholder="Twitter Description" rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Twitter Image URL</label>
+                        <input type="url" id="twitterImage" placeholder="https://getage247.xyz/twitter-image.jpg">
+                    </div>
+                    <div class="form-group">
+                        <label>Twitter Site (@username)</label>
+                        <input type="text" id="twitterSite" value="@getage247" placeholder="@username">
+                    </div>
+                    <div class="form-group">
+                        <label>Twitter Creator (@username)</label>
+                        <input type="text" id="twitterCreator" value="@getage247" placeholder="@username">
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" id="twitterGenerate">⚡ Generate Twitter Cards</button>
+                        <button class="btn btn-success" id="twitterCopy">📄 Copy</button>
+                        <button class="btn btn-outline" id="twitterClear">🗑️ Clear</button>
+                    </div>
+                    <div class="output-box" id="twitterOutput"><span style="color:var(--text-muted);">Fill in the fields and click Generate.</span></div>
+                </div>
+            </div>
+
+            <!-- ===== INTERNAL LINKS ===== -->
+            <div class="internal-links">
+                <h3>🔗 Explore More Free Tools &amp; Blogs</h3>
+                <div class="link-grid">
+                    <!-- Tools -->
+                    <a href="https://getage247.xyz/meta-tag-generator" target="_blank">🏷️ Meta Tag Generator</a>
+                    <a href="https://getage247.xyz/schema-markup-generator" target="_blank">🧩 Schema Markup Generator</a>
+                    <a href="https://getage247.xyz/robots-txt-generator" target="_blank">🤖 Robots.txt Tool</a>
+                    <a href="https://getage247.xyz/age-calculator" target="_blank">📅 Age Calculator</a>
+                    <a href="https://getage247.xyz/bmi-calculator" target="_blank">⚖️ BMI Calculator</a>
+                    <a href="https://getage247.xyz/unit-converter" target="_blank">📏 Unit Converter</a>
+                    <a href="https://getage247.xyz/image-resizer" target="_blank">🖼️ Image Resizer</a>
+                    <a href="https://getage247.xyz/password-generator" target="_blank">🔐 Password Generator</a>
+                    <a href="https://getage247.xyz/qr-generator" target="_blank">📱 QR Code Generator</a>
+                    <a href="https://getage247.xyz/currency-converter" target="_blank">💱 Currency Converter</a>
+                    <a href="https://getage247.xyz/loan-calculator" target="_blank">💰 Loan Calculator</a>
+                    <a href="https://getage247.xyz/json-formatter" target="_blank">📋 JSON Formatter</a>
+                    <a href="https://getage247.xyz/text-case-converter" target="_blank">🔤 Text Case Converter</a>
+                    <a href="https://getage247.xyz/base64-encoder" target="_blank">🔢 Base64 Enc/Dec</a>
+                    <a href="https://getage247.xyz/jpg-to-pdf" target="_blank">📄 JPG to PDF</a>
+                    <a href="https://getage247.xyz/percentage-calculator" target="_blank">📊 Percentage Calc</a>
+                    <a href="https://getage247.xyz/word-counter" target="_blank">📝 Word Counter</a>
+                    <a href="https://getage247.xyz/uuid-generator" target="_blank">🆔 UUID Generator</a>
+                    <a href="https://getage247.xyz/seo-kit-generator" target="_blank">🛠️ SEO Kit Generator</a>
+                    
+                    <!-- Blogs -->
+                    <a href="https://getage247.xyz/blog-meta-tag-generator.html" target="_blank">📖 Meta Tag Generator Guide</a>
+                    <a href="https://getage247.xyz/blog-meta-tag-adsense-guide.html" target="_blank">📖 AdSense Meta Tag Guide</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container footer-inner">
+            <div class="copy">&copy; 2026 <a href="https://getage247.xyz/" target="_blank">getage247.xyz</a> — Free Online Tools</div>
+            <div class="footer-links">
+                <a href="https://getage247.xyz/" target="_blank">Home</a>
+                <a href="https://getage247.xyz/about" target="_blank">About</a>
+                <a href="https://getage247.xyz/contact" target="_blank">Contact</a>
+                <a href="https://getage247.xyz/privacy" target="_blank">Privacy</a>
+                <a href="https://getage247.xyz/cookie-policy" target="_blank">Cookie Policy</a>
+                <a href="https://getage247.xyz/disclaimer" target="_blank">Disclaimer</a>
+                <a href="https://getage247.xyz/terms" target="_blank">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ===== UTILITY FUNCTIONS =====
+            function escapeHtml(str) {
+                const div = document.createElement('div');
+                div.textContent = str;
+                return div.innerHTML;
+            }
+
+            function copyOutput(outputId) {
+                const output = document.getElementById(outputId);
+                const text = output.textContent.trim();
+                if (!text || text.includes('Fill in the fields')) {
+                    alert('Generate content first!');
+                    return;
+                }
+                navigator.clipboard.writeText(text).then(() => {
+                    const original = output.textContent;
+                    output.textContent = '✅ Copied!';
+                    setTimeout(() => { output.textContent = original; }, 1500);
+                }).catch(() => {
+                    const area = document.createElement('textarea');
+                    area.value = text;
+                    document.body.appendChild(area);
+                    area.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(area);
+                    alert('Copied to clipboard!');
+                });
+            }
+
+            function clearFields(inputIds) {
+                inputIds.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.value = '';
+                });
+            }
+
+            // ===== META TAGS =====
+            const metaTitle = document.getElementById('metaTitle');
+            const metaDesc = document.getElementById('metaDesc');
+            const metaTitleCount = document.getElementById('metaTitleCount');
+            const metaDescCount = document.getElementById('metaDescCount');
+
+            metaTitle.addEventListener('input', function() {
+                metaTitleCount.textContent = this.value.length + ' / 70';
+            });
+            metaDesc.addEventListener('input', function() {
+                metaDescCount.textContent = this.value.length + ' / 160';
+            });
+
+            document.getElementById('metaGenerate').addEventListener('click', function() {
+                const title = metaTitle.value.trim() || 'Untitled';
+                const desc = metaDesc.value.trim() || 'No description.';
+                const keywords = document.getElementById('metaKeywords').value.trim();
+                const author = document.getElementById('metaAuthor').value.trim() || 'getage247';
+                const robots = document.getElementById('metaRobots').value;
+                const canonical = document.getElementById('metaCanonical').value.trim() || 'https://getage247.xyz/';
+
+                let html = '<!-- Meta Tags -->\n';
+                html += `<title>${escapeHtml(title)}</title>\n`;
+                html += `<meta name="description" content="${escapeHtml(desc)}" />\n`;
+                if (keywords) html += `<meta name="keywords" content="${escapeHtml(keywords)}" />\n`;
+                html += `<meta name="author" content="${escapeHtml(author)}" />\n`;
+                html += `<meta name="robots" content="${robots}" />\n`;
+                html += `<link rel="canonical" href="${escapeHtml(canonical)}" />\n`;
+                document.getElementById('metaOutput').textContent = html;
+            });
+
+            document.getElementById('metaCopy').addEventListener('click', function() { copyOutput('metaOutput'); });
+            document.getElementById('metaClear').addEventListener('click', function() {
+                clearFields(['metaTitle', 'metaDesc', 'metaKeywords', 'metaAuthor', 'metaCanonical']);
+                document.getElementById('metaOutput').innerHTML = '<span style="color:var(--text-muted);">Fill in the fields and click Generate.</span>';
+                metaTitleCount.textContent = '0 / 70';
+                metaDescCount.textContent = '0 / 160';
+            });
+
+            // ===== SCHEMA MARKUP =====
+            const schemaType = document.getElementById('schemaType');
+            const schemaExtra = document.getElementById('schemaExtraFields');
+
+            function updateSchemaFields() {
+                const type = schemaType.value;
+                let html = '';
+                if (type === 'Product') {
+                    html = `
+                        <div class="form-group"><label>Price</label><input type="text" id="schemaPrice" placeholder="19.99"></div>
+                        <div class="form-group"><label>Currency</label><input type="text" id="schemaCurrency" placeholder="USD" value="USD"></div>
+                        <div class="form-group"><label>Availability</label>
+                            <select id="schemaAvailability">
+                                <option value="InStock">In Stock</option>
+                                <option value="OutOfStock">Out of Stock</option>
+                                <option value="PreOrder">Pre-Order</option>
+                            </select>
+                        </div>
+                    `;
+                } else if (type === 'Recipe') {
+                    html = `
+                        <div class="form-group"><label>Cooking Time (minutes)</label><input type="number" id="schemaCookTime" placeholder="30"></div>
+                        <div class="form-group"><label>Prep Time (minutes)</label><input type="number" id="schemaPrepTime" placeholder="10"></div>
+                        <div class="form-group"><label>Ingredients (comma separated)</label><input type="text" id="schemaIngredients" placeholder="flour, sugar, eggs"></div>
+                    `;
+                } else if (type === 'FAQPage') {
+                    html = `
+                        <div class="form-group"><label>Question 1</label><input type="text" id="schemaQ1" placeholder="What is this?"></div>
+                        <div class="form-group"><label>Answer 1</label><textarea id="schemaA1" placeholder="Answer 1..." rows="2"></textarea></div>
+                        <div class="form-group"><label>Question 2</label><input type="text" id="schemaQ2" placeholder="Another question?"></div>
+                        <div class="form-group"><label>Answer 2</label><textarea id="schemaA2" placeholder="Answer 2..." rows="2"></textarea></div>
+                    `;
+                } else if (type === 'LocalBusiness') {
+                    html = `
+                        <div class="form-group"><label>Address</label><input type="text" id="schemaAddress" placeholder="123 Main St, City"></div>
+                        <div class="form-group"><label>Phone</label><input type="text" id="schemaPhone" placeholder="+1-555-555-5555"></div>
+                        <div class="form-group"><label>Opening Hours</label><input type="text" id="schemaHours" placeholder="Mo-Fr 09:00-17:00"></div>
+                    `;
+                } else if (type === 'Person') {
+                    html = `
+                        <div class="form-group"><label>Job Title</label><input type="text" id="schemaJobTitle" placeholder="SEO Expert"></div>
+                        <div class="form-group"><label>Affiliation</label><input type="text" id="schemaAffiliation" placeholder="getage247.xyz"></div>
+                    `;
+                } else if (type === 'Event') {
+                    html = `
+                        <div class="form-group"><label>Start Date</label><input type="datetime-local" id="schemaStartDate"></div>
+                        <div class="form-group"><label>End Date</label><input type="datetime-local" id="schemaEndDate"></div>
+                        <div class="form-group"><label>Location</label><input type="text" id="schemaLocation" placeholder="Online or venue"></div>
+                    `;
+                }
+                schemaExtra.innerHTML = html;
+            }
+            updateSchemaFields();
+            schemaType.addEventListener('change', updateSchemaFields);
+
+            document.getElementById('schemaGenerate').addEventListener('click', function() {
+                const type = schemaType.value;
+                const name = document.getElementById('schemaName').value.trim() || 'Item';
+                const desc = document.getElementById('schemaDesc').value.trim() || 'Description.';
+                const image = document.getElementById('schemaImage').value.trim() || '';
+                let schema = {
+                    '@context': 'https://schema.org',
+                    '@type': type,
+                    'name': name,
+                    'description': desc
+                };
+                if (image) schema.image = image;
+
+                // Type-specific fields
+                if (type === 'Product') {
+                    const price = document.getElementById('schemaPrice').value.trim();
+                    const currency = document.getElementById('schemaCurrency').value.trim() || 'USD';
+                    const availability = document.getElementById('schemaAvailability').value;
+                    if (price) schema.price = price;
+                    if (currency) schema.priceCurrency = currency;
+                    if (availability) schema.availability = 'https://schema.org/' + availability;
+                } else if (type === 'Recipe') {
+                    const cookTime = document.getElementById('schemaCookTime').value.trim();
+                    const prepTime = document.getElementById('schemaPrepTime').value.trim();
+                    const ingredients = document.getElementById('schemaIngredients').value.trim().split(',').map(s => s.trim()).filter(Boolean);
+                    if (cookTime) schema.cookTime = 'PT' + cookTime + 'M';
+                    if (prepTime) schema.prepTime = 'PT' + prepTime + 'M';
+                    if (ingredients.length) schema.recipeIngredient = ingredients;
+                } else if (type === 'FAQPage') {
+                    const q1 = document.getElementById('schemaQ1').value.trim();
+                    const a1 = document.getElementById('schemaA1').value.trim();
+                    const q2 = document.getElementById('schemaQ2').value.trim();
+                    const a2 = document.getElementById('schemaA2').value.trim();
+                    const faqs = [];
+                    if (q1 && a1) faqs.push({ '@type': 'Question', 'name': q1, 'acceptedAnswer': { '@type': 'Answer', 'text': a1 } });
+                    if (q2 && a2) faqs.push({ '@type': 'Question', 'name': q2, 'acceptedAnswer': { '@type': 'Answer', 'text': a2 } });
+                    if (faqs.length) schema.mainEntity = faqs;
+                } else if (type === 'LocalBusiness') {
+                    const address = document.getElementById('schemaAddress').value.trim();
+                    const phone = document.getElementById('schemaPhone').value.trim();
+                    const hours = document.getElementById('schemaHours').value.trim();
+                    if (address) schema.address = { '@type': 'PostalAddress', 'streetAddress': address };
+                    if (phone) schema.telephone = phone;
+                    if (hours) schema.openingHours = hours;
+                } else if (type === 'Person') {
+                    const jobTitle = document.getElementById('schemaJobTitle').value.trim();
+                    const affiliation = document.getElementById('schemaAffiliation').value.trim();
+                    if (jobTitle) schema.jobTitle = jobTitle;
+                    if (affiliation) schema.affiliation = { '@type': 'Organization', 'name': affiliation };
+                } else if (type === 'Event') {
+                    const start = document.getElementById('schemaStartDate').value;
+                    const end = document.getElementById('schemaEndDate').value;
+                    const location = document.getElementById('schemaLocation').value.trim();
+                    if (start) schema.startDate = start;
+                    if (end) schema.endDate = end;
+                    if (location) schema.location = { '@type': 'Place', 'name': location };
+                }
+
+                const json = JSON.stringify(schema, null, 2);
+                const script = `<script type="application/ld+json">\n${json}\n<\/script>`;
+                document.getElementById('schemaOutput').textContent = script;
+            });
+
+            document.getElementById('schemaCopy').addEventListener('click', function() { copyOutput('schemaOutput'); });
+            document.getElementById('schemaClear').addEventListener('click', function() {
+                clearFields(['schemaName', 'schemaDesc', 'schemaImage']);
+                document.getElementById('schemaOutput').innerHTML = '<span style="color:var(--text-muted);">Fill in the fields and click Generate.</span>';
+                // Clear extra fields
+                document.querySelectorAll('#schemaExtraFields input, #schemaExtraFields textarea').forEach(el => el.value = '');
+            });
+
+            // ===== ROBOTS.TXT =====
+            document.getElementById('robotsGenerate').addEventListener('click', function() {
+                const userAgents = document.getElementById('robotsUserAgents').value.split(',').map(s => s.trim()).filter(Boolean);
+                const allow = document.getElementById('robotsAllow').value.split('\n').map(s => s.trim()).filter(Boolean);
+                const disallow = document.getElementById('robotsDisallow').value.split('\n').map(s => s.trim()).filter(Boolean);
+                const sitemap = document.getElementById('robotsSitemap').value.trim();
+                const crawlDelay = document.getElementById('robotsCrawlDelay').value.trim();
+                const host = document.getElementById('robotsHost').value.trim();
+
+                let lines = [];
+                userAgents.forEach(ua => {
+                    if (ua) {
+                        lines.push(`User-agent: ${ua}`);
+                        if (allow.length) allow.forEach(path => lines.push(`Allow: ${path}`));
+                        if (disallow.length) disallow.forEach(path => lines.push(`Disallow: ${path}`));
+                        lines.push('');
+                    }
+                });
+                if (sitemap) lines.push(`Sitemap: ${sitemap}`);
+                if (crawlDelay) lines.push(`Crawl-delay: ${crawlDelay}`);
+                if (host) lines.push(`Host: ${host}`);
+                while (lines.length > 0 && lines[lines.length-1] === '') lines.pop();
+                document.getElementById('robotsOutput').textContent = lines.join('\n') || 'No directives defined.';
+            });
+
+            document.getElementById('robotsCopy').addEventListener('click', function() { copyOutput('robotsOutput'); });
+            document.getElementById('robotsClear').addEventListener('click', function() {
+                clearFields(['robotsUserAgents', 'robotsAllow', 'robotsDisallow', 'robotsSitemap', 'robotsCrawlDelay', 'robotsHost']);
+                document.getElementById('robotsOutput').innerHTML = '<span style="color:var(--text-muted);">Fill in the fields and click Generate.</span>';
+            });
+
+            // ===== SITEMAP =====
+            document.getElementById('sitemapGenerate').addEventListener('click', function() {
+                const base = document.getElementById('sitemapBaseUrl').value.trim() || 'https://getage247.xyz';
+                const pages = document.getElementById('sitemapPages').value.split('\n').map(s => s.trim()).filter(Boolean);
+                if (!pages.length) { document.getElementById('sitemapOutput').textContent = 'Please add at least one page.'; return; }
+                let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+                xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+                pages.forEach(page => {
+                    const url = page.startsWith('http') ? page : base + (page.startsWith('/') ? page : '/' + page);
+                    xml += `  <url>\n    <loc>${escapeHtml(url)}</loc>\n    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>\n    <priority>0.5</priority>\n  </url>\n`;
+                });
+                xml += '</urlset>';
+                document.getElementById('sitemapOutput').textContent = xml;
+            });
+
+            document.getElementById('sitemapCopy').addEventListener('click', function() { copyOutput('sitemapOutput'); });
+            document.getElementById('sitemapClear').addEventListener('click', function() {
+                clearFields(['sitemapBaseUrl', 'sitemapPages']);
+                document.getElementById('sitemapOutput').innerHTML = '<span style="color:var(--text-muted);">Fill in the fields and click Generate.</span>';
+            });
+
+            // ===== OPEN GRAPH =====
+            document.getElementById('ogGenerate').addEventListener('click', function() {
+                const title = document.getElementById('ogTitle').value.trim() || 'Open Graph Title';
+                const desc = document.getElementById('ogDesc').value.trim() || 'Open Graph Description';
+                const image = document.getElementById('ogImage').value.trim() || '';
+                const url = document.getElementById('ogUrl').value.trim() || 'https://getage247.xyz/';
+                const type = document.getElementById('ogType').value;
+                const siteName = document.getElementById('ogSiteName').value.trim() || 'getage247.xyz';
+
+                let html = '<!-- Open Graph -->\n';
+                html += `<meta property="og:title" content="${escapeHtml(title)}" />\n`;
+                html += `<meta property="og:description" content="${escapeHtml(desc)}" />\n`;
+                if (image) html += `<meta property="og:image" content="${escapeHtml(image)}" />\n`;
+                html += `<meta property="og:url" content="${escapeHtml(url)}" />\n`;
+                html += `<meta property="og:type" content="${type}" />\n`;
+                html += `<meta property="og:site_name" content="${escapeHtml(siteName)}" />\n`;
+                document.getElementById('ogOutput').textContent = html;
+            });
+
+            document.getElementById('ogCopy').addEventListener('click', function() { copyOutput('ogOutput'); });
+            document.getElementById('ogClear').addEventListener('click', function() {
+                clearFields(['ogTitle', 'ogDesc', 'ogImage', 'ogUrl', 'ogSiteName']);
+                document.getElementById('ogOutput').innerHTML = '<span style="color:var(--text-muted);">Fill in the fields and click Generate.</span>';
+            });
+
+            // ===== TWITTER CARDS =====
+            document.getElementById('twitterGenerate').addEventListener('click', function() {
+                const card = document.getElementById('twitterCardType').value;
+                const title = document.getElementById('twitterTitle').value.trim() || 'Twitter Title';
+                const desc = document.getElementById('twitterDesc').value.trim() || 'Twitter Description';
+                const image = document.getElementById('twitterImage').value.trim() || '';
+                const site = document.getElementById('twitterSite').value.trim() || '@getage247';
+                const creator = document.getElementById('twitterCreator').value.trim() || '@getage247';
+
+                let html = '<!-- Twitter Cards -->\n';
+                html += `<meta name="twitter:card" content="${card}" />\n`;
+                html += `<meta name="twitter:title" content="${escapeHtml(title)}" />\n`;
+                html += `<meta name="twitter:description" content="${escapeHtml(desc)}" />\n`;
+                if (image) html += `<meta name="twitter:image" content="${escapeHtml(image)}" />\n`;
+                html += `<meta name="twitter:site" content="${escapeHtml(site)}" />\n`;
+                html += `<meta name="twitter:creator" content="${escapeHtml(creator)}" />\n`;
+                document.getElementById('twitterOutput').textContent = html;
+            });
+
+            document.getElementById('twitterCopy').addEventListener('click', function() { copyOutput('twitterOutput'); });
+            document.getElementById('twitterClear').addEventListener('click', function() {
+                clearFields(['twitterTitle', 'twitterDesc', 'twitterImage', 'twitterSite', 'twitterCreator']);
+                document.getElementById('twitterOutput').innerHTML = '<span style="color:var(--text-muted);">Fill in the fields and click Generate.</span>';
+            });
+
+            // ===== TABS =====
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.dataset.tab;
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    tabContents.forEach(tc => tc.classList.remove('active'));
+                    document.getElementById('tab-' + tabId).classList.add('active');
+                });
+            });
+
+            // ===== MOBILE NAV =====
+            const toggle = document.getElementById('navToggle');
+            const nav = document.getElementById('mainNav');
+            if (toggle && nav) {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    nav.classList.toggle('open');
+                });
+                nav.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() { nav.classList.remove('open'); });
+                });
+                document.addEventListener('click', function(e) {
+                    if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+                        nav.classList.remove('open');
+                    }
+                });
+            }
+
+        })();
+    </script>
+
+</body>
+</html>
