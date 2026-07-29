@@ -3,30 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cookie Policy – getage247.xyz | Your Privacy Matters</title>
-    <meta name="description" content="Learn how getage247.xyz uses cookies to enhance your experience. Transparent, GDPR-compliant cookie policy for all visitors.">
-    <link rel="canonical" href="https://getage247.xyz/cookie-policy">
+    <title>Currency Converter – Free Online Tool | getage247.xyz</title>
+    <meta name="description" content="Free Currency Converter tool with live exchange rates. Convert between 170+ currencies instantly. No API key required, 100% free.">
+    <link rel="canonical" href="https://getage247.xyz/currency-converter">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="Cookie Policy – getage247.xyz">
-    <meta property="og:description" content="Learn how getage247.xyz uses cookies to enhance your experience. Transparent, GDPR-compliant cookie policy.">
-    <meta property="og:url" content="https://getage247.xyz/cookie-policy">
+    <meta property="og:title" content="Currency Converter – Free Online Tool | getage247.xyz">
+    <meta property="og:description" content="Free Currency Converter tool with live exchange rates. Convert between 170+ currencies instantly. No API key required.">
+    <meta property="og:url" content="https://getage247.xyz/currency-converter">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="getage247.xyz">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Cookie Policy – getage247.xyz">
-    <meta name="twitter:description" content="Transparent cookie policy for getage247.xyz. Your privacy matters.">
+    <meta name="twitter:title" content="Currency Converter – Free Online Tool">
+    <meta name="twitter:description" content="Free Currency Converter tool with live exchange rates. Convert between 170+ currencies instantly.">
     <meta name="twitter:site" content="@getage247">
 
+    <!-- Schema Markup for Tool -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Currency Converter",
+        "url": "https://getage247.xyz/currency-converter",
+        "description": "Free Currency Converter tool with live exchange rates. Convert between 170+ currencies instantly.",
+        "applicationCategory": "FinancialApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript"
+    }
+    </script>
+
     <style>
-        /* ===== RESET & VARIABLES ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --bg-primary: #0a0a12;
             --bg-secondary: #12121f;
@@ -38,7 +47,7 @@
             --text-muted: #7a77a0;
             --accent: #7c5cfc;
             --accent-glow: #9d7cff;
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            --shadow: 0 8px 32px rgba(0,0,0,0.6);
             --radius: 16px;
             --radius-sm: 8px;
             --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -50,31 +59,18 @@
         body {
             font-family: var(--font);
             background: var(--bg-primary);
-            background-image: radial-gradient(circle at 10% 20%, rgba(124, 92, 252, 0.08) 0%, transparent 50%),
-                              radial-gradient(circle at 90% 80%, rgba(124, 92, 252, 0.06) 0%, transparent 50%);
+            background-image: radial-gradient(circle at 10% 20%, rgba(124,92,252,0.08) 0%, transparent 50%),
+                              radial-gradient(circle at 90% 80%, rgba(124,92,252,0.06) 0%, transparent 50%);
             color: var(--text-primary);
             min-height: 100vh;
-            line-height: 1.8;
+            line-height: 1.6;
             display: flex;
             flex-direction: column;
         }
-        a {
-            color: var(--accent-glow);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        a:hover {
-            color: #fff;
-            text-shadow: 0 0 12px rgba(124, 92, 252, 0.5);
-        }
-        .container {
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 0 24px;
-            width: 100%;
-        }
+        a { color: var(--accent-glow); text-decoration: none; transition: all 0.3s ease; }
+        a:hover { color: #fff; text-shadow: 0 0 12px rgba(124,92,252,0.5); }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
-        /* ===== SCROLLBAR ===== */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: var(--bg-primary); }
         ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
@@ -82,7 +78,7 @@
 
         /* ===== HEADER ===== */
         header {
-            background: rgba(10, 10, 18, 0.85);
+            background: rgba(10,10,18,0.85);
             backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--border);
             padding: 14px 0;
@@ -119,11 +115,7 @@
             border-bottom: 2px solid transparent;
             font-weight: 500;
         }
-        nav a:hover, nav a.active {
-            color: #fff;
-            border-bottom-color: var(--accent);
-        }
-        nav a.active { color: #fff; }
+        nav a:hover, nav a.active { color: #fff; border-bottom-color: var(--accent); }
         .nav-toggle {
             display: none;
             background: none;
@@ -134,166 +126,253 @@
             padding: 0 8px;
         }
 
-        /* ===== MAIN CONTENT ===== */
-        main {
-            flex: 1;
-            padding: 40px 0 60px;
-        }
-        .policy-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 48px 56px;
-            box-shadow: var(--shadow);
-            margin-top: 16px;
-        }
-        @media (max-width: 768px) {
-            .policy-card { padding: 24px 18px; }
-        }
+        /* ===== MAIN ===== */
+        main { flex: 1; padding: 40px 0 60px; }
 
-        .policy-card h1 {
-            font-size: 2.6rem;
+        /* ===== HERO ===== */
+        .hero {
+            text-align: center;
+            padding: 20px 0 32px;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
             font-weight: 800;
             background: linear-gradient(135deg, #fff, var(--accent-glow));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 4px;
-            line-height: 1.2;
+            margin-bottom: 8px;
         }
-        .policy-card .last-updated {
+        .hero p {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 28px;
+            font-size: 1.1rem;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 3px 18px;
+            border-radius: 40px;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        /* ===== TOOL CARD ===== */
+        .tool-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px 40px;
+            box-shadow: var(--shadow);
+            margin-top: 16px;
+        }
+        @media (max-width: 768px) { .tool-card { padding: 20px 16px; } }
+
+        /* ===== CONVERTER ===== */
+        .converter-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        @media (max-width: 768px) { .converter-grid { grid-template-columns: 1fr; } }
+
+        .converter-left { display: flex; flex-direction: column; gap: 16px; }
+        .converter-right { display: flex; flex-direction: column; gap: 16px; }
+
+        .form-group {
+            margin-bottom: 4px;
+        }
+        .form-group label {
             display: block;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
         }
-        .policy-card .badge-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 24px;
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: var(--font);
+            transition: 0.3s;
         }
-        .policy-card .badge {
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(124,92,252,0.2);
+        }
+        .form-group select { cursor: pointer; }
+        .form-group select option { background: var(--bg-card); }
+
+        .swap-btn {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 40px;
-            padding: 4px 18px;
-            font-size: 0.8rem;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 0 auto;
             color: var(--text-secondary);
+        }
+        .swap-btn:hover {
+            border-color: var(--accent);
+            color: #fff;
+            background: var(--bg-card-hover);
+            transform: rotate(180deg);
+        }
+        @media (max-width: 768px) { .swap-btn { margin: 8px auto; } }
+
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: var(--font);
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
         }
-        .policy-card .badge.green { border-color: var(--green); color: var(--green); }
-        .policy-card .badge.yellow { border-color: var(--yellow); color: var(--yellow); }
-
-        .policy-card h2 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin: 32px 0 12px;
+        .btn-primary {
+            background: var(--accent);
             color: #fff;
         }
-        .policy-card h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin: 24px 0 8px;
-            color: var(--accent-glow);
+        .btn-primary:hover {
+            background: var(--accent-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(124,92,252,0.4);
         }
-        .policy-card p {
-            color: var(--text-secondary);
-            margin-bottom: 14px;
-            font-size: 1.05rem;
-        }
-        .policy-card ul, .policy-card ol {
-            color: var(--text-secondary);
-            padding-left: 26px;
-            margin-bottom: 18px;
-        }
-        .policy-card ul li, .policy-card ol li { margin-bottom: 6px; }
-        .policy-card strong { color: #fff; }
-
-        .policy-card .highlight-box {
-            background: var(--bg-card);
-            border-left: 4px solid var(--accent);
-            padding: 16px 22px;
-            border-radius: var(--radius-sm);
-            margin: 20px 0;
-        }
-        .policy-card .highlight-box p { margin-bottom: 0; }
-
-        .policy-card .cookie-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 16px 0 24px;
-            font-size: 0.95rem;
-        }
-        .policy-card .cookie-table th,
-        .policy-card .cookie-table td {
-            border: 1px solid var(--border);
-            padding: 10px 16px;
-            text-align: left;
-        }
-        .policy-card .cookie-table th {
-            background: var(--bg-card);
-            color: var(--accent-glow);
-            font-weight: 600;
-        }
-        .policy-card .cookie-table td {
-            color: var(--text-secondary);
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
         }
 
-        .policy-card .consent-banner-demo {
+        .result-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius-sm);
             padding: 20px 24px;
-            margin: 20px 0;
+            text-align: center;
+            min-height: 80px;
             display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
+            flex-direction: column;
+            justify-content: center;
         }
-        .policy-card .consent-banner-demo p {
-            margin: 0;
+        .result-box .amount {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .result-box .rate-info {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .result-box .loading-text {
+            color: var(--text-muted);
             font-size: 0.95rem;
-            flex: 1;
         }
-        .policy-card .consent-banner-demo .btn-group {
+        .result-box .error-text {
+            color: var(--red);
+            font-size: 0.95rem;
+        }
+
+        /* ===== POPULAR PAIRS ===== */
+        .popular-pairs {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .popular-pairs h3 {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .pair-grid {
             display: flex;
-            gap: 10px;
             flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
         }
-        .policy-card .consent-banner-demo .btn-consent {
-            padding: 8px 24px;
-            border: none;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            cursor: pointer;
+        .pair-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 6px 16px;
+            color: var(--text-secondary);
             font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: var(--font);
+        }
+        .pair-btn:hover {
+            border-color: var(--accent);
+            color: #fff;
+            background: var(--bg-card-hover);
+        }
+
+        /* ===== LAST UPDATED ===== */
+        .last-updated {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 12px;
+        }
+
+        /* ===== INTERNAL LINKS ===== */
+        .internal-links {
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .internal-links h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .link-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 14px;
+        }
+        .link-grid a {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 4px 18px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
             transition: 0.3s;
         }
-        .policy-card .consent-banner-demo .btn-consent.accept {
-            background: var(--accent);
+        .link-grid a:hover {
+            border-color: var(--accent);
             color: #fff;
-        }
-        .policy-card .consent-banner-demo .btn-consent.accept:hover {
-            background: var(--accent-glow);
-        }
-        .policy-card .consent-banner-demo .btn-consent.settings {
-            background: var(--border);
-            color: var(--text-secondary);
-        }
-        .policy-card .consent-banner-demo .btn-consent.settings:hover {
             background: var(--bg-card-hover);
-            color: #fff;
         }
 
         /* ===== FOOTER ===== */
         footer {
-            background: rgba(10, 10, 18, 0.95);
+            background: rgba(10,10,18,0.95);
             border-top: 1px solid var(--border);
             padding: 32px 0 24px;
             margin-top: auto;
@@ -305,21 +384,14 @@
             align-items: center;
             gap: 16px;
         }
-        .footer-inner .copy {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
+        .footer-inner .copy { color: var(--text-muted); font-size: 0.85rem; }
         .footer-links {
             display: flex;
             flex-wrap: wrap;
             gap: 8px 22px;
         }
-        .footer-links a {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
+        .footer-links a { color: var(--text-muted); font-size: 0.85rem; }
         .footer-links a:hover { color: #fff; }
-        .footer-links a.active { color: #fff; border-bottom: 2px solid var(--accent); }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
@@ -340,33 +412,15 @@
                 border-bottom: 1px solid var(--border);
             }
             nav a:last-child { border-bottom: none; }
-            .policy-card h1 { font-size: 2rem; }
-            .policy-card h2 { font-size: 1.4rem; }
-            .policy-card .cookie-table {
-                font-size: 0.8rem;
-            }
-            .policy-card .cookie-table th,
-            .policy-card .cookie-table td {
-                padding: 6px 10px;
-            }
-            .consent-banner-demo {
-                flex-direction: column;
-                text-align: center;
-            }
+            .hero h1 { font-size: 2rem; }
+            .tool-card { padding: 16px; }
+            .result-box .amount { font-size: 1.6rem; }
             .footer-inner { flex-direction: column; text-align: center; }
             .footer-links { justify-content: center; }
         }
         @media (max-width: 480px) {
             .container { padding: 0 14px; }
-            .policy-card { padding: 18px 14px; }
-            .policy-card h1 { font-size: 1.7rem; }
-            .policy-card .cookie-table {
-                font-size: 0.7rem;
-            }
-            .policy-card .cookie-table th,
-            .policy-card .cookie-table td {
-                padding: 4px 6px;
-            }
+            .hero h1 { font-size: 1.7rem; }
         }
     </style>
 </head>
@@ -382,7 +436,7 @@
                 <a href="https://getage247.xyz/about" target="_blank">About</a>
                 <a href="https://getage247.xyz/contact" target="_blank">Contact</a>
                 <a href="https://getage247.xyz/privacy" target="_blank">Privacy</a>
-                <a href="https://getage247.xyz/cookie-policy" class="active">Cookie Policy</a>
+                <a href="https://getage247.xyz/cookie-policy" target="_blank">Cookie Policy</a>
                 <a href="https://getage247.xyz/disclaimer" target="_blank">Disclaimer</a>
                 <a href="https://getage247.xyz/terms" target="_blank">Terms</a>
             </nav>
@@ -392,191 +446,104 @@
     <!-- ===== MAIN ===== -->
     <main>
         <div class="container">
-            <div class="policy-card">
+            <div class="hero">
+                <h1>💱 Currency Converter</h1>
+                <p>Convert between 170+ currencies with live exchange rates. 100% free, no API key required.</p>
+                <span class="badge">✨ Live Rates &amp; Privacy-First</span>
+            </div>
 
-                <h1>🍪 Cookie Policy</h1>
-                <span class="last-updated">📅 Last Updated: July 28, 2026</span>
+            <div class="tool-card">
+                <div class="converter-grid">
+                    <!-- Left Column -->
+                    <div class="converter-left">
+                        <div class="form-group">
+                            <label>Amount</label>
+                            <input type="number" id="amount" value="1" min="0" step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label>From</label>
+                            <select id="fromCurrency">
+                                <!-- Populated by JavaScript -->
+                            </select>
+                        </div>
+                    </div>
 
-                <div class="badge-container">
-                    <span class="badge green">✅ GDPR Compliant</span>
-                    <span class="badge green">✅ CCPA Compliant</span>
-                    <span class="badge yellow">🔒 Privacy First</span>
-                    <span class="badge">📋 Google AdSense Ready</span>
-                </div>
+                    <!-- Swap Button -->
+                    <div style="display:flex; align-items:center; justify-content:center;">
+                        <button class="swap-btn" id="swapBtn" aria-label="Swap currencies">⟳</button>
+                    </div>
 
-                <p>Welcome to <strong>getage247.xyz</strong>. This Cookie Policy explains how we use cookies and similar tracking technologies on our website. We are committed to being transparent about our data practices and giving you control over your privacy.</p>
-
-                <div class="highlight-box">
-                    <p><strong>🔍 Quick Summary:</strong> We use cookies to improve your experience, analyze traffic, and serve relevant ads. We <strong>do not</strong> collect personal data without consent. You can manage your preferences at any time.</p>
-                </div>
-
-                <h2>What Are Cookies?</h2>
-                <p>Cookies are small text files that are stored on your device (computer, tablet, or smartphone) when you visit a website. They help the website remember your actions and preferences (such as login details, language, font size, and other display preferences) over a period of time.</p>
-                <p>Cookies are widely used to make websites work more efficiently, as well as to provide information to the owners of the site.</p>
-
-                <h2>How We Use Cookies</h2>
-                <p>We use cookies for the following purposes:</p>
-
-                <h3>1. Essential Cookies (Strictly Necessary)</h3>
-                <p>These cookies are necessary for the website to function properly. They enable core functionality such as security, network management, and accessibility. You cannot opt out of these cookies.</p>
-                <ul>
-                    <li><strong>Purpose:</strong> To keep the website secure and functional.</li>
-                    <li><strong>Examples:</strong> Session cookies, CSRF tokens.</li>
-                </ul>
-
-                <h3>2. Performance &amp; Analytics Cookies</h3>
-                <p>These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site. They help us understand which pages are the most and least popular.</p>
-                <ul>
-                    <li><strong>Purpose:</strong> To analyze website usage and improve user experience.</li>
-                    <li><strong>Examples:</strong> Google Analytics, Jetpack Stats.</li>
-                    <li><strong>Data Collected:</strong> Anonymous data such as page views, bounce rate, and referral sources.</li>
-                </ul>
-
-                <h3>3. Advertising &amp; Marketing Cookies</h3>
-                <p>These cookies are used to deliver advertisements that are more relevant to you and your interests. They are also used to limit the number of times you see an ad and measure the effectiveness of ad campaigns.</p>
-                <ul>
-                    <li><strong>Purpose:</strong> To display relevant ads and track ad performance.</li>
-                    <li><strong>Examples:</strong> Google AdSense, Facebook Pixel.</li>
-                    <li><strong>Data Collected:</strong> Non-personal data such as ad impressions, clicks, and browsing behavior.</li>
-                </ul>
-                <p><strong>Note:</strong> We use <strong>Google AdSense</strong> to serve ads on our website. Google uses cookies to serve ads based on a user's prior visits to our website and other websites on the internet. You can learn more about how Google uses cookies by visiting the <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google Advertising Privacy Policy</a>.</p>
-
-                <h3>4. Functionality Cookies</h3>
-                <p>These cookies enable the website to provide enhanced functionality and personalization. They may be set by us or by third-party providers whose services we have added to our pages.</p>
-                <ul>
-                    <li><strong>Purpose:</strong> To remember your preferences and provide personalized features.</li>
-                    <li><strong>Examples:</strong> Language preference, theme selection.</li>
-                </ul>
-
-                <h2>Cookies We Use – Detailed List</h2>
-                <p>Below is a detailed list of the cookies we use on getage247.xyz:</p>
-
-                <table class="cookie-table">
-                    <thead>
-                        <tr>
-                            <th>Cookie Name</th>
-                            <th>Purpose</th>
-                            <th>Type</th>
-                            <th>Duration</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>session_id</code></td>
-                            <td>Maintains user session</td>
-                            <td>Essential</td>
-                            <td>Session</td>
-                        </tr>
-                        <tr>
-                            <td><code>_ga</code></td>
-                            <td>Google Analytics – user identification</td>
-                            <td>Analytics</td>
-                            <td>2 years</td>
-                        </tr>
-                        <tr>
-                            <td><code>_gid</code></td>
-                            <td>Google Analytics – session identification</td>
-                            <td>Analytics</td>
-                            <td>24 hours</td>
-                        </tr>
-                        <tr>
-                            <td><code>_gat</code></td>
-                            <td>Google Analytics – request throttling</td>
-                            <td>Analytics</td>
-                            <td>1 minute</td>
-                        </tr>
-                        <tr>
-                            <td><code>adsense_uid</code></td>
-                            <td>Google AdSense – ad personalization</td>
-                            <td>Advertising</td>
-                            <td>30 days</td>
-                        </tr>
-                        <tr>
-                            <td><code>cookie_consent</code></td>
-                            <td>Stores user cookie preferences</td>
-                            <td>Essential</td>
-                            <td>1 year</td>
-                        </tr>
-                        <tr>
-                            <td><code>theme_preference</code></td>
-                            <td>User theme selection (dark/light)</td>
-                            <td>Functionality</td>
-                            <td>1 year</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <h2>Your Cookie Preferences – How to Control Them</h2>
-                <p>You have the right to decide whether to accept or reject cookies. You can exercise your cookie preferences through the following methods:</p>
-
-                <h3>1. Cookie Consent Banner</h3>
-                <p>When you first visit getage247.xyz, you will see a cookie consent banner. You can choose to:</p>
-                <ul>
-                    <li><strong>Accept All:</strong> Allow all cookies, including analytics and advertising cookies.</li>
-                    <li><strong>Customize:</strong> Select which types of cookies you wish to enable.</li>
-                    <li><strong>Reject All (except essential):</strong> Only allow essential cookies.</li>
-                </ul>
-
-                <div class="consent-banner-demo">
-                    <p>🍪 We use cookies to enhance your experience. By continuing to visit this site, you agree to our use of cookies.</p>
-                    <div class="btn-group">
-                        <button class="btn-consent accept">✓ Accept All</button>
-                        <button class="btn-consent settings">⚙️ Customize</button>
+                    <!-- Right Column -->
+                    <div class="converter-right">
+                        <div class="form-group">
+                            <label>To</label>
+                            <select id="toCurrency">
+                                <!-- Populated by JavaScript -->
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" id="convertBtn">⚡ Convert Now</button>
                     </div>
                 </div>
 
-                <h3>2. Browser Settings</h3>
-                <p>You can also manage your cookie preferences directly through your web browser settings. Most browsers allow you to:</p>
-                <ul>
-                    <li>View and delete cookies already stored on your device.</li>
-                    <li>Block all cookies (though this may affect the functionality of some websites).</li>
-                    <li>Set preferences for specific websites.</li>
-                </ul>
-                <p>Here are links to the cookie settings for popular browsers:</p>
-                <ul>
-                    <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
-                    <li><a href="https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop" target="_blank" rel="noopener">Mozilla Firefox</a></li>
-                    <li><a href="https://support.apple.com/guide/safari/manage-cookies-sfri11471/mac" target="_blank" rel="noopener">Apple Safari</a></li>
-                    <li><a href="https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener">Microsoft Edge</a></li>
-                </ul>
-
-                <h3>3. Google Ad Settings</h3>
-                <p>You can control how Google uses cookies for advertising by visiting the <a href="https://adssettings.google.com/" target="_blank" rel="noopener">Google Ad Settings</a> page. There, you can opt out of personalized ads.</p>
-
-                <h3>4. Third-Party Opt-Out</h3>
-                <p>You can also opt out of third-party cookies used for advertising by visiting the <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener">Digital Advertising Alliance</a> or the <a href="https://www.youronlinechoices.com/" target="_blank" rel="noopener">European Interactive Digital Advertising Alliance</a>.</p>
-
-                <h2>Google AdSense &amp; Cookie Compliance</h2>
-                <p><strong>getage247.xyz</strong> uses <strong>Google AdSense</strong> to display advertisements. Google AdSense uses cookies to serve personalized ads based on your browsing history and interests. This is a standard practice across the web and helps us keep our tools free for everyone.</p>
-                <p>In compliance with Google's <a href="https://support.google.com/adsense/answer/1348688" target="_blank" rel="noopener">EU User Consent Policy</a>, we:</p>
-                <ul>
-                    <li>✅ Ask for your consent before storing or accessing cookies for advertising purposes.</li>
-                    <li>✅ Provide clear and comprehensive information about how cookies are used.</li>
-                    <li>✅ Give you the option to withdraw your consent at any time.</li>
-                    <li>✅ Maintain records of consent to demonstrate compliance.</li>
-                </ul>
-
-                <div class="highlight-box">
-                    <p><strong>📌 For EEA/UK Visitors:</strong> If you are located in the European Economic Area (EEA) or the United Kingdom, we will request your explicit consent before any non-essential cookies are set. You have the right to withdraw consent at any time.</p>
+                <!-- Result -->
+                <div class="result-box" id="resultBox">
+                    <div class="loading-text" id="resultText">Enter an amount and click Convert.</div>
+                    <div class="rate-info" id="rateInfo"></div>
                 </div>
 
-                <h2>Updates to This Cookie Policy</h2>
-                <p>We may update this Cookie Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify you of any significant changes by posting the new policy on this page and updating the "Last Updated" date at the top.</p>
-                <p>We encourage you to review this policy periodically to stay informed about how we use cookies.</p>
+                <!-- Last Updated -->
+                <div class="last-updated" id="lastUpdated">Loading exchange rates...</div>
 
-                <h2>More Questions?</h2>
-                <p>If you have any questions about our use of cookies or this Cookie Policy, please don't hesitate to <a href="https://getage247.xyz/contact" target="_blank">contact us</a>.</p>
-
-                <div class="highlight-box">
-                    <p><strong>📧 Contact Information:</strong></p>
-                    <p style="margin-bottom: 0;"><strong>Email:</strong> <a href="mailto:support@getage247.xyz">support@getage247.xyz</a><br>
-                    <strong>Website:</strong> <a href="https://getage247.xyz/" target="_blank">getage247.xyz</a></p>
+                <!-- Popular Pairs -->
+                <div class="popular-pairs">
+                    <h3>🔥 Popular Currency Pairs</h3>
+                    <div class="pair-grid" id="popularPairs">
+                        <button class="pair-btn" data-from="USD" data-to="EUR">USD → EUR</button>
+                        <button class="pair-btn" data-from="USD" data-to="GBP">USD → GBP</button>
+                        <button class="pair-btn" data-from="USD" data-to="JPY">USD → JPY</button>
+                        <button class="pair-btn" data-from="EUR" data-to="USD">EUR → USD</button>
+                        <button class="pair-btn" data-from="GBP" data-to="USD">GBP → USD</button>
+                        <button class="pair-btn" data-from="USD" data-to="PKR">USD → PKR</button>
+                        <button class="pair-btn" data-from="EUR" data-to="PKR">EUR → PKR</button>
+                        <button class="pair-btn" data-from="USD" data-to="INR">USD → INR</button>
+                        <button class="pair-btn" data-from="USD" data-to="CAD">USD → CAD</button>
+                        <button class="pair-btn" data-from="USD" data-to="AUD">USD → AUD</button>
+                    </div>
                 </div>
+            </div>
 
-                <p style="margin-top: 32px; color: var(--text-muted); font-size: 0.9rem; text-align: center; border-top: 1px solid var(--border); padding-top: 20px;">
-                    🔒 Your privacy matters. getage247.xyz is committed to protecting your personal data and ensuring a safe browsing experience.
-                </p>
+            <!-- ===== INTERNAL LINKS ===== -->
+            <div class="internal-links">
+                <h3>🔗 Explore More Free Tools &amp; Blogs</h3>
+                <div class="link-grid">
+                    <!-- Tools -->
+                    <a href="https://getage247.xyz/meta-tag-generator" target="_blank">🏷️ Meta Tag Generator</a>
+                    <a href="https://getage247.xyz/schema-markup-generator" target="_blank">🧩 Schema Markup Generator</a>
+                    <a href="https://getage247.xyz/robots-txt-generator" target="_blank">🤖 Robots.txt Tool</a>
+                    <a href="https://getage247.xyz/age-calculator" target="_blank">📅 Age Calculator</a>
+                    <a href="https://getage247.xyz/bmi-calculator" target="_blank">⚖️ BMI Calculator</a>
+                    <a href="https://getage247.xyz/unit-converter" target="_blank">📏 Unit Converter</a>
+                    <a href="https://getage247.xyz/image-resizer" target="_blank">🖼️ Image Resizer</a>
+                    <a href="https://getage247.xyz/password-generator" target="_blank">🔐 Password Generator</a>
+                    <a href="https://getage247.xyz/qr-generator" target="_blank">📱 QR Code Generator</a>
+                    <a href="https://getage247.xyz/currency-converter" target="_blank">💱 Currency Converter</a>
+                    <a href="https://getage247.xyz/loan-calculator" target="_blank">💰 Loan Calculator</a>
+                    <a href="https://getage247.xyz/json-formatter" target="_blank">📋 JSON Formatter</a>
+                    <a href="https://getage247.xyz/text-case-converter" target="_blank">🔤 Text Case Converter</a>
+                    <a href="https://getage247.xyz/base64-encoder" target="_blank">🔢 Base64 Enc/Dec</a>
+                    <a href="https://getage247.xyz/jpg-to-pdf" target="_blank">📄 JPG to PDF</a>
+                    <a href="https://getage247.xyz/percentage-calculator" target="_blank">📊 Percentage Calc</a>
+                    <a href="https://getage247.xyz/word-counter" target="_blank">📝 Word Counter</a>
+                    <a href="https://getage247.xyz/uuid-generator" target="_blank">🆔 UUID Generator</a>
+                    <a href="https://getage247.xyz/seo-kit-generator" target="_blank">🛠️ SEO Kit Generator</a>
 
+                    <!-- Blogs -->
+                    <a href="https://getage247.xyz/blog-meta-tag-generator.html" target="_blank">📖 Meta Tag Generator Guide</a>
+                    <a href="https://getage247.xyz/blog-meta-tag-adsense-guide.html" target="_blank">📖 AdSense Meta Tag Guide</a>
+                    <a href="https://getage247.xyz/schema-markup-generator-guide.html" target="_blank">📖 Schema Markup Guide</a>
+                    <a href="https://getage247.xyz/blog/robots-txt-guide" target="_blank">📖 Robots.txt Guide</a>
+                    <a href="https://getage247.xyz/blog/how-to-use-seo-kit-generator" target="_blank">📖 SEO Kit Generator Guide</a>
+                </div>
             </div>
         </div>
     </main>
@@ -590,16 +557,284 @@
                 <a href="https://getage247.xyz/about" target="_blank">About</a>
                 <a href="https://getage247.xyz/contact" target="_blank">Contact</a>
                 <a href="https://getage247.xyz/privacy" target="_blank">Privacy</a>
-                <a href="https://getage247.xyz/cookie-policy" class="active">Cookie Policy</a>
+                <a href="https://getage247.xyz/cookie-policy" target="_blank">Cookie Policy</a>
                 <a href="https://getage247.xyz/disclaimer" target="_blank">Disclaimer</a>
                 <a href="https://getage247.xyz/terms" target="_blank">Terms</a>
             </div>
         </div>
     </footer>
 
-    <!-- ===== MOBILE NAV TOGGLE ===== -->
+    <!-- ===== JAVASCRIPT ===== -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        (function() {
+            'use strict';
+
+            // ===== CURRENCY DATA =====
+            const currencies = [
+                { code: 'USD', name: 'United States Dollar', symbol: '$' },
+                { code: 'EUR', name: 'Euro', symbol: '€' },
+                { code: 'GBP', name: 'British Pound', symbol: '£' },
+                { code: 'JPY', name: 'Japanese Yen', symbol: '¥' },
+                { code: 'PKR', name: 'Pakistani Rupee', symbol: 'Rs' },
+                { code: 'INR', name: 'Indian Rupee', symbol: '₹' },
+                { code: 'CAD', name: 'Canadian Dollar', symbol: 'C$' },
+                { code: 'AUD', name: 'Australian Dollar', symbol: 'A$' },
+                { code: 'CHF', name: 'Swiss Franc', symbol: 'Fr' },
+                { code: 'CNY', name: 'Chinese Yuan', symbol: '¥' },
+                { code: 'SEK', name: 'Swedish Krona', symbol: 'kr' },
+                { code: 'NZD', name: 'New Zealand Dollar', symbol: 'NZ$' },
+                { code: 'MXN', name: 'Mexican Peso', symbol: '$' },
+                { code: 'SGD', name: 'Singapore Dollar', symbol: 'S$' },
+                { code: 'HKD', name: 'Hong Kong Dollar', symbol: 'HK$' },
+                { code: 'NOK', name: 'Norwegian Krone', symbol: 'kr' },
+                { code: 'KRW', name: 'South Korean Won', symbol: '₩' },
+                { code: 'TRY', name: 'Turkish Lira', symbol: '₺' },
+                { code: 'RUB', name: 'Russian Ruble', symbol: '₽' },
+                { code: 'BRL', name: 'Brazilian Real', symbol: 'R$' },
+                { code: 'ZAR', name: 'South African Rand', symbol: 'R' },
+                { code: 'AED', name: 'UAE Dirham', symbol: 'د.إ' },
+                { code: 'SAR', name: 'Saudi Riyal', symbol: 'ر.س' },
+                { code: 'MYR', name: 'Malaysian Ringgit', symbol: 'RM' },
+                { code: 'THB', name: 'Thai Baht', symbol: '฿' },
+                { code: 'IDR', name: 'Indonesian Rupiah', symbol: 'Rp' },
+                { code: 'PHP', name: 'Philippine Peso', symbol: '₱' },
+                { code: 'VND', name: 'Vietnamese Dong', symbol: '₫' },
+                { code: 'EGP', name: 'Egyptian Pound', symbol: 'E£' },
+                { code: 'NGN', name: 'Nigerian Naira', symbol: '₦' },
+                { code: 'KES', name: 'Kenyan Shilling', symbol: 'KSh' },
+                { code: 'DKK', name: 'Danish Krone', symbol: 'kr' },
+                { code: 'PLN', name: 'Polish Zloty', symbol: 'zł' },
+                { code: 'CZK', name: 'Czech Koruna', symbol: 'Kč' },
+                { code: 'HUF', name: 'Hungarian Forint', symbol: 'Ft' },
+                { code: 'ILS', name: 'Israeli Shekel', symbol: '₪' },
+                { code: 'CLP', name: 'Chilean Peso', symbol: '$' },
+                { code: 'COP', name: 'Colombian Peso', symbol: '$' },
+                { code: 'PEN', name: 'Peruvian Sol', symbol: 'S/' },
+            ];
+
+            // ===== DOM REFS =====
+            const amountInput = document.getElementById('amount');
+            const fromSelect = document.getElementById('fromCurrency');
+            const toSelect = document.getElementById('toCurrency');
+            const convertBtn = document.getElementById('convertBtn');
+            const swapBtn = document.getElementById('swapBtn');
+            const resultBox = document.getElementById('resultBox');
+            const resultText = document.getElementById('resultText');
+            const rateInfo = document.getElementById('rateInfo');
+            const lastUpdated = document.getElementById('lastUpdated');
+            const popularPairs = document.getElementById('popularPairs');
+
+            // ===== STATE =====
+            let exchangeRates = null;
+            let lastFetchTime = null;
+            let isFetching = false;
+
+            // ===== POPULATE CURRENCIES =====
+            function populateCurrencies() {
+                const sorted = [...currencies].sort((a, b) => a.code.localeCompare(b.code));
+                const options = sorted.map(c => 
+                    `<option value="${c.code}">${c.code} – ${c.name}</option>`
+                ).join('');
+
+                fromSelect.innerHTML = options;
+                toSelect.innerHTML = options;
+
+                // Set defaults
+                fromSelect.value = 'USD';
+                toSelect.value = 'EUR';
+            }
+
+            // ===== FETCH EXCHANGE RATES =====
+            async function fetchExchangeRates() {
+                const base = fromSelect.value || 'USD';
+
+                // Check cache (5 minutes)
+                if (exchangeRates && lastFetchTime && (Date.now() - lastFetchTime < 5 * 60 * 1000)) {
+                    return exchangeRates;
+                }
+
+                if (isFetching) return exchangeRates;
+                isFetching = true;
+
+                try {
+                    // Using exchangerate.host – free API, no key required
+                    const url = `https://api.exchangerate.host/latest?base=${base}`;
+                    const response = await fetch(url);
+                    
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+
+                    const data = await response.json();
+                    
+                    if (data.success === false) {
+                        throw new Error(data.error || 'API returned error');
+                    }
+
+                    exchangeRates = data.rates;
+                    lastFetchTime = Date.now();
+                    lastUpdated.textContent = `✅ Last updated: ${new Date(data.date || Date.now()).toLocaleString()}`;
+                    
+                    return exchangeRates;
+                } catch (error) {
+                    console.error('Error fetching exchange rates:', error);
+                    lastUpdated.textContent = '⚠️ Could not fetch latest rates. Using cached rates if available.';
+                    
+                    // If we have cached rates, use them
+                    if (exchangeRates) {
+                        return exchangeRates;
+                    }
+
+                    // Fallback to static rates if no cache
+                    exchangeRates = getFallbackRates(base);
+                    return exchangeRates;
+                } finally {
+                    isFetching = false;
+                }
+            }
+
+            // ===== FALLBACK RATES =====
+            function getFallbackRates(base) {
+                const fallback = {
+                    'USD': { 'USD': 1, 'EUR': 0.92, 'GBP': 0.78, 'JPY': 149.5, 'PKR': 278.5, 'INR': 83.2, 'CAD': 1.36, 'AUD': 1.52, 'CHF': 0.88, 'CNY': 7.25, 'SEK': 10.5, 'NZD': 1.67, 'MXN': 17.2, 'SGD': 1.34, 'HKD': 7.82, 'NOK': 10.8, 'KRW': 1340, 'TRY': 32.5, 'RUB': 92, 'BRL': 5.2, 'ZAR': 18.8, 'AED': 3.67, 'SAR': 3.75, 'MYR': 4.68, 'THB': 36.2, 'IDR': 15600, 'PHP': 56.4, 'VND': 24800, 'EGP': 48.5, 'NGN': 1600, 'KES': 132, 'DKK': 6.86, 'PLN': 3.96, 'CZK': 23.2, 'HUF': 362, 'ILS': 3.72, 'CLP': 915, 'COP': 3900, 'PEN': 3.72 },
+                    'EUR': { 'USD': 1.09, 'EUR': 1, 'GBP': 0.85, 'JPY': 162.5, 'PKR': 302.5, 'INR': 90.4, 'CAD': 1.48, 'AUD': 1.65, 'CHF': 0.96, 'CNY': 7.88, 'SEK': 11.4, 'NZD': 1.82, 'MXN': 18.7, 'SGD': 1.46, 'HKD': 8.5, 'NOK': 11.7, 'KRW': 1456, 'TRY': 35.3, 'RUB': 100, 'BRL': 5.65, 'ZAR': 20.4, 'AED': 3.99, 'SAR': 4.08, 'MYR': 5.08, 'THB': 39.3, 'IDR': 16950, 'PHP': 61.3, 'VND': 26950, 'EGP': 52.7, 'NGN': 1739, 'KES': 143.5, 'DKK': 7.46, 'PLN': 4.3, 'CZK': 25.2, 'HUF': 393, 'ILS': 4.04, 'CLP': 995, 'COP': 4240, 'PEN': 4.04 }
+                };
+                
+                if (fallback[base]) {
+                    return fallback[base];
+                }
+                
+                // Default to USD fallback
+                return fallback['USD'];
+            }
+
+            // ===== PERFORM CONVERSION =====
+            async function convertCurrency() {
+                const amount = parseFloat(amountInput.value);
+                if (isNaN(amount) || amount <= 0) {
+                    resultText.textContent = '⚠️ Please enter a valid amount.';
+                    resultText.className = 'error-text';
+                    rateInfo.textContent = '';
+                    return;
+                }
+
+                const from = fromSelect.value;
+                const to = toSelect.value;
+
+                if (from === to) {
+                    resultText.textContent = `${amount} ${from} = ${amount} ${to}`;
+                    resultText.className = 'amount';
+                    rateInfo.textContent = 'Same currency selected.';
+                    return;
+                }
+
+                // Show loading
+                resultText.textContent = '🔄 Loading exchange rates...';
+                resultText.className = 'loading-text';
+                rateInfo.textContent = '';
+                convertBtn.disabled = true;
+
+                try {
+                    const rates = await fetchExchangeRates();
+                    
+                    if (!rates || !rates[to]) {
+                        throw new Error('Currency not found');
+                    }
+
+                    const rate = rates[to];
+                    const converted = amount * rate;
+
+                    // Get symbols
+                    const fromSymbol = currencies.find(c => c.code === from)?.symbol || from;
+                    const toSymbol = currencies.find(c => c.code === to)?.symbol || to;
+
+                    resultText.textContent = `${toSymbol} ${converted.toFixed(2)}`;
+                    resultText.className = 'amount';
+                    rateInfo.textContent = `1 ${from} = ${rate.toFixed(4)} ${to}  •  ${fromSymbol} ${amount.toFixed(2)}`;
+                    
+                } catch (error) {
+                    console.error('Conversion error:', error);
+                    resultText.textContent = '⚠️ Could not complete conversion. Please try again.';
+                    resultText.className = 'error-text';
+                    rateInfo.textContent = '';
+                } finally {
+                    convertBtn.disabled = false;
+                }
+            }
+
+            // ===== SWAP CURRENCIES =====
+            function swapCurrencies() {
+                const fromVal = fromSelect.value;
+                const toVal = toSelect.value;
+                fromSelect.value = toVal;
+                toSelect.value = fromVal;
+                
+                // Auto-convert after swap
+                if (amountInput.value && parseFloat(amountInput.value) > 0) {
+                    convertCurrency();
+                }
+            }
+
+            // ===== SET POPULAR PAIR =====
+            function setPopularPair(from, to) {
+                fromSelect.value = from;
+                toSelect.value = to;
+                if (amountInput.value && parseFloat(amountInput.value) > 0) {
+                    convertCurrency();
+                } else {
+                    amountInput.value = '1';
+                    convertCurrency();
+                }
+            }
+
+            // ===== INIT =====
+            function init() {
+                populateCurrencies();
+                
+                // Auto-convert on load
+                setTimeout(() => {
+                    amountInput.value = '1';
+                    convertCurrency();
+                }, 300);
+            }
+
+            // ===== EVENT LISTENERS =====
+            convertBtn.addEventListener('click', convertCurrency);
+            swapBtn.addEventListener('click', swapCurrencies);
+
+            amountInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    convertCurrency();
+                }
+            });
+
+            fromSelect.addEventListener('change', function() {
+                // Re-fetch rates when base currency changes
+                exchangeRates = null;
+                lastFetchTime = null;
+                if (amountInput.value && parseFloat(amountInput.value) > 0) {
+                    convertCurrency();
+                }
+            });
+
+            toSelect.addEventListener('change', function() {
+                if (amountInput.value && parseFloat(amountInput.value) > 0) {
+                    convertCurrency();
+                }
+            });
+
+            // Popular pairs
+            popularPairs.addEventListener('click', function(e) {
+                const target = e.target.closest('.pair-btn');
+                if (!target) return;
+                const from = target.dataset.from;
+                const to = target.dataset.to;
+                if (from && to) {
+                    setPopularPair(from, to);
+                }
+            });
+
+            // ===== MOBILE NAV =====
             const toggle = document.getElementById('navToggle');
             const nav = document.getElementById('mainNav');
             if (toggle && nav) {
@@ -618,7 +853,11 @@
                     }
                 });
             }
-        });
+
+            // ===== INITIALIZE =====
+            init();
+
+        })();
     </script>
 
 </body>
