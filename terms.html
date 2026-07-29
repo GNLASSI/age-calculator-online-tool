@@ -1,151 +1,538 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Terms and Conditions | GetAge247 - Free Online Tools</title>
-<meta name="description" content="Terms and Conditions for GetAge247.xyz. Read our terms of use for free online tools including Age Calculator, BMI Calculator, Currency Converter and more.">
-<style>
-:root{--p:#2563eb;--d:#1e293b;--l:#f4f7f9}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',Arial,sans-serif;background:var(--l);color:#222;line-height:1.8}
-header{background:var(--p);color:white;padding:20px;text-align:center}
-header h1{margin:0;font-size:22px}
-nav{margin-top:10px}
-nav a{color:white;margin:0 10px;text-decoration:none;font-size:14px;font-weight:600}
-.container{max-width:850px;margin:0 auto;padding:30px 20px}
-.card{background:white;padding:32px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.08)}
-h1{color:var(--p);font-size:28px;border-bottom:3px solid var(--p);padding-bottom:12px;margin-bottom:20px}
-h2{color:var(--d);font-size:20px;margin:28px 0 10px}
-p,li{font-size:15.5px;color:#444;margin-bottom:10px}
-ul{padding-left:22px}
-li{margin:6px 0}
-.last-updated{background:#eff6ff;padding:12px 16px;border-left:4px solid var(--p);margin:20px 0;border-radius:0 8px 8px 0;font-size:14px;color:#1e40af}
-.tools-list{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px 20px;margin:12px 0}
-.tools-list li{color:#374151}
-a{color:var(--p);text-decoration:none}
-a:hover{text-decoration:underline}
-footer{text-align:center;padding:20px;margin-top:40px;border-top:1px solid #ddd;background:#f9f9f9}
-footer a{margin:0 10px;color:#444;text-decoration:none;font-size:14px}
-footer a:hover{text-decoration:underline}
-footer p{margin-top:10px;font-size:13px;color:#777}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service – getage247.xyz | Google AdSense Ready</title>
+    <meta name="description" content="Terms of Service for getage247.xyz. Read our terms and conditions for using our free online tools and website. Google AdSense compliant.">
+    <link rel="canonical" href="https://getage247.xyz/terms">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Terms of Service – getage247.xyz">
+    <meta property="og:description" content="Terms of Service for getage247.xyz. Read our terms and conditions for using our free online tools and website.">
+    <meta property="og:url" content="https://getage247.xyz/terms">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="getage247.xyz">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Terms of Service – getage247.xyz">
+    <meta name="twitter:description" content="Terms of Service for getage247.xyz. Read our terms and conditions for using our free online tools and website.">
+    <meta name="twitter:site" content="@getage247">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #0a0a12;
+            --bg-secondary: #12121f;
+            --bg-card: #1a1a2e;
+            --bg-card-hover: #24243a;
+            --border: #2a2a44;
+            --text-primary: #f0eeff;
+            --text-secondary: #b8b4d6;
+            --text-muted: #7a77a0;
+            --accent: #7c5cfc;
+            --accent-glow: #9d7cff;
+            --shadow: 0 8px 32px rgba(0,0,0,0.6);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --green: #00b894;
+            --yellow: #fdcb6e;
+            --red: #e17055;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font);
+            background: var(--bg-primary);
+            background-image: radial-gradient(circle at 10% 20%, rgba(124,92,252,0.08) 0%, transparent 50%),
+                              radial-gradient(circle at 90% 80%, rgba(124,92,252,0.06) 0%, transparent 50%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+        }
+        a { color: var(--accent-glow); text-decoration: none; transition: all 0.3s ease; }
+        a:hover { color: #fff; text-shadow: 0 0 12px rgba(124,92,252,0.5); }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        /* ===== HEADER ===== */
+        header {
+            background: rgba(10,10,18,0.85);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-glow), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+        .logo span { font-weight: 300; -webkit-text-fill-color: var(--text-muted); }
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+        }
+        nav a {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+        }
+        nav a:hover, nav a.active { color: #fff; border-bottom-color: var(--accent); }
+        nav a.active { color: #fff; }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0 8px;
+        }
+
+        /* ===== MAIN ===== */
+        main { flex: 1; padding: 40px 0 60px; }
+
+        .page-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 40px 48px;
+            box-shadow: var(--shadow);
+            margin-top: 16px;
+        }
+        @media (max-width: 768px) { .page-card { padding: 24px 18px; } }
+
+        .page-card h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, var(--accent-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+        .page-card .last-updated {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 28px;
+            display: block;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+        }
+        .page-card .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .page-card .badge {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 4px 18px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .page-card .badge.green { border-color: var(--green); color: var(--green); }
+        .page-card .badge.yellow { border-color: var(--yellow); color: var(--yellow); }
+
+        .page-card h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin: 32px 0 12px;
+            color: #fff;
+        }
+        .page-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 24px 0 8px;
+            color: var(--accent-glow);
+        }
+        .page-card p {
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+            font-size: 1.05rem;
+        }
+        .page-card ul, .page-card ol {
+            color: var(--text-secondary);
+            padding-left: 26px;
+            margin-bottom: 18px;
+        }
+        .page-card ul li, .page-card ol li { margin-bottom: 6px; }
+        .page-card strong { color: #fff; }
+
+        .page-card .highlight-box {
+            background: var(--bg-card);
+            border-left: 4px solid var(--accent);
+            padding: 16px 22px;
+            border-radius: var(--radius-sm);
+            margin: 20px 0;
+        }
+        .page-card .highlight-box p { margin-bottom: 0; }
+        .page-card .warning-box {
+            background: rgba(225,112,85,0.15);
+            border-left: 4px solid var(--red);
+            padding: 16px 22px;
+            border-radius: var(--radius-sm);
+            margin: 20px 0;
+        }
+        .page-card .warning-box p { margin-bottom: 0; color: #f8a99a; }
+
+        /* ===== INTERNAL LINKS ===== */
+        .internal-links {
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .internal-links h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .link-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 14px;
+        }
+        .link-grid a {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 4px 18px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: 0.3s;
+        }
+        .link-grid a:hover {
+            border-color: var(--accent);
+            color: #fff;
+            background: var(--bg-card-hover);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: rgba(10,10,18,0.95);
+            border-top: 1px solid var(--border);
+            padding: 32px 0 24px;
+            margin-top: auto;
+        }
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .footer-inner .copy { color: var(--text-muted); font-size: 0.85rem; }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 22px;
+        }
+        .footer-links a { color: var(--text-muted); font-size: 0.85rem; }
+        .footer-links a:hover { color: #fff; }
+        .footer-links a.active { color: #fff; border-bottom: 2px solid var(--accent); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 12px 0 4px;
+                gap: 2px;
+            }
+            nav.open { display: flex; }
+            nav a {
+                padding: 8px 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid var(--border);
+            }
+            nav a:last-child { border-bottom: none; }
+            .page-card h1 { font-size: 2rem; }
+            .page-card h2 { font-size: 1.4rem; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 14px; }
+            .page-card { padding: 18px 14px; }
+            .page-card h1 { font-size: 1.7rem; }
+        }
+    </style>
 </head>
 <body>
-<header>
-  <h1>GetAge247.xyz</h1>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/about.html">About</a>
-    <a href="/contact.html">Contact</a>
-    <a href="/privacy.html">Privacy</a>
-    <a href="/blog.html">Blog</a>
-  </nav>
-</header>
-<div class="container">
-<div class="card">
-<h1>Terms and Conditions</h1>
-<div class="last-updated"><b>Last Updated:</b> July 6, 2026 &nbsp;|&nbsp; <b>Effective Date:</b> July 6, 2026</div>
 
-<p>Welcome to <strong>GetAge247.xyz</strong>. By accessing or using our website and tools, you agree to be bound by these Terms and Conditions. Please read them carefully before using our services. If you do not agree with any part of these terms, please do not use our website.</p>
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">getage<span>247</span></div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+            <nav id="mainNav">
+                <a href="https://getage247.xyz/" target="_blank">Home</a>
+                <a href="https://getage247.xyz/about" target="_blank">About</a>
+                <a href="https://getage247.xyz/contact" target="_blank">Contact</a>
+                <a href="https://getage247.xyz/privacy" target="_blank">Privacy</a>
+                <a href="https://getage247.xyz/cookie-policy" target="_blank">Cookie Policy</a>
+                <a href="https://getage247.xyz/disclaimer" target="_blank">Disclaimer</a>
+                <a href="https://getage247.xyz/terms" class="active">Terms</a>
+            </nav>
+        </div>
+    </header>
 
-<h2>1. Acceptance of Terms</h2>
-<p>By visiting GetAge247.xyz and using any of our free online tools or reading any content on this website, you confirm that you are at least 13 years of age and that you agree to these Terms and Conditions in full. These terms apply to all visitors, users, and others who access or use the website.</p>
+    <!-- ===== MAIN ===== -->
+    <main>
+        <div class="container">
+            <div class="page-card">
 
-<h2>2. Description of Services</h2>
-<p>GetAge247.xyz provides free online tools for general informational and educational purposes. Our current tools include:</p>
-<ul class="tools-list">
-  <li>📅 <strong>Age Calculator</strong> — Calculate exact age in years, months, and days</li>
-  <li>⚖️ <strong>BMI Calculator</strong> — Calculate Body Mass Index</li>
-  <li>🖼️ <strong>Image Resizer</strong> — Resize and compress images</li>
-  <li>🔲 <strong>QR Code Generator</strong> — Generate QR codes for URLs, WhatsApp, and more</li>
-  <li>📝 <strong>Word Counter</strong> — Count words, characters, and sentences</li>
-  <li>📄 <strong>JPG to PDF Converter</strong> — Convert images to PDF</li>
-  <li>💰 <strong>Loan Calculator</strong> — Calculate loan installments and interest</li>
-  <li>💱 <strong>Currency Converter</strong> — Convert currencies with live rates</li>
-  <li>% <strong>Percentage Calculator</strong> — Calculate percentages instantly</li>
-  <li>📄 <strong>Resume Builder</strong> — Create professional CVs and resumes</li>
-  <li>🏷️ <strong>Meta Tag Generator</strong> — Generate SEO meta tags</li>
-  <li>🔐 <strong>Password Generator</strong> — Generate strong secure passwords</li>
-  <li><strong>🔐 Base64 Encoder & Decoder</strong> — Encode and decode Base64 text instantly</li>
-  <li><strong>🔄 Unit Converter</strong> — Convert length, weight, temperature, speed, area, volume, time and data</li>
-  <li>📄 <strong>Schema Markup Generator Tool</strong> — Generate SEO schema code instantly</li>
-</ul>
-<p>We reserve the right to modify, suspend, or discontinue any tool or service at any time without prior notice.</p>
+                <h1>📜 Terms of Service</h1>
+                <span class="last-updated">📅 Last Updated: July 29, 2026</span>
 
-<h2>3. Use of Website and Tools</h2>
-<p>You agree to use GetAge247.xyz only for lawful purposes and in a manner that does not infringe the rights of others. You must not:</p>
-<ul>
-  <li>Use the website or tools for any illegal or unauthorized purpose</li>
-  <li>Attempt to gain unauthorized access to any part of the website or its systems</li>
-  <li>Use automated scripts, bots, or scrapers to access the website in a way that may overload or damage our servers</li>
-  <li>Copy, reproduce, or redistribute our website content without written permission</li>
-  <li>Use our tools to process or generate content that is illegal, harmful, abusive, or violates any applicable law</li>
-  <li>Attempt to reverse engineer, decompile, or extract source code from our tools</li>
-</ul>
+                <div class="badge-container">
+                    <span class="badge green">✅ Transparent</span>
+                    <span class="badge green">✅ Fair Use</span>
+                    <span class="badge green">✅ User Friendly</span>
+                    <span class="badge green">✅ Google AdSense Ready</span>
+                </div>
 
-<h2>4. Intellectual Property</h2>
-<p>All content on GetAge247.xyz — including but not limited to text, blog posts, tool designs, graphics, logos, and code — is the intellectual property of GetAge247.xyz unless otherwise stated. You may not copy, reproduce, modify, distribute, or create derivative works from any content on this website without our express written permission.</p>
-<p>You may share links to our website and tools freely. Brief quotes from our blog posts may be used for non-commercial purposes with proper attribution and a link back to the original page.</p>
+                <p>Welcome to <strong>getage247.xyz</strong>. By using our website and our free online tools, you agree to comply with and be bound by the following terms and conditions. Please read them carefully.</p>
 
-<h2>5. Privacy Policy</h2>
-<p>Your use of GetAge247.xyz is also governed by our <a href="/privacy.html">Privacy Policy</a>, which is incorporated into these Terms and Conditions by reference. By using our website, you consent to the data practices described in our Privacy Policy.</p>
-<p>Most of our tools process data entirely within your browser and do not transmit personal data to our servers. However, we do use third-party services including Google AdSense and analytics tools that may collect certain data as described in our Privacy Policy.</p>
+                <div class="highlight-box">
+                    <p><strong>📌 Quick Summary:</strong> Our tools are free to use. We do not collect personal data without consent. By using our site, you agree to these terms. We are committed to maintaining a family-friendly, safe, and transparent environment in compliance with Google AdSense policies.</p>
+                </div>
 
-<h2>6. Google AdSense and Third-Party Advertising</h2>
-<p>GetAge247.xyz displays advertisements served by Google AdSense and other third-party advertising networks. By using this website, you acknowledge and agree that:</p>
-<ul>
-  <li>Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this and other websites</li>
-  <li>You may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener nofollow">Google Ads Settings</a></li>
-  <li>We do not control the content of third-party advertisements displayed on our website</li>
-  <li>We are not responsible for the products, services, or content advertised by third parties</li>
-  <li>Clicking on advertisements may take you to third-party websites governed by their own terms and privacy policies</li>
-</ul>
+                <h2>1. Acceptance of Terms</h2>
+                <p>By accessing or using <strong>getage247.xyz</strong> (the "Site"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our Site or tools.</p>
+                <p>These terms constitute a legally binding agreement between you and getage247.xyz. Your continued use of the Site constitutes your acceptance of any changes or updates to these terms.</p>
 
-<h2>7. Disclaimer of Warranties</h2>
-<p>GetAge247.xyz and all its tools are provided on an "as is" and "as available" basis without any warranties of any kind, either express or implied. We do not warrant that:</p>
-<ul>
-  <li>The website will be uninterrupted, error-free, or free of viruses or other harmful components</li>
-  <li>The results obtained from using our tools will be accurate, complete, or reliable for any specific purpose</li>
-  <li>Any errors in the website or tools will be corrected</li>
-</ul>
-<p>Tool results — including age calculations, BMI results, loan estimates, currency conversions, and all other outputs — are for informational purposes only. Always verify important calculations independently and consult qualified professionals for medical, financial, or legal decisions.</p>
+                <h2>2. Description of Services</h2>
+                <p>getage247.xyz provides free online tools including but not limited to:</p>
+                <ul>
+                    <li><strong>🏷️ SEO Tools:</strong> Meta Tag Generator, Schema Markup Generator, Robots.txt Generator, SEO Kit Generator</li>
+                    <li><strong>📊 Calculators:</strong> Age Calculator, BMI Calculator, Unit Converter, Percentage Calculator, Loan Calculator, Currency Converter</li>
+                    <li><strong>🔧 Developer Tools:</strong> JSON Formatter, Text Case Converter, Base64 Encoder/Decoder, UUID Generator</li>
+                    <li><strong>🖼️ Media Tools:</strong> Image Resizer, JPG to PDF Converter, QR Code Generator</li>
+                    <li><strong>🔐 Security Tools:</strong> Password Generator</li>
+                    <li><strong>📝 Content Tools:</strong> Word Counter</li>
+                </ul>
+                <p>All tools are provided <strong>free of charge</strong> and run entirely in your browser. No data is sent to our servers unless you explicitly contact us via email or the contact form.</p>
 
-<h2>8. Limitation of Liability</h2>
-<p>To the fullest extent permitted by applicable law, GetAge247.xyz, its owners, employees, and contributors shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages arising from:</p>
-<ul>
-  <li>Your use of or inability to use the website or tools</li>
-  <li>Any errors, inaccuracies, or omissions in tool results or content</li>
-  <li>Any unauthorized access to or alteration of your data</li>
-  <li>Any third-party content or advertisements displayed on the website</li>
-  <li>Any other matter relating to your use of the website</li>
-</ul>
+                <h2>3. User Responsibilities</h2>
+                <p>By using our Site and tools, you agree that:</p>
+                <ul>
+                    <li><strong>✅ You will use the tools for lawful purposes only.</strong> Any illegal or harmful use is strictly prohibited.</li>
+                    <li><strong>✅ You will not attempt to reverse-engineer, exploit, or disrupt the functionality of our tools.</strong></li>
+                    <li><strong>✅ You are solely responsible for any content you generate using our tools.</strong></li>
+                    <li><strong>✅ You will not use our tools to generate harmful, malicious, or illegal content.</strong></li>
+                    <li><strong>✅ You will not impersonate any person or entity while using our Site.</strong></li>
+                    <li><strong>✅ You will not engage in any activity that could harm, disable, or overburden our servers.</strong></li>
+                    <li><strong>✅ You will not use automated systems (bots, scrapers) to access or use our tools without permission.</strong></li>
+                    <li><strong>✅ You will not misuse or abuse the free nature of our tools.</strong></li>
+                </ul>
 
-<h2>9. Third-Party Links</h2>
-<p>Our website and blog posts may contain links to third-party websites for reference and informational purposes. These links are provided for your convenience only. We have no control over the content of those websites and accept no responsibility for them or for any loss or damage that may arise from your use of them. Visiting any linked third-party website is entirely at your own risk.</p>
+                <div class="warning-box">
+                    <p><strong>⚠️ Important:</strong> Violation of these terms may result in the termination of your access to our Site and tools. We reserve the right to take appropriate legal action against any misuse.</p>
+                </div>
 
-<h2>10. Children's Privacy</h2>
-<p>GetAge247.xyz is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us through our <a href="/contact.html">Contact page</a> and we will take steps to remove such information.</p>
+                <h2>4. Intellectual Property</h2>
+                <p>The content, design, code, and functionality of getage247.xyz are the intellectual property of <strong>getage247.xyz</strong>. You may:</p>
+                <ul>
+                    <li><strong>✅ Use the output generated by our tools</strong> (e.g., meta tags, schema markup, robots.txt) <strong>freely for your projects</strong>.</li>
+                    <li><strong>✅ Share links to our tools with others.</strong></li>
+                    <li><strong>✅ Reference our tools in your content.</strong></li>
+                </ul>
+                <p>You may <strong>not</strong>:</p>
+                <ul>
+                    <li><strong>❌ Copy, reproduce, or redistribute the tool code or design without permission.</strong></li>
+                    <li><strong>❌ Use our tools to create competing products.</strong></li>
+                    <li><strong>❌ Remove or alter any copyright notices.</strong></li>
+                    <li><strong>❌ Frame or embed our tools in other websites without authorization.</strong></li>
+                </ul>
 
-<h2>11. Changes to Terms</h2>
-<p>We reserve the right to update or modify these Terms and Conditions at any time. Changes will be posted on this page with an updated effective date. Your continued use of the website after any changes constitutes your acceptance of the new terms. We encourage you to review these terms periodically.</p>
+                <h2>5. Disclaimer of Warranties</h2>
+                <p>Our tools are provided <strong>"as is"</strong> and <strong>"as available"</strong> without any warranties of any kind, either express or implied. We do not warrant that:</p>
+                <ul>
+                    <li><strong>🔸 The tools will meet your specific requirements.</strong></li>
+                    <li><strong>🔸 The tools will be uninterrupted, timely, secure, or error-free.</strong></li>
+                    <li><strong>🔸 The results obtained from the tools will be accurate or reliable.</strong></li>
+                    <li><strong>🔸 The quality of any products, services, or information obtained through the tools will meet your expectations.</strong></li>
+                    <li><strong>🔸 Any errors in the tools will be corrected.</strong></li>
+                </ul>
+                <p>You acknowledge that the use of our tools is at your own risk and discretion.</p>
 
-<h2>12. Governing Law</h2>
-<p>These Terms and Conditions shall be governed by and construed in accordance with applicable laws. Any disputes arising from your use of GetAge247.xyz shall be subject to the exclusive jurisdiction of the courts of the applicable territory.</p>
+                <h2>6. Limitation of Liability</h2>
+                <p>To the fullest extent permitted by law, <strong>getage247.xyz</strong> and its owners, employees, and affiliates shall not be liable for any damages arising from the use of our tools or Site. This includes, but is not limited to:</p>
+                <ul>
+                    <li><strong>🔸 Direct, indirect, incidental, or consequential damages.</strong></li>
+                    <li><strong>🔸 Loss of data, revenue, or profits.</strong></li>
+                    <li><strong>🔸 Damage to your computer system or device.</strong></li>
+                    <li><strong>🔸 Any errors or omissions in the content generated by our tools.</strong></li>
+                    <li><strong>🔸 Any unauthorized access to or use of your data.</strong></li>
+                    <li><strong>🔸 Any bugs, viruses, or other harmful code.</strong></li>
+                </ul>
+                <p>In no event shall our total liability exceed the amount paid by you, if any, for using our tools (which is zero, as all tools are free).</p>
 
-<h2>13. Contact Us</h2>
-<p>If you have any questions about these Terms and Conditions, please contact us through our <a href="/contact.html">Contact page</a>. We will respond to your inquiry as soon as possible.</p>
+                <h2>7. Third-Party Links &amp; Services</h2>
+                <p>Our Site may contain links to third-party websites and services. We are not responsible for:</p>
+                <ul>
+                    <li><strong>🔸 The content, accuracy, or reliability of external sites.</strong></li>
+                    <li><strong>🔸 The privacy practices or terms of service of external sites.</strong></li>
+                    <li><strong>🔸 Any damages or losses caused by your use of external sites.</strong></li>
+                </ul>
+                <p>We provide these links for convenience and do not endorse any third-party content or services.</p>
 
-</div>
-</div>
-<footer>
-  <a href="/">Home</a>
-  <a href="/about.html">About</a>
-  <a href="/contact.html">Contact</a>
-  <a href="/privacy.html">Privacy</a>
-  <a href="/disclaimer.html">Disclaimer</a>
-  <a href="/blog.html">Blog</a>
-  <p>© 2026 GetAge247. All Rights Reserved.</p>
-</footer>
+                <h2>8. Google AdSense Compliance</h2>
+                <p>getage247.xyz is committed to full compliance with Google AdSense policies. Specifically:</p>
+                <ul>
+                    <li><strong>✅ Family-Friendly Content:</strong> All content on our Site is appropriate for all audiences.</li>
+                    <li><strong>✅ No Misleading Content:</strong> We do not engage in deceptive or misleading practices.</li>
+                    <li><strong>✅ No Copyright Infringement:</strong> All content is original or properly attributed.</li>
+                    <li><strong>✅ Transparent Advertising:</strong> Advertisements are clearly distinguished from content.</li>
+                    <li><strong>✅ User Privacy:</strong> We respect user privacy and comply with data protection regulations.</li>
+                </ul>
+                <p>For more information, please review our <a href="https://getage247.xyz/privacy" target="_blank">Privacy Policy</a> and <a href="https://getage247.xyz/cookie-policy" target="_blank">Cookie Policy</a>.</p>
+
+                <h2>9. Privacy Policy</h2>
+                <p>Your use of our Site is also governed by our <a href="https://getage247.xyz/privacy" target="_blank">Privacy Policy</a> and <a href="https://getage247.xyz/cookie-policy" target="_blank">Cookie Policy</a>. Please review these policies to understand how we handle your data.</p>
+                <p>We are committed to protecting your privacy. We do not collect, store, or sell your personal data without your explicit consent. All tools run client-side, meaning your data never leaves your browser.</p>
+
+                <h2>10. Changes to Terms</h2>
+                <p>We reserve the right to update these Terms of Service at any time. We will notify you of changes by posting the new terms on this page and updating the "Last Updated" date at the top. Your continued use of the Site after changes constitutes acceptance of the new terms.</p>
+                <p>We encourage you to review these terms periodically to stay informed about your rights and obligations.</p>
+
+                <h2>11. Termination</h2>
+                <p>We reserve the right to terminate or suspend your access to our Site and tools at any time, without notice, for any reason, including but not limited to:</p>
+                <ul>
+                    <li><strong>🔸 Violation of these terms.</strong></li>
+                    <li><strong>🔸 Illegal or harmful activity.</strong></li>
+                    <li><strong>🔸 Abuse of our tools or services.</strong></li>
+                    <li><strong>🔸 Any action that could harm the reputation of getage247.xyz.</strong></li>
+                </ul>
+
+                <h2>12. Governing Law</h2>
+                <p>These Terms of Service are governed by and construed in accordance with the laws of Pakistan. Any disputes arising from these terms shall be resolved in the courts of Pakistan.</p>
+                <p>If any provision of these terms is found to be invalid or unenforceable, the remaining provisions shall remain in full force and effect.</p>
+
+                <h2>13. Contact Information</h2>
+                <p>If you have any questions about these Terms of Service, please contact us:</p>
+                <ul>
+                    <li><strong>📧 Email:</strong> <a href="mailto:gnlassi.786@gmail.com">gnlassi.786@gmail.com</a></li>
+                    <li><strong>🌐 Website:</strong> <a href="https://getage247.xyz/" target="_blank">getage247.xyz</a></li>
+                    <li><strong>📬 Contact Page:</strong> <a href="https://getage247.xyz/contact" target="_blank">getage247.xyz/contact</a></li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>📌 Important:</strong> By using getage247.xyz, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you do not agree, please refrain from using our Site and tools.</p>
+                </div>
+
+                <!-- ===== INTERNAL LINKS (ALL WORKING) ===== -->
+                <div class="internal-links">
+                    <h3>🔗 Explore More Free Tools &amp; Blogs</h3>
+                    <div class="link-grid">
+                        <!-- ===== TOOLS ===== -->
+                        <a href="https://getage247.xyz/meta-tag-generator" target="_blank">🏷️ Meta Tag Generator</a>
+                        <a href="https://getage247.xyz/schema-markup-generator" target="_blank">🧩 Schema Markup Generator</a>
+                        <a href="https://getage247.xyz/robots-txt-generator" target="_blank">🤖 Robots.txt Tool</a>
+                        <a href="https://getage247.xyz/seo-kit-generator" target="_blank">🛠️ SEO Kit Generator</a>
+                        <a href="https://getage247.xyz/age-calculator" target="_blank">📅 Age Calculator</a>
+                        <a href="https://getage247.xyz/bmi-calculator" target="_blank">⚖️ BMI Calculator</a>
+                        <a href="https://getage247.xyz/unit-converter" target="_blank">📏 Unit Converter</a>
+                        <a href="https://getage247.xyz/currency-converter" target="_blank">💱 Currency Converter</a>
+                        <a href="https://getage247.xyz/image-resizer" target="_blank">🖼️ Image Resizer</a>
+                        <a href="https://getage247.xyz/password-generator" target="_blank">🔐 Password Generator</a>
+                        <a href="https://getage247.xyz/qr-generator" target="_blank">📱 QR Code Generator</a>
+                        <a href="https://getage247.xyz/loan-calculator" target="_blank">💰 Loan Calculator</a>
+                        <a href="https://getage247.xyz/json-formatter" target="_blank">📋 JSON Formatter</a>
+                        <a href="https://getage247.xyz/text-case-converter" target="_blank">🔤 Text Case Converter</a>
+                        <a href="https://getage247.xyz/base64-encoder" target="_blank">🔢 Base64 Enc/Dec</a>
+                        <a href="https://getage247.xyz/jpg-to-pdf" target="_blank">📄 JPG to PDF</a>
+                        <a href="https://getage247.xyz/percentage-calculator" target="_blank">📊 Percentage Calc</a>
+                        <a href="https://getage247.xyz/word-counter" target="_blank">📝 Word Counter</a>
+                        <a href="https://getage247.xyz/uuid-generator" target="_blank">🆔 UUID Generator</a>
+
+                        <!-- ===== BLOGS (ALL WORKING) ===== -->
+                        <a href="https://getage247.xyz/blog-meta-tag-generator.html" target="_blank">📖 Meta Tag Generator Guide</a>
+                        <a href="https://getage247.xyz/blog-meta-tag-adsense-guide.html" target="_blank">📖 AdSense Meta Tag Guide</a>
+                        <a href="https://getage247.xyz/schema-markup-generator-guide.html" target="_blank">📖 Schema Markup Guide</a>
+                        <a href="https://getage247.xyz/blog/robots-txt-guide" target="_blank">📖 Robots.txt Guide</a>
+                        <a href="https://getage247.xyz/blog/how-to-use-seo-kit-generator" target="_blank">📖 SEO Kit Generator Guide</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container footer-inner">
+            <div class="copy">&copy; 2026 <a href="https://getage247.xyz/" target="_blank">getage247.xyz</a> — Free Online Tools</div>
+            <div class="footer-links">
+                <a href="https://getage247.xyz/" target="_blank">Home</a>
+                <a href="https://getage247.xyz/about" target="_blank">About</a>
+                <a href="https://getage247.xyz/contact" target="_blank">Contact</a>
+                <a href="https://getage247.xyz/privacy" target="_blank">Privacy</a>
+                <a href="https://getage247.xyz/cookie-policy" target="_blank">Cookie Policy</a>
+                <a href="https://getage247.xyz/disclaimer" target="_blank">Disclaimer</a>
+                <a href="https://getage247.xyz/terms" class="active">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== MOBILE NAV TOGGLE ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.getElementById('navToggle');
+            const nav = document.getElementById('mainNav');
+            if (toggle && nav) {
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    nav.classList.toggle('open');
+                });
+                nav.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        nav.classList.remove('open');
+                    });
+                });
+                document.addEventListener('click', function(e) {
+                    if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+                        nav.classList.remove('open');
+                    }
+                });
+            }
+        });
+    </script>
+
 </body>
 </html>
