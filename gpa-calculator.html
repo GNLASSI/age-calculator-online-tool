@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA / CGPA Calculator – Free Academic Tool for Pakistani Students | getage247.xyz</title>
+    <meta name="description" content="Free GPA, CGPA, Percentage & Marks Calculator for Pakistani students. Convert grades, calculate SGPA, CGPA, and percentage with ease. 100% free.">
+    <link rel="canonical" href="https://getage247.xyz/gpa-calculator">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="GPA / CGPA Calculator – Free Academic Tool for Pakistani Students">
+    <meta property="og:description" content="Free GPA, CGPA, Percentage & Marks Calculator for Pakistani students. Convert grades, calculate SGPA, CGPA, and percentage with ease.">
+    <meta property="og:url" content="https://getage247.xyz/gpa-calculator">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="getage247.xyz">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GPA / CGPA Calculator – Free Academic Tool">
+    <meta name="twitter:description" content="Free GPA, CGPA, Percentage & Marks Calculator for Pakistani students.">
+    <meta name="twitter:site" content="@getage247">
+
+    <!-- Schema Markup for Tool -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "GPA / CGPA Calculator",
+        "url": "https://getage247.xyz/gpa-calculator",
+        "description": "Free GPA, CGPA, Percentage & Marks Calculator for Pakistani students. Convert grades, calculate SGPA, CGPA, and percentage with ease.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript"
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #0a0a12;
+            --bg-secondary: #12121f;
+            --bg-card: #1a1a2e;
+            --bg-card-hover: #24243a;
+            --border: #2a2a44;
+            --text-primary: #f0eeff;
+            --text-secondary: #b8b4d6;
+            --text-muted: #7a77a0;
+            --accent: #7c5cfc;
+            --accent-glow: #9d7cff;
+            --shadow: 0 8px 32px rgba(0,0,0,0.6);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --green: #00b894;
+            --yellow: #fdcb6e;
+            --red: #e17055;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font);
+            background: var(--bg-primary);
+            background-image: radial-gradient(circle at 10% 20%, rgba(124,92,252,0.08) 0%, transparent 50%),
+                              radial-gradient(circle at 90% 80%, rgba(124,92,252,0.06) 0%, transparent 50%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+        }
+        a { color: var(--accent-glow); text-decoration: none; transition: all 0.3s ease; }
+        a:hover { color: #fff; text-shadow: 0 0 12px rgba(124,92,252,0.5); }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        /* ===== HEADER ===== */
+        header {
+            background: rgba(10,10,18,0.85);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-glow), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+        .logo span { font-weight: 300; -webkit-text-fill-color: var(--text-muted); }
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+        }
+        nav a {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+        }
+        nav a:hover, nav a.active { color: #fff; border-bottom-color: var(--accent); }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 0 8px;
+        }
+
+        /* ===== MAIN ===== */
+        main { flex: 1; padding: 40px 0 60px; }
+
+        .hero {
+            text-align: center;
+            padding: 20px 0 32px;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, var(--accent-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 3px 18px;
+            border-radius: 40px;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        /* ===== TOOL CARD ===== */
+        .tool-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px 40px;
+            box-shadow: var(--shadow);
+            margin-top: 16px;
+        }
+        @media (max-width: 768px) { .tool-card { padding: 20px 16px; } }
+
+        /* ===== TABS ===== */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border-radius: var(--radius-sm);
+            transition: 0.3s;
+            font-family: var(--font);
+            white-space: nowrap;
+        }
+        .tab-btn:hover { color: #fff; background: var(--bg-card); }
+        .tab-btn.active {
+            color: #fff;
+            background: var(--accent);
+            box-shadow: 0 4px 16px rgba(124,92,252,0.3);
+        }
+        .tab-content { display: none; animation: fadeUp 0.3s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px 14px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-family: var(--font);
+            transition: 0.3s;
+        }
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(124,92,252,0.2);
+        }
+        .form-group select option { background: var(--bg-card); }
+
+        .btn {
+            padding: 10px 24px;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: var(--font);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary { background: var(--accent); color: #fff; }
+        .btn-primary:hover { background: var(--accent-glow); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(124,92,252,0.4); }
+        .btn-success { background: var(--green); color: #fff; }
+        .btn-success:hover { background: #00a381; transform: translateY(-2px); }
+        .btn-danger { background: var(--red); color: #fff; }
+        .btn-danger:hover { background: #d63031; }
+        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-secondary); }
+        .btn-outline:hover { border-color: var(--accent); color: #fff; background: var(--bg-card); }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .output-box {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 20px 24px;
+            text-align: center;
+            min-height: 80px;
+            margin-top: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .output-box .result-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .output-box .result-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+        .output-box .result-details {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+        .output-box .error-text {
+            color: var(--red);
+            font-size: 1rem;
+        }
+        .output-box .loading-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* ===== SUBJECT ROWS ===== */
+        .subject-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .subject-row input, .subject-row select {
+            flex: 1;
+            min-width: 80px;
+            padding: 8px 12px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-family: var(--font);
+        }
+        .subject-row input:focus, .subject-row select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .subject-row .remove-subject {
+            background: none;
+            border: none;
+            color: var(--red);
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 4px 8px;
+        }
+        .subject-row .remove-subject:hover { color: #fff; }
+
+        .add-btn {
+            padding: 8px 18px;
+            background: var(--accent);
+            border: none;
+            border-radius: var(--radius-sm);
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: var(--font);
+            font-size: 0.9rem;
+        }
+        .add-btn:hover { background: var(--accent-glow); }
+
+        /* ===== INTERNAL LINKS ===== */
+        .internal-links {
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .internal-links h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .link-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 14px;
+        }
+        .link-grid a {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            padding: 4px 18px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: 0.3s;
+        }
+        .link-grid a:hover {
+            border-color: var(--accent);
+            color: #fff;
+            background: var(--bg-card-hover);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: rgba(10,10,18,0.95);
+            border-top: 1px solid var(--border);
+            padding: 32px 0 24px;
+            margin-top: auto;
+        }
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .footer-inner .copy { color: var(--text-muted); font-size: 0.85rem; }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 22px;
+        }
+        .footer-links a { color: var(--text-muted); font-size: 0.85rem; }
+        .footer-links a:hover { color: #fff; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 12px 0 4px;
+                gap: 2px;
+            }
+            nav.open { display: flex; }
+            nav a {
+                padding: 8px 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid var(--border);
+            }
+            nav a:last-child { border-bottom: none; }
+            .hero h1 { font-size: 2rem; }
+            .tool-card { padding: 16px; }
+            .tab-btn { padding: 8px 14px; font-size: 0.8rem; }
+            .subject-row { flex-direction: column; }
+            .subject-row input, .subject-row select { width: 100%; min-width: unset; }
+            .output-box .result-number { font-size: 1.6rem; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 14px; }
+            .hero h1 { font-size: 1.7rem; }
+            .btn-group .btn { flex: 1; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">getage<span>247</span></div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+            <nav id="mainNav">
+                <a href="https://getage247.xyz/" target="_blank">Home</a>
+                <a href="https://getage247.xyz/about" target="_blank">About</a>
+                <a href="https://getage247.xyz/contact" target="_blank">Contact</a>
+                <a href="https://getage247.xyz/privacy" target="_blank">Privacy</a>
+                <a href="https://getage247.xyz/cookie-policy" target="_blank">Cookie Policy</a>
+                <a href="https://getage247.xyz/disclaimer" target="_blank">Disclaimer</a>
+                <a href="https://getage247.xyz/terms" target="_blank">Terms</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main>
+        <div class="container">
+            <div class="hero">
+                <h1>🎓 GPA / CGPA Calculator</h1>
+                <p>Calculate your GPA, CGPA, Percentage &amp; Marks instantly. Designed specifically for Pakistani students.</p>
+                <span class="badge">✨ 100% Free &amp; No Sign-Up</span>
+            </div>
+
+            <div class="tool-card">
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="gpa">📊 GPA Calculator</button>
+                    <button class="tab-btn" data-tab="cgpa">📈 CGPA Calculator</button>
+                    <button class="tab-btn" data-tab="percentage">📝 Percentage</button>
+                    <button class="tab-btn" data-tab="grade">🔢 Grade Converter</button>
+                </div>
+
+                <!-- ===== TAB 1: GPA CALCULATOR ===== -->
+                <div class="tab-content active" id="tab-gpa">
+                    <p style="color:var(--text-muted); margin-bottom:16px;">Add your subjects, enter marks or grades, and calculate your semester GPA instantly.</p>
+
+                    <div id="gpaSubjects">
+                        <div class="subject-row">
+                            <input type="text" class="gpa-subject" placeholder="Subject Name" value="Subject 1">
+                            <input type="number" class="gpa-credit" placeholder="Credit Hours" value="3" min="0" step="0.5">
+                            <input type="number" class="gpa-marks" placeholder="Marks" value="85" min="0" max="100">
+                            <button class="remove-subject" onclick="removeGPASubject(this)">✕</button>
+                        </div>
+                        <div class="subject-row">
+                            <input type="text" class="gpa-subject" placeholder="Subject Name" value="Subject 2">
+                            <input type="number" class="gpa-credit" placeholder="Credit Hours" value="3" min="0" step="0.5">
+                            <input type="number" class="gpa-marks" placeholder="Marks" value="78" min="0" max="100">
+                            <button class="remove-subject" onclick="removeGPASubject(this)">✕</button>
+                        </div>
+                        <div class="subject-row">
+                            <input type="text" class="gpa-subject" placeholder="Subject Name" value="Subject 3">
+                            <input type="number" class="gpa-credit" placeholder="Credit Hours" value="2" min="0" step="0.5">
+                            <input type="number" class="gpa-marks" placeholder="Marks" value="92" min="0" max="100">
+                            <button class="remove-subject" onclick="removeGPASubject(this)">✕</button>
+                        </div>
+                    </div>
+
+                    <button class="add-btn" onclick="addGPASubject()">+ Add Subject</button>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="calculateGPA()">⚡ Calculate GPA</button>
+                        <button class="btn btn-danger" onclick="resetGPA()">🔄 Reset</button>
+                    </div>
+
+                    <div class="output-box" id="gpaOutput">
+                        <div class="loading-text">Enter your subject details and click Calculate.</div>
+                    </div>
+                </div>
+
+                <!-- ===== TAB 2: CGPA CALCULATOR ===== -->
+                <div class="tab-content" id="tab-cgpa">
+                    <p style="color:var(--text-muted); margin-bottom:16px;">Enter your semester GPAs and credit hours to calculate your overall CGPA.</p>
+
+                    <div id="cgpaSemesters">
+                        <div class="subject-row">
+                            <input type="text" class="cgpa-semester" placeholder="Semester Name" value="Semester 1">
+                            <input type="number" class="cgpa-gpa" placeholder="GPA" value="3.5" min="0" max="4" step="0.01">
+                            <input type="number" class="cgpa-credit" placeholder="Credit Hours" value="18" min="0" step="0.5">
+                            <button class="remove-subject" onclick="removeCGPASemester(this)">✕</button>
+                        </div>
+                        <div class="subject-row">
+                            <input type="text" class="cgpa-semester" placeholder="Semester Name" value="Semester 2">
+                            <input type="number" class="cgpa-gpa" placeholder="GPA" value="3.7" min="0" max="4" step="0.01">
+                            <input type="number" class="cgpa-credit" placeholder="Credit Hours" value="18" min="0" step="0.5">
+                            <button class="remove-subject" onclick="removeCGPASemester(this)">✕</button>
+                        </div>
+                    </div>
+
+                    <button class="add-btn" onclick="addCGPASemester()">+ Add Semester</button>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="calculateCGPA()">⚡ Calculate CGPA</button>
+                        <button class="btn btn-danger" onclick="resetCGPA()">🔄 Reset</button>
+                    </div>
+
+                    <div class="output-box" id="cgpaOutput">
+                        <div class="loading-text">Enter your semester GPAs and click Calculate.</div>
+                    </div>
+                </div>
+
+                <!-- ===== TAB 3: PERCENTAGE ===== -->
+                <div class="tab-content" id="tab-percentage">
+                    <p style="color:var(--text-muted); margin-bottom:16px;">Convert GPA to Percentage or Percentage to GPA instantly.</p>
+
+                    <div class="form-group">
+                        <label>Convert From</label>
+                        <select id="percentageDirection">
+                            <option value="gpa-to-percentage">GPA → Percentage</option>
+                            <option value="percentage-to-gpa">Percentage → GPA</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label id="percentageInputLabel">Enter GPA</label>
+                        <input type="number" id="percentageInput" placeholder="Enter GPA (e.g., 3.5)" value="3.5" min="0" max="4" step="0.01">
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="convertPercentage()">⚡ Convert</button>
+                        <button class="btn btn-danger" onclick="resetPercentage()">🔄 Reset</button>
+                    </div>
+
+                    <div class="output-box" id="percentageOutput">
+                        <div class="loading-text">Enter a value and click Convert.</div>
+                    </div>
+                </div>
+
+                <!-- ===== TAB 4: GRADE CONVERTER ===== -->
+                <div class="tab-content" id="tab-grade">
+                    <p style="color:var(--text-muted); margin-bottom:16px;">Convert marks to grades (A+, A, B+, etc.) as per Pakistani university standards.</p>
+
+                    <div class="form-group">
+                        <label>Enter Marks</label>
+                        <input type="number" id="gradeMarks" placeholder="Enter marks (0-100)" value="85" min="0" max="100">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select University Standard</label>
+                        <select id="gradeStandard">
+                            <option value="hitec">HITEC University Standard</option>
+                            <option value="vu">Virtual University (VU)</option>
+                            <option value="pu">Punjab University</option>
+                            <option value="uop">University of Peshawar</option>
+                            <option value="standard">Standard Pakistani System</option>
+                        </select>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="convertGrade()">⚡ Convert to Grade</button>
+                        <button class="btn btn-danger" onclick="resetGrade()">🔄 Reset</button>
+                    </div>
+
+                    <div class="output-box" id="gradeOutput">
+                        <div class="loading-text">Enter marks and click Convert.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== INTERNAL LINKS ===== -->
+            <div class="internal-links">
+                <h3>🔗 Explore More Free Tools &amp; Blogs</h3>
+                <div class="link-grid">
+                    <!-- Tools -->
+                    <a href="https://getage247.xyz/meta-tag-generator" target="_blank">🏷️ Meta Tag Generator</a>
+                    <a href="https://getage247.xyz/schema-markup-generator" target="_blank">🧩 Schema Markup Generator</a>
+                    <a href="https://getage247.xyz/robots-txt-generator" target="_blank">🤖 Robots.txt Tool</a>
+                    <a href="https://getage247.xyz/seo-kit-generator" target="_blank">🛠️ SEO Kit Generator</a>
+                    <a href="https://getage247.xyz/age-calculator" target="_blank">📅 Age Calculator</a>
+                    <a href="https://getage247.xyz/bmi-calculator" target="_blank">⚖️ BMI Calculator</a>
+                    <a href="https://getage247.xyz/unit-converter" target="_blank">📏 Unit Converter</a>
+                    <a href="https://getage247.xyz/currency-converter" target="_blank">💱 Currency Converter</a>
+                    <a href="https://getage247.xyz/gpa-calculator" target="_blank">🎓 GPA Calculator</a>
+                    <a href="https://getage247.xyz/image-resizer" target="_blank">🖼️ Image Resizer</a>
+                    <a href="https://getage247.xyz/password-generator" target="_blank">🔐 Password Generator</a>
+                    <a href="https://getage247.xyz/qr-generator" target="_blank">📱 QR Code Generator</a>
+                    <a href="https://getage247.xyz/loan-calculator" target="_blank">💰 Loan Calculator</a>
+                    <a href="https://getage247.xyz/json-formatter" target="_blank">📋 JSON Formatter</a>
+                    <a href="https://getage247.xyz/text-case-converter" target="_blank">🔤 Text Case Converter</a>
+                    <a href="https://getage247.xyz/base64-encoder" target="_blank">🔢 Base64 Enc/Dec</a>
+                    <a href="https://getage247.xyz/jpg-to-pdf" target="_blank">📄 JPG to PDF</a>
+                    <a href="https://getage247.xyz/percentage-calculator" target="_blank">📊 Percentage Calc</a>
+                    <a href="https://getage247.xyz/word-counter" target="_blank">📝 Word Counter</a>
+                    <a href="https://getage247.xyz/uuid-generator" target="_blank">🆔 UUID Generator</a>
+
+                    <!-- Blogs -->
+                    <a href="https://getage247.xyz/blog-meta-tag-generator.html" target="_blank">📖 Meta Tag Generator Guide</a>
+                    <a href="https://getage247.xyz/blog-meta-tag-adsense-guide.html" target="_blank">📖 AdSense Meta Tag Guide</a>
+                    <a href="https://getage247.xyz/schema-markup-generator-guide.html" target="_blank">📖 Schema Markup Guide</a>
+                    <a href="https://getage247.xyz/blog/robots-txt-guide" target="_blank">📖 Robots.txt Guide</a>
+                    <a href="https://getage247.xyz/blog/how-to-use-seo-kit-generator" target="_blank">📖 SEO Kit Generator Guide</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container footer-inner">
+            <div class="copy">&copy; 2026 <a href="https://getage247.xyz/" target="_blank">getage247.xyz</a> — Free Online Tools</div>
+            <div class="footer-links">
+                <a href="https://getage247.xyz/" target="_blank">Home</a>
+                <a href="https://getage247.xyz/about" target="_blank">About</a>
+                <a href="https://getage247.xyz/contact" target="_blank">Contact</a>
+                <a href="https://getage247.xyz/privacy" target="_blank">Privacy</a>
+                <a href="https://getage247.xyz/cookie-policy" target="_blank">Cookie Policy</a>
+                <a href="https://getage247.xyz/disclaimer" target="_blank">Disclaimer</a>
+                <a href="https://getage247.xyz/terms" target="_blank">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        'use strict';
+
+        // ===== HELPER FUNCTIONS =====
+        function getGrade(marks, standard) {
+            const grades = {
+                'hitec': [
+                    { min: 85, grade: 'A', gpa: 4.0 },
+                    { min: 80, grade: 'A-', gpa: 3.7 },
+                    { min: 75, grade: 'B+', gpa: 3.3 },
+                    { min: 70, grade: 'B', gpa: 3.0 },
+                    { min: 65, grade: 'B-', gpa: 2.7 },
+                    { min: 60, grade: 'C+', gpa: 2.3 },
+                    { min: 55, grade: 'C', gpa: 2.0 },
+                    { min: 50, grade: 'C-', gpa: 1.7 },
+                    { min: 45, grade: 'D', gpa: 1.0 },
+                    { min: 0, grade: 'F', gpa: 0.0 }
+                ],
+                'vu': [
+                    { min: 80, grade: 'A', gpa: 4.0 },
+                    { min: 70, grade: 'B', gpa: 3.0 },
+                    { min: 60, grade: 'C', gpa: 2.0 },
+                    { min: 50, grade: 'D', gpa: 1.0 },
+                    { min: 0, grade: 'F', gpa: 0.0 }
+                ],
+                'pu': [
+                    { min: 80, grade: 'A', gpa: 4.0 },
+                    { min: 70, grade: 'B', gpa: 3.0 },
+                    { min: 60, grade: 'C', gpa: 2.0 },
+                    { min: 50, grade: 'D', gpa: 1.0 },
+                    { min: 0, grade: 'F', gpa: 0.0 }
+                ],
+                'uop': [
+                    { min: 80, grade: 'A', gpa: 4.0 },
+                    { min: 70, grade: 'B', gpa: 3.0 },
+                    { min: 60, grade: 'C', gpa: 2.0 },
+                    { min: 50, grade: 'D', gpa: 1.0 },
+                    { min: 0, grade: 'F', gpa: 0.0 }
+                ],
+                'standard': [
+                    { min: 85, grade: 'A', gpa: 4.0 },
+                    { min: 80, grade: 'A-', gpa: 3.7 },
+                    { min: 75, grade: 'B+', gpa: 3.3 },
+                    { min: 70, grade: 'B', gpa: 3.0 },
+                    { min: 65, grade: 'B-', gpa: 2.7 },
+                    { min: 60, grade: 'C+', gpa: 2.3 },
+                    { min: 55, grade: 'C', gpa: 2.0 },
+                    { min: 50, grade: 'C-', gpa: 1.7 },
+                    { min: 45, grade: 'D', gpa: 1.0 },
+                    { min: 0, grade: 'F', gpa: 0.0 }
+                ]
+            };
+            const rules = grades[standard] || grades['standard'];
+            for (let rule of rules) {
+                if (marks >= rule.min) return rule;
+            }
+            return { grade: 'F', gpa: 0.0 };
+        }
+
+        // ===== GPA CALCULATOR =====
+        function addGPASubject() {
+            const container = document.getElementById('gpaSubjects');
+            const row = document.createElement('div');
+            row.className = 'subject-row';
+            row.innerHTML = `
+                <input type="text" class="gpa-subject" placeholder="Subject Name" value="Subject ${container.children.length + 1}">
+                <input type="number" class="gpa-credit" placeholder="Credit Hours" value="3" min="0" step="0.5">
+                <input type="number" class="gpa-marks" placeholder="Marks" value="80" min="0" max="100">
+                <button class="remove-subject" onclick="removeGPASubject(this)">✕</button>
+            `;
+            container.appendChild(row);
+        }
+
+        function removeGPASubject(btn) {
+            const container = document.getElementById('gpaSubjects');
+            if (container.children.length > 1) {
+                btn.closest('.subject-row').remove();
+            } else {
+                alert('You need at least one subject.');
+            }
+        }
+
+        function resetGPA() {
+            document.querySelectorAll('#gpaSubjects .subject-row').forEach(row => row.remove());
+            const container = document.getElementById('gpaSubjects');
+            for (let i = 0; i < 3; i++) {
+                const row = document.createElement('div');
+                row.className = 'subject-row';
+                row.innerHTML = `
+                    <input type="text" class="gpa-subject" placeholder="Subject Name" value="Subject ${i + 1}">
+                    <input type="number" class="gpa-credit" placeholder="Credit Hours" value="3" min="0" step="0.5">
+                    <input type="number" class="gpa-marks" placeholder="Marks" value="${[85, 78, 92][i]}" min="0" max="100">
+                    <button class="remove-subject" onclick="removeGPASubject(this)">✕</button>
+                `;
+                container.appendChild(row);
+            }
+            document.getElementById('gpaOutput').innerHTML = '<div class="loading-text">Enter your subject details and click Calculate.</div>';
+        }
+
+        function calculateGPA() {
+            const rows = document.querySelectorAll('#gpaSubjects .subject-row');
+            let totalPoints = 0;
+            let totalCredits = 0;
+            let subjectDetails = [];
+
+            rows.forEach(row => {
+                const credit = parseFloat(row.querySelector('.gpa-credit').value) || 0;
+                const marks = parseFloat(row.querySelector('.gpa-marks').value) || 0;
+                const name = row.querySelector('.gpa-subject').value || 'Subject';
+
+                const gradeInfo = getGrade(marks, 'standard');
+                const points = gradeInfo.gpa * credit;
+                totalPoints += points;
+                totalCredits += credit;
+                subjectDetails.push({ name, credit, marks, grade: gradeInfo.grade, gpa: gradeInfo.gpa });
+            });
+
+            if (totalCredits === 0) {
+                document.getElementById('gpaOutput').innerHTML = '<div class="error-text">⚠️ Total credit hours cannot be zero.</div>';
+                return;
+            }
+
+            const gpa = totalPoints / totalCredits;
+
+            let html = `<div class="result-number">${gpa.toFixed(2)}</div>`;
+            html += `<div class="result-label">📊 Semester GPA</div>`;
+            html += `<div class="result-details">Total Credits: ${totalCredits} | Total Points: ${totalPoints.toFixed(2)}</div>`;
+            html += `<div class="result-details" style="margin-top:4px;">`;
+            subjectDetails.forEach(s => {
+                html += `${s.name}: ${s.marks}% → ${s.grade} (${s.gpa.toFixed(2)}) | `;
+            });
+            html += `</div>`;
+            document.getElementById('gpaOutput').innerHTML = html;
+        }
+
+        // ===== CGPA CALCULATOR =====
+        function addCGPASemester() {
+            const container = document.getElementById('cgpaSemesters');
+            const row = document.createElement('div');
+            row.className = 'subject-row';
+            row.innerHTML = `
+                <input type="text" class="cgpa-semester" placeholder="Semester Name" value="Semester ${container.children.length + 1}">
+                <input type="number" class="cgpa-gpa" placeholder="GPA" value="3.5" min="0" max="4" step="0.01">
+                <input type="number" class="cgpa-credit" placeholder="Credit Hours" value="18" min="0" step="0.5">
+                <button class="remove-subject" onclick="removeCGPASemester(this)">✕</button>
+            `;
+            container.appendChild(row);
+        }
+
+        function removeCGPASemester(btn) {
+            const container = document.getElementById('cgpaSemesters');
+            if (container.children.length > 1) {
+                btn.closest('.subject-row').remove();
+            } else {
+                alert('You need at least one semester.');
+            }
+        }
+
+        function resetCGPA() {
+            document.querySelectorAll('#cgpaSemesters .subject-row').forEach(row => row.remove());
+            const container = document.getElementById('cgpaSemesters');
+            for (let i = 0; i < 2; i++) {
+                const row = document.createElement('div');
+                row.className = 'subject-row';
+                row.innerHTML = `
+                    <input type="text" class="cgpa-semester" placeholder="Semester Name" value="Semester ${i + 1}">
+                    <input type="number" class="cgpa-gpa" placeholder="GPA" value="${[3.5, 3.7][i]}" min="0" max="4" step="0.01">
+                    <input type="number" class="cgpa-credit" placeholder="Credit Hours" value="18" min="0" step="0.5">
+                    <button class="remove-subject" onclick="removeCGPASemester(this)">✕</button>
+                `;
+                container.appendChild(row);
+            }
+            document.getElementById('cgpaOutput').innerHTML = '<div class="loading-text">Enter your semester GPAs and click Calculate.</div>';
+        }
+
+        function calculateCGPA() {
+            const rows = document.querySelectorAll('#cgpaSemesters .subject-row');
+            let totalPoints = 0;
+            let totalCredits = 0;
+            let semesterDetails = [];
+
+            rows.forEach(row => {
+                const gpa = parseFloat(row.querySelector('.cgpa-gpa').value) || 0;
+                const credit = parseFloat(row.querySelector('.cgpa-credit').value) || 0;
+                const name = row.querySelector('.cgpa-semester').value || 'Semester';
+
+                totalPoints += gpa * credit;
+                totalCredits += credit;
+                semesterDetails.push({ name, gpa, credit });
+            });
+
+            if (totalCredits === 0) {
+                document.getElementById('cgpaOutput').innerHTML = '<div class="error-text">⚠️ Total credit hours cannot be zero.</div>';
+                return;
+            }
+
+            const cgpa = totalPoints / totalCredits;
+
+            let html = `<div class="result-number">${cgpa.toFixed(2)}</div>`;
+            html += `<div class="result-label">📈 Overall CGPA</div>`;
+            html += `<div class="result-details">Total Semesters: ${semesterDetails.length} | Total Credits: ${totalCredits}</div>`;
+            html += `<div class="result-details" style="margin-top:4px;">`;
+            semesterDetails.forEach(s => {
+                html += `${s.name}: ${s.gpa.toFixed(2)} GPA (${s.credit} credits) | `;
+            });
+            html += `</div>`;
+            document.getElementById('cgpaOutput').innerHTML = html;
+        }
+
+        // ===== PERCENTAGE CONVERTER =====
+        function resetPercentage() {
+            document.getElementById('percentageInput').value = '3.5';
+            document.getElementById('percentageOutput').innerHTML = '<div class="loading-text">Enter a value and click Convert.</div>';
+        }
+
+        function convertPercentage() {
+            const direction = document.getElementById('percentageDirection').value;
+            const input = parseFloat(document.getElementById('percentageInput').value);
+
+            if (isNaN(input) || input < 0) {
+                document.getElementById('percentageOutput').innerHTML = '<div class="error-text">⚠️ Please enter a valid number.</div>';
+                return;
+            }
+
+            let result, label;
+
+            if (direction === 'gpa-to-percentage') {
+                if (input > 4) {
+                    document.getElementById('percentageOutput').innerHTML = '<div class="error-text">⚠️ GPA cannot be greater than 4.0.</div>';
+                    return;
+                }
+                result = (input / 4) * 100;
+                label = 'Percentage';
+            } else {
+                if (input > 100) {
+                    document.getElementById('percentageOutput').innerHTML = '<div class="error-text">⚠️ Percentage cannot be greater than 100.</div>';
+                    return;
+                }
+                result = (input / 100) * 4;
+                label = 'GPA';
+            }
+
+            document.getElementById('percentageOutput').innerHTML = `
+                <div class="result-number">${result.toFixed(2)}</div>
+                <div class="result-label">📊 ${label}</div>
+                <div class="result-details">${direction === 'gpa-to-percentage' ? `${input} GPA = ${result.toFixed(2)}%` : `${input}% = ${result.toFixed(2)} GPA`}</div>
+            `;
+        }
+
+        // ===== GRADE CONVERTER =====
+        function resetGrade() {
+            document.getElementById('gradeMarks').value = '85';
+            document.getElementById('gradeOutput').innerHTML = '<div class="loading-text">Enter marks and click Convert.</div>';
+        }
+
+        function convertGrade() {
+            const marks = parseFloat(document.getElementById('gradeMarks').value);
+            const standard = document.getElementById('gradeStandard').value;
+
+            if (isNaN(marks) || marks < 0 || marks > 100) {
+                document.getElementById('gradeOutput').innerHTML = '<div class="error-text">⚠️ Please enter marks between 0 and 100.</div>';
+                return;
+            }
+
+            const result = getGrade(marks, standard);
+
+            let standardNames = {
+                'hitec': 'HITEC University',
+                'vu': 'Virtual University (VU)',
+                'pu': 'Punjab University',
+                'uop': 'University of Peshawar',
+                'standard': 'Standard Pakistani System'
+            };
+
+            document.getElementById('gradeOutput').innerHTML = `
+                <div class="result-number" style="font-size:2.8rem;">${result.grade}</div>
+                <div class="result-label">📊 Grade</div>
+                <div class="result-details">Marks: ${marks}% | GPA: ${result.gpa.toFixed(2)} | Standard: ${standardNames[standard]}</div>
+                <div class="result-details" style="margin-top:4px;">
+                    ${marks >= 85 ? '🌟 Excellent!' : marks >= 70 ? '👍 Good!' : marks >= 50 ? '📝 Average' : '⚠️ Needs Improvement'}
+                </div>
+            `;
+        }
+
+        // ===== TABS =====
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+                document.getElementById('tab-' + this.dataset.tab).classList.add('active');
+            });
+        });
+
+        // ===== MOBILE NAV =====
+        const toggle = document.getElementById('navToggle');
+        const nav = document.getElementById('mainNav');
+        if (toggle && nav) {
+            toggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                nav.classList.toggle('open');
+            });
+            nav.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() { nav.classList.remove('open'); });
+            });
+            document.addEventListener('click', function(e) {
+                if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+                    nav.classList.remove('open');
+                }
+            });
+        }
+
+        // Auto-calculate on load
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(calculateGPA, 300);
+        });
+    </script>
+
+</body>
+</html>
