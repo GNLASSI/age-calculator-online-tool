@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>YouTube Thumbnail Downloader – Free, Fast & No API</title>
-    <meta name="description" content="Download any YouTube thumbnail in HD, 4K, or standard quality. Free, no API, no sign-up. Supports Shorts, embed & youtu.be links." />
+    <title>YouTube Thumbnail Downloader – Free HD Downloader Tool 2026</title>
+    <meta name="description" content="Download YouTube thumbnails in HD, 4K, and all standard sizes for free. No API, no sign-up. Supports Shorts, youtu.be & embed links." />
     <meta name="keywords" content="youtube thumbnail downloader, download youtube thumbnail, youtube thumbnail grabber, hd thumbnail download" />
-    <link rel="canonical" href="https://www.yourdomain.com/thumbnail-downloader" />
+    <link rel="canonical" href="https://www.yourdomain.com/youtube-thumbnail-downloader" />
+    
     <!-- Open Graph -->
-    <meta property="og:title" content="YouTube Thumbnail Downloader – Free & Fast" />
-    <meta property="og:description" content="Download YouTube thumbnails in all sizes instantly. No sign-up, no API." />
+    <meta property="og:title" content="YouTube Thumbnail Downloader – Free HD Downloader Tool" />
+    <meta property="og:description" content="Download any YouTube thumbnail in HD, 4K, or standard quality instantly. No sign-up, no API, no software." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.yourdomain.com/thumbnail-downloader" />
+    <meta property="og:url" content="https://www.yourdomain.com/youtube-thumbnail-downloader" />
     <meta name="twitter:card" content="summary_large_image" />
     
-    <!-- Schema: SoftwareApplication -->
+    <!-- Schema Markup -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
+        "@type": "WebApplication",
         "name": "YouTube Thumbnail Downloader",
         "description": "Download YouTube thumbnails in all sizes. No API, no sign-up.",
         "applicationCategory": "Multimedia",
@@ -33,7 +34,7 @@
     </script>
     
     <style>
-        /* ----- RESET & ROOT ----- */
+        /* ===== RESET & ROOT ===== */
         * {
             margin: 0;
             padding: 0;
@@ -72,12 +73,21 @@
             display: flex;
             flex-direction: column;
         }
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        a:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
         
-        /* ----- HEADER (No Legal Pages) ----- */
+        /* ===== HEADER ===== */
         .site-header {
             background: var(--header-bg);
             border-bottom: 1px solid var(--border);
-            padding: 1rem 1.5rem;
+            padding: 0.8rem 1.5rem;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -85,21 +95,21 @@
             transition: background var(--transition), border var(--transition);
         }
         .header-inner {
-            max-width: 1080px;
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 0.8rem;
+            gap: 0.5rem;
         }
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
         .logo-area h1 {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 700;
             letter-spacing: -0.3px;
             background: linear-gradient(135deg, #ff0033, #cc002a);
@@ -107,8 +117,8 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .logo-area span {
-            font-size: 0.8rem;
+        .logo-area .tagline {
+            font-size: 0.7rem;
             color: var(--text-secondary);
             -webkit-text-fill-color: var(--text-secondary);
             font-weight: 500;
@@ -116,35 +126,78 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .header-nav {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .header-nav a {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: 0.15s;
+            padding: 0.2rem 0.4rem;
+        }
+        .header-nav a:hover {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .header-nav a.legal {
+            color: var(--text-secondary);
+            font-size: 0.7rem;
+            opacity: 0.7;
+        }
+        .header-nav a.legal:hover {
+            opacity: 1;
+            color: var(--primary);
         }
         .theme-toggle {
             background: var(--border);
             border: none;
             border-radius: 40px;
-            padding: 0.4rem 1.2rem;
+            padding: 0.35rem 1rem;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: var(--text);
             cursor: pointer;
             transition: 0.2s;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
         }
         .theme-toggle:hover {
             opacity: 0.7;
         }
-        /* No legal links in header */
         
-        /* ----- MAIN CONTAINER ----- */
+        /* ===== MAIN CONTENT ===== */
         .main-wrapper {
             flex: 1;
-            max-width: 1080px;
+            max-width: 1200px;
             width: 100%;
             margin: 1.5rem auto;
             padding: 0 1.5rem;
         }
+        
+        .page-header {
+            margin-bottom: 1.5rem;
+        }
+        .page-header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 0.3rem;
+            color: var(--text);
+        }
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+        
+        /* Card / Tool Container */
         .card {
             background: var(--surface);
             border-radius: var(--radius);
@@ -152,9 +205,10 @@
             padding: 2rem 1.8rem;
             transition: background var(--transition), box-shadow var(--transition);
             border: 1px solid var(--border);
+            margin-bottom: 2rem;
         }
         
-        /* ----- INPUT ----- */
+        /* ===== TOOL INPUT ===== */
         .input-group {
             display: flex;
             flex-direction: column;
@@ -203,6 +257,7 @@
         .btn-primary:hover {
             background: var(--primary-hover);
             transform: scale(1.01);
+            text-decoration: none;
         }
         .btn-secondary {
             background: var(--border);
@@ -225,26 +280,58 @@
             align-items: center;
             margin-top: 0.5rem;
         }
+        
+        /* ===== DROP ZONE (FIXED) ===== */
         .drop-zone {
             border: 2px dashed var(--border);
             border-radius: 40px;
-            padding: 1rem 1.5rem;
+            padding: 1.2rem 1.5rem;
             text-align: center;
             color: var(--text-secondary);
             font-size: 0.95rem;
             transition: 0.2s;
             cursor: pointer;
             background: var(--bg);
+            position: relative;
         }
         .drop-zone.dragover {
             border-color: var(--primary);
-            background: rgba(255, 0, 51, 0.04);
+            background: rgba(255, 0, 51, 0.06);
+            transform: scale(1.01);
+        }
+        .drop-zone .drop-icon {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .drop-zone .drop-text {
+            pointer-events: none;
         }
         
-        /* ----- THUMBNAIL GRID ----- */
+        .recent-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 0.8rem 0 0.2rem;
+        }
+        .recent-tags span {
+            background: var(--border);
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: 0.15s;
+        }
+        .recent-tags span:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* ===== THUMBNAIL GRID ===== */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
         }
@@ -271,7 +358,7 @@
             justify-content: space-between;
             align-items: center;
             margin: 0.6rem 0 0.4rem;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 500;
             color: var(--text-secondary);
         }
@@ -286,8 +373,8 @@
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 30px;
-            padding: 0.3rem 0.8rem;
-            font-size: 0.75rem;
+            padding: 0.25rem 0.7rem;
+            font-size: 0.7rem;
             font-weight: 600;
             color: var(--text);
             cursor: pointer;
@@ -302,17 +389,16 @@
             background: var(--primary);
             color: white;
             border-color: var(--primary);
+            text-decoration: none;
         }
         .badge {
             background: var(--surface);
-            padding: 0.2rem 0.7rem;
+            padding: 0.15rem 0.6rem;
             border-radius: 30px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 600;
             border: 1px solid var(--border);
         }
-        
-        /* loader */
         .loader {
             display: none;
             justify-content: center;
@@ -332,8 +418,6 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-        
-        /* error */
         .error-box {
             background: #fee2e2;
             color: #991b1b;
@@ -348,7 +432,7 @@
             color: #fecaca;
         }
         
-        /* share */
+        /* Share Row */
         .share-row {
             display: flex;
             flex-wrap: wrap;
@@ -375,28 +459,35 @@
             background: var(--primary);
             color: white;
             border-color: var(--primary);
+            text-decoration: none;
         }
         
-        /* info / faq */
+        /* Info Section */
         .info-section {
-            margin-top: 3rem;
+            margin-top: 2.5rem;
             padding-top: 2rem;
             border-top: 1px solid var(--border);
         }
         .info-section h2 {
             font-size: 1.5rem;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
+            color: var(--text);
         }
-        .info-section p,
-        .info-section li {
+        .info-section p, .info-section li {
             color: var(--text-secondary);
-            line-height: 1.6;
+            line-height: 1.7;
         }
+        .info-section ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* FAQ */
         .faq-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0.8rem 2rem;
-            margin-top: 1.2rem;
+            margin: 1.2rem 0;
         }
         .faq-grid details {
             background: var(--bg);
@@ -412,12 +503,16 @@
         .faq-grid details p {
             margin-top: 0.5rem;
             font-size: 0.95rem;
+            color: var(--text-secondary);
         }
+        
+        /* Internal Links */
         .internal-links {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem 1.2rem;
             margin: 1.5rem 0 0.5rem;
+            padding: 1rem 0;
         }
         .internal-links a {
             color: var(--text-secondary);
@@ -425,34 +520,87 @@
             font-weight: 500;
             border-bottom: 2px solid transparent;
             transition: 0.15s;
+            font-size: 0.95rem;
         }
         .internal-links a:hover {
             border-bottom-color: var(--primary);
             color: var(--text);
+            text-decoration: none;
         }
         
-        /* recent */
-        .recent-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 0.8rem 0 0.2rem;
+        /* ===== FOOTER ===== */
+        .site-footer {
+            background: var(--footer-bg);
+            border-top: 1px solid var(--border);
+            padding: 2.5rem 1.5rem 1.5rem;
+            margin-top: 2rem;
+            transition: background var(--transition), border var(--transition);
         }
-        .recent-tags span {
-            background: var(--border);
-            padding: 0.2rem 1rem;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            cursor: pointer;
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+        }
+        .footer-col h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+        .footer-col p {
+            font-size: 0.9rem;
             color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .footer-col a {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.3rem 0;
             transition: 0.15s;
         }
-        .recent-tags span:hover {
-            background: var(--primary);
-            color: white;
+        .footer-col a:hover {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .footer-bottom a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .footer-bottom a:hover {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .footer-legal {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .footer-legal a {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .footer-legal a:hover {
+            color: var(--primary);
+            text-decoration: none;
         }
         
-        /* toast */
+        /* ===== TOAST ===== */
         .copy-toast {
             position: fixed;
             bottom: 30px;
@@ -476,88 +624,103 @@
             opacity: 1;
         }
         
-        /* ----- FOOTER (No Legal Pages) ----- */
-        .site-footer {
-            background: var(--footer-bg);
-            border-top: 1px solid var(--border);
-            padding: 1.5rem;
-            margin-top: 2rem;
-            transition: background var(--transition), border var(--transition);
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .header-nav {
+                gap: 0.5rem;
+            }
+            .header-nav a {
+                font-size: 0.75rem;
+            }
+            .page-header h1 {
+                font-size: 1.6rem;
+            }
+            .card {
+                padding: 1.2rem;
+            }
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+            .input-row input {
+                flex: 1 1 100%;
+            }
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+            .grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
         }
-        .footer-inner {
-            max-width: 1080px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        .footer-brand {
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-        }
-        .footer-brand strong {
-            color: var(--primary);
-        }
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.2rem;
-        }
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: 0.15s;
-        }
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-        /* ❌ NO LEGAL PAGES (Privacy, Terms, Disclaimer, etc.) */
-        /* Only tool-related or useful links */
-        
-        @media (max-width: 640px) {
-            .card { padding: 1.2rem; }
-            .faq-grid { grid-template-columns: 1fr; }
-            .header-inner { flex-direction: column; align-items: start; }
-            .footer-inner { flex-direction: column; text-align: center; }
-            .input-row input { flex: 1 1 100%; }
-            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
-            .logo-area h1 { font-size: 1.3rem; }
-            .logo-area span { font-size: 0.7rem; }
+        @media (max-width: 480px) {
+            .footer-inner {
+                grid-template-columns: 1fr;
+            }
+            .header-nav {
+                flex-wrap: wrap;
+            }
+            .header-nav a.legal {
+                font-size: 0.65rem;
+            }
         }
     </style>
 </head>
 <body>
-    
-    <!-- ===== HEADER (No Legal Pages) ===== -->
+
+    <!-- ===== HEADER (with Legal Pages) ===== -->
     <header class="site-header">
         <div class="header-inner">
             <div class="logo-area">
                 <h1>🎬 Thumbnail Grabber</h1>
-                <span>No API · Free</span>
+                <span class="tagline">Free · No API · No Sign-up</span>
             </div>
             <div class="header-actions">
+                <nav class="header-nav">
+                    <a href="/">Home</a>
+                    <a href="/tools">Tools</a>
+                    <a href="/about">About</a>
+                    <a href="/contact">Contact</a>
+                    <!-- Legal Pages in Header -->
+                    <a href="/privacy-policy" class="legal">Privacy</a>
+                    <a href="/terms-of-service" class="legal">Terms</a>
+                    <a href="/disclaimer" class="legal">Disclaimer</a>
+                    <a href="/cookies-policy" class="legal">Cookies</a>
+                </nav>
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙 Dark</button>
-                <!-- No legal pages here -->
             </div>
         </div>
     </header>
 
     <!-- ===== MAIN ===== -->
     <main class="main-wrapper">
-        <div class="card">
 
-            <!-- Input -->
+        <div class="page-header">
+            <h1>📥 YouTube Thumbnail Downloader</h1>
+            <p>Paste any YouTube URL and download all thumbnail sizes instantly. 100% free, no API, no sign-up.</p>
+        </div>
+
+        <!-- ===== TOOL CARD ===== -->
+        <div class="card">
+            
             <div class="input-group">
                 <div class="input-row">
                     <input type="text" id="urlInput" placeholder="Paste YouTube URL (youtu.be, /shorts, /embed...)" autofocus />
                     <button class="btn-primary" id="fetchBtn">📥 Get Thumbnails</button>
                 </div>
-                <div class="drop-zone" id="dropZone">📂 Drag & drop URL here or click to paste</div>
+                
+                <!-- DROP ZONE (FIXED) -->
+                <div class="drop-zone" id="dropZone">
+                    <span class="drop-icon">📂</span>
+                    <span class="drop-text">Drag & drop a YouTube URL here or click to paste</span>
+                </div>
+                
                 <div class="action-row">
                     <button class="btn-secondary" id="clearBtn">✖ Clear</button>
                     <button class="btn-secondary" id="resetBtn">↺ Reset</button>
@@ -566,10 +729,7 @@
                 <div class="error-box" id="errorBox"></div>
             </div>
 
-            <!-- Loader -->
             <div class="loader" id="loader"><div class="spinner"></div> Fetching thumbnails...</div>
-
-            <!-- Thumbnails Grid -->
             <div id="gridContainer" class="grid"></div>
 
             <!-- Share -->
@@ -577,7 +737,7 @@
                 <span style="font-weight:600; color:var(--text-secondary);">Share:</span>
                 <a href="#" id="shareWhatsapp">WhatsApp</a>
                 <a href="#" id="shareFacebook">Facebook</a>
-                <a href="#" id="shareTwitter">Twitter</a>
+                <a href="#" id="shareTwitter">Twitter (X)</a>
                 <a href="#" id="shareLinkedin">LinkedIn</a>
                 <a href="#" id="shareTelegram">Telegram</a>
                 <a href="#" id="sharePinterest">Pinterest</a>
@@ -585,49 +745,84 @@
                 <a href="#" id="shareEmail">Email</a>
                 <a href="#" id="shareCopyLink">Copy Link</a>
             </div>
+        </div>
 
-            <!-- Educational & FAQ -->
+        <!-- ===== INFO & FAQ ===== -->
+        <div class="card">
             <div class="info-section">
                 <h2>📖 About YouTube Thumbnails</h2>
-                <p><strong>What is a YouTube Thumbnail?</strong> It's the clickable preview image of a video. High-quality thumbnails increase CTR.</p>
-                <p><strong>Best size:</strong> 1280×720 pixels (16:9) with minimum 640px width. Keep file under 2MB.</p>
-                <p><strong>Why download?</strong> For reference, design inspiration, or offline viewing. Always respect copyright.</p>
-                <p><strong>How creators use:</strong> A/B testing, branding, and audience engagement.</p>
+                <p><strong>What is a YouTube Thumbnail?</strong> It's the clickable preview image that appears next to a video title. A compelling thumbnail can increase your click-through rate (CTR) by up to 50%.</p>
+                <p><strong>Best Size:</strong> 1280×720 pixels (16:9 aspect ratio) with a file size under 2MB.</p>
+                <p><strong>Why Download?</strong> For design inspiration, competitor analysis, presentations, or offline reference.</p>
 
                 <h2 style="margin-top:2rem;">❓ Frequently Asked Questions</h2>
                 <div class="faq-grid" id="faqContainer"></div>
 
-                <h2 style="margin-top:2rem;">🔗 Tools you may like</h2>
+                <h2 style="margin-top:2rem;">🔗 More Free Tools</h2>
                 <div class="internal-links">
-                    <a href="#">Age Calculator</a>
-                    <a href="#">GPA Calculator</a>
-                    <a href="#">BMI Calculator</a>
-                    <a href="#">Image Resizer</a>
-                    <a href="#">SEO Kit Generator</a>
-                    <a href="#">Meta Tag Generator</a>
-                    <a href="#">Robots.txt Generator</a>
-                    <a href="#">QR Code Generator</a>
-                    <a href="#">Password Generator</a>
-                    <a href="#">JPG to PDF</a>
-                    <a href="#">Unit Converter</a>
+                    <a href="/age-calculator">Age Calculator</a>
+                    <a href="/gpa-calculator">GPA Calculator</a>
+                    <a href="/bmi-calculator">BMI Calculator</a>
+                    <a href="/image-resizer">Image Resizer</a>
+                    <a href="/seo-kit-generator">SEO Kit Generator</a>
+                    <a href="/meta-tag-generator">Meta Tag Generator</a>
+                    <a href="/robots-txt-generator">Robots.txt Generator</a>
+                    <a href="/qr-code-generator">QR Code Generator</a>
+                    <a href="/password-generator">Password Generator</a>
+                    <a href="/jpg-to-pdf">JPG to PDF</a>
+                    <a href="/unit-converter">Unit Converter</a>
                 </div>
+                
+                <p style="margin-top:1.5rem; font-size:0.85rem; color:var(--text-secondary);">
+                    <strong>Disclaimer:</strong> All thumbnails are property of their respective copyright holders. This tool is for personal, educational, and fair use purposes only.
+                </p>
             </div>
         </div>
+
     </main>
 
-    <!-- ===== FOOTER (No Legal Pages) ===== -->
+    <!-- ===== FOOTER (with Legal Pages) ===== -->
     <footer class="site-footer">
         <div class="footer-inner">
-            <div class="footer-brand">
-                <strong>🎬 Thumbnail Grabber</strong> &middot; Built with ❤️
+            <div class="footer-col">
+                <h4>🎬 Thumbnail Grabber</h4>
+                <p>Free, browser-based YouTube Thumbnail Downloader. No API, no sign-up, no data collection. Download thumbnails in all sizes instantly.</p>
             </div>
-            <div class="footer-links">
-                <!-- Only tool-related / useful links, NO legal pages -->
-                <a href="#about">About</a>
-                <a href="#faq">FAQ</a>
-                <a href="#tools">Tools</a>
-                <a href="#contact">Contact</a>
-                <!-- No Privacy Policy, Terms, Disclaimer, Cookies, etc. -->
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <a href="/age-calculator">Age Calculator</a>
+                <a href="/gpa-calculator">GPA Calculator</a>
+                <a href="/bmi-calculator">BMI Calculator</a>
+                <a href="/image-resizer">Image Resizer</a>
+                <a href="/seo-kit-generator">SEO Kit Generator</a>
+                <a href="/meta-tag-generator">Meta Tag Generator</a>
+                <a href="/qr-code-generator">QR Code Generator</a>
+                <a href="/password-generator">Password Generator</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="/about">About Us</a>
+                <a href="/contact">Contact</a>
+                <a href="/blog">Blog</a>
+                <a href="/sitemap">Sitemap</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/terms-of-service">Terms of Service</a>
+                <a href="/disclaimer">Disclaimer</a>
+                <a href="/cookies-policy">Cookies Policy</a>
+                <a href="/gdpr">GDPR Compliance</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 <a href="/">YourDomain.com</a>. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/terms-of-service">Terms of Service</a>
+                <a href="/disclaimer">Disclaimer</a>
+                <a href="/cookies-policy">Cookies Policy</a>
+                <a href="/gdpr">GDPR</a>
             </div>
         </div>
     </footer>
@@ -635,6 +830,7 @@
     <!-- Toast -->
     <div class="copy-toast" id="toast">✓ Copied!</div>
 
+    <!-- ===== JAVASCRIPT ===== -->
     <script>
         (function() {
             'use strict';
@@ -819,40 +1015,41 @@
 
             // ----- FAQ (30 items) -----
             const faqData = [
-                "What is a YouTube Thumbnail Downloader? – A tool to save YouTube video thumbnails in various sizes.",
-                "Is this tool free? – Yes, completely free with no hidden charges.",
-                "Can I download HD thumbnails? – Yes, up to 1280×720 (Maxres).",
-                "Does it work with Shorts? – Yes, paste any Shorts URL.",
-                "Can I download thumbnails without software? – Absolutely, it runs in your browser.",
-                "Is registration required? – No sign-up or login needed.",
-                "Is it safe? – Fully client-side, no data sent to servers.",
-                "What is the best thumbnail size? – 1280×720 pixels is recommended.",
-                "Why can't I download some thumbnails? – Private or deleted videos may block thumbnails.",
-                "Does this tool store my data? – No, except recent searches in your browser.",
-                "Can I use thumbnails for commercial projects? – Check YouTube's Terms of Service.",
-                "What formats are supported? – JPG images in all standard sizes.",
-                "Can I download from a playlist? – No, only individual videos.",
-                "Does it support age-restricted videos? – Thumbnails may be unavailable.",
-                "How fast is it? – Instant, no API delays.",
-                "Is there a limit? – No limits, use as much as you want.",
-                "Can I embed thumbnails on my site? – Yes, use the direct image URL.",
-                "What's the difference between HQ and SD? – HQ is 480p, SD is 640×480.",
-                "Do I need an API key? – No, this tool is 100% API‑free.",
-                "Can I download thumbnails on mobile? – Yes, fully responsive.",
-                "Why do some thumbnails appear blurry? – Low-quality versions are smaller.",
-                "Can I customize the download name? – Yes, rename the file after saving.",
-                "Is there a dark mode? – Yes, toggle with the button.",
-                "How do I clear recent searches? – Clear your browser's local storage.",
-                "Can I share thumbnails directly? – Use the copy URL or share buttons.",
-                "What if the video is live? – Still works for most live streams.",
-                "Does it work with YouTube Music? – Only video content.",
-                "Is the tool accessible? – Yes, with semantic HTML and ARIA support.",
-                "Can I download all sizes at once? – Each has a separate download button.",
-                "Where can I find the video ID? – It's the 11-character code in the URL."
+                "What is a YouTube Thumbnail Downloader? – A free online tool that extracts and saves the preview image of any YouTube video in multiple resolutions.",
+                "Is this tool free? – Yes, 100% free with no hidden charges or subscriptions.",
+                "Can I download HD thumbnails? – Yes, you can download up to 1280×720 (Max Resolution) and 480×360 (HD) quality.",
+                "Does it work with YouTube Shorts? – Absolutely! Paste any Shorts URL and the tool will fetch its thumbnails.",
+                "Can I download thumbnails without software? – Yes, it runs entirely in your browser – no downloads or installations needed.",
+                "Is registration required? – No sign-up, login, or personal data required.",
+                "Is this tool safe? – Completely safe. All processing happens locally in your browser – no data is sent to any server.",
+                "What is the best thumbnail size? – 1280×720 pixels (16:9 aspect ratio) is YouTube's recommended resolution.",
+                "Why can't I download some thumbnails? – Private videos or deleted content may have thumbnails unavailable.",
+                "Does this tool store my data? – Only recent searches are saved in your browser's local storage – not on any server.",
+                "Can I use thumbnails for commercial projects? – Check YouTube's Terms of Service – thumbnails are typically copyrighted by the uploader.",
+                "What formats are supported? – All thumbnails are downloaded as JPG (JPEG) images.",
+                "Can I download from a playlist? – No – the tool works only with individual video URLs.",
+                "Does it support age-restricted videos? – Thumbnails may be unavailable for age-restricted content.",
+                "How fast is it? – Instant – since there's no API or backend, thumbnails load directly from YouTube's CDN.",
+                "Is there a usage limit? – No limits – use it as many times as you want.",
+                "Can I embed thumbnails on my website? – Yes, copy the image URL and use it as an `<img>` source.",
+                "What's the difference between HQ and SD? – HQ = 480×360 (High Quality), SD = 640×480 (Standard Definition).",
+                "Do I need an API key? – No – this tool is 100% API-free and self-contained.",
+                "Can I download thumbnails on mobile? – Yes, the tool is fully responsive and works on all devices.",
+                "Why do some thumbnails appear blurry? – Lower-quality versions (MQ, SD) have smaller dimensions – use Max or HD for crisp images.",
+                "Can I customize the download filename? – Yes, you can rename the file before saving it on your device.",
+                "Is there a dark mode? – Yes, toggle Dark/Light mode with one click.",
+                "How do I clear recent searches? – Clear your browser's local storage or use the 'Reset' button in the tool.",
+                "Can I share thumbnails directly? – Use the 'Copy URL' or 'Open' buttons to share image links.",
+                "What if the video is live? – Thumbnails work for most live streams and upcoming premieres.",
+                "Does it work with YouTube Music? – Only video content – YouTube Music tracks don't have thumbnails.",
+                "Is the tool accessible? – Yes, built with semantic HTML, ARIA attributes, and keyboard navigation.",
+                "Can I download all sizes at once? – Each size has a separate download button – you can download all individually.",
+                "Where can I find the video ID? – It's the 11-character alphanumeric code in the URL (e.g., `dQw4w9WgXcQ`)."
             ];
 
             function renderFAQ() {
                 const container = document.getElementById('faqContainer');
+                if (!container) return;
                 container.innerHTML = '';
                 faqData.forEach(q => {
                     const parts = q.split('–');
@@ -901,35 +1098,69 @@
                 urlInput.focus();
             });
 
+            // ===== DROP ZONE (FIXED) =====
+            // Prevent default drag behaviors on the whole page
+            document.addEventListener('dragover', function(e) {
+                e.preventDefault();
+            });
+            document.addEventListener('drop', function(e) {
+                e.preventDefault();
+            });
+
+            // Drop zone events
             dropZone.addEventListener('dragover', function(e) {
                 e.preventDefault();
                 this.classList.add('dragover');
             });
+
             dropZone.addEventListener('dragleave', function(e) {
+                e.preventDefault();
                 this.classList.remove('dragover');
             });
+
             dropZone.addEventListener('drop', function(e) {
                 e.preventDefault();
                 this.classList.remove('dragover');
+                
+                // Get the dropped data
+                let url = '';
                 const dt = e.dataTransfer;
-                const url = dt.getData('text/plain') || dt.getData('text/uri-list');
-                if (url) {
-                    urlInput.value = url.trim();
-                    fetchThumbnails(url.trim());
+                
+                // Try text/plain first
+                if (dt.types && dt.types.includes('text/plain')) {
+                    url = dt.getData('text/plain');
+                } else if (dt.types && dt.types.includes('text/uri-list')) {
+                    url = dt.getData('text/uri-list');
                 } else {
-                    showError('No valid URL found.');
+                    // Fallback: try getting as string
+                    url = dt.getData('text') || '';
+                }
+                
+                url = url.trim();
+                
+                if (url && extractVideoId(url)) {
+                    urlInput.value = url;
+                    fetchThumbnails(url);
+                } else if (url) {
+                    showError('❌ Invalid YouTube URL. Please paste a valid YouTube link.');
+                } else {
+                    showError('❌ No valid URL found. Please drag a YouTube link.');
                 }
             });
+
+            // Click on drop zone focuses the input
             dropZone.addEventListener('click', function() {
                 urlInput.focus();
             });
 
+            // Theme toggle
             themeToggle.addEventListener('click', function() {
                 document.body.classList.toggle('dark');
                 const isDark = document.body.classList.contains('dark');
                 this.textContent = isDark ? '☀️ Light' : '🌙 Dark';
             });
 
+            // Share buttons
             document.querySelectorAll('#shareRow a').forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -966,5 +1197,6 @@
 
         })();
     </script>
+
 </body>
 </html>
