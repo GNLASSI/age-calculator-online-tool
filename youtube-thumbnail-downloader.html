@@ -13,6 +13,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.yourdomain.com/thumbnail-downloader" />
     <meta name="twitter:card" content="summary_large_image" />
+    
     <!-- Schema: SoftwareApplication -->
     <script type="application/ld+json">
     {
@@ -30,6 +31,7 @@
         }
     }
     </script>
+    
     <style>
         /* ----- RESET & ROOT ----- */
         * {
@@ -49,6 +51,8 @@
             --radius: 20px;
             --shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
             --transition: 0.25s ease;
+            --header-bg: #ffffff;
+            --footer-bg: #f1f5f9;
         }
         body.dark {
             --bg: #0f172a;
@@ -57,23 +61,90 @@
             --text-secondary: #cbd5e1;
             --border: #334155;
             --shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            --header-bg: #1e293b;
+            --footer-bg: #0f172a;
         }
         body {
             background: var(--bg);
             color: var(--text);
             transition: background var(--transition), color var(--transition);
-            padding: 1.5rem;
             min-height: 100vh;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
         }
-        .container {
+        
+        /* ----- HEADER (No Legal Pages) ----- */
+        .site-header {
+            background: var(--header-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            transition: background var(--transition), border var(--transition);
+        }
+        .header-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-area h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, #ff0033, #cc002a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .logo-area span {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            -webkit-text-fill-color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .theme-toggle {
+            background: var(--border);
+            border: none;
+            border-radius: 40px;
+            padding: 0.4rem 1.2rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text);
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .theme-toggle:hover {
+            opacity: 0.7;
+        }
+        /* No legal links in header */
+        
+        /* ----- MAIN CONTAINER ----- */
+        .main-wrapper {
+            flex: 1;
             max-width: 1080px;
             width: 100%;
-            margin: 0 auto;
+            margin: 1.5rem auto;
+            padding: 0 1.5rem;
         }
-        /* ----- CARD ----- */
         .card {
             background: var(--surface);
             border-radius: var(--radius);
@@ -82,46 +153,7 @@
             transition: background var(--transition), box-shadow var(--transition);
             border: 1px solid var(--border);
         }
-        /* ----- HEADER ----- */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-        .logo h1 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: -0.3px;
-            background: linear-gradient(135deg, #ff0033, #cc002a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .logo span {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            -webkit-text-fill-color: var(--text-secondary);
-        }
-        .theme-toggle {
-            background: var(--border);
-            border: none;
-            border-radius: 40px;
-            padding: 0.5rem 1.2rem;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--text);
-            cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .theme-toggle:hover {
-            opacity: 0.8;
-        }
+        
         /* ----- INPUT ----- */
         .input-group {
             display: flex;
@@ -193,7 +225,6 @@
             align-items: center;
             margin-top: 0.5rem;
         }
-        /* drag drop */
         .drop-zone {
             border: 2px dashed var(--border);
             border-radius: 40px;
@@ -209,6 +240,7 @@
             border-color: var(--primary);
             background: rgba(255, 0, 51, 0.04);
         }
+        
         /* ----- THUMBNAIL GRID ----- */
         .grid {
             display: grid;
@@ -279,7 +311,8 @@
             font-weight: 600;
             border: 1px solid var(--border);
         }
-        /* loading */
+        
+        /* loader */
         .loader {
             display: none;
             justify-content: center;
@@ -297,10 +330,9 @@
             animation: spin 0.8s linear infinite;
         }
         @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
+            to { transform: rotate(360deg); }
         }
+        
         /* error */
         .error-box {
             background: #fee2e2;
@@ -315,6 +347,7 @@
             background: #7f1d1d;
             color: #fecaca;
         }
+        
         /* share */
         .share-row {
             display: flex;
@@ -343,6 +376,7 @@
             color: white;
             border-color: var(--primary);
         }
+        
         /* info / faq */
         .info-section {
             margin-top: 3rem;
@@ -396,27 +430,8 @@
             border-bottom-color: var(--primary);
             color: var(--text);
         }
-        @media (max-width: 640px) {
-            .card {
-                padding: 1.2rem;
-            }
-            .faq-grid {
-                grid-template-columns: 1fr;
-            }
-            .header {
-                flex-direction: column;
-                align-items: start;
-            }
-            .input-row input {
-                flex: 1 1 100%;
-            }
-            .btn-primary,
-            .btn-secondary {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-        /* recent searches */
+        
+        /* recent */
         .recent-tags {
             display: flex;
             flex-wrap: wrap;
@@ -436,6 +451,8 @@
             background: var(--primary);
             color: white;
         }
+        
+        /* toast */
         .copy-toast {
             position: fixed;
             bottom: 30px;
@@ -458,20 +475,81 @@
         .copy-toast.show {
             opacity: 1;
         }
+        
+        /* ----- FOOTER (No Legal Pages) ----- */
+        .site-footer {
+            background: var(--footer-bg);
+            border-top: 1px solid var(--border);
+            padding: 1.5rem;
+            margin-top: 2rem;
+            transition: background var(--transition), border var(--transition);
+        }
+        .footer-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-brand {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+        .footer-brand strong {
+            color: var(--primary);
+        }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+        }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: 0.15s;
+        }
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        /* ❌ NO LEGAL PAGES (Privacy, Terms, Disclaimer, etc.) */
+        /* Only tool-related or useful links */
+        
+        @media (max-width: 640px) {
+            .card { padding: 1.2rem; }
+            .faq-grid { grid-template-columns: 1fr; }
+            .header-inner { flex-direction: column; align-items: start; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .input-row input { flex: 1 1 100%; }
+            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+            .logo-area h1 { font-size: 1.3rem; }
+            .logo-area span { font-size: 0.7rem; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-
-            <!-- Header -->
-            <div class="header">
-                <div class="logo">
-                    <h1>🎬 Thumbnail Grabber</h1>
-                    <span>No API · No sign-up · Full privacy</span>
-                </div>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙 Dark</button>
+    
+    <!-- ===== HEADER (No Legal Pages) ===== -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo-area">
+                <h1>🎬 Thumbnail Grabber</h1>
+                <span>No API · Free</span>
             </div>
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙 Dark</button>
+                <!-- No legal pages here -->
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main class="main-wrapper">
+        <div class="card">
 
             <!-- Input -->
             <div class="input-group">
@@ -517,21 +595,42 @@
                 <p><strong>How creators use:</strong> A/B testing, branding, and audience engagement.</p>
 
                 <h2 style="margin-top:2rem;">❓ Frequently Asked Questions</h2>
-                <div class="faq-grid" id="faqContainer">
-                    <!-- generated by JS -->
-                </div>
+                <div class="faq-grid" id="faqContainer"></div>
 
                 <h2 style="margin-top:2rem;">🔗 Tools you may like</h2>
                 <div class="internal-links">
-                    <a href="#">Age Calculator</a> <a href="#">GPA Calculator</a> <a href="#">BMI Calculator</a>
-                    <a href="#">Image Resizer</a> <a href="#">SEO Kit Generator</a> <a href="#">Meta Tag Generator</a>
-                    <a href="#">Robots.txt Generator</a> <a href="#">QR Code Generator</a> <a href="#">Password Generator</a>
-                    <a href="#">JPG to PDF</a> <a href="#">Unit Converter</a>
+                    <a href="#">Age Calculator</a>
+                    <a href="#">GPA Calculator</a>
+                    <a href="#">BMI Calculator</a>
+                    <a href="#">Image Resizer</a>
+                    <a href="#">SEO Kit Generator</a>
+                    <a href="#">Meta Tag Generator</a>
+                    <a href="#">Robots.txt Generator</a>
+                    <a href="#">QR Code Generator</a>
+                    <a href="#">Password Generator</a>
+                    <a href="#">JPG to PDF</a>
+                    <a href="#">Unit Converter</a>
                 </div>
-                <p style="margin-top:1.2rem; font-size:0.85rem; color:var(--text-secondary);">© 2026 · Fully browser‑based. No data stored on servers.</p>
             </div>
         </div>
-    </div>
+    </main>
+
+    <!-- ===== FOOTER (No Legal Pages) ===== -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <strong>🎬 Thumbnail Grabber</strong> &middot; Built with ❤️
+            </div>
+            <div class="footer-links">
+                <!-- Only tool-related / useful links, NO legal pages -->
+                <a href="#about">About</a>
+                <a href="#faq">FAQ</a>
+                <a href="#tools">Tools</a>
+                <a href="#contact">Contact</a>
+                <!-- No Privacy Policy, Terms, Disclaimer, Cookies, etc. -->
+            </div>
+        </div>
+    </footer>
 
     <!-- Toast -->
     <div class="copy-toast" id="toast">✓ Copied!</div>
@@ -553,40 +652,27 @@
             const themeToggle = document.getElementById('themeToggle');
             const toast = document.getElementById('toast');
 
-            // ----- state -----
             let currentVideoId = '';
 
-            // ----- helpers -----
             function showError(msg) {
                 errorBox.style.display = 'block';
                 errorBox.textContent = msg;
                 grid.innerHTML = '';
             }
-
-            function hideError() {
-                errorBox.style.display = 'none';
-            }
-
-            function showLoader(show) {
-                loader.style.display = show ? 'flex' : 'none';
-            }
+            function hideError() { errorBox.style.display = 'none'; }
+            function showLoader(show) { loader.style.display = show ? 'flex' : 'none'; }
 
             function extractVideoId(url) {
                 if (!url) return null;
                 let u = url.trim();
-                // youtu.be
                 let m = u.match(/youtu\.be\/([a-zA-Z0-9_-]{11})(?:\?.*)?$/);
                 if (m) return m[1];
-                // shorts
                 m = u.match(/youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})(?:\?.*)?$/);
                 if (m) return m[1];
-                // embed
                 m = u.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]{11})(?:\?.*)?$/);
                 if (m) return m[1];
-                // watch?v= or &v=
                 m = u.match(/[?&]v=([a-zA-Z0-9_-]{11})/);
                 if (m) return m[1];
-                // live
                 m = u.match(/youtube\.com\/live\/([a-zA-Z0-9_-]{11})/);
                 if (m) return m[1];
                 return null;
@@ -603,16 +689,13 @@
 
             function buildThumbUrls(videoId) {
                 const base = 'https://img.youtube.com/vi/' + videoId + '/';
-                return sizes.map(s => ({
-                    ...s,
-                    url: base + s.key + '.jpg'
-                }));
+                return sizes.map(s => ({ ...s, url: base + s.key + '.jpg' }));
             }
 
             function renderThumbnails(videoId) {
                 const items = buildThumbUrls(videoId);
                 grid.innerHTML = '';
-                items.forEach((item, idx) => {
+                items.forEach((item) => {
                     const card = document.createElement('div');
                     card.className = 'thumb-card';
                     card.innerHTML = `
@@ -630,9 +713,8 @@
                     grid.appendChild(card);
                 });
 
-                // event listeners for download & copy
                 grid.querySelectorAll('.downloadBtn').forEach(btn => {
-                    btn.addEventListener('click', function(e) {
+                    btn.addEventListener('click', function() {
                         const url = this.dataset.url;
                         const a = document.createElement('a');
                         a.href = url;
@@ -643,20 +725,18 @@
                     });
                 });
                 grid.querySelectorAll('.copyUrlBtn').forEach(btn => {
-                    btn.addEventListener('click', function(e) {
+                    btn.addEventListener('click', function() {
                         const url = this.dataset.url;
-                        navigator.clipboard?.writeText(url).then(() => {
-                            showToast('Image URL copied!');
-                        }).catch(() => {
-                            // fallback
-                            const ta = document.createElement('textarea');
-                            ta.value = url;
-                            document.body.appendChild(ta);
-                            ta.select();
-                            document.execCommand('copy');
-                            document.body.removeChild(ta);
-                            showToast('Copied!');
-                        });
+                        navigator.clipboard?.writeText(url).then(() => showToast('Image URL copied!'))
+                            .catch(() => {
+                                const ta = document.createElement('textarea');
+                                ta.value = url;
+                                document.body.appendChild(ta);
+                                ta.select();
+                                document.execCommand('copy');
+                                document.body.removeChild(ta);
+                                showToast('Copied!');
+                            });
                     });
                 });
             }
@@ -670,10 +750,8 @@
                 }
                 currentVideoId = id;
                 showLoader(true);
-                // simulate async (just a tiny delay for UX)
                 setTimeout(() => {
                     showLoader(false);
-                    // Check if thumbnail exists by testing maxresdefault
                     const testImg = new Image();
                     testImg.onload = function() {
                         renderThumbnails(id);
@@ -681,24 +759,19 @@
                         updateRecentUI();
                     };
                     testImg.onerror = function() {
-                        // fallback: still try to render (some may work)
                         renderThumbnails(id);
                         saveRecent(url);
                         updateRecentUI();
-                        // but notify
                         showError('⚠️ Some thumbnails may be unavailable (private video or deleted).');
                     };
                     testImg.src = 'https://img.youtube.com/vi/' + id + '/maxresdefault.jpg';
                 }, 350);
             }
 
-            // ----- recent searches (localStorage) -----
+            // ----- recent searches -----
             function getRecent() {
-                try {
-                    return JSON.parse(localStorage.getItem('yt_thumb_recent') || '[]');
-                } catch { return []; }
+                try { return JSON.parse(localStorage.getItem('yt_thumb_recent') || '[]'); } catch { return []; }
             }
-
             function saveRecent(url) {
                 let arr = getRecent();
                 arr = arr.filter(item => item !== url);
@@ -706,7 +779,6 @@
                 if (arr.length > 8) arr.pop();
                 localStorage.setItem('yt_thumb_recent', JSON.stringify(arr));
             }
-
             function updateRecentUI() {
                 const arr = getRecent();
                 recentContainer.innerHTML = '';
@@ -726,15 +798,9 @@
                 });
             }
 
-            // ----- share helpers -----
-            function getShareUrl() {
-                return encodeURIComponent(window.location.href);
-            }
-
-            function getShareText() {
-                return encodeURIComponent('Download YouTube thumbnails for free! 🎬');
-            }
-
+            // ----- share -----
+            function getShareUrl() { return encodeURIComponent(window.location.href); }
+            function getShareText() { return encodeURIComponent('Download YouTube thumbnails for free! 🎬'); }
             function share(platform) {
                 const url = getShareUrl();
                 const text = getShareText();
@@ -751,7 +817,7 @@
                 return map[platform] || url;
             }
 
-            // ----- faq (30 items) -----
+            // ----- FAQ (30 items) -----
             const faqData = [
                 "What is a YouTube Thumbnail Downloader? – A tool to save YouTube video thumbnails in various sizes.",
                 "Is this tool free? – Yes, completely free with no hidden charges.",
@@ -805,7 +871,6 @@
 
             // ----- toast -----
             let toastTimer;
-
             function showToast(msg) {
                 toast.textContent = msg || '✓ Copied!';
                 toast.classList.add('show');
@@ -819,29 +884,23 @@
                 if (!val) { showError('Please paste a YouTube URL.'); return; }
                 fetchThumbnails(val);
             });
-
             urlInput.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter') fetchBtn.click();
             });
-
             clearBtn.addEventListener('click', function() {
                 urlInput.value = '';
                 hideError();
                 grid.innerHTML = '';
                 currentVideoId = '';
             });
-
             resetBtn.addEventListener('click', function() {
                 urlInput.value = '';
                 grid.innerHTML = '';
                 hideError();
                 currentVideoId = '';
                 urlInput.focus();
-                // clear recent?
-                // optional: we don't clear recent, just reset UI
             });
 
-            // drag & drop
             dropZone.addEventListener('dragover', function(e) {
                 e.preventDefault();
                 this.classList.add('dragover');
@@ -865,40 +924,27 @@
                 urlInput.focus();
             });
 
-            // paste detection (automatic)
-            urlInput.addEventListener('paste', function() {
-                setTimeout(() => {
-                    const val = this.value.trim();
-                    if (val && extractVideoId(val)) {
-                        // optional auto-fetch? we let user click fetch.
-                    }
-                }, 50);
-            });
-
-            // theme
             themeToggle.addEventListener('click', function() {
                 document.body.classList.toggle('dark');
                 const isDark = document.body.classList.contains('dark');
                 this.textContent = isDark ? '☀️ Light' : '🌙 Dark';
             });
 
-            // share buttons
             document.querySelectorAll('#shareRow a').forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const id = this.id;
                     if (id === 'shareCopyLink') {
-                        navigator.clipboard?.writeText(window.location.href).then(() => {
-                            showToast('Link copied!');
-                        }).catch(() => {
-                            const ta = document.createElement('textarea');
-                            ta.value = window.location.href;
-                            document.body.appendChild(ta);
-                            ta.select();
-                            document.execCommand('copy');
-                            document.body.removeChild(ta);
-                            showToast('Link copied!');
-                        });
+                        navigator.clipboard?.writeText(window.location.href).then(() => showToast('Link copied!'))
+                            .catch(() => {
+                                const ta = document.createElement('textarea');
+                                ta.value = window.location.href;
+                                document.body.appendChild(ta);
+                                ta.select();
+                                document.execCommand('copy');
+                                document.body.removeChild(ta);
+                                showToast('Link copied!');
+                            });
                         return;
                     }
                     const platform = id.replace('share', '').toLowerCase();
@@ -911,16 +957,12 @@
             renderFAQ();
             updateRecentUI();
 
-            // if URL param ?v= ... auto load
             const params = new URLSearchParams(window.location.search);
             const v = params.get('v');
             if (v) {
                 urlInput.value = 'https://youtube.com/watch?v=' + v;
                 fetchThumbnails(urlInput.value);
             }
-
-            // expose to window for debugging
-            window.ytThumb = { extractVideoId, fetchThumbnails };
 
         })();
     </script>
