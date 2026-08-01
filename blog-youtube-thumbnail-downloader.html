@@ -39,8 +39,7 @@
         "@type": "BreadcrumbList",
         "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.yourdomain.com/" },
-            { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://www.yourdomain.com/tools" },
-            { "@type": "ListItem", "position": 3, "name": "YouTube Thumbnail Downloader", "item": "https://www.yourdomain.com/youtube-thumbnail-downloader" }
+            { "@type": "ListItem", "position": 2, "name": "YouTube Thumbnail Downloader", "item": "https://www.yourdomain.com/youtube-thumbnail-downloader" }
         ]
     }
     </script>
@@ -172,6 +171,13 @@
         .header-nav a:hover {
             color: var(--primary);
             text-decoration: none;
+        }
+        .header-nav a.legal {
+            font-size: 0.75rem;
+            opacity: 0.8;
+        }
+        .header-nav a.legal:hover {
+            opacity: 1;
         }
         .theme-toggle {
             background: var(--border);
@@ -594,7 +600,7 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
         }
         .footer-col h4 {
@@ -634,6 +640,22 @@
             text-decoration: none;
         }
         .footer-bottom a:hover {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .footer-legal {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .footer-legal a {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+        .footer-legal a:hover {
             color: var(--primary);
             text-decoration: none;
         }
@@ -716,7 +738,7 @@
 </head>
 <body>
 
-    <!-- ===== HEADER ===== -->
+    <!-- ===== HEADER (Only Legal Pages – No Tools, No Sitemap, No GDPR) ===== -->
     <header class="site-header">
         <div class="header-inner">
             <div class="logo-area">
@@ -726,9 +748,13 @@
             <div class="header-actions">
                 <nav class="header-nav">
                     <a href="/">Home</a>
-                    <a href="/tools">Tools</a>
                     <a href="/about">About</a>
                     <a href="/contact">Contact</a>
+                    <!-- Only Legal Pages in Header -->
+                    <a href="/privacy-policy" class="legal">Privacy</a>
+                    <a href="/terms-of-service" class="legal">Terms</a>
+                    <a href="/disclaimer" class="legal">Disclaimer</a>
+                    <a href="/cookies-policy" class="legal">Cookies</a>
                 </nav>
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙 Dark</button>
             </div>
@@ -915,7 +941,7 @@
 
     </main>
 
-    <!-- ===== FOOTER (with Legal Pages) ===== -->
+    <!-- ===== FOOTER (Only Legal Pages – No Tools, No Sitemap, No GDPR) ===== -->
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-col">
@@ -923,22 +949,11 @@
                 <p>Free, browser-based YouTube Thumbnail Downloader. No API, no sign-up, no data collection. Download thumbnails in all sizes instantly.</p>
             </div>
             <div class="footer-col">
-                <h4>Tools</h4>
-                <a href="/age-calculator">Age Calculator</a>
-                <a href="/gpa-calculator">GPA Calculator</a>
-                <a href="/bmi-calculator">BMI Calculator</a>
-                <a href="/image-resizer">Image Resizer</a>
-                <a href="/seo-kit-generator">SEO Kit Generator</a>
-                <a href="/meta-tag-generator">Meta Tag Generator</a>
-                <a href="/qr-code-generator">QR Code Generator</a>
-                <a href="/password-generator">Password Generator</a>
-            </div>
-            <div class="footer-col">
-                <h4>Company</h4>
+                <h4>Quick Links</h4>
+                <a href="/">Home</a>
                 <a href="/about">About Us</a>
                 <a href="/contact">Contact</a>
                 <a href="/blog">Blog</a>
-                <a href="/sitemap">Sitemap</a>
             </div>
             <div class="footer-col">
                 <h4>Legal</h4>
@@ -946,16 +961,16 @@
                 <a href="/terms-of-service">Terms of Service</a>
                 <a href="/disclaimer">Disclaimer</a>
                 <a href="/cookies-policy">Cookies Policy</a>
-                <a href="/gdpr">GDPR Compliance</a>
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 <a href="/">YourDomain.com</a>. All rights reserved. Built with ❤️ for creators worldwide.</p>
-            <p style="margin-top:0.3rem; font-size:0.75rem;">
-                <a href="/privacy-policy">Privacy</a> &middot;
-                <a href="/terms-of-service">Terms</a> &middot;
+            <div class="footer-legal">
+                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/terms-of-service">Terms of Service</a>
                 <a href="/disclaimer">Disclaimer</a>
-            </p>
+                <a href="/cookies-policy">Cookies Policy</a>
+            </div>
         </div>
     </footer>
 
@@ -1230,25 +1245,40 @@
                 urlInput.focus();
             });
 
+            // ===== DROP ZONE (FIXED) =====
+            document.addEventListener('dragover', function(e) {
+                e.preventDefault();
+            });
+            document.addEventListener('drop', function(e) {
+                e.preventDefault();
+            });
+
             dropZone.addEventListener('dragover', function(e) {
                 e.preventDefault();
                 this.classList.add('dragover');
             });
+
             dropZone.addEventListener('dragleave', function(e) {
+                e.preventDefault();
                 this.classList.remove('dragover');
             });
+
             dropZone.addEventListener('drop', function(e) {
                 e.preventDefault();
                 this.classList.remove('dragover');
                 const dt = e.dataTransfer;
-                const url = dt.getData('text/plain') || dt.getData('text/uri-list');
-                if (url) {
-                    urlInput.value = url.trim();
-                    fetchThumbnails(url.trim());
+                let url = dt.getData('text/plain') || dt.getData('text/uri-list') || '';
+                url = url.trim();
+                if (url && extractVideoId(url)) {
+                    urlInput.value = url;
+                    fetchThumbnails(url);
+                } else if (url) {
+                    showError('❌ Invalid YouTube URL. Please paste a valid YouTube link.');
                 } else {
-                    showError('No valid URL found.');
+                    showError('❌ No valid URL found. Please drag a YouTube link.');
                 }
             });
+
             dropZone.addEventListener('click', function() {
                 urlInput.focus();
             });
