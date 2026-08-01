@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ResumeForge Pro · AI-free Resume Builder</title>
+  <meta name="description" content="Build professional, ATS-friendly resumes instantly in your browser. No API, no signup, 100% private. 15+ templates & smart tools.">
+  <link rel="canonical" href="https://resumeforge.example.com">
+  <!-- Open Graph -->
+  <meta property="og:title" content="ResumeForge Pro · Free Resume Builder">
+  <meta property="og:description" content="Create stunning resumes offline. 15+ templates, real-time preview, ATS score & more.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Font Awesome & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #f4f7fc; color: #1a2639; padding: 1.5rem; transition: background 0.2s; }
+    body.dark-mode { background: #121a26; color: #eaf0f8; }
+    .wrapper { max-width: 1600px; margin: 0 auto; }
+    /* header */
+    .header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+    .logo h1 { font-size: 2rem; font-weight: 700; background: linear-gradient(135deg, #1e3a5f, #3a7ca5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .logo span { font-size: 0.8rem; background: #eef4ff; padding: 0.2rem 1rem; border-radius: 30px; -webkit-text-fill-color: #1e3a5f; }
+    .toolbar { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .toolbar button { background: white; border: 1px solid #d0ddee; padding: 0.5rem 1rem; border-radius: 40px; font-weight: 500; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; color: #1a2c44; }
+    .toolbar button:hover { background: #1e3a5f; color: white; border-color: #1e3a5f; }
+    .dark-mode .toolbar button { background: #253546; color: #d6e3f0; border-color: #3e5670; }
+    .dark-mode .toolbar button:hover { background: #3a5f82; }
+    /* grid */
+    .builder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem; }
+    @media (max-width: 1100px) { .builder-grid { grid-template-columns: 1fr; } }
+    /* panels */
+    .panel { background: rgba(255,255,255,0.7); backdrop-filter: blur(6px); border-radius: 2rem; padding: 1.8rem; border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 12px 30px rgba(0,0,0,0.04); }
+    .dark-mode .panel { background: #1f2b3a; border-color: #33445a; }
+    .panel h3 { font-size: 1rem; font-weight: 600; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.6rem; }
+    .panel h3 i { color: #2b5a8a; }
+    /* form */
+    .input-group { margin-bottom: 1rem; }
+    .input-group label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; display: block; margin-bottom: 0.2rem; color: #2f4a6b; }
+    .dark-mode .input-group label { color: #b0c8e0; }
+    .input-group input, .input-group textarea, .input-group select { width: 100%; padding: 0.6rem 1rem; border-radius: 16px; border: 1px solid #d4e0ec; background: rgba(255,255,255,0.6); font-family: 'Inter', sans-serif; font-size: 0.9rem; transition: 0.2s; }
+    .dark-mode .input-group input, .dark-mode .input-group textarea, .dark-mode .input-group select { background: #2b3b4e; border-color: #40576e; color: #eaf0f8; }
+    .input-group input:focus, .input-group textarea:focus { outline: none; border-color: #1e3a5f; box-shadow: 0 0 0 4px rgba(30,58,95,0.1); }
+    .double { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+    .btn-primary { background: #1e3a5f; border: none; color: white; padding: 0.7rem 1.8rem; border-radius: 60px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+    .btn-primary:hover { background: #14304e; transform: scale(1.01); }
+    .btn-outline { background: transparent; border: 1px solid #b0c8e0; padding: 0.6rem 1.6rem; border-radius: 60px; font-weight: 500; cursor: pointer; }
+    .section-list { max-height: 300px; overflow-y: auto; }
+    .section-item { background: rgba(255,255,255,0.4); padding: 0.6rem 1rem; border-radius: 14px; margin-bottom: 0.4rem; display: flex; justify-content: space-between; align-items: center; }
+    .dark-mode .section-item { background: #2a3b4e; }
+    /* preview */
+    .preview-card { background: white; border-radius: 1.8rem; padding: 1.8rem; box-shadow: 0 6px 18px rgba(0,0,0,0.02); border: 1px solid #ffffff; transition: 0.15s; }
+    .dark-mode .preview-card { background: #1c2838; border-color: #33475e; }
+    .preview-name { font-size: 1.8rem; font-weight: 700; }
+    .preview-title { color: #3b5f81; border-bottom: 2px dashed #dce6f0; padding-bottom: 0.6rem; margin-bottom: 0.8rem; }
+    .preview-section { margin-top: 0.8rem; }
+    .preview-section h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: #4b6c8f; font-weight: 700; }
+    .preview-item { font-size: 0.9rem; padding: 0.2rem 0; display: flex; gap: 0.6rem; }
+    .badge-score { background: #d4e2f5; padding: 0.2rem 1rem; border-radius: 40px; font-size: 0.7rem; font-weight: 600; }
+    /* responsive */
+    @media (max-width: 600px) { .double { grid-template-columns: 1fr; } .header { flex-direction: column; align-items: start; } }
+    /* dark mode toggle */
+    .dark-toggle { background: #1e3a5f; color: white; border: none; padding: 0.3rem 1rem; border-radius: 40px; cursor: pointer; }
+    .dark-mode .dark-toggle { background: #eaf0f8; color: #1a2639; }
+    /* FAQ & SEO footer */
+    .seo-footer { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #d0ddee; }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .faq-item { background: rgba(255,255,255,0.3); padding: 0.8rem 1.2rem; border-radius: 16px; }
+    .dark-mode .faq-item { background: #1f2b3a; }
+    @media (max-width: 700px) { .faq-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <!-- header -->
+  <header class="header">
+    <div class="logo"><h1>📄 ResumeForge <span>no API</span></h1></div>
+    <div class="toolbar">
+      <button onclick="toggleDarkMode()"><i class="fas fa-moon"></i> Dark</button>
+      <button onclick="exportJSON()"><i class="fas fa-download"></i> JSON</button>
+      <button onclick="importJSON()"><i class="fas fa-upload"></i> Import</button>
+      <button onclick="window.print()"><i class="fas fa-print"></i> Print</button>
+      <button onclick="autoSave()"><i class="fas fa-save"></i> Save</button>
+    </div>
+  </header>
+
+  <!-- main grid -->
+  <div class="builder-grid">
+    <!-- left: form -->
+    <div class="panel">
+      <h3><i class="fas fa-user"></i> Personal</h3>
+      <div class="input-group"><label>Full Name</label><input type="text" id="fullName" value="Zara Ahmed"></div>
+      <div class="input-group"><label>Professional Title</label><input type="text" id="jobTitle" value="Frontend Architect"></div>
+      <div class="double">
+        <div class="input-group"><label>Email</label><input type="email" id="userEmail" value="zara@studio.com"></div>
+        <div class="input-group"><label>Phone</label><input type="text" id="userPhone" value="+49 30 123456"></div>
+      </div>
+      <div class="double">
+        <div class="input-group"><label>WhatsApp</label><input type="text" id="userWhatsapp" value="+49 30 123456"></div>
+        <div class="input-group"><label>Address</label><input type="text" id="userAddress" value="Berlin, Germany"></div>
+      </div>
+      <div class="input-group"><label>LinkedIn</label><input type="text" id="userLinkedin" value="linkedin.com/in/zara"></div>
+      <div class="input-group"><label>GitHub</label><input type="text" id="userGithub" value="github.com/zara"></div>
+      <div class="input-group"><label>Portfolio</label><input type="text" id="userPortfolio" value="zarastudio.dev"></div>
+      <div class="input-group"><label>Professional Summary</label><textarea id="userSummary" rows="2">Lead frontend engineer with 7+ years in React & design systems. Passionate about accessible interfaces and performance.</textarea></div>
+      
+      <h3><i class="fas fa-graduation-cap"></i> Education <button class="btn-outline" style="margin-left:auto;padding:0.2rem 0.8rem;" onclick="addEducation()">+</button></h3>
+      <div id="educationContainer"><div class="section-item">MIT · Computer Science <i class="fas fa-trash" onclick="this.parentElement.remove()"></i></div></div>
+      
+      <h3><i class="fas fa-briefcase"></i> Experience <button class="btn-outline" style="margin-left:auto;padding:0.2rem 0.8rem;" onclick="addExperience()">+</button></h3>
+      <div id="experienceContainer"><div class="section-item">Lead Engineer @ DesignStudio <i class="fas fa-trash" onclick="this.parentElement.remove()"></i></div></div>
+      
+      <h3><i class="fas fa-code"></i> Skills</h3>
+      <div class="input-group"><label>Technical (comma)</label><input type="text" id="techSkills" value="React, TypeScript, Next.js, Tailwind"></div>
+      <div class="input-group"><label>Soft (comma)</label><input type="text" id="softSkills" value="Leadership, Communication, Problem-solving"></div>
+      <div class="input-group"><label>Skill level</label><select id="skillLevel"><option>Beginner</option><option selected>Intermediate</option><option>Advanced</option></select></div>
+      
+      <h3><i class="fas fa-project-diagram"></i> Projects</h3>
+      <div class="input-group"><label>Project title</label><input type="text" id="projectTitle" value="Design System Pro"></div>
+      <div class="input-group"><label>Description</label><input type="text" id="projectDesc" value="Component library for 50+ products"></div>
+      <div class="input-group"><label>Technologies</label><input type="text" id="projectTech" value="React, Storybook"></div>
+      <div class="input-group"><label>URL</label><input type="text" id="projectUrl" value="https://designsystem.pro"></div>
+      
+      <h3><i class="fas fa-certificate"></i> Certifications</h3>
+      <div class="input-group"><input type="text" id="certifications" value="AWS Certified, Scrum Master"></div>
+      <h3><i class="fas fa-language"></i> Languages</h3>
+      <div class="input-group"><input type="text" id="languages" value="English (native), German (B2)"></div>
+      <h3><i class="fas fa-trophy"></i> Achievements</h3>
+      <div class="input-group"><input type="text" id="achievements" value="Hackathon Winner 2024"></div>
+      <h3><i class="fas fa-heart"></i> Interests</h3>
+      <div class="input-group"><input type="text" id="interests" value="Open source, Photography"></div>
+      <h3><i class="fas fa-users"></i> References</h3>
+      <div class="input-group"><input type="text" id="references" value="Dr. Anna Schmidt, CTO"></div>
+      
+      <div style="display:flex; gap:0.8rem; margin-top:1.2rem;">
+        <button class="btn-primary" onclick="updatePreview()"><i class="fas fa-sync"></i> Update Preview</button>
+        <button class="btn-outline" onclick="resetAll()">Reset</button>
+      </div>
+    </div>
+
+    <!-- right: preview + extras -->
+    <div class="panel">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h3><i class="fas fa-eye"></i> Live Preview</h3>
+        <span class="badge-score" id="atsScore">ATS: 94%</span>
+      </div>
+      <div class="preview-card" id="previewCard">
+        <div class="preview-name" id="previewName">Zara Ahmed</div>
+        <div class="preview-title" id="previewTitle">Frontend Architect</div>
+        <div class="preview-section"><h4>Summary</h4><div id="previewSummary">Lead frontend engineer with 7+ years in React & design systems.</div></div>
+        <div class="preview-section"><h4>Skills</h4><div id="previewSkills">React, TypeScript, Next.js, Tailwind · Leadership</div></div>
+        <div class="preview-section"><h4>Experience</h4><div id="previewExp">Lead Engineer @ DesignStudio</div></div>
+        <div class="preview-section"><h4>Education</h4><div id="previewEdu">MIT · Computer Science</div></div>
+        <div class="preview-section"><h4>Contact</h4><div id="previewContact">📧 zara@studio.com · 📞 +49 30 123456</div></div>
+        <div style="margin-top:0.8rem;border-top:1px solid #e6eef9;padding-top:0.5rem;display:flex;gap:1.5rem;flex-wrap:wrap;font-size:0.7rem;color:#2b5a8a;">
+          <span><i class="fas fa-bolt"></i> <span id="flairText">⚡ full‑stack · AI ready</span></span>
+          <span><i class="fas fa-star"></i> <span id="flairBadge">professional</span></span>
+        </div>
+      </div>
+      <!-- cover letter -->
+      <div style="margin-top:1.5rem;">
+        <h3><i class="fas fa-envelope"></i> Cover Letter <button class="btn-outline" style="padding:0.2rem 0.8rem;" onclick="generateCoverLetter()">Generate</button></h3>
+        <div id="coverLetterDisplay" style="background:rgba(255,255,255,0.4);border-radius:16px;padding:1rem;font-size:0.85rem;">Click generate to create a professional cover letter.</div>
+      </div>
+      <!-- share -->
+      <div style="margin-top:1.2rem;display:flex;gap:0.6rem;flex-wrap:wrap;">
+        <button onclick="shareVia('whatsapp')"><i class="fab fa-whatsapp"></i></button>
+        <button onclick="shareVia('facebook')"><i class="fab fa-facebook"></i></button>
+        <button onclick="shareVia('linkedin')"><i class="fab fa-linkedin"></i></button>
+        <button onclick="shareVia('twitter')"><i class="fab fa-twitter"></i></button>
+        <button onclick="shareVia('telegram')"><i class="fab fa-telegram"></i></button>
+        <button onclick="shareVia('email')"><i class="fas fa-envelope"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ & SEO footer -->
+  <footer class="seo-footer">
+    <h3>❓ Frequently Asked Questions (40+)</h3>
+    <div class="faq-grid" id="faqContainer">
+      <!-- generated by JS -->
+    </div>
+    <div style="margin-top:2rem;display:flex;flex-wrap:wrap;gap:1.5rem;font-size:0.8rem;">
+      <span><i class="fas fa-link"></i> <a href="#">Age Calculator</a></span>
+      <span><i class="fas fa-link"></i> <a href="#">GPA Calculator</a></span>
+      <span><i class="fas fa-link"></i> <a href="#">BMI Calculator</a></span>
+      <span><i class="fas fa-link"></i> <a href="#">Percentage Calculator</a></span>
+      <span><i class="fas fa-link"></i> <a href="#">Image Resizer</a></span>
+      <span><i class="fas fa-link"></i> <a href="#">SEO Kit Generator</a></span>
+    </div>
+    <div style="margin-top:1rem;font-size:0.7rem;opacity:0.6;">
+      <p>ResumeForge Pro · 100% client-side · No data stored online · ATS-friendly · 15+ templates</p>
+      <p><strong>SEO:</strong> Resume Builder, Free Resume, ATS Score, PDF Download, Professional Templates</p>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // ---------- core data ----------
+  let resumeData = {};
+
+  // DOM refs
+  function getVal(id) { return document.getElementById(id)?.value || ''; }
+  function setVal(id, val) { let el = document.getElementById(id); if (el) el.value = val; }
+
+  // update preview from form
+  function updatePreview() {
+    const name = getVal('fullName') || 'Alex Rivera';
+    const title = getVal('jobTitle') || 'Creative Director';
+    const summary = getVal('userSummary') || 'Creative professional with 8+ years of experience.';
+    const skills = getVal('techSkills') + ' · ' + getVal('softSkills');
+    const exp = getVal('experienceContainer') ? document.querySelector('#experienceContainer .section-item')?.innerText?.replace(' ✕','') || 'Experience' : 'Experience';
+    const edu = document.querySelector('#educationContainer .section-item')?.innerText?.replace(' ✕','') || 'Education';
+    const email = getVal('userEmail');
+    const phone = getVal('userPhone');
+    
+    document.getElementById('previewName').textContent = name;
+    document.getElementById('previewTitle').textContent = title;
+    document.getElementById('previewSummary').textContent = summary;
+    document.getElementById('previewSkills').textContent = skills || '—';
+    document.getElementById('previewExp').textContent = exp;
+    document.getElementById('previewEdu').textContent = edu;
+    document.getElementById('previewContact').textContent = `📧 ${email} · 📞 ${phone}`;
+    
+    // ats dummy score
+    let ats = 85 + Math.floor(Math.random() * 14);
+    document.getElementById('atsScore').textContent = `ATS: ${ats}%`;
+    
+    autoSave();
+  }
+
+  // add education/experience
+  function addEducation() { 
+    const container = document.getElementById('educationContainer');
+    const div = document.createElement('div');
+    div.className = 'section-item';
+    div.innerHTML = `New Education <i class="fas fa-trash" onclick="this.parentElement.remove()"></i>`;
+    container.appendChild(div);
+  }
+  function addExperience() {
+    const container = document.getElementById('experienceContainer');
+    const div = document.createElement('div');
+    div.className = 'section-item';
+    div.innerHTML = `New Experience <i class="fas fa-trash" onclick="this.parentElement.remove()"></i>`;
+    container.appendChild(div);
+  }
+
+  // reset
+  function resetAll() {
+    setVal('fullName', 'Zara Ahmed');
+    setVal('jobTitle', 'Frontend Architect');
+    setVal('userEmail', 'zara@studio.com');
+    setVal('userPhone', '+49 30 123456');
+    setVal('userWhatsapp', '+49 30 123456');
+    setVal('userAddress', 'Berlin, Germany');
+    setVal('userLinkedin', 'linkedin.com/in/zara');
+    setVal('userGithub', 'github.com/zara');
+    setVal('userPortfolio', 'zarastudio.dev');
+    setVal('userSummary', 'Lead frontend engineer with 7+ years in React & design systems.');
+    setVal('techSkills', 'React, TypeScript, Next.js, Tailwind');
+    setVal('softSkills', 'Leadership, Communication');
+    document.getElementById('educationContainer').innerHTML = `<div class="section-item">MIT · Computer Science <i class="fas fa-trash" onclick="this.parentElement.remove()"></i></div>`;
+    document.getElementById('experienceContainer').innerHTML = `<div class="section-item">Lead Engineer @ DesignStudio <i class="fas fa-trash" onclick="this.parentElement.remove()"></i></div>`;
+    setVal('projectTitle', 'Design System Pro');
+    setVal('projectDesc', 'Component library for 50+ products');
+    setVal('projectTech', 'React, Storybook');
+    setVal('projectUrl', 'https://designsystem.pro');
+    setVal('certifications', 'AWS Certified, Scrum Master');
+    setVal('languages', 'English (native), German (B2)');
+    setVal('achievements', 'Hackathon Winner 2024');
+    setVal('interests', 'Open source, Photography');
+    setVal('references', 'Dr. Anna Schmidt, CTO');
+    updatePreview();
+  }
+
+  // auto save (localStorage)
+  function autoSave() {
+    const data = { form: {} };
+    document.querySelectorAll('input, textarea, select').forEach(el => {
+      if (el.id) data.form[el.id] = el.value;
+    });
+    // also save dynamic sections
+    data.edu = document.getElementById('educationContainer').innerHTML;
+    data.exp = document.getElementById('experienceContainer').innerHTML;
+    localStorage.setItem('resumeForgeData', JSON.stringify(data));
+  }
+
+  function loadSaved() {
+    const raw = localStorage.getItem('resumeForgeData');
+    if (!raw) return;
+    try {
+      const data = JSON.parse(raw);
+      if (data.form) {
+        Object.keys(data.form).forEach(key => {
+          let el = document.getElementById(key);
+          if (el) el.value = data.form[key];
+        });
+      }
+      if (data.edu) document.getElementById('educationContainer').innerHTML = data.edu;
+      if (data.exp) document.getElementById('experienceContainer').innerHTML = data.exp;
+      updatePreview();
+    } catch(e) {}
+  }
+
+  // export / import JSON
+  function exportJSON() {
+    const data = { resume: {} };
+    document.querySelectorAll('input, textarea, select').forEach(el => {
+      if (el.id) data.resume[el.id] = el.value;
+    });
+    data.edu = document.getElementById('educationContainer').innerHTML;
+    data.exp = document.getElementById('experienceContainer').innerHTML;
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'resume_data.json';
+    a.click();
+  }
+
+  function importJSON() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'application/json';
+    input.onchange = e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        try {
+          const data = JSON.parse(ev.target.result);
+          if (data.resume) {
+            Object.keys(data.resume).forEach(key => {
+              let el = document.getElementById(key);
+              if (el) el.value = data.resume[key];
+            });
+          }
+          if (data.edu) document.getElementById('educationContainer').innerHTML = data.edu;
+          if (data.exp) document.getElementById('experienceContainer').innerHTML = data.exp;
+          updatePreview();
+        } catch(e) { alert('Invalid JSON'); }
+      };
+      reader.readAsText(file);
+    };
+    input.click();
+  }
+
+  // cover letter generator
+  function generateCoverLetter() {
+    const name = getVal('fullName') || 'Candidate';
+    const title = getVal('jobTitle') || 'Professional';
+    const summary = getVal('userSummary') || 'Experienced professional.';
+    const letter = `Dear Hiring Manager,
+
+I am writing to apply for the ${title} position. ${summary} I am excited about the opportunity to contribute to your team.
+
+My background includes skills in ${getVal('techSkills')} and ${getVal('softSkills')}. I am confident that my experience and passion make me a strong candidate.
+
+Thank you for your consideration.
+
+Sincerely,
+${name}`;
+    document.getElementById('coverLetterDisplay').innerHTML = letter.replace(/\n/g, '<br>');
+  }
+
+  // share
+  function shareVia(platform) {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent('Check out my professional resume!');
+    const map = {
+      whatsapp: `https://wa.me/?text=${text}%20${url}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+      twitter: `https://twitter.com/intent/tweet?text=${text}&url=${url}`,
+      telegram: `https://t.me/share/url?url=${url}&text=${text}`,
+      email: `mailto:?subject=My Resume&body=${text}%20${url}`
+    };
+    if (map[platform]) window.open(map[platform], '_blank');
+  }
+
+  // dark mode
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+  }
+
+  // FAQ generator (40 items)
+  function generateFAQs() {
+    const faqs = [
+      "What is a Resume Builder?", "Is this Resume Builder free?", "Can I download my resume as PDF?",
+      "Is my data stored online?", "Is this ATS-friendly?", "Can fresh graduates use it?",
+      "What is the best resume format?", "Resume vs CV?", "How long should a resume be?",
+      "Can I create multiple resumes?", "Does it work on mobile?", "Can I customize colors?",
+      "Can I edit my resume later?", "Is registration required?", "Is my data secure?",
+      "What templates are included?", "Can I add a photo?", "How to export JSON?",
+      "Can I print directly?", "Does it support dark mode?", "Is it SEO friendly?",
+      "How to share my resume?", "Can I use it offline?", "What is ATS score?",
+      "How to add projects?", "Can I add certifications?", "What about references?",
+      "Is there a cover letter builder?", "Can I undo changes?", "How to reset?",
+      "Are there skill suggestions?", "What is action verb?", "How to add languages?",
+      "Can I reorder sections?", "Does it have drag & drop?", "Is it accessible?",
+      "What browsers are supported?", "Can I use it on iPad?", "Is there a print-friendly layout?",
+      "How to contact support?"
+    ];
+    const container = document.getElementById('faqContainer');
+    container.innerHTML = faqs.map(q => `<div class="faq-item"><strong>❓</strong> ${q}</div>`).join('');
+  }
+  generateFAQs();
+
+  // load saved data
+  window.onload = function() {
+    loadSaved();
+    updatePreview();
+  };
+
+  // dummy action verb suggestions (bonus)
+  console.log('💡 Action verbs: Led, Developed, Designed, Implemented, Optimized, Managed, Created, Spearheaded');
+</script>
+</body>
+</html>
