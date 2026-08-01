@@ -149,7 +149,7 @@
         .header-nav a.legal {
             color: var(--text-secondary);
             font-size: 0.7rem;
-            opacity: 0.7;
+            opacity: 0.8;
         }
         .header-nav a.legal:hover {
             opacity: 1;
@@ -281,7 +281,7 @@
             margin-top: 0.5rem;
         }
         
-        /* ===== DROP ZONE (FIXED) ===== */
+        /* ===== DROP ZONE ===== */
         .drop-zone {
             border: 2px dashed var(--border);
             border-radius: 40px;
@@ -416,7 +416,6 @@
             animation: spin 0.8s linear infinite;
         }
         @keyframes spin {
-            
             to { transform: rotate(360deg); }
         }
         .error-box {
@@ -541,7 +540,7 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
         }
         .footer-col h4 {
@@ -675,7 +674,7 @@
 </head>
 <body>
 
-    <!-- ===== HEADER (with Legal Pages) ===== -->
+    <!-- ===== HEADER (Only Legal Pages – No Sitemap, No GDPR, No Tools) ===== -->
     <header class="site-header">
         <div class="header-inner">
             <div class="logo-area">
@@ -685,10 +684,9 @@
             <div class="header-actions">
                 <nav class="header-nav">
                     <a href="/">Home</a>
-                    <a href="/tools">Tools</a>
                     <a href="/about">About</a>
                     <a href="/contact">Contact</a>
-                    <!-- Legal Pages in Header -->
+                    <!-- Only Legal Pages in Header -->
                     <a href="/privacy-policy" class="legal">Privacy</a>
                     <a href="/terms-of-service" class="legal">Terms</a>
                     <a href="/disclaimer" class="legal">Disclaimer</a>
@@ -716,7 +714,7 @@
                     <button class="btn-primary" id="fetchBtn">📥 Get Thumbnails</button>
                 </div>
                 
-                <!-- DROP ZONE (FIXED) -->
+                <!-- DROP ZONE -->
                 <div class="drop-zone" id="dropZone">
                     <span class="drop-icon">📂</span>
                     <span class="drop-text">Drag & drop a YouTube URL here or click to paste</span>
@@ -782,7 +780,7 @@
 
     </main>
 
-    <!-- ===== FOOTER (with Legal Pages) ===== -->
+    <!-- ===== FOOTER (Only Legal Pages – No Sitemap, No GDPR, No Tools) ===== -->
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-col">
@@ -790,18 +788,8 @@
                 <p>Free, browser-based YouTube Thumbnail Downloader. No API, no sign-up, no data collection. Download thumbnails in all sizes instantly.</p>
             </div>
             <div class="footer-col">
-                <h4>Tools</h4>
-                <a href="/age-calculator">Age Calculator</a>
-                <a href="/gpa-calculator">GPA Calculator</a>
-                <a href="/bmi-calculator">BMI Calculator</a>
-                <a href="/image-resizer">Image Resizer</a>
-                <a href="/seo-kit-generator">SEO Kit Generator</a>
-                <a href="/meta-tag-generator">Meta Tag Generator</a>
-                <a href="/qr-code-generator">QR Code Generator</a>
-                <a href="/password-generator">Password Generator</a>
-            </div>
-            <div class="footer-col">
-                <h4>Company</h4>
+                <h4>Quick Links</h4>
+                <a href="/">Home</a>
                 <a href="/about">About Us</a>
                 <a href="/contact">Contact</a>
                 <a href="/blog">Blog</a>
@@ -811,7 +799,7 @@
                 <a href="/privacy-policy">Privacy Policy</a>
                 <a href="/terms-of-service">Terms of Service</a>
                 <a href="/disclaimer">Disclaimer</a>
-                <a href="/cookies-policy">Cookies-Policy</a>
+                <a href="/cookies-policy">Cookies Policy</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -820,7 +808,7 @@
                 <a href="/privacy-policy">Privacy Policy</a>
                 <a href="/terms-of-service">Terms of Service</a>
                 <a href="/disclaimer">Disclaimer</a>
-                <a href="/cookies-policy">Cookies-Policy</a>
+                <a href="/cookies-policy">Cookies Policy</a>
             </div>
         </div>
     </footer>
@@ -1096,8 +1084,7 @@
                 urlInput.focus();
             });
 
-            // ===== DROP ZONE (FIXED) =====
-            // Prevent default drag behaviors on the whole page
+            // ===== DROP ZONE =====
             document.addEventListener('dragover', function(e) {
                 e.preventDefault();
             });
@@ -1105,7 +1092,6 @@
                 e.preventDefault();
             });
 
-            // Drop zone events
             dropZone.addEventListener('dragover', function(e) {
                 e.preventDefault();
                 this.classList.add('dragover');
@@ -1120,17 +1106,14 @@
                 e.preventDefault();
                 this.classList.remove('dragover');
                 
-                // Get the dropped data
                 let url = '';
                 const dt = e.dataTransfer;
                 
-                // Try text/plain first
                 if (dt.types && dt.types.includes('text/plain')) {
                     url = dt.getData('text/plain');
                 } else if (dt.types && dt.types.includes('text/uri-list')) {
                     url = dt.getData('text/uri-list');
                 } else {
-                    // Fallback: try getting as string
                     url = dt.getData('text') || '';
                 }
                 
@@ -1146,7 +1129,6 @@
                 }
             });
 
-            // Click on drop zone focuses the input
             dropZone.addEventListener('click', function() {
                 urlInput.focus();
             });
