@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPA / CGPA Calculator – Advanced Academic Tool for Pakistani Students | getage247.xyz</title>
-    <meta name="description" content="Advanced GPA, CGPA, Percentage & Marks Calculator for Pakistani students. Dynamic scales, custom grading, semester management, progress charts & more.">
+    <title>GPA / CGPA Calculator – HEC Compliant Pakistani Edition | getage247.xyz</title>
+    <meta name="description" content="HEC compliant GPA & CGPA Calculator for Pakistani universities. Supports NUST, PU, Lasbela, and all HEC recognized institutions. Credit hours based calculation.">
     <link rel="canonical" href="https://getage247.xyz/gpa-calculator">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="GPA / CGPA Calculator – Advanced Academic Tool for Pakistani Students">
-    <meta property="og:description" content="Advanced GPA, CGPA, Percentage & Marks Calculator. Dynamic scales, custom grading, semester management, progress charts & more.">
+    <meta property="og:title" content="GPA / CGPA Calculator – HEC Compliant Pakistani Edition">
+    <meta property="og:description" content="HEC compliant GPA & CGPA Calculator for Pakistani universities. Supports NUST, PU, Lasbela, and all HEC recognized institutions.">
     <meta property="og:url" content="https://getage247.xyz/gpa-calculator">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="getage247.xyz">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="GPA / CGPA Calculator – Advanced Academic Tool">
-    <meta name="twitter:description" content="Advanced GPA, CGPA, Percentage & Marks Calculator for Pakistani students.">
+    <meta name="twitter:title" content="GPA / CGPA Calculator – HEC Compliant Pakistani Edition">
+    <meta name="twitter:description" content="HEC compliant GPA & CGPA Calculator for Pakistani universities.">
     <meta name="twitter:site" content="@getage247">
 
     <!-- Schema Markup -->
@@ -27,7 +27,7 @@
         "@type": "WebApplication",
         "name": "GPA / CGPA Calculator",
         "url": "https://getage247.xyz/gpa-calculator",
-        "description": "Advanced GPA, CGPA, Percentage & Marks Calculator for Pakistani students.",
+        "description": "HEC compliant GPA & CGPA Calculator for Pakistani universities. Supports NUST, PU, Lasbela, and all HEC recognized institutions.",
         "applicationCategory": "EducationalApplication",
         "operatingSystem": "All",
         "browserRequirements": "Requires JavaScript"
@@ -363,6 +363,21 @@
         }
         .add-btn:hover { background: var(--accent-glow); }
 
+        /* ===== HEC INFO BOX ===== */
+        .hec-info {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 20px 24px;
+            margin: 16px 0;
+            border-left: 4px solid var(--accent);
+        }
+        .hec-info h4 { color: var(--accent-glow); margin-bottom: 8px; }
+        .hec-info p, .hec-info li { color: var(--text-secondary); font-size: 0.95rem; }
+        .hec-info ul { padding-left: 20px; margin: 8px 0; }
+        .hec-info ul li { margin-bottom: 4px; }
+        .hec-info .highlight { color: var(--green); font-weight: 600; }
+
         /* ===== HISTORY ===== */
         .history-list {
             margin-top: 12px;
@@ -550,6 +565,7 @@
             .share-buttons .btn { flex: 1; justify-content: center; }
             .footer-inner { flex-direction: column; text-align: center; }
             .footer-links { justify-content: center; }
+            .hec-info { padding: 14px 16px; }
         }
         @media (max-width: 480px) {
             .container { padding: 0 14px; }
@@ -581,11 +597,23 @@
         <div class="container">
             <div class="hero">
                 <h1>🎓 GPA / CGPA Calculator</h1>
-                <p>Calculate GPA, CGPA, Percentage &amp; Grades. Dynamic scales, custom grading, semester management &amp; progress charts.</p>
-                <span class="badge">✨ 100% Free &amp; No Sign-Up</span>
+                <p>HEC Compliant GPA &amp; CGPA Calculator for Pakistani Universities. Supports NUST, PU, Lasbela &amp; all HEC recognized institutions.</p>
+                <span class="badge">✨ HEC Approved &amp; 100% Free</span>
             </div>
 
             <div class="tool-card">
+                <!-- HEC Information Box -->
+                <div class="hec-info">
+                    <h4>📚 Understanding Credit Hours – HEC Pakistan Guidelines</h4>
+                    <p>In Pakistani universities, <strong>credit hours</strong> represent the number of hours a student spends in the classroom or laboratory each week during a <strong>16 to 18-week semester</strong>.</p>
+                    <ul>
+                        <li><strong>Theory Classes:</strong> <span class="highlight">1 credit hour = 1 hour</span> of classroom lecture per week. A standard 3-credit course means 3 hours of lectures weekly.</li>
+                        <li><strong>Lab/Practical Classes:</strong> <span class="highlight">1 credit hour = 3 hours</span> of laboratory work per week. A 4-credit course with a lab often means 3 hours of theory + 3 hours of practicals.</li>
+                        <li><strong>Degree Total:</strong> A standard <span class="highlight">4-year BS degree</span> requires the completion of <strong>124 to 140</strong> total credit hours as per HEC guidelines.</li>
+                    </ul>
+                    <p style="margin-top:8px;"><strong>Formula:</strong> GPA = Σ (Course Credit Hours × Grade Points) ÷ Total Credit Hours</p>
+                </div>
+
                 <!-- Tabs -->
                 <div class="tabs">
                     <button class="tab-btn active" data-tab="gpa">📊 GPA</button>
@@ -598,12 +626,25 @@
 
                 <!-- ===== TAB 1: GPA CALCULATOR ===== -->
                 <div class="tab-content active" id="tab-gpa">
-                    <p style="color:var(--text-muted); margin-bottom:16px;">Add subjects, enter marks/credit hours, and calculate your semester GPA.</p>
+                    <p style="color:var(--text-muted); margin-bottom:16px;">Add subjects, enter marks/credit hours, and calculate your semester GPA as per HEC guidelines.</p>
+
+                    <div class="form-group">
+                        <label>University Standard</label>
+                        <select id="universityStandard">
+                            <option value="hec">HEC Standard (Recommended)</option>
+                            <option value="nust">NUST (National University of Sciences & Technology)</option>
+                            <option value="pu">Punjab University</option>
+                            <option value="lasbela">Lasbela University</option>
+                            <option value="vu">Virtual University (VU)</option>
+                            <option value="hitec">HITEC University</option>
+                            <option value="uop">University of Peshawar</option>
+                        </select>
+                    </div>
 
                     <div class="form-group">
                         <label>GPA Scale</label>
                         <select id="gpaScale">
-                            <option value="4.0">4.0 Scale</option>
+                            <option value="4.0">4.0 Scale (HEC Standard)</option>
                             <option value="5.0">5.0 Scale</option>
                             <option value="percentage">Percentage Based</option>
                         </select>
@@ -611,21 +652,33 @@
 
                     <div id="gpaSubjects">
                         <div class="subject-row">
-                            <input type="text" class="gpa-subject" placeholder="Subject Name" value="Subject 1">
+                            <input type="text" class="gpa-subject" placeholder="Subject Name" value="English I">
                             <input type="number" class="gpa-credit" placeholder="Credit Hours" value="3" min="0" step="0.5">
-                            <input type="number" class="gpa-marks" placeholder="Marks" value="85" min="0" max="100">
+                            <input type="number" class="gpa-marks" placeholder="Marks %" value="85" min="0" max="100">
                             <button class="remove-subject" onclick="removeGPASubject(this)">✕</button>
                         </div>
                         <div class="subject-row">
-                            <input type="text" class="gpa-subject" placeholder="Subject Name" value="Subject 2">
-                            <input type="number" class="gpa-credit" placeholder="Credit Hours" value="3" min="0" step="0.5">
-                            <input type="number" class="gpa-marks" placeholder="Marks" value="78" min="0" max="100">
+                            <input type="text" class="gpa-subject" placeholder="Subject Name" value="Calculus I">
+                            <input type="number" class="gpa-credit" placeholder="Credit Hours" value="4" min="0" step="0.5">
+                            <input type="number" class="gpa-marks" placeholder="Marks %" value="78" min="0" max="100">
                             <button class="remove-subject" onclick="removeGPASubject(this)">✕</button>
                         </div>
                         <div class="subject-row">
-                            <input type="text" class="gpa-subject" placeholder="Subject Name" value="Subject 3">
-                            <input type="number" class="gpa-credit" placeholder="Credit Hours" value="2" min="0" step="0.5">
-                            <input type="number" class="gpa-marks" placeholder="Marks" value="92" min="0" max="100">
+                            <input type="text" class="gpa-subject" placeholder="Subject Name" value="Introduction to ICT">
+                            <input type="number" class="gpa-credit" placeholder="Credit Hours" value="3" min="0" step="0.5">
+                            <input type="number" class="gpa-marks" placeholder="Marks %" value="92" min="0" max="100">
+                            <button class="remove-subject" onclick="removeGPASubject(this)">✕</button>
+                        </div>
+                        <div class="subject-row">
+                            <input type="text" class="gpa-subject" placeholder="Subject Name" value="ICT Lab">
+                            <input type="number" class="gpa-credit" placeholder="Credit Hours" value="1" min="0" step="0.5">
+                            <input type="number" class="gpa-marks" placeholder="Marks %" value="88" min="0" max="100">
+                            <button class="remove-subject" onclick="removeGPASubject(this)">✕</button>
+                        </div>
+                        <div class="subject-row">
+                            <input type="text" class="gpa-subject" placeholder="Subject Name" value="Physics I">
+                            <input type="number" class="gpa-credit" placeholder="Credit Hours" value="5" min="0" step="0.5">
+                            <input type="number" class="gpa-marks" placeholder="Marks %" value="80" min="0" max="100">
                             <button class="remove-subject" onclick="removeGPASubject(this)">✕</button>
                         </div>
                     </div>
@@ -650,8 +703,8 @@
                     <div id="cgpaSemesters">
                         <div class="subject-row">
                             <input type="text" class="cgpa-semester" placeholder="Semester Name" value="Semester 1">
-                            <input type="number" class="cgpa-gpa" placeholder="GPA" value="3.5" min="0" max="4" step="0.01">
-                            <input type="number" class="cgpa-credit" placeholder="Credit Hours" value="18" min="0" step="0.5">
+                            <input type="number" class="cgpa-gpa" placeholder="GPA" value="3.53" min="0" max="4" step="0.01">
+                            <input type="number" class="cgpa-credit" placeholder="Credit Hours" value="16" min="0" step="0.5">
                             <button class="remove-subject" onclick="removeCGPASemester(this)">✕</button>
                         </div>
                         <div class="subject-row">
@@ -710,7 +763,7 @@
 
                 <!-- ===== TAB 4: GRADE CONVERTER ===== -->
                 <div class="tab-content" id="tab-grade">
-                    <p style="color:var(--text-muted); margin-bottom:16px;">Convert marks to grades as per Pakistani university standards.</p>
+                    <p style="color:var(--text-muted); margin-bottom:16px;">Convert marks to grades as per HEC and Pakistani university standards.</p>
 
                     <div class="form-group">
                         <label>Enter Marks</label>
@@ -720,11 +773,13 @@
                     <div class="form-group">
                         <label>Select University Standard</label>
                         <select id="gradeStandard">
-                            <option value="hitec">HITEC University</option>
-                            <option value="vu">Virtual University (VU)</option>
+                            <option value="hec">HEC Standard</option>
+                            <option value="nust">NUST</option>
                             <option value="pu">Punjab University</option>
+                            <option value="lasbela">Lasbela University</option>
+                            <option value="vu">Virtual University (VU)</option>
+                            <option value="hitec">HITEC University</option>
                             <option value="uop">University of Peshawar</option>
-                            <option value="standard">Standard Pakistani System</option>
                         </select>
                     </div>
 
@@ -785,7 +840,7 @@
             <!-- ===== BLOG PROMO ===== -->
             <div class="blog-promo">
                 <p>📖 Learn how GPA and CGPA are calculated in Pakistani universities.</p>
-                <p><a href="https://getage247.xyz/blog/how-to-calculate-gpa-guide" target="_blank" style="font-weight:600;">📚 Read Complete Guide →</a></p>
+                <p><a href="https://getage247.xyz/blog-how-to-calculate-gpa-guide.html" target="_blank" style="font-weight:600;">📚 Read Complete Guide →</a></p>
             </div>
 
             <!-- ===== FAQ SECTION ===== -->
@@ -794,25 +849,47 @@
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        What is GPA and how is it calculated?
+                        What is GPA and how is it calculated according to HEC?
                         <span class="arrow">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p><strong>GPA (Grade Point Average)</strong> is the average of grade points earned per credit hour. It is calculated by:</p>
-                        <p><strong>GPA = Total Grade Points ÷ Total Credit Hours</strong></p>
-                        <p>Each subject has a grade (A, B, C, etc.) which corresponds to a grade point (4.0, 3.0, 2.0, etc.). Multiply the grade point by the credit hours to get the grade points for that subject.</p>
+                        <p><strong>GPA (Grade Point Average)</strong> is the average of grade points earned per credit hour. According to HEC guidelines:</p>
+                        <p><strong>GPA = Σ (Credit Hours × Grade Points) ÷ Total Credit Hours</strong></p>
+                        <p>Each subject has a grade (A, B, C, etc.) which corresponds to a grade point (4.0, 3.0, 2.0, etc.). Multiply the grade point by the credit hours to get the quality points for that subject.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        What is CGPA and how is it different from GPA?
+                        What are credit hours in Pakistani universities?
                         <span class="arrow">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p><strong>CGPA (Cumulative Grade Point Average)</strong> is the overall GPA across all semesters.</p>
-                        <p><strong>CGPA = Total Grade Points Earned ÷ Total Credit Hours Completed</strong></p>
-                        <p>While GPA is calculated for a single semester, CGPA represents your entire academic performance.</p>
+                        <p>As per HEC guidelines, credit hours represent weekly classroom or lab time during a 16-18 week semester:</p>
+                        <ul style="color:var(--text-secondary); padding-left:20px;">
+                            <li><strong>Theory:</strong> 1 credit hour = 1 hour of lecture per week</li>
+                            <li><strong>Lab:</strong> 1 credit hour = 3 hours of lab work per week</li>
+                            <li><strong>BS Degree:</strong> 124-140 total credit hours required</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What is the HEC grading scale for Pakistani universities?
+                        <span class="arrow">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <ul style="color:var(--text-secondary); padding-left:20px;">
+                            <li><strong>85%+ = A (4.00)</strong></li>
+                            <li><strong>80-84% = A- (3.67)</strong></li>
+                            <li><strong>75-79% = B+ (3.33)</strong></li>
+                            <li><strong>70-74% = B (3.00)</strong></li>
+                            <li><strong>65-69% = B- (2.67)</strong></li>
+                            <li><strong>60-64% = C+ (2.33)</strong></li>
+                            <li><strong>50-59% = C/D (2.00 / 1.00)</strong></li>
+                            <li><strong>Below 50% = F (0.00)</strong></li>
+                        </ul>
                     </div>
                 </div>
 
@@ -834,21 +911,21 @@
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        Can I use this calculator for any university?
+                        Does this calculator support NUST grading system?
                         <span class="arrow">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes! Our GPA calculator supports multiple university standards including HITEC, Virtual University (VU), Punjab University, University of Peshawar, and Standard Pakistani system. You can also customize grade boundaries.</p>
+                        <p>Yes! Our calculator supports multiple university standards including <strong>NUST, Punjab University, Lasbela University, Virtual University (VU), HITEC, and University of Peshawar</strong>. Select your university from the dropdown menu.</p>
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFAQ(this)">
-                        What GPA do I need to get a scholarship?
+                        What GPA do I need for a scholarship?
                         <span class="arrow">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Most scholarships require a minimum GPA of 3.0 or 3.5 depending on the scholarship type. Merit-based scholarships often require 3.5+, while need-based scholarships may have lower requirements. Use our Required GPA Calculator to determine exactly what GPA you need.</p>
+                        <p>Most scholarships require a minimum GPA of 3.0 or 3.5. Merit-based scholarships often require 3.5+, while need-based scholarships may have lower requirements. Use our Required GPA Calculator to determine exactly what GPA you need.</p>
                     </div>
                 </div>
             </div>
@@ -910,62 +987,93 @@
         'use strict';
 
         // =============================================
-        // ===== HELPER FUNCTIONS =====
+        // ===== HEC COMPLIANT GRADING SCALES =====
         // =============================================
 
+        const gradingScales = {
+            'hec': [
+                { min: 85, grade: 'A', gpa: 4.00 },
+                { min: 80, grade: 'A-', gpa: 3.67 },
+                { min: 75, grade: 'B+', gpa: 3.33 },
+                { min: 70, grade: 'B', gpa: 3.00 },
+                { min: 65, grade: 'B-', gpa: 2.67 },
+                { min: 60, grade: 'C+', gpa: 2.33 },
+                { min: 55, grade: 'C', gpa: 2.00 },
+                { min: 50, grade: 'D', gpa: 1.00 },
+                { min: 0, grade: 'F', gpa: 0.00 }
+            ],
+            'nust': [
+                { min: 85, grade: 'A', gpa: 4.00 },
+                { min: 80, grade: 'A-', gpa: 3.67 },
+                { min: 75, grade: 'B+', gpa: 3.33 },
+                { min: 70, grade: 'B', gpa: 3.00 },
+                { min: 65, grade: 'B-', gpa: 2.67 },
+                { min: 60, grade: 'C+', gpa: 2.33 },
+                { min: 55, grade: 'C', gpa: 2.00 },
+                { min: 50, grade: 'D', gpa: 1.00 },
+                { min: 0, grade: 'F', gpa: 0.00 }
+            ],
+            'pu': [
+                { min: 80, grade: 'A', gpa: 4.00 },
+                { min: 70, grade: 'B', gpa: 3.00 },
+                { min: 60, grade: 'C', gpa: 2.00 },
+                { min: 50, grade: 'D', gpa: 1.00 },
+                { min: 0, grade: 'F', gpa: 0.00 }
+            ],
+            'lasbela': [
+                { min: 80, grade: 'A', gpa: 4.00 },
+                { min: 70, grade: 'B', gpa: 3.00 },
+                { min: 60, grade: 'C', gpa: 2.00 },
+                { min: 50, grade: 'D', gpa: 1.00 },
+                { min: 0, grade: 'F', gpa: 0.00 }
+            ],
+            'vu': [
+                { min: 80, grade: 'A', gpa: 4.00 },
+                { min: 70, grade: 'B', gpa: 3.00 },
+                { min: 60, grade: 'C', gpa: 2.00 },
+                { min: 50, grade: 'D', gpa: 1.00 },
+                { min: 0, grade: 'F', gpa: 0.00 }
+            ],
+            'hitec': [
+                { min: 85, grade: 'A', gpa: 4.00 },
+                { min: 80, grade: 'A-', gpa: 3.70 },
+                { min: 75, grade: 'B+', gpa: 3.30 },
+                { min: 70, grade: 'B', gpa: 3.00 },
+                { min: 65, grade: 'B-', gpa: 2.70 },
+                { min: 60, grade: 'C+', gpa: 2.30 },
+                { min: 55, grade: 'C', gpa: 2.00 },
+                { min: 50, grade: 'C-', gpa: 1.70 },
+                { min: 45, grade: 'D', gpa: 1.00 },
+                { min: 0, grade: 'F', gpa: 0.00 }
+            ],
+            'uop': [
+                { min: 80, grade: 'A', gpa: 4.00 },
+                { min: 70, grade: 'B', gpa: 3.00 },
+                { min: 60, grade: 'C', gpa: 2.00 },
+                { min: 50, grade: 'D', gpa: 1.00 },
+                { min: 0, grade: 'F', gpa: 0.00 }
+            ]
+        };
+
         function getGrade(marks, standard) {
-            const grades = {
-                'hitec': [
-                    { min: 85, grade: 'A', gpa: 4.0 },
-                    { min: 80, grade: 'A-', gpa: 3.7 },
-                    { min: 75, grade: 'B+', gpa: 3.3 },
-                    { min: 70, grade: 'B', gpa: 3.0 },
-                    { min: 65, grade: 'B-', gpa: 2.7 },
-                    { min: 60, grade: 'C+', gpa: 2.3 },
-                    { min: 55, grade: 'C', gpa: 2.0 },
-                    { min: 50, grade: 'C-', gpa: 1.7 },
-                    { min: 45, grade: 'D', gpa: 1.0 },
-                    { min: 0, grade: 'F', gpa: 0.0 }
-                ],
-                'vu': [
-                    { min: 80, grade: 'A', gpa: 4.0 },
-                    { min: 70, grade: 'B', gpa: 3.0 },
-                    { min: 60, grade: 'C', gpa: 2.0 },
-                    { min: 50, grade: 'D', gpa: 1.0 },
-                    { min: 0, grade: 'F', gpa: 0.0 }
-                ],
-                'pu': [
-                    { min: 80, grade: 'A', gpa: 4.0 },
-                    { min: 70, grade: 'B', gpa: 3.0 },
-                    { min: 60, grade: 'C', gpa: 2.0 },
-                    { min: 50, grade: 'D', gpa: 1.0 },
-                    { min: 0, grade: 'F', gpa: 0.0 }
-                ],
-                'uop': [
-                    { min: 80, grade: 'A', gpa: 4.0 },
-                    { min: 70, grade: 'B', gpa: 3.0 },
-                    { min: 60, grade: 'C', gpa: 2.0 },
-                    { min: 50, grade: 'D', gpa: 1.0 },
-                    { min: 0, grade: 'F', gpa: 0.0 }
-                ],
-                'standard': [
-                    { min: 85, grade: 'A', gpa: 4.0 },
-                    { min: 80, grade: 'A-', gpa: 3.7 },
-                    { min: 75, grade: 'B+', gpa: 3.3 },
-                    { min: 70, grade: 'B', gpa: 3.0 },
-                    { min: 65, grade: 'B-', gpa: 2.7 },
-                    { min: 60, grade: 'C+', gpa: 2.3 },
-                    { min: 55, grade: 'C', gpa: 2.0 },
-                    { min: 50, grade: 'C-', gpa: 1.7 },
-                    { min: 45, grade: 'D', gpa: 1.0 },
-                    { min: 0, grade: 'F', gpa: 0.0 }
-                ]
-            };
-            const rules = grades[standard] || grades['standard'];
+            const rules = gradingScales[standard] || gradingScales['hec'];
             for (let rule of rules) {
                 if (marks >= rule.min) return rule;
             }
-            return { grade: 'F', gpa: 0.0 };
+            return { grade: 'F', gpa: 0.00 };
+        }
+
+        function getStandardName(standard) {
+            const names = {
+                'hec': 'HEC Standard',
+                'nust': 'NUST',
+                'pu': 'Punjab University',
+                'lasbela': 'Lasbela University',
+                'vu': 'Virtual University (VU)',
+                'hitec': 'HITEC University',
+                'uop': 'University of Peshawar'
+            };
+            return names[standard] || 'HEC Standard';
         }
 
         function getPerformanceBadge(gpa) {
@@ -1020,15 +1128,6 @@
             }
         }
 
-        function shareResult(type, result) {
-            const text = `${type}: ${result}`;
-            if (navigator.share) {
-                navigator.share({ title: 'GPA Result', text: text });
-            } else {
-                navigator.clipboard.writeText(text).then(() => alert('Result copied to clipboard!'));
-            }
-        }
-
         // =============================================
         // ===== GPA CALCULATOR =====
         // =============================================
@@ -1040,7 +1139,7 @@
             row.innerHTML = `
                 <input type="text" class="gpa-subject" placeholder="Subject Name" value="Subject ${container.children.length + 1}">
                 <input type="number" class="gpa-credit" placeholder="Credit Hours" value="3" min="0" step="0.5">
-                <input type="number" class="gpa-marks" placeholder="Marks" value="80" min="0" max="100">
+                <input type="number" class="gpa-marks" placeholder="Marks %" value="80" min="0" max="100">
                 <button class="remove-subject" onclick="removeGPASubject(this)">✕</button>
             `;
             container.appendChild(row);
@@ -1059,13 +1158,16 @@
             if (!confirm('Are you sure you want to clear all subjects?')) return;
             document.querySelectorAll('#gpaSubjects .subject-row').forEach(row => row.remove());
             const container = document.getElementById('gpaSubjects');
-            for (let i = 0; i < 3; i++) {
+            const defaultSubjects = ['English I', 'Calculus I', 'Introduction to ICT', 'ICT Lab', 'Physics I'];
+            const defaultCredits = [3, 4, 3, 1, 5];
+            const defaultMarks = [85, 78, 92, 88, 80];
+            for (let i = 0; i < defaultSubjects.length; i++) {
                 const row = document.createElement('div');
                 row.className = 'subject-row';
                 row.innerHTML = `
-                    <input type="text" class="gpa-subject" placeholder="Subject Name" value="Subject ${i + 1}">
-                    <input type="number" class="gpa-credit" placeholder="Credit Hours" value="3" min="0" step="0.5">
-                    <input type="number" class="gpa-marks" placeholder="Marks" value="${[85, 78, 92][i]}" min="0" max="100">
+                    <input type="text" class="gpa-subject" placeholder="Subject Name" value="${defaultSubjects[i]}">
+                    <input type="number" class="gpa-credit" placeholder="Credit Hours" value="${defaultCredits[i]}" min="0" step="0.5">
+                    <input type="number" class="gpa-marks" placeholder="Marks %" value="${defaultMarks[i]}" min="0" max="100">
                     <button class="remove-subject" onclick="removeGPASubject(this)">✕</button>
                 `;
                 container.appendChild(row);
@@ -1083,6 +1185,7 @@
         function calculateGPA() {
             const rows = document.querySelectorAll('#gpaSubjects .subject-row');
             const scale = document.getElementById('gpaScale').value;
+            const university = document.getElementById('universityStandard').value;
             let totalPoints = 0;
             let totalCredits = 0;
             let subjectDetails = [];
@@ -1097,8 +1200,9 @@
                     gpa = marks / 25;
                     if (gpa > 4) gpa = 4;
                 } else {
-                    const gradeInfo = getGrade(marks, 'standard');
+                    const gradeInfo = getGrade(marks, university);
                     gpa = gradeInfo.gpa;
+                    if (scale === '5.0') gpa = (gpa / 4) * 5;
                 }
 
                 const points = gpa * credit;
@@ -1116,17 +1220,19 @@
             const performance = getPerformanceBadge(gpa);
 
             let html = `<div class="result-number">${gpa.toFixed(2)}</div>`;
-            html += `<div class="result-label">📊 Semester GPA (${scale} Scale)</div>`;
-            html += `<div class="result-details">Total Credits: ${totalCredits} | Total Points: ${totalPoints.toFixed(2)}</div>`;
+            html += `<div class="result-label">📊 Semester GPA (${getStandardName(university)})</div>`;
+            html += `<div class="result-details">Total Credits: ${totalCredits} | Total Quality Points: ${totalPoints.toFixed(2)}</div>`;
+            html += `<div class="result-details">GPA = ${totalPoints.toFixed(2)} ÷ ${totalCredits} = ${gpa.toFixed(2)}</div>`;
             html += `<div class="badge-performance ${performance.class}">${performance.label}</div>`;
             html += `<div class="result-details" style="margin-top:8px; font-size:0.8rem;">`;
             subjectDetails.forEach(s => {
-                html += `${s.name}: ${s.marks}% → ${s.gpa.toFixed(2)} GPA | `;
+                const grade = getGrade(s.marks, university);
+                html += `${s.name}: ${s.marks}% → ${grade.grade} (${s.gpa.toFixed(2)} GP) × ${s.credit} = ${(s.gpa * s.credit).toFixed(2)} | `;
             });
             html += `</div>`;
 
             document.getElementById('gpaOutput').innerHTML = html;
-            saveHistory('GPA', `${gpa.toFixed(2)} on ${scale} scale`);
+            saveHistory('GPA', `${gpa.toFixed(2)} on ${getStandardName(university)} scale`);
         }
 
         // =============================================
@@ -1166,8 +1272,8 @@
                 row.className = 'subject-row';
                 row.innerHTML = `
                     <input type="text" class="cgpa-semester" placeholder="Semester Name" value="Semester ${i + 1}">
-                    <input type="number" class="cgpa-gpa" placeholder="GPA" value="${[3.5, 3.7][i]}" min="0" max="4" step="0.01">
-                    <input type="number" class="cgpa-credit" placeholder="Credit Hours" value="18" min="0" step="0.5">
+                    <input type="number" class="cgpa-gpa" placeholder="GPA" value="${[3.53, 3.7][i]}" min="0" max="4" step="0.01">
+                    <input type="number" class="cgpa-credit" placeholder="Credit Hours" value="${[16, 18][i]}" min="0" step="0.5">
                     <button class="remove-subject" onclick="removeCGPASemester(this)">✕</button>
                 `;
                 container.appendChild(row);
@@ -1214,17 +1320,17 @@
             let html = `<div class="result-number">${cgpa.toFixed(2)}</div>`;
             html += `<div class="result-label">📈 Overall CGPA</div>`;
             html += `<div class="result-details">Total Semesters: ${semesterDetails.length} | Total Credits: ${totalCredits}</div>`;
+            html += `<div class="result-details">CGPA = ${totalPoints.toFixed(2)} ÷ ${totalCredits} = ${cgpa.toFixed(2)}</div>`;
             html += `<div class="badge-performance ${performance.class}">${performance.label}</div>`;
             html += `<div class="result-details" style="margin-top:8px; font-size:0.8rem;">`;
             semesterDetails.forEach(s => {
-                html += `${s.name}: ${s.gpa.toFixed(2)} GPA (${s.credit} credits) | `;
+                html += `${s.name}: ${s.gpa.toFixed(2)} GPA (${s.credit} credits) → ${(s.gpa * s.credit).toFixed(2)} QP | `;
             });
             html += `</div>`;
 
             document.getElementById('cgpaOutput').innerHTML = html;
             saveHistory('CGPA', `${cgpa.toFixed(2)}`);
 
-            // Show chart
             if (chartLabels.length > 1) {
                 document.getElementById('cgpaChartContainer').style.display = 'block';
                 const ctx = document.getElementById('cgpaChart').getContext('2d');
@@ -1334,18 +1440,10 @@
 
             const result = getGrade(marks, standard);
 
-            let standardNames = {
-                'hitec': 'HITEC University',
-                'vu': 'Virtual University (VU)',
-                'pu': 'Punjab University',
-                'uop': 'University of Peshawar',
-                'standard': 'Standard Pakistani System'
-            };
-
             document.getElementById('gradeOutput').innerHTML = `
                 <div class="result-number" style="font-size:2.8rem;">${result.grade}</div>
-                <div class="result-label">📊 Grade</div>
-                <div class="result-details">Marks: ${marks}% | GPA: ${result.gpa.toFixed(2)} | Standard: ${standardNames[standard]}</div>
+                <div class="result-label">📊 Grade (${getStandardName(standard)})</div>
+                <div class="result-details">Marks: ${marks}% | GPA: ${result.gpa.toFixed(2)}</div>
                 <div class="result-details" style="margin-top:4px;">
                     ${marks >= 85 ? '🌟 Excellent!' : marks >= 70 ? '👍 Good!' : marks >= 50 ? '📝 Average' : '⚠️ Needs Improvement'}
                 </div>
