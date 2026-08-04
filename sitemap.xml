@@ -3,453 +3,82 @@
 
   <url>
     <loc>https://getage247.xyz/</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://getage247.xyz/blog.html</loc>
-    <lastmod>2026-07-17</lastmod>
+    <lastmod>2026-08-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- ===== TOOLS ===== -->
-
-  <url>
-    <loc>https://getage247.xyz/image-resizer.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/qr-generator.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/loan-calculator.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/jpg-to-pdf.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/currency-converter.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/percentage-calculator.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/password-generator.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/json-formatter.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/text-case-converter.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/base64-encoder.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/unit-converter.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/uuid-generator.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/schema-markup-generator.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  <url><loc>https://getage247.xyz/image-resizer.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getage247.xyz/qr-generator.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/loan-calculator.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/jpg-to-pdf.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/currency-converter.html</loc><lastmod>2026-08-03</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getage247.xyz/percentage-calculator.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/password-generator.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/json-formatter.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/text-case-converter.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/base64-encoder.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/unit-converter.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/uuid-generator.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/schema-markup-generator.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/meta-tag-generator.html</loc><lastmod>2026-08-03</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getage247.xyz/robots-txt-generator.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getage247.xyz/seo-kit-generator.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getage247.xyz/gpa-calculator.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getage247.xyz/youtube-thumbnail-downloader.html</loc><lastmod>2026-08-03</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getage247.xyz/resume-builder.html</loc><lastmod>2026-08-03</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
 
   <!-- ===== BLOGS ===== -->
-
-  <url>
-    <loc>https://getage247.xyz/blog-age-calculator.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-bmi-calculator.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-word-counter.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-top-5-free-tool.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-image-resizer-guide.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-image-resizer-pakistan.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-qr-code-guide.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-qr-code-generator.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-age-from-cnic-pakistan.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-retirement-age-calculator.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-css-pms-word-count.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-jpg-to-pdf.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-currency-converter.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-percentage-calculator.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-percentage-pakistan.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-password-generator.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-bmi-pakistan.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-loan-calculator.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-loan-interest-guide.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-json-formatter.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-text-case-converter.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-freelancer-web-tools.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-unit-converter.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/blog-uuid-generator.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  <url><loc>https://getage247.xyz/blog-age-calculator.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-bmi-calculator.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-word-counter.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-top-5-free-tool.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-image-resizer-guide.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-image-resizer-pakistan.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-qr-code-guide.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-qr-code-generator.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-age-from-cnic-pakistan.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-retirement-age-calculator.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-css-pms-word-count.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-jpg-to-pdf.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-currency-converter.html</loc><lastmod>2026-08-03</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-percentage-calculator.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-percentage-pakistan.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-password-generator.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-bmi-pakistan.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-loan-calculator.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-loan-interest-guide.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-json-formatter.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-text-case-converter.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-freelancer-web-tools.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://getage247.xyz/blog-unit-converter.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-uuid-generator.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-schema-markup-generator.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-meta-tag-generator.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-meta-tag-adsense-guide.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-schema-markup-guide.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-robots-txt-guide.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-robots-txt-advanced-guide.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-how-to-use-seo-generator.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-how-to-calculate-gpa-guide.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-gpa-vs-cgpa-guide.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://getage247.xyz/blog-youtube-thumbnail-downloader-guide.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://getage247.xyz/blog-resume-builder.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- ===== LEGAL PAGES ===== -->
-
-  <url>
-    <loc>https://getage247.xyz/about.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/contact.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/privacy.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/disclaimer.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/terms.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://getage247.xyz/FAQ.html</loc>
-    <lastmod>2026-07-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-  <loc>https://getage247.xyz/schema-markup-generator.html</loc>
-  <lastmod>2026-07-25</lastmod>
-  <priority>0.9</priority>
-</url>
-  
-  <url>
-  <loc>https://getage247.xyz/blog-uuid-generator.html</loc>
-</url>
-
-<url>
-  <loc>https://getage247.xyz/blog-schema-markup-generator.html</loc>
-  <lastmod>2026-07-25</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-  
-  <url>
-    <loc>https://getage247.xyz/meta-tag-generator.html</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-</url>
-  
-  <url>
-    <loc>https://getage247.xyz/blog-meta-tag-generator.html</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-</url>
-  <url>
-    <loc>https://getage247.xyz/blog-meta-tag-adsense-guide.html</loc>
-    <lastmod>2026-07-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-</url>
-
-  <url>
-  <loc>https://getage247.xyz/blog-schema-markup-guide.html</loc>
-  <lastmod>2026-07-27</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-  
-  <url>
-    <loc>https://getage247.xyz/cookie-policy.html</loc>
-    <lastmod>2026-07-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-</url>
-  
-  <url>
-  <loc>https://getage247.xyz/robots-txt-generator.html</loc>
-  <lastmod>2026-07-28</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.9</priority>
-</url>    
-<url>
-  <loc>https://getage247.xyz/blog-robots-txt-guide.html</loc>
-  <lastmod>2026-07-28</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-  <url>
-  <loc>https://getage247.xyz/blog-robots-txt-advanced-guide.html</loc>
-  <lastmod>2026-07-28</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-  <url>
-    <loc>https://getage247.xyz/seo-kit-generator.html</loc>
-    <lastmod>2026-07-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-</url>
-<url>
-    <loc>https://getage247.xyz/blog-how-to-use-seo-generator.html</loc>
-    <lastmod>2026-07-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-</url>
-  <url>
-    <loc>https://getage247.xyz/gpa-calculator.html</loc>
-    <lastmod>2026-07-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-</url>
- <url>
-  <loc>https://getage247.xyz/blog-how-to-calculate-gpa-guide.html</loc>
-  <lastmod>2026-07-31</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-  <url>
-  <loc>https://getage247.xyz/blog-gpa-vs-cgpa-guide.html</loc>
-  <lastmod>2026-07-31</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-  <url>
-    <loc>https://getage247.xyz/youtube-thumbnail-downloader.html</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-</url>
-  <url>
-  <loc>https://getage247.xyz/youtube-thumbnail-downloader.html</loc>
-  <lastmod>2026-08-01</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
-
-<url>
-  <loc>https://getage247.xyz/blog-youtube-thumbnail-downloader-guide.html</loc>
-  <lastmod>2026-08-01</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.7</priority>
-</url>
-  <url>
-    <loc>https://getage247.xyz/resume-builder.html</loc>
-    <lastmod>2026-08-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-</url>
-  <url>
-  <loc>https://getage247.xyz/blog-resume-builder.html</loc>
-  <lastmod>2026-08-02</lastmod>
-  <changefreq>monthly</changefreq>
-  <priority>0.8</priority>
-</url>
+  <url><loc>https://getage247.xyz/about.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://getage247.xyz/contact.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://getage247.xyz/privacy.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://getage247.xyz/disclaimer.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://getage247.xyz/terms.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://getage247.xyz/FAQ.html</loc><lastmod>2026-08-03</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://getage247.xyz/cookie-policy.html</loc><lastmod>2026-08-03</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
 </urlset>
