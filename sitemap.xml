@@ -126,6 +126,12 @@
 <changefreq>weekly</changefreq>
 <priority>1.0</priority>
 </url>
+  <url>
+  <loc>https://getage247.xyz/invoice-generator.html</loc>
+  <lastmod>2026-08-04</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
 <!--  ===== BLOGS =====  -->
 <url>
 <loc>https://getage247.xyz/blog-age-calculator.html</loc>
