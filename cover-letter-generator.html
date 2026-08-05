@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover Letter Generator – Free ATS-Friendly Tool | getage247.xyz</title>
+    <meta name="description" content="Free ATS-Friendly Cover Letter Generator. Create professional cover letters for any job. Download PDF, print, save drafts. No sign-up required.">
+    <link rel="canonical" href="https://getage247.xyz/cover-letter-generator">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Cover Letter Generator – Free ATS-Friendly Tool">
+    <meta property="og:description" content="Free ATS-Friendly Cover Letter Generator. Create professional cover letters for any job. Download PDF, print, save drafts.">
+    <meta property="og:url" content="https://getage247.xyz/cover-letter-generator">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="getage247.xyz">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cover Letter Generator – Free ATS-Friendly Tool">
+    <meta name="twitter:description" content="Free ATS-Friendly Cover Letter Generator. Create professional cover letters for any job.">
+    <meta name="twitter:site" content="@getage247">
+
+    <!-- Schemas -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Cover Letter Generator",
+        "url": "https://getage247.xyz/cover-letter-generator",
+        "description": "Free ATS-Friendly Cover Letter Generator. Create professional cover letters for any job.",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "All"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://getage247.xyz/" },
+            { "@type": "ListItem", "position": 2, "name": "Cover Letter Generator", "item": "https://getage247.xyz/cover-letter-generator" }
+        ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #0a0a12;
+            --bg-secondary: #12121f;
+            --bg-card: #1a1a2e;
+            --bg-card-hover: #24243a;
+            --border: #2a2a44;
+            --text-primary: #f0eeff;
+            --text-secondary: #b8b4d6;
+            --text-muted: #7a77a0;
+            --accent: #7c5cfc;
+            --accent-glow: #9d7cff;
+            --shadow: 0 8px 32px rgba(0,0,0,0.6);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --green: #00b894;
+            --yellow: #fdcb6e;
+            --red: #e17055;
+            --blue: #3498db;
+            --orange: #f39c12;
+        }
+        .light-mode {
+            --bg-primary: #f0eeff;
+            --bg-secondary: #ffffff;
+            --bg-card: #f5f3ff;
+            --bg-card-hover: #edeafe;
+            --border: #d5d0e6;
+            --text-primary: #1a1a2e;
+            --text-secondary: #3d3a5e;
+            --text-muted: #7a77a0;
+            --shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            transition: background 0.3s, color 0.3s;
+        }
+        a { color: var(--accent-glow); text-decoration: none; transition: 0.3s; }
+        a:hover { color: #fff; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        header {
+            background: rgba(10,10,18,0.85);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .light-mode header { background: rgba(240,238,255,0.92); }
+        .header-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+        .logo { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, var(--accent-glow), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .logo span { font-weight: 300; -webkit-text-fill-color: var(--text-muted); }
+        nav { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; }
+        nav a { font-size: 0.9rem; color: var(--text-secondary); padding: 4px 0; border-bottom: 2px solid transparent; font-weight: 500; }
+        nav a:hover, nav a.active { color: #fff; border-bottom-color: var(--accent); }
+        .theme-toggle { background: none; border: 1px solid var(--border); border-radius: 50%; width: 36px; height: 36px; cursor: pointer; font-size: 1.2rem; color: var(--text-secondary); transition: 0.3s; display: flex; align-items: center; justify-content: center; }
+        .theme-toggle:hover { border-color: var(--accent); color: #fff; }
+        .nav-toggle { display: none; background: none; border: none; color: var(--text-primary); font-size: 1.8rem; cursor: pointer; padding: 0 8px; }
+
+        main { flex: 1; padding: 40px 0 60px; }
+        .hero { text-align: center; padding: 20px 0 32px; }
+        .hero h1 { font-size: 2.8rem; font-weight: 800; background: linear-gradient(135deg, #fff, var(--accent-glow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; }
+        .light-mode .hero h1 { background: linear-gradient(135deg, var(--text-primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 640px; margin: 0 auto; }
+        .hero .badge { display: inline-block; background: var(--accent); color: #fff; font-size: 0.7rem; font-weight: 600; padding: 3px 18px; border-radius: 40px; letter-spacing: 0.5px; margin-top: 10px; text-transform: uppercase; }
+
+        .tool-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px 40px; box-shadow: var(--shadow); margin-top: 16px; transition: background 0.3s; }
+        @media (max-width: 768px) { .tool-card { padding: 16px; } }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+        @media (max-width: 768px) { .grid-3 { grid-template-columns: 1fr; } }
+
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px; }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 8px 12px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-family: var(--font);
+            transition: 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(124,92,252,0.2); }
+        .form-group textarea { min-height: 60px; resize: vertical; }
+        .form-group select option { background: var(--bg-card); }
+
+        .btn { padding: 8px 20px; border: none; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: 0.3s; font-family: var(--font); display: inline-flex; align-items: center; gap: 6px; }
+        .btn-primary { background: var(--accent); color: #fff; }
+        .btn-primary:hover { background: var(--accent-glow); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(124,92,252,0.4); }
+        .btn-success { background: var(--green); color: #fff; }
+        .btn-success:hover { background: #00a381; transform: translateY(-2px); }
+        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-secondary); }
+        .btn-outline:hover { border-color: var(--accent); color: #fff; background: var(--bg-card); }
+        .btn-danger { background: var(--red); color: #fff; }
+        .btn-danger:hover { background: #d63031; }
+        .btn-group { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+        .preview-box {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 24px 28px;
+            min-height: 400px;
+            margin-top: 12px;
+            overflow-y: auto;
+            max-height: 600px;
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+        }
+        .preview-box .letter-header { margin-bottom: 16px; }
+        .preview-box .letter-header h2 { font-size: 1.4rem; color: var(--accent-glow); }
+        .preview-box .letter-body p { margin-bottom: 10px; }
+        .preview-box .letter-body .signature { margin-top: 16px; }
+
+        .char-counter { font-size: 0.75rem; color: var(--text-muted); text-align: right; margin-top: 2px; }
+
+        .share-section { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
+        .share-section h4 { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 8px; }
+        .share-buttons { display: flex; flex-wrap: wrap; gap: 6px; }
+        .share-btn { padding: 4px 14px; border: 1px solid var(--border); border-radius: 40px; background: transparent; color: var(--text-secondary); font-size: 0.8rem; cursor: pointer; transition: 0.3s; font-family: var(--font); }
+        .share-btn:hover { border-color: var(--accent); color: #fff; background: var(--bg-card-hover); }
+
+        .faq-section { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--border); }
+        .faq-section h2 { font-size: 1.6rem; color: #fff; margin-bottom: 16px; }
+        .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); margin-bottom: 10px; overflow: hidden; }
+        .faq-item .faq-question { padding: 14px 20px; cursor: pointer; font-weight: 600; color: var(--text-primary); display: flex; justify-content: space-between; align-items: center; transition: 0.3s; }
+        .faq-item .faq-question:hover { background: var(--bg-card-hover); }
+        .faq-item .faq-question .arrow { transition: 0.3s; }
+        .faq-item .faq-question.active .arrow { transform: rotate(180deg); }
+        .faq-item .faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: 0.3s ease; color: var(--text-secondary); }
+        .faq-item .faq-answer.open { padding: 14px 20px; max-height: 500px; }
+
+        .internal-links { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--border); }
+        .internal-links h3 { font-size: 1.2rem; color: #fff; margin-bottom: 12px; }
+        .link-grid { display: flex; flex-wrap: wrap; gap: 8px 14px; }
+        .link-grid a { background: var(--bg-card); border: 1px solid var(--border); border-radius: 40px; padding: 4px 18px; font-size: 0.85rem; color: var(--text-secondary); transition: 0.3s; }
+        .link-grid a:hover { border-color: var(--accent); color: #fff; background: var(--bg-card-hover); }
+
+        .content-section { margin-top: 32px; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px 40px; }
+        .content-section h2 { font-size: 1.8rem; color: #fff; margin-bottom: 16px; }
+        .content-section h3 { color: var(--accent-glow); margin: 20px 0 8px; font-size: 1.3rem; }
+        .content-section p, .content-section li { color: var(--text-secondary); }
+        .content-section ul { padding-left: 20px; margin-bottom: 12px; }
+
+        footer { background: rgba(10,10,18,0.95); border-top: 1px solid var(--border); padding: 32px 0 24px; margin-top: auto; transition: background 0.3s; }
+        .light-mode footer { background: rgba(240,238,255,0.95); }
+        .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; }
+        .footer-inner .copy { color: var(--text-muted); font-size: 0.85rem; }
+        .footer-links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+        .footer-links a { color: var(--text-muted); font-size: 0.85rem; }
+        .footer-links a:hover { color: #fff; }
+
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            nav { display: none; width: 100%; flex-direction: column; align-items: center; padding: 12px 0 4px; gap: 2px; }
+            nav.open { display: flex; }
+            nav a { padding: 8px 0; width: 100%; text-align: center; border-bottom: 1px solid var(--border); }
+            nav a:last-child { border-bottom: none; }
+            .hero h1 { font-size: 2rem; }
+            .tool-card { padding: 16px; }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .preview-box { max-height: 400px; padding: 16px; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
+            .content-section { padding: 20px 16px; }
+            .content-section h2 { font-size: 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 14px; }
+            .hero h1 { font-size: 1.7rem; }
+            .btn-group .btn { flex: 1; justify-content: center; }
+            .preview-box { max-height: 350px; padding: 12px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">getage<span>247</span></div>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <nav id="mainNav">
+                <a href="https://getage247.xyz/">Home</a>
+                <a href="https://getage247.xyz/about">About</a>
+                <a href="https://getage247.xyz/contact">Contact</a>
+                <a href="https://getage247.xyz/privacy">Privacy</a>
+                <a href="https://getage247.xyz/cookie-policy">Cookie</a>
+                <a href="https://getage247.xyz/disclaimer">Disclaimer</a>
+                <a href="https://getage247.xyz/terms">Terms</a>
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main>
+        <div class="container">
+            <div class="hero">
+                <h1>📄 Cover Letter Generator</h1>
+                <p>Create professional ATS-friendly cover letters for any job. Free, private, and no sign-up required.</p>
+                <span class="badge">✨ Free &amp; ATS-Friendly</span>
+            </div>
+
+            <div class="tool-card">
+                <!-- ===== INPUT SECTION ===== -->
+                <div class="grid-2">
+                    <div>
+                        <div class="form-group"><label>👤 Full Name</label><input type="text" id="fullName" value="John Doe" placeholder="John Doe"></div>
+                        <div class="form-group"><label>💼 Job Title</label><input type="text" id="jobTitle" value="Software Engineer" placeholder="Software Engineer"></div>
+                        <div class="form-group"><label>🏢 Company Name</label><input type="text" id="companyName" value="Acme Corp" placeholder="Acme Corp"></div>
+                        <div class="form-group"><label>👔 Hiring Manager</label><input type="text" id="hiringManager" value="Hiring Manager" placeholder="Hiring Manager"></div>
+                    </div>
+                    <div>
+                        <div class="form-group"><label>📍 Address</label><input type="text" id="address" value="123 Main St, New York" placeholder="123 Main St, New York"></div>
+                        <div class="form-group"><label>🏙️ City</label><input type="text" id="city" value="New York" placeholder="New York"></div>
+                        <div class="form-group"><label>📧 Email</label><input type="email" id="email" value="john@example.com" placeholder="john@example.com"></div>
+                        <div class="form-group"><label>📞 Phone</label><input type="text" id="phone" value="+1-555-555-5555" placeholder="+1-555-555-5555"></div>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div>
+                        <div class="form-group"><label>🎯 Experience Level</label>
+                            <select id="experienceLevel">
+                                <option value="fresher">Fresher</option>
+                                <option value="student">Student</option>
+                                <option value="internship">Internship</option>
+                                <option value="experienced" selected>Experienced</option>
+                                <option value="senior">Senior</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>🏭 Industry</label>
+                            <select id="industry">
+                                <option value="it">IT / Technology</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="education">Education</option>
+                                <option value="finance">Finance</option>
+                                <option value="government">Government</option>
+                                <option value="marketing">Marketing</option>
+                                <option value="engineering">Engineering</option>
+                                <option value="sales">Sales</option>
+                                <option value="hr">HR</option>
+                                <option value="remote">Remote / Freelance</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label>📝 Template Style</label>
+                            <select id="templateStyle">
+                                <option value="professional">Professional</option>
+                                <option value="corporate">Corporate</option>
+                                <option value="modern">Modern</option>
+                                <option value="minimal">Minimal</option>
+                                <option value="executive">Executive</option>
+                                <option value="creative">Creative</option>
+                                <option value="ats">ATS Friendly</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group"><label>✏️ Skills (comma separated)</label><input type="text" id="skills" value="JavaScript, Python, React, Node.js" placeholder="JavaScript, Python, React"></div>
+                        <div class="form-group"><label>🎓 Education</label><input type="text" id="education" value="B.S. Computer Science, XYZ University" placeholder="B.S. Computer Science, XYZ University"></div>
+                        <div class="form-group"><label>📜 Certifications</label><input type="text" id="certifications" value="AWS Certified, Scrum Master" placeholder="AWS Certified, Scrum Master"></div>
+                    </div>
+                </div>
+
+                <div class="form-group"><label>📝 Projects / Achievements</label><textarea id="achievements" rows="2" placeholder="Led team of 5 developers, increased performance by 30%">Led team of 5 developers, increased performance by 30%</textarea></div>
+                <div class="form-group"><label>❓ Why do you want this job?</label><textarea id="jobReason" rows="2" placeholder="I am passionate about..." placeholder="I am passionate about..." value="I am passionate about building innovative software solutions.">I am passionate about building innovative software solutions.</textarea></div>
+                <div class="form-group"><label>❓ Why should we hire you?</label><textarea id="hireReason" rows="2" placeholder="I bring unique skills..." placeholder="I bring unique skills..." value="I bring unique skills and a proven track record of delivering results.">I bring unique skills and a proven track record of delivering results.</textarea></div>
+
+                <!-- ===== CUSTOMIZATION ===== -->
+                <div class="grid-3">
+                    <div class="form-group"><label>📐 Font Family</label>
+                        <select id="fontFamily">
+                            <option value="'Segoe UI', sans-serif">Segoe UI</option>
+                            <option value="'Times New Roman', serif">Times New Roman</option>
+                            <option value="'Arial', sans-serif">Arial</option>
+                            <option value="'Georgia', serif">Georgia</option>
+                            <option value="'Roboto', sans-serif">Roboto</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>📏 Font Size</label>
+                        <select id="fontSize"><option value="14px">14px</option><option value="16px" selected>16px</option><option value="18px">18px</option><option value="20px">20px</option></select>
+                    </div>
+                    <div class="form-group"><label>🎨 Accent Color</label>
+                        <select id="accentColor">
+                            <option value="#7c5cfc">Purple</option>
+                            <option value="#2c3e50">Dark Blue</option>
+                            <option value="#e74c3c">Red</option>
+                            <option value="#27ae60">Green</option>
+                            <option value="#2980b9">Blue</option>
+                            <option value="#f39c12">Orange</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- ===== BUTTONS ===== -->
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="generateCoverLetter()">⚡ Generate</button>
+                    <button class="btn btn-success" onclick="downloadPDF()">⬇️ Download PDF</button>
+                    <button class="btn btn-outline" onclick="printLetter()">🖨️ Print</button>
+                    <button class="btn btn-outline" onclick="copyLetter()">📄 Copy</button>
+                    <button class="btn btn-outline" onclick="saveDraft()">💾 Save Draft</button>
+                    <button class="btn btn-outline" onclick="loadDraft()">📂 Load Draft</button>
+                    <button class="btn btn-danger" onclick="clearAll()">🗑️ Clear</button>
+                </div>
+
+                <!-- ===== CHARACTER COUNTER ===== -->
+                <div id="charCounter" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-top:8px; font-size:0.8rem; color:var(--text-muted);">
+                    <span>Total Characters: <span id="totalChars">0</span></span>
+                    <span>Words: <span id="wordCount">0</span></span>
+                    <span>✅ ATS Friendly: <span id="atsCheck">Yes</span></span>
+                </div>
+
+                <!-- ===== LIVE PREVIEW ===== -->
+                <div class="preview-box" id="previewBox">
+                    <div style="color:var(--text-muted); text-align:center; padding:40px 0;">Fill in your details and click Generate to preview your cover letter.</div>
+                </div>
+
+                <!-- ===== SHARE ===== -->
+                <div class="share-section">
+                    <h4>🔗 Share</h4>
+                    <div class="share-buttons">
+                        <button class="share-btn" onclick="shareResult('whatsapp')">💬 WhatsApp</button>
+                        <button class="share-btn" onclick="shareResult('facebook')">📘 Facebook</button>
+                        <button class="share-btn" onclick="shareResult('twitter')">🐦 X</button>
+                        <button class="share-btn" onclick="shareResult('telegram')">📱 Telegram</button>
+                        <button class="share-btn" onclick="shareResult('linkedin')">💼 LinkedIn</button>
+                        <button class="share-btn" onclick="shareResult('reddit')">🤖 Reddit</button>
+                        <button class="share-btn" onclick="shareResult('pinterest')">📌 Pinterest</button>
+                        <button class="share-btn" onclick="shareResult('email')">📧 Email</button>
+                        <button class="share-btn" onclick="shareResult('copy')">📋 Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== CONTENT SECTION ===== -->
+            <div class="content-section">
+                <h2>📖 What is a Cover Letter?</h2>
+                <p>A cover letter is a one-page document sent with your resume that introduces you to potential employers. It explains why you're interested in the position and why you're the best candidate for the job.</p>
+
+                <h3>Why is it Important?</h3>
+                <ul>
+                    <li><strong>🎯 First Impression:</strong> Your cover letter is often the first thing employers read.</li>
+                    <li><strong>📝 Personalizes Your Application:</strong> It adds a personal touch to your resume.</li>
+                    <li><strong>💪 Highlights Your Skills:</strong> It allows you to emphasize your most relevant skills.</li>
+                    <li><strong>🚀 Shows Enthusiasm:</strong> It demonstrates your interest in the position.</li>
+                </ul>
+
+                <h3>Resume vs Cover Letter</h3>
+                <ul>
+                    <li><strong>Resume:</strong> A summary of your work experience, education, and skills.</li>
+                    <li><strong>Cover Letter:</strong> A personalized letter explaining why you're the ideal candidate.</li>
+                </ul>
+
+                <h3>ATS-Friendly Cover Letter Tips</h3>
+                <ul>
+                    <li>✅ Use standard fonts and formatting.</li>
+                    <li>✅ Include keywords from the job description.</li>
+                    <li>✅ Keep it concise (300-500 words).</li>
+                    <li>✅ Avoid images, tables, or fancy layouts.</li>
+                    <li>✅ Use a professional tone and language.</li>
+                </ul>
+
+                <div style="margin-top:16px; padding:12px 16px; background:var(--bg-card); border-radius:8px;">
+                    <p style="color:var(--text-muted); font-size:0.9rem;">🔒 <strong>Privacy:</strong> All data stays in your browser. Nothing is sent to any server.</p>
+                </div>
+            </div>
+
+            <!-- ===== FAQ ===== -->
+            <div class="faq-section">
+                <h2>❓ Frequently Asked Questions</h2>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Is this Cover Letter Generator free? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, it is completely free to use.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Can I download PDF? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, click the Download PDF button.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Is my data secure? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, all data stays in your browser. No data is sent anywhere.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Can I use it for government jobs? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, select Government from the industry dropdown.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Can students use it? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, select Student from the experience dropdown.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Can I edit later? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, save your draft and load it later.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Does it work offline? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, once loaded, it works offline.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Is registration required? <span class="arrow">▼</span></div><div class="faq-answer"><p>No, no sign-up needed.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Is it ATS friendly? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, all templates are ATS-friendly.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Can I print it? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, click the Print button.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">What industries are supported? <span class="arrow">▼</span></div><div class="faq-answer"><p>IT, Healthcare, Education, Finance, Government, Marketing, Engineering, Sales, HR, Remote/Freelance.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Can I customize the template? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, choose from 7 template styles.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Does it work on mobile? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, fully responsive.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Can I copy the cover letter? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, click the Copy button.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Can I save drafts? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, use Save Draft and Load Draft.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">What is ATS? <span class="arrow">▼</span></div><div class="faq-answer"><p>ATS (Applicant Tracking System) is software used by employers to filter resumes and cover letters.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Is this tool AdSense friendly? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, it meets all Google AdSense quality guidelines.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Can I use it for remote jobs? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, select Remote / Freelance from the industry dropdown.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">What experience levels are supported? <span class="arrow">▼</span></div><div class="faq-answer"><p>Fresher, Student, Internship, Experienced, Senior.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Can I change font size? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, select from the font size dropdown.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Can I change accent color? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, select from the accent color dropdown.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Is there a character counter? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, it shows total characters, words, and ATS status.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Can I share my cover letter? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, use the share buttons.</p></div></div>
+            </div>
+
+            <!-- ===== INTERNAL LINKS ===== -->
+            <div class="internal-links">
+                <h3>🔗 Explore More Free Tools</h3>
+                <div class="link-grid">
+                    <a href="https://getage247.xyz/resume-builder">📄 Resume Builder</a>
+                    <a href="https://getage247.xyz/invoice-generator">📄 Invoice Generator</a>
+                    <a href="https://getage247.xyz/age-calculator">🎂 Age Calculator</a>
+                    <a href="https://getage247.xyz/gpa-calculator">🎓 GPA Calculator</a>
+                    <a href="https://getage247.xyz/bmi-calculator">⚖️ BMI Calculator</a>
+                    <a href="https://getage247.xyz/image-resizer">🖼️ Image Resizer</a>
+                    <a href="https://getage247.xyz/cover-letter-generator">📄 Cover Letter</a>
+                    <a href="https://getage247.xyz/seo-kit-generator">🛠️ SEO Kit</a>
+                    <a href="https://getage247.xyz/meta-tag-generator">🏷️ Meta Tag</a>
+                    <a href="https://getage247.xyz/password-generator">🔐 Password</a>
+                    <a href="https://getage247.xyz/qr-generator">📱 QR Code</a>
+                    <a href="https://getage247.xyz/jpg-to-pdf">📄 JPG to PDF</a>
+                    <a href="https://getage247.xyz/unit-converter">📏 Unit Converter</a>
+                    <a href="https://getage247.xyz/currency-converter">💱 Currency</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container footer-inner">
+            <div class="copy">&copy; 2026 <a href="https://getage247.xyz/">getage247.xyz</a> — Free Online Tools</div>
+            <div class="footer-links">
+                <a href="https://getage247.xyz/">Home</a>
+                <a href="https://getage247.xyz/about">About</a>
+                <a href="https://getage247.xyz/contact">Contact</a>
+                <a href="https://getage247.xyz/privacy">Privacy</a>
+                <a href="https://getage247.xyz/cookie-policy">Cookie</a>
+                <a href="https://getage247.xyz/disclaimer">Disclaimer</a>
+                <a href="https://getage247.xyz/terms">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        'use strict';
+
+        // =============================================
+        // ===== INDUSTRY TEMPLATES =====
+        // =============================================
+        const industryTemplates = {
+            it: "I am excited about the opportunity to contribute to [Company]'s technology team. With my experience in [Skills], I am confident I can help drive innovation.",
+            healthcare: "I am passionate about patient care and healthcare technology. My background in [Skills] aligns perfectly with [Company]'s mission.",
+            education: "I am dedicated to shaping young minds and fostering a love for learning. My teaching experience and [Skills] make me an ideal candidate.",
+            finance: "I am detail-oriented and passionate about financial analysis. My expertise in [Skills] will contribute to [Company]'s continued success.",
+            government: "I am committed to public service and improving community outcomes. My skills in [Skills] will support [Company]'s important mission.",
+            marketing: "I am creative and data-driven, with a passion for brand storytelling. My experience in [Skills] will help [Company] achieve its marketing goals.",
+            engineering: "I am passionate about building innovative solutions. My engineering background and [Skills] will drive value for [Company].",
+            sales: "I am results-oriented and driven by helping clients succeed. My sales expertise and [Skills] will contribute to [Company]'s growth.",
+            hr: "I am passionate about people and organizational development. My HR experience and [Skills] will support [Company]'s talent strategy.",
+            remote: "I am a self-motivated professional with a proven track record in remote work. My skills in [Skills] will help [Company] succeed in a distributed environment."
+        };
+
+        // =============================================
+        // ===== EXPERIENCE TEMPLATES =====
+        // =============================================
+        const experienceTemplates = {
+            fresher: "I am a recent graduate eager to launch my career. My academic background and [Skills] have prepared me to contribute to [Company].",
+            student: "I am a student passionate about [Industry]. I bring fresh perspectives, strong [Skills], and a willingness to learn.",
+            internship: "I am seeking an internship to apply my [Skills] in a professional environment. I am eager to learn and contribute to [Company].",
+            experienced: "With [Experience] years of experience in [Industry], I have developed strong [Skills] and a track record of delivering results.",
+            senior: "I am a senior professional with [Experience] years of experience. My leadership in [Skills] will drive strategic value for [Company]."
+        };
+
+        // =============================================
+        // ===== GENERATE COVER LETTER =====
+        // =============================================
+        function generateCoverLetter() {
+            const name = document.getElementById('fullName').value || 'John Doe';
+            const jobTitle = document.getElementById('jobTitle').value || 'Software Engineer';
+            const company = document.getElementById('companyName').value || 'Acme Corp';
+            const manager = document.getElementById('hiringManager').value || 'Hiring Manager';
+            const address = document.getElementById('address').value || '123 Main St';
+            const city = document.getElementById('city').value || 'New York';
+            const email = document.getElementById('email').value || 'john@example.com';
+            const phone = document.getElementById('phone').value || '+1-555-555-5555';
+            const skills = document.getElementById('skills').value || 'JavaScript, Python, React';
+            const education = document.getElementById('education').value || 'B.S. Computer Science';
+            const certifications = document.getElementById('certifications').value || '';
+            const achievements = document.getElementById('achievements').value || '';
+            const jobReason = document.getElementById('jobReason').value || '';
+            const hireReason = document.getElementById('hireReason').value || '';
+            const industry = document.getElementById('industry').value;
+            const experience = document.getElementById('experienceLevel').value;
+            const template = document.getElementById('templateStyle').value;
+            const fontFamily = document.getElementById('fontFamily').value;
+            const fontSize = document.getElementById('fontSize').value;
+            const accentColor = document.getElementById('accentColor').value;
+
+            // Get industry-specific template
+            const industryText = industryTemplates[industry] || industryTemplates.it;
+            const experienceText = experienceTemplates[experience] || experienceTemplates.experienced;
+
+            // Replace placeholders
+            let industryLetter = industryText.replace('[Skills]', skills);
+            let experienceLetter = experienceText.replace('[Skills]', skills).replace('[Industry]', industry).replace('[Experience]', experience === 'experienced' ? '5+' : '1-2');
+
+            // Get current date
+            const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            // Build cover letter
+            let letter = `<div style="font-family: ${fontFamily}; font-size: ${fontSize}; color: var(--text-primary); background: var(--bg-primary); padding: 20px; border-radius: 8px; border: 1px solid var(--border); max-width: 900px; margin: 0 auto;">`;
+
+            // Header
+            letter += `<div style="text-align: center; border-bottom: 2px solid ${accentColor}; padding-bottom: 12px; margin-bottom: 16px;">`;
+            letter += `<h2 style="color: ${accentColor}; margin: 0;">${name}</h2>`;
+            letter += `<p style="color: var(--text-muted); margin: 4px 0;">${address}, ${city}</p>`;
+            letter += `<p style="color: var(--text-muted); margin: 2px 0;">${email} | ${phone}</p>`;
+            letter += `</div>`;
+
+            // Date & Recipient
+            letter += `<p style="color: var(--text-secondary);"><strong>Date:</strong> ${date}</p>`;
+            letter += `<p style="color: var(--text-secondary);"><strong>To:</strong> ${manager}</p>`;
+            letter += `<p style="color: var(--text-secondary);"><strong>Company:</strong> ${company}</p>`;
+            letter += `<p style="color: var(--text-secondary);"><strong>Re:</strong> ${jobTitle} Position</p><br>`;
+
+            // Body
+            letter += `<div style="color: var(--text-secondary); line-height: 1.7;">`;
+            letter += `<p>Dear ${manager},</p>`;
+            letter += `<p>${experienceLetter}</p>`;
+            letter += `<p>${industryLetter}</p>`;
+            if (certifications) {
+                letter += `<p>I hold certifications in ${certifications}.</p>`;
+            }
+            if (achievements) {
+                letter += `<p>My key achievements include: ${achievements}.</p>`;
+            }
+            if (jobReason) {
+                letter += `<p>${jobReason}</p>`;
+            }
+            if (hireReason) {
+                letter += `<p>${hireReason}</p>`;
+            }
+            letter += `<p>I would welcome the opportunity to discuss how my skills can contribute to ${company}'s success. Thank you for your time and consideration.</p>`;
+            letter += `<p style="margin-top: 16px;">Sincerely,</p>`;
+            letter += `<p style="font-weight: 600; color: ${accentColor};">${name}</p>`;
+            letter += `</div>`;
+
+            // Footer
+            letter += `<div style="border-top: 1px solid var(--border); margin-top: 16px; padding-top: 12px; text-align: center; font-size: 0.8rem; color: var(--text-muted);">`;
+            letter += `Generated by getage247.xyz • ATS-Friendly Cover Letter`;
+            letter += `</div>`;
+
+            letter += `</div>`;
+
+            document.getElementById('previewBox').innerHTML = letter;
+
+            // Update character counter
+            const text = document.getElementById('previewBox').textContent;
+            document.getElementById('totalChars').textContent = text.length;
+            document.getElementById('wordCount').textContent = text.split(/\s+/).filter(w => w.length > 0).length;
+            document.getElementById('atsCheck').textContent = text.length > 200 && text.length < 800 ? '✅ Yes' : '⚠️ Adjust length';
+
+            // Save to state for PDF
+            window._coverLetterHTML = letter;
+
+            // Auto-save draft
+            saveDraft();
+        }
+
+        // =============================================
+        // ===== DOWNLOAD PDF =====
+        // =============================================
+        function downloadPDF() {
+            const content = document.getElementById('previewBox').innerHTML;
+            if (!content || content.includes('Fill in your details')) {
+                alert('Please generate a cover letter first.');
+                return;
+            }
+
+            const win = window.open('', '_blank', 'width=900,height=700');
+            if (!win) {
+                alert('Please allow popups to download PDF.');
+                return;
+            }
+
+            const fontFamily = document.getElementById('fontFamily').value;
+            const fontSize = document.getElementById('fontSize').value;
+            const accentColor = document.getElementById('accentColor').value;
+
+            win.document.write(`
+            <!DOCTYPE html>
+            <html>
+            <head><meta charset="UTF-8">
+            <style>
+                body { font-family: ${fontFamily}; font-size: ${fontSize}; padding: 40px; max-width: 900px; margin: auto; color: #333; background: #fff; line-height: 1.7; }
+                .header { text-align: center; border-bottom: 2px solid ${accentColor}; padding-bottom: 12px; margin-bottom: 16px; }
+                .header h2 { color: ${accentColor}; margin: 0; }
+                .header p { color: #666; margin: 4px 0; }
+                .body { color: #333; }
+                .body p { margin-bottom: 10px; }
+                .signature { margin-top: 16px; }
+                .footer { border-top: 1px solid #ddd; margin-top: 16px; padding-top: 12px; text-align: center; font-size: 0.8rem; color: #999; }
+                .accent { color: ${accentColor}; }
+                @media print { body { padding: 20px; } }
+            </style>
+            </head>
+            <body>
+                ${content.replace(/var\(--text-primary\)/g, '#333').replace(/var\(--text-secondary\)/g, '#555').replace(/var\(--text-muted\)/g, '#999').replace(/var\(--bg-primary\)/g, '#fff').replace(/var\(--border\)/g, '#ddd')}
+                <div class="footer">Generated by getage247.xyz • ATS-Friendly Cover Letter</div>
+            </body>
+            </html>
+            `);
+            win.document.close();
+            win.focus();
+            setTimeout(() => { win.print(); }, 500);
+        }
+
+        // =============================================
+        // ===== PRINT =====
+        // =============================================
+        function printLetter() {
+            const content = document.getElementById('previewBox').innerHTML;
+            if (!content || content.includes('Fill in your details')) {
+                alert('Please generate a cover letter first.');
+                return;
+            }
+            const win = window.open('', '_blank', 'width=900,height=700');
+            if (!win) {
+                alert('Please allow popups to print.');
+                return;
+            }
+            const fontFamily = document.getElementById('fontFamily').value;
+            const fontSize = document.getElementById('fontSize').value;
+            const accentColor = document.getElementById('accentColor').value;
+
+            win.document.write(`
+            <!DOCTYPE html>
+            <html>
+            <head><meta charset="UTF-8">
+            <style>
+                body { font-family: ${fontFamily}; font-size: ${fontSize}; padding: 40px; max-width: 900px; margin: auto; color: #333; background: #fff; line-height: 1.7; }
+                .header { text-align: center; border-bottom: 2px solid ${accentColor}; padding-bottom: 12px; margin-bottom: 16px; }
+                .header h2 { color: ${accentColor}; margin: 0; }
+                .header p { color: #666; margin: 4px 0; }
+                .body { color: #333; }
+                .body p { margin-bottom: 10px; }
+                .signature { margin-top: 16px; }
+                .footer { border-top: 1px solid #ddd; margin-top: 16px; padding-top: 12px; text-align: center; font-size: 0.8rem; color: #999; }
+                @media print { body { padding: 20px; } }
+            </style>
+            </head>
+            <body>
+                ${content.replace(/var\(--text-primary\)/g, '#333').replace(/var\(--text-secondary\)/g, '#555').replace(/var\(--text-muted\)/g, '#999').replace(/var\(--bg-primary\)/g, '#fff').replace(/var\(--border\)/g, '#ddd')}
+                <div class="footer">Generated by getage247.xyz • ATS-Friendly Cover Letter</div>
+            </body>
+            </html>
+            `);
+            win.document.close();
+            win.focus();
+            setTimeout(() => { win.print(); }, 500);
+        }
+
+        // =============================================
+        // ===== COPY =====
+        // =============================================
+        function copyLetter() {
+            const content = document.getElementById('previewBox').textContent;
+            if (!content || content.includes('Fill in your details')) {
+                alert('Please generate a cover letter first.');
+                return;
+            }
+            navigator.clipboard.writeText(content).then(() => alert('✅ Copied to clipboard!')).catch(() => {
+                const area = document.createElement('textarea');
+                area.value = content;
+                document.body.appendChild(area);
+                area.select();
+                document.execCommand('copy');
+                document.body.removeChild(area);
+                alert('✅ Copied to clipboard!');
+            });
+        }
+
+        // =============================================
+        // ===== SAVE / LOAD DRAFT =====
+        // =============================================
+        function saveDraft() {
+            const data = {
+                fullName: document.getElementById('fullName').value,
+                jobTitle: document.getElementById('jobTitle').value,
+                companyName: document.getElementById('companyName').value,
+                hiringManager: document.getElementById('hiringManager').value,
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                skills: document.getElementById('skills').value,
+                education: document.getElementById('education').value,
+                certifications: document.getElementById('certifications').value,
+                achievements: document.getElementById('achievements').value,
+                jobReason: document.getElementById('jobReason').value,
+                hireReason: document.getElementById('hireReason').value,
+                industry: document.getElementById('industry').value,
+                experience: document.getElementById('experienceLevel').value,
+                template: document.getElementById('templateStyle').value,
+                fontFamily: document.getElementById('fontFamily').value,
+                fontSize: document.getElementById('fontSize').value,
+                accentColor: document.getElementById('accentColor').value
+            };
+            try {
+                localStorage.setItem('coverLetterDraft', JSON.stringify(data));
+                alert('✅ Draft saved!');
+            } catch (e) {
+                alert('Could not save draft.');
+            }
+        }
+
+        function loadDraft() {
+            try {
+                const saved = localStorage.getItem('coverLetterDraft');
+                if (!saved) { alert('No saved draft found.'); return; }
+                const data = JSON.parse(saved);
+                document.getElementById('fullName').value = data.fullName || '';
+                document.getElementById('jobTitle').value = data.jobTitle || '';
+                document.getElementById('companyName').value = data.companyName || '';
+                document.getElementById('hiringManager').value = data.hiringManager || '';
+                document.getElementById('address').value = data.address || '';
+                document.getElementById('city').value = data.city || '';
+                document.getElementById('email').value = data.email || '';
+                document.getElementById('phone').value = data.phone || '';
+                document.getElementById('skills').value = data.skills || '';
+                document.getElementById('education').value = data.education || '';
+                document.getElementById('certifications').value = data.certifications || '';
+                document.getElementById('achievements').value = data.achievements || '';
+                document.getElementById('jobReason').value = data.jobReason || '';
+                document.getElementById('hireReason').value = data.hireReason || '';
+                if (data.industry) document.getElementById('industry').value = data.industry;
+                if (data.experience) document.getElementById('experienceLevel').value = data.experience;
+                if (data.template) document.getElementById('templateStyle').value = data.template;
+                if (data.fontFamily) document.getElementById('fontFamily').value = data.fontFamily;
+                if (data.fontSize) document.getElementById('fontSize').value = data.fontSize;
+                if (data.accentColor) document.getElementById('accentColor').value = data.accentColor;
+                alert('✅ Draft loaded!');
+                generateCoverLetter();
+            } catch (e) {
+                alert('Could not load draft.');
+            }
+        }
+
+        // =============================================
+        // ===== CLEAR =====
+        // =============================================
+        function clearAll() {
+            if (!confirm('Clear all fields?')) return;
+            document.querySelectorAll('.tool-card input, .tool-card textarea, .tool-card select').forEach(el => {
+                if (el.type === 'select-one') { el.selectedIndex = 0; return; }
+                if (el.type === 'text' || el.type === 'email' || el.tagName === 'TEXTAREA') { el.value = ''; }
+            });
+            document.getElementById('previewBox').innerHTML = '<div style="color:var(--text-muted); text-align:center; padding:40px 0;">Fill in your details and click Generate to preview your cover letter.</div>';
+            document.getElementById('totalChars').textContent = '0';
+            document.getElementById('wordCount').textContent = '0';
+            document.getElementById('atsCheck').textContent = 'Yes';
+        }
+
+        // =============================================
+        // ===== SHARE =====
+        // =============================================
+        function shareResult(platform) {
+            const url = window.location.href;
+            const text = '📄 Create professional cover letters for free at getage247.xyz';
+            const shareUrls = {
+                whatsapp: `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`,
+                facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+                twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`,
+                telegram: `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`,
+                linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+                reddit: `https://reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(text)}`,
+                pinterest: `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}`,
+                email: `mailto:?subject=${encodeURIComponent('Cover Letter Generator')}&body=${encodeURIComponent(text + '\n' + url)}`,
+                copy: () => { navigator.clipboard.writeText(url + '\n' + text).then(() => alert('✅ Link copied!')); }
+            };
+            if (platform === 'copy') { shareUrls.copy(); return; }
+            if (shareUrls[platform]) window.open(shareUrls[platform], '_blank', 'width=600,height=500');
+        }
+
+        // =============================================
+        // ===== THEME =====
+        // =============================================
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('light-mode');
+            this.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+            try { localStorage.setItem('coverLetterTheme', document.body.classList.contains('light-mode') ? 'light' : 'dark'); } catch(e) {}
+        });
+        try { if (localStorage.getItem('coverLetterTheme') === 'light') { document.body.classList.add('light-mode'); document.getElementById('themeToggle').textContent = '☀️'; } } catch(e) {}
+
+        // =============================================
+        // ===== FAQ TOGGLE =====
+        // =============================================
+        function toggleFAQ(el) {
+            const answer = el.nextElementSibling;
+            const arrow = el.querySelector('.arrow');
+            el.classList.toggle('active');
+            answer.classList.toggle('open');
+            arrow.textContent = answer.classList.contains('open') ? '▲' : '▼';
+        }
+
+        // =============================================
+        // ===== MOBILE NAV =====
+        // =============================================
+        document.getElementById('navToggle').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('mainNav').classList.toggle('open');
+        });
+        document.getElementById('mainNav').querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => document.getElementById('mainNav').classList.remove('open'));
+        });
+        document.addEventListener('click', function(e) {
+            const nav = document.getElementById('mainNav');
+            const toggle = document.getElementById('navToggle');
+            if (!nav.contains(e.target) && !toggle.contains(e.target)) nav.classList.remove('open');
+        });
+
+        // =============================================
+        // ===== AUTO-GENERATE ON CHANGE =====
+        // =============================================
+        document.querySelectorAll('#coverLetterTool input, #coverLetterTool textarea, #coverLetterTool select').forEach(el => {
+            el.addEventListener('change', generateCoverLetter);
+            el.addEventListener('input', generateCoverLetter);
+        });
+
+        // =============================================
+        // ===== INIT =====
+        // =============================================
+        // Load draft if exists
+        try {
+            const saved = localStorage.getItem('coverLetterDraft');
+            if (saved) {
+                const data = JSON.parse(saved);
+                if (data.fullName) {
+                    loadDraft();
+                } else {
+                    generateCoverLetter();
+                }
+            } else {
+                generateCoverLetter();
+            }
+        } catch (e) {
+            generateCoverLetter();
+        }
+
+        console.log('📄 Cover Letter Generator loaded successfully!');
+    </script>
+</body>
+</html>
