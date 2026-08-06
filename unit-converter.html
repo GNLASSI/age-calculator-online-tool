@@ -63,14 +63,15 @@
     ]
   }
   </script>
-  <style>/* critical styles + dark/light */
+  <style>
     * { box-sizing: border-box; margin: 0; }
     :root { --bg: #f8fafc; --card: #fff; --text: #0f172a; --border: #e2e8f0; --accent: #2563eb; --accent-hover: #1d4ed8; --shadow: 0 4px 12px rgba(0,0,0,0.05); --radius: 16px; --transition: 0.2s; }
     .dark { --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --border: #334155; --accent: #3b82f6; --accent-hover: #60a5fa; --shadow: 0 4px 12px rgba(0,0,0,0.4); }
     body { background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; padding: 1rem; transition: background 0.2s, color 0.2s; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
     .container { max-width: 860px; width: 100%; margin: 0 auto; }
     header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; gap: 0.5rem; }
-    h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em; }
+    h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em; cursor: pointer; }
+    h1:hover { color: var(--accent); }
     .header-actions { display: flex; gap: 0.5rem; align-items: center; }
     .btn-icon { background: var(--card); border: 1px solid var(--border); border-radius: 40px; padding: 0.4rem 0.9rem; font-size: 0.9rem; cursor: pointer; color: var(--text); transition: 0.15s; display: inline-flex; align-items: center; gap: 4px; box-shadow: var(--shadow); }
     .btn-icon:hover { background: var(--accent); color: white; border-color: var(--accent); }
@@ -100,92 +101,386 @@
     .fav-item button { background: none; border: none; color: var(--accent); cursor: pointer; }
     .blog-section { margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.5rem; }
     .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px,1fr)); gap: 0.6rem; margin-top: 0.5rem; }
-    .blog-link { font-size: 0.8rem; color: var(--accent); text-decoration: none; }
+    .blog-link { font-size: 0.8rem; color: var(--accent); text-decoration: none; cursor: pointer; }
     .blog-link:hover { text-decoration: underline; }
     .footer-links { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem; font-size: 0.8rem; }
-    .footer-links a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--border); }
+    .footer-links a { color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--border); cursor: pointer; }
     .footer-links a:hover { color: var(--accent); }
     .dark-toggle { background: var(--card); border: 1px solid var(--border); border-radius: 40px; padding: 0.2rem 0.6rem; cursor: pointer; font-size: 1.2rem; }
+    
+    /* Page content styles */
+    .page-content { padding: 1rem 0; }
+    .page-content h2 { font-size: 1.5rem; margin-bottom: 1rem; }
+    .page-content p { margin-bottom: 0.8rem; line-height: 1.6; }
+    .page-content ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+    .page-content li { margin-bottom: 0.4rem; }
+    .back-link { display: inline-block; margin-top: 1rem; color: var(--accent); cursor: pointer; text-decoration: underline; }
+    .hidden { display: none !important; }
+    .page-title { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; }
+    
     @media (max-width: 480px) { .unit-row { flex-direction: column; align-items: stretch; } .unit-row label { min-width: auto; } }
   </style>
 </head>
 <body>
 <div class="container" id="app">
   <header>
-    <h1>📐 Unit Converter</h1>
+    <h1 id="homeLink">📐 Unit Converter</h1>
     <div class="header-actions">
       <button class="dark-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
     </div>
   </header>
-  <!-- search -->
-  <input type="text" class="search-bar" id="unitSearch" placeholder="🔍 Search units (e.g., meter, kg, °C)">
 
-  <div class="card">
-    <div class="category-tabs" id="categoryTabs"></div>
-    <div class="converter-grid" id="converterGrid"></div>
-    <div class="action-group">
-      <button class="action-btn" id="copyResult">📋 Copy result</button>
-      <button class="action-btn" id="swapUnits">🔄 Swap</button>
-      <button class="action-btn" id="saveFavorite">⭐ Save favorite</button>
-      <button class="action-btn" id="clearHistory">🗑️ Clear history</button>
-      <button class="action-btn" id="printResult">🖨️ Print</button>
+  <!-- MAIN CONVERTER PAGE -->
+  <div id="converterPage">
+    <input type="text" class="search-bar" id="unitSearch" placeholder="🔍 Search units (e.g., meter, kg, °C)">
+
+    <div class="card">
+      <div class="category-tabs" id="categoryTabs"></div>
+      <div class="converter-grid" id="converterGrid"></div>
+      <div class="action-group">
+        <button class="action-btn" id="copyResult">📋 Copy result</button>
+        <button class="action-btn" id="swapUnits">🔄 Swap</button>
+        <button class="action-btn" id="saveFavorite">⭐ Save favorite</button>
+        <button class="action-btn" id="clearHistory">🗑️ Clear history</button>
+        <button class="action-btn" id="printResult">🖨️ Print</button>
+      </div>
+    </div>
+
+    <div class="history-fav-section">
+      <div class="history-box"><h4>📋 Recent</h4><div id="recentList"></div></div>
+      <div class="fav-box"><h4>⭐ Favorites</h4><div id="favoriteList"></div></div>
+    </div>
+
+    <!-- FAQ (15) -->
+    <div class="card" style="margin-top:1.5rem;">
+      <h3>❓ Frequently Asked Questions</h3>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.3rem 1rem; margin-top:0.8rem; font-size:0.85rem;">
+        <div><strong>What is a Unit Converter?</strong><br>Tool to convert between 25+ measurement units.</div>
+        <div><strong>Is this converter free?</strong><br>Yes, completely free.</div>
+        <div><strong>Does it work offline?</strong><br>Yes, after first load (no API).</div>
+        <div><strong>Which units are supported?</strong><br>Length, weight, temp, area, volume, speed, time, pressure, energy, power, data, fuel, cooking, shoe, clothing.</div>
+        <div><strong>Is the conversion accurate?</strong><br>Yes, with fixed high‑precision factors.</div>
+        <div><strong>Metric to imperial?</strong><br>Yes, all categories support both.</div>
+        <div><strong>Can I convert temperature?</strong><br>Celsius, Fahrenheit, Kelvin.</div>
+        <div><strong>Can I convert data storage?</strong><br>Bit to Petabyte.</div>
+        <div><strong>Can I convert fuel economy?</strong><br>km/L, L/100km, MPG US/UK.</div>
+        <div><strong>How are conversions calculated?</strong><br>Internal formulas, no API.</div>
+        <div><strong>Is my data stored?</strong><br>Locally in browser (localStorage).</div>
+        <div><strong>Can I use it on mobile?</strong><br>Fully responsive.</div>
+        <div><strong>Why use this converter?</strong><br>Fast, offline, 25+ categories, dark mode, history, favorites.</div>
+        <div><strong>Is it faster than Google?</strong><br>Instant, no network latency.</div>
+        <div><strong>Can students use this?</strong><br>Absolutely.</div>
+      </div>
+    </div>
+
+    <!-- Blog & internal links -->
+    <div class="blog-section">
+      <h3>📚 Related tools & blog</h3>
+      <div class="blog-grid" id="blogSuggestions">
+        <span class="blog-link" data-page="blog-length">📏 Length converter</span>
+        <span class="blog-link" data-page="blog-weight">⚖️ Weight converter</span>
+        <span class="blog-link" data-page="blog-temp">🌡️ Temperature converter</span>
+        <span class="blog-link" data-page="blog-area">📐 Area converter</span>
+        <span class="blog-link" data-page="blog-volume">🧊 Volume converter</span>
+        <span class="blog-link" data-page="blog-speed">🚀 Speed converter</span>
+        <span class="blog-link" data-page="blog-time">⏱️ Time converter</span>
+        <span class="blog-link" data-page="blog-power">⚡ Power converter</span>
+        <span class="blog-link" data-page="blog-data">💾 Data storage converter</span>
+        <span class="blog-link" data-page="blog-cooking">🍳 Cooking converter</span>
+      </div>
+      <div class="footer-links">
+        <span class="blog-link" data-page="privacy">Privacy Policy</span>
+        <span class="blog-link" data-page="terms">Terms of Use</span>
+        <span class="blog-link" data-page="contact">Contact</span>
+        <span class="blog-link" data-page="about">About</span>
+        <span style="opacity:0.5;">© 2026 UnitConverter</span>
+      </div>
     </div>
   </div>
 
-  <div class="history-fav-section">
-    <div class="history-box"><h4>📋 Recent</h4><div id="recentList"></div></div>
-    <div class="fav-box"><h4>⭐ Favorites</h4><div id="favoriteList"></div></div>
-  </div>
-
-  <!-- FAQ (15) -->
-  <div class="card" style="margin-top:1.5rem;">
-    <h3>❓ Frequently Asked Questions</h3>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.3rem 1rem; margin-top:0.8rem; font-size:0.85rem;">
-      <div><strong>What is a Unit Converter?</strong><br>Tool to convert between 25+ measurement units.</div>
-      <div><strong>Is this converter free?</strong><br>Yes, completely free.</div>
-      <div><strong>Does it work offline?</strong><br>Yes, after first load (no API).</div>
-      <div><strong>Which units are supported?</strong><br>Length, weight, temp, area, volume, speed, time, pressure, energy, power, data, fuel, cooking, shoe, clothing.</div>
-      <div><strong>Is the conversion accurate?</strong><br>Yes, with fixed high‑precision factors.</div>
-      <div><strong>Metric to imperial?</strong><br>Yes, all categories support both.</div>
-      <div><strong>Can I convert temperature?</strong><br>Celsius, Fahrenheit, Kelvin.</div>
-      <div><strong>Can I convert data storage?</strong><br>Bit to Petabyte.</div>
-      <div><strong>Can I convert fuel economy?</strong><br>km/L, L/100km, MPG US/UK.</div>
-      <div><strong>How are conversions calculated?</strong><br>Internal formulas, no API.</div>
-      <div><strong>Is my data stored?</strong><br>Locally in browser (localStorage).</div>
-      <div><strong>Can I use it on mobile?</strong><br>Fully responsive.</div>
-      <div><strong>Why use this converter?</strong><br>Fast, offline, 25+ categories, dark mode, history, favorites.</div>
-      <div><strong>Is it faster than Google?</strong><br>Instant, no network latency.</div>
-      <div><strong>Can students use this?</strong><br>Absolutely.</div>
-    </div>
-  </div>
-
-  <!-- Blog & internal links -->
-  <div class="blog-section">
-    <h3>📚 Related tools & blog</h3>
-    <div class="blog-grid" id="blogSuggestions">
-      <a href="#" class="blog-link">📏 Length converter</a>
-      <a href="#" class="blog-link">⚖️ Weight converter</a>
-      <a href="#" class="blog-link">🌡️ Temperature converter</a>
-      <a href="#" class="blog-link">📐 Area converter</a>
-      <a href="#" class="blog-link">🧊 Volume converter</a>
-      <a href="#" class="blog-link">🚀 Speed converter</a>
-      <a href="#" class="blog-link">⏱️ Time converter</a>
-      <a href="#" class="blog-link">⚡ Power converter</a>
-      <a href="#" class="blog-link">💾 Data storage converter</a>
-      <a href="#" class="blog-link">🍳 Cooking converter</a>
-    </div>
-    <div class="footer-links">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="#">Terms of Use</a>
-      <a href="#">Contact</a>
-      <a href="#">About</a>
-      <span style="opacity:0.5;">© 2026 UnitConverter</span>
-    </div>
-  </div>
+  <!-- PAGE CONTENT (dynamic) -->
+  <div id="pageContent" class="hidden page-content"></div>
 </div>
+
 <script>
   (function() {
-    // ----- DATA -----
+    // ----- PAGE DATA -----
+    const pages = {
+      privacy: {
+        title: 'Privacy Policy',
+        content: `
+          <h2>Privacy Policy</h2>
+          <p><strong>Last updated:</strong> August 6, 2026</p>
+          <p>Welcome to Unit Converter. Your privacy is important to us. This privacy policy explains how we handle your information.</p>
+          <h3>Information We Collect</h3>
+          <p>We do not collect, store, or transmit any personal data to servers. All data (conversion history, favorites, and theme preference) is stored locally in your browser using localStorage.</p>
+          <h3>Cookies</h3>
+          <p>We do not use cookies or any tracking mechanisms.</p>
+          <h3>Third-Party Services</h3>
+          <p>We do not use any third-party services, APIs, or analytics tools.</p>
+          <h3>Your Rights</h3>
+          <p>Since we don't store any data on servers, you have full control over your data. You can clear your history and favorites using the buttons in the tool, or clear your browser's local storage.</p>
+          <h3>Contact</h3>
+          <p>If you have any questions about this privacy policy, please contact us through our contact page.</p>
+        `
+      },
+      terms: {
+        title: 'Terms of Use',
+        content: `
+          <h2>Terms of Use</h2>
+          <p><strong>Last updated:</strong> August 6, 2026</p>
+          <p>By using this Unit Converter tool, you agree to the following terms:</p>
+          <h3>Use of the Tool</h3>
+          <ul>
+            <li>This tool is provided "as is" without any warranties.</li>
+            <li>We strive for accuracy but do not guarantee that all conversions are 100% precise.</li>
+            <li>You use this tool at your own risk.</li>
+          </ul>
+          <h3>Intellectual Property</h3>
+          <p>All code and content on this website is our property. You may not reproduce, distribute, or create derivative works without permission.</p>
+          <h3>Limitation of Liability</h3>
+          <p>We are not liable for any damages arising from the use of this tool.</p>
+          <h3>Changes to Terms</h3>
+          <p>We may update these terms at any time. Continued use constitutes acceptance of the updated terms.</p>
+        `
+      },
+      contact: {
+        title: 'Contact Us',
+        content: `
+          <h2>Contact Us</h2>
+          <p>Have questions, suggestions, or feedback? We'd love to hear from you!</p>
+          <p><strong>Email:</strong> support@unitconverter.example.com</p>
+          <p><strong>Response Time:</strong> We typically respond within 24-48 hours.</p>
+          <p>You can also reach out to us through our social media channels:</p>
+          <ul>
+            <li>Twitter: @UnitConverter</li>
+            <li>Facebook: /UnitConverter</li>
+          </ul>
+          <p>For privacy-related concerns, please refer to our <span class="blog-link" data-page="privacy" style="color:var(--accent);cursor:pointer;text-decoration:underline;">Privacy Policy</span>.</p>
+        `
+      },
+      about: {
+        title: 'About Unit Converter',
+        content: `
+          <h2>About Unit Converter</h2>
+          <p>Welcome to the most comprehensive free unit converter on the web!</p>
+          <h3>Our Mission</h3>
+          <p>We believe that converting between units should be simple, fast, and accessible to everyone. Our tool is designed to be:</p>
+          <ul>
+            <li><strong>Free:</strong> No hidden costs, no subscriptions.</li>
+            <li><strong>Offline:</strong> Works without an internet connection after the first load.</li>
+            <li><strong>Private:</strong> Your data stays in your browser.</li>
+            <li><strong>Comprehensive:</strong> 25+ categories with hundreds of unit conversions.</li>
+          </ul>
+          <h3>Why We Built This</h3>
+          <p>We noticed that most unit converters are either slow, full of ads, or lack important categories. We built this tool to provide a clean, fast, and reliable alternative.</p>
+          <h3>Our Team</h3>
+          <p>We are a small team of developers passionate about creating useful web tools. We're committed to maintaining and improving this converter.</p>
+          <p>Want to contribute? Have a suggestion? <span class="blog-link" data-page="contact" style="color:var(--accent);cursor:pointer;text-decoration:underline;">Contact us</span>.</p>
+        `
+      },
+      'blog-length': {
+        title: 'Length Converter Guide',
+        content: `
+          <h2>Length Converter: Complete Guide</h2>
+          <p>Length conversion is one of the most common measurement tasks. Whether you're measuring fabric, planning a trip, or working on a construction project, our length converter has you covered.</p>
+          <h3>Supported Length Units</h3>
+          <ul>
+            <li><strong>Meter (m):</strong> The SI base unit of length</li>
+            <li><strong>Kilometer (km):</strong> 1,000 meters</li>
+            <li><strong>Centimeter (cm):</strong> 0.01 meters</li>
+            <li><strong>Millimeter (mm):</strong> 0.001 meters</li>
+            <li><strong>Mile:</strong> 1,609.34 meters</li>
+            <li><strong>Yard:</strong> 0.9144 meters</li>
+            <li><strong>Foot:</strong> 0.3048 meters</li>
+            <li><strong>Inch:</strong> 0.0254 meters</li>
+            <li><strong>Nautical Mile:</strong> 1,852 meters</li>
+          </ul>
+          <h3>Quick Conversion Examples</h3>
+          <ul>
+            <li>1 mile = 1,609.34 meters</li>
+            <li>1 foot = 30.48 centimeters</li>
+            <li>1 inch = 25.4 millimeters</li>
+            <li>1 kilometer = 0.621371 miles</li>
+          </ul>
+          <p>Use our <span class="blog-link" data-page="home" style="color:var(--accent);cursor:pointer;text-decoration:underline;">unit converter</span> to instantly convert between any of these units.</p>
+        `
+      },
+      'blog-weight': {
+        title: 'Weight Converter Guide',
+        content: `
+          <h2>Weight Converter: Complete Guide</h2>
+          <p>Weight conversion is essential for cooking, shipping, fitness, and many other applications. Our weight converter makes it easy.</p>
+          <h3>Supported Weight Units</h3>
+          <ul>
+            <li><strong>Kilogram (kg):</strong> The SI base unit of mass</li>
+            <li><strong>Gram (g):</strong> 0.001 kilograms</li>
+            <li><strong>Pound (lb):</strong> 0.453592 kilograms</li>
+            <li><strong>Ounce (oz):</strong> 0.0283495 kilograms</li>
+            <li><strong>Ton:</strong> 1,000 kilograms</li>
+            <li><strong>Stone:</strong> 6.35029 kilograms</li>
+          </ul>
+          <h3>Common Conversions</h3>
+          <ul>
+            <li>1 kilogram = 2.20462 pounds</li>
+            <li>1 pound = 453.592 grams</li>
+            <li>1 ounce = 28.3495 grams</li>
+            <li>1 stone = 14 pounds</li>
+          </ul>
+          <p>Try our <span class="blog-link" data-page="home" style="color:var(--accent);cursor:pointer;text-decoration:underline;">weight converter</span> for instant results.</p>
+        `
+      },
+      'blog-temp': {
+        title: 'Temperature Converter Guide',
+        content: `
+          <h2>Temperature Converter: Complete Guide</h2>
+          <p>Temperature conversion is crucial for weather, cooking, science, and travel. Our temperature converter handles all three major scales.</p>
+          <h3>Supported Temperature Scales</h3>
+          <ul>
+            <li><strong>Celsius (°C):</strong> Used worldwide for weather and everyday measurements</li>
+            <li><strong>Fahrenheit (°F):</strong> Commonly used in the United States</li>
+            <li><strong>Kelvin (K):</strong> The SI base unit, used in scientific contexts</li>
+          </ul>
+          <h3>Key Conversion Formulas</h3>
+          <ul>
+            <li>°C to °F: (°C × 9/5) + 32</li>
+            <li>°F to °C: (°F - 32) × 5/9</li>
+            <li>°C to K: °C + 273.15</li>
+            <li>K to °C: K - 273.15</li>
+          </ul>
+          <p>Quick reference: 0°C = 32°F = 273.15K, 100°C = 212°F = 373.15K</p>
+          <p>Use our <span class="blog-link" data-page="home" style="color:var(--accent);cursor:pointer;text-decoration:underline;">temperature converter</span> for fast, accurate results.</p>
+        `
+      },
+      'blog-area': {
+        title: 'Area Converter Guide',
+        content: `
+          <h2>Area Converter: Complete Guide</h2>
+          <p>Area conversion is essential for real estate, construction, agriculture, and interior design. Our area converter simplifies these calculations.</p>
+          <h3>Supported Area Units</h3>
+          <ul>
+            <li><strong>Square Meter (m²):</strong> The SI unit of area</li>
+            <li><strong>Square Kilometer (km²):</strong> 1,000,000 m²</li>
+            <li><strong>Square Foot (ft²):</strong> 0.092903 m²</li>
+            <li><strong>Square Yard (yd²):</strong> 0.836127 m²</li>
+            <li><strong>Square Inch (in²):</strong> 0.00064516 m²</li>
+            <li><strong>Acre:</strong> 4,046.86 m²</li>
+            <li><strong>Hectare:</strong> 10,000 m²</li>
+          </ul>
+          <p>Convert between any of these units instantly with our <span class="blog-link" data-page="home" style="color:var(--accent);cursor:pointer;text-decoration:underline;">area converter</span>.</p>
+        `
+      },
+      'blog-volume': {
+        title: 'Volume Converter Guide',
+        content: `
+          <h2>Volume Converter: Complete Guide</h2>
+          <p>Volume conversion is vital for cooking, chemistry, engineering, and everyday life. Our volume converter makes it simple.</p>
+          <h3>Supported Volume Units</h3>
+          <ul>
+            <li><strong>Liter (L):</strong> The metric unit of volume</li>
+            <li><strong>Milliliter (mL):</strong> 0.001 liters</li>
+            <li><strong>Cubic Meter (m³):</strong> 1,000 liters</li>
+            <li><strong>Gallon (gal):</strong> 3.78541 liters (US)</li>
+            <li><strong>Quart (qt):</strong> 0.946353 liters</li>
+            <li><strong>Pint (pt):</strong> 0.473176 liters</li>
+            <li><strong>Cup:</strong> 0.236588 liters</li>
+          </ul>
+          <p>Try our <span class="blog-link" data-page="home" style="color:var(--accent);cursor:pointer;text-decoration:underline;">volume converter</span> for instant conversions.</p>
+        `
+      },
+      'blog-speed': {
+        title: 'Speed Converter Guide',
+        content: `
+          <h2>Speed Converter: Complete Guide</h2>
+          <p>Speed conversion is useful for travel, sports, science, and automotive applications. Our speed converter handles all common units.</p>
+          <h3>Supported Speed Units</h3>
+          <ul>
+            <li><strong>km/h:</strong> Kilometers per hour</li>
+            <li><strong>mph:</strong> Miles per hour</li>
+            <li><strong>m/s:</strong> Meters per second</li>
+            <li><strong>knot:</strong> Nautical miles per hour</li>
+          </ul>
+          <p>Convert between any speed units with our <span class="blog-link" data-page="home" style="color:var(--accent);cursor:pointer;text-decoration:underline;">speed converter</span>.</p>
+        `
+      },
+      'blog-time': {
+        title: 'Time Converter Guide',
+        content: `
+          <h2>Time Converter: Complete Guide</h2>
+          <p>Time conversion is essential for scheduling, project management, and understanding durations. Our time converter handles all units.</p>
+          <h3>Supported Time Units</h3>
+          <ul>
+            <li><strong>Second (s):</strong> The SI base unit of time</li>
+            <li><strong>Minute (min):</strong> 60 seconds</li>
+            <li><strong>Hour (h):</strong> 3,600 seconds</li>
+            <li><strong>Day:</strong> 86,400 seconds</li>
+            <li><strong>Week:</strong> 604,800 seconds</li>
+            <li><strong>Month:</strong> ~2,629,746 seconds (30.44 days)</li>
+            <li><strong>Year:</strong> 31,557,600 seconds (365.25 days)</li>
+          </ul>
+          <p>Use our <span class="blog-link" data-page="home" style="color:var(--accent);cursor:pointer;text-decoration:underline;">time converter</span> for fast, accurate results.</p>
+        `
+      },
+      'blog-power': {
+        title: 'Power Converter Guide',
+        content: `
+          <h2>Power Converter: Complete Guide</h2>
+          <p>Power conversion is important for engineering, electronics, and understanding energy consumption. Our power converter makes it simple.</p>
+          <h3>Supported Power Units</h3>
+          <ul>
+            <li><strong>Watt (W):</strong> The SI unit of power</li>
+            <li><strong>Kilowatt (kW):</strong> 1,000 watts</li>
+            <li><strong>Horsepower (hp):</strong> 745.7 watts</li>
+          </ul>
+          <p>Try our <span class="blog-link" data-page="home" style="color:var(--accent);cursor:pointer;text-decoration:underline;">power converter</span> for instant conversions.</p>
+        `
+      },
+      'blog-data': {
+        title: 'Data Storage Converter Guide',
+        content: `
+          <h2>Data Storage Converter: Complete Guide</h2>
+          <p>Data storage conversion is essential for computing, file management, and understanding digital storage capacity.</p>
+          <h3>Supported Data Units</h3>
+          <ul>
+            <li><strong>Bit (b):</strong> The smallest unit of digital data</li>
+            <li><strong>Byte (B):</strong> 8 bits</li>
+            <li><strong>KB:</strong> 1,024 bytes (kilobyte)</li>
+            <li><strong>MB:</strong> 1,024 KB (megabyte)</li>
+            <li><strong>GB:</strong> 1,024 MB (gigabyte)</li>
+            <li><strong>TB:</strong> 1,024 GB (terabyte)</li>
+            <li><strong>PB:</strong> 1,024 TB (petabyte)</li>
+          </ul>
+          <p>Convert between any data units with our <span class="blog-link" data-page="home" style="color:var(--accent);cursor:pointer;text-decoration:underline;">data storage converter</span>.</p>
+        `
+      },
+      'blog-cooking': {
+        title: 'Cooking Converter Guide',
+        content: `
+          <h2>Cooking Converter: Complete Guide</h2>
+          <p>Cooking conversion is essential for following recipes from different countries and scaling ingredients properly.</p>
+          <h3>Supported Cooking Units</h3>
+          <ul>
+            <li><strong>Cup:</strong> 236.588 mL</li>
+            <li><strong>Tablespoon (tbsp):</strong> 14.7868 mL (1/16 cup)</li>
+            <li><strong>Teaspoon (tsp):</strong> 4.92892 mL (1/3 tablespoon)</li>
+            <li><strong>Liter (L):</strong> 1,000 mL</li>
+            <li><strong>Milliliter (mL):</strong> 0.001 L</li>
+          </ul>
+          <p>Quick reference: 1 cup = 16 tablespoons = 48 teaspoons</p>
+          <p>Try our <span class="blog-link" data-page="home" style="color:var(--accent);cursor:pointer;text-decoration:underline;">cooking converter</span> for recipe-friendly conversions.</p>
+        `
+      }
+    };
+
+    // ----- STATE -----
+    let currentCategory = 'Length';
+    let fromUnit = 'Meter';
+    let toUnit = 'Kilometer';
+    let inputValue = '1';
+    let recent = JSON.parse(localStorage.getItem('unitRecent') || '[]');
+    let favorites = JSON.parse(localStorage.getItem('unitFavorites') || '[]');
+
+    // ----- CATEGORY DATA -----
     const categories = {
       Length: { units: ['Meter','Kilometer','Centimeter','Millimeter','Mile','Yard','Foot','Inch','Nautical Mile'], base: 'Meter', factors: { Meter:1, Kilometer:0.001, Centimeter:100, Millimeter:1000, Mile:0.000621371, Yard:1.09361, Foot:3.28084, Inch:39.3701, 'Nautical Mile':0.000539957 } },
       Weight: { units: ['Kilogram','Gram','Pound','Ounce','Ton','Stone'], base: 'Kilogram', factors: { Kilogram:1, Gram:1000, Pound:2.20462, Ounce:35.274, Ton:0.001, Stone:0.157473 } },
@@ -209,48 +504,61 @@
     };
     const catKeys = Object.keys(categories);
 
-    // state
-    let currentCategory = 'Length';
-    let fromUnit = 'Meter';
-    let toUnit = 'Kilometer';
-    let inputValue = '1';
-    let recent = JSON.parse(localStorage.getItem('unitRecent') || '[]');
-    let favorites = JSON.parse(localStorage.getItem('unitFavorites') || '[]');
-
-    // DOM refs
+    // ----- DOM REFS -----
+    const converterPage = document.getElementById('converterPage');
+    const pageContent = document.getElementById('pageContent');
     const catTabs = document.getElementById('categoryTabs');
     const grid = document.getElementById('converterGrid');
     const searchInput = document.getElementById('unitSearch');
     const recentList = document.getElementById('recentList');
     const favList = document.getElementById('favoriteList');
     const themeToggle = document.getElementById('themeToggle');
+    const homeLink = document.getElementById('homeLink');
 
-    // helpers
-    function saveRecent() { localStorage.setItem('unitRecent', JSON.stringify(recent)); }
-    function saveFavorites() { localStorage.setItem('unitFavorites', JSON.stringify(favorites)); }
-
-    function addRecent(entry) {
-      recent = recent.filter(e => e.from !== entry.from || e.to !== entry.to || e.value !== entry.value);
-      recent.unshift(entry);
-      if (recent.length > 12) recent.pop();
-      saveRecent();
-      renderHistory();
+    // ----- NAVIGATION -----
+    function showPage(pageId) {
+      if (pageId === 'home' || !pageId) {
+        converterPage.classList.remove('hidden');
+        pageContent.classList.add('hidden');
+        return;
+      }
+      converterPage.classList.add('hidden');
+      pageContent.classList.remove('hidden');
+      const pageData = pages[pageId];
+      if (pageData) {
+        pageContent.innerHTML = `
+          <div class="card">
+            ${pageData.content}
+            <span class="back-link" data-page="home">← Back to Converter</span>
+          </div>
+        `;
+        // Re-bind click handlers for internal links in page content
+        pageContent.querySelectorAll('.blog-link[data-page]').forEach(el => {
+          el.addEventListener('click', function(e) {
+            e.stopPropagation();
+            showPage(this.dataset.page);
+          });
+        });
+        pageContent.querySelector('.back-link')?.addEventListener('click', function() {
+          showPage('home');
+        });
+        // Update page title
+        document.title = pageData.title + ' · Unit Converter';
+      } else {
+        pageContent.innerHTML = `
+          <div class="card">
+            <h2>Page Not Found</h2>
+            <p>Sorry, the page you're looking for doesn't exist.</p>
+            <span class="back-link" data-page="home">← Back to Converter</span>
+          </div>
+        `;
+        pageContent.querySelector('.back-link')?.addEventListener('click', function() {
+          showPage('home');
+        });
+      }
     }
 
-    function renderHistory() {
-      recentList.innerHTML = recent.map((r,i) => `<div class="history-item">${r.from} → ${r.to}: ${r.result} <span style="opacity:0.4;font-size:0.7rem;">${r.value}</span></div>`).join('') || '<div style="opacity:0.5;">No recent conversions</div>';
-    }
-    function renderFavorites() {
-      favList.innerHTML = favorites.map((f,i) => `<div class="fav-item">${f.from} → ${f.to}: ${f.result} <button data-idx="${i}" class="removeFav">✕</button></div>`).join('') || '<div style="opacity:0.5;">No favorites</div>';
-      document.querySelectorAll('.removeFav').forEach(btn => btn.addEventListener('click', function() {
-        const idx = parseInt(this.dataset.idx);
-        favorites.splice(idx,1);
-        saveFavorites();
-        renderFavorites();
-      }));
-    }
-
-    // conversion engine
+    // ----- CONVERSION ENGINE -----
     function convert(cat, from, to, val) {
       const catData = categories[cat];
       if (!catData) return 0;
@@ -279,7 +587,6 @@
         return val;
       }
       if (catData.special === 'shoe' || catData.special === 'clothing') {
-        // simple mapping (demo)
         const map = { US: 1, UK: 0.8, EU: 1.2 };
         const fromFactor = map[from] || 1;
         const toFactor = map[to] || 1;
@@ -290,12 +597,36 @@
       return baseVal * (factors[to] || 1);
     }
 
+    function saveRecent() { localStorage.setItem('unitRecent', JSON.stringify(recent)); }
+    function saveFavorites() { localStorage.setItem('unitFavorites', JSON.stringify(favorites)); }
+
+    function addRecent(entry) {
+      recent = recent.filter(e => e.from !== entry.from || e.to !== entry.to || e.value !== entry.value);
+      recent.unshift(entry);
+      if (recent.length > 12) recent.pop();
+      saveRecent();
+      renderHistory();
+    }
+
+    function renderHistory() {
+      recentList.innerHTML = recent.map((r) => `<div class="history-item">${r.from} → ${r.to}: ${r.result} <span style="opacity:0.4;font-size:0.7rem;">${r.value}</span></div>`).join('') || '<div style="opacity:0.5;">No recent conversions</div>';
+    }
+    function renderFavorites() {
+      favList.innerHTML = favorites.map((f,i) => `<div class="fav-item">${f.from} → ${f.to}: ${f.result} <button data-idx="${i}" class="removeFav">✕</button></div>`).join('') || '<div style="opacity:0.5;">No favorites</div>';
+      document.querySelectorAll('.removeFav').forEach(btn => btn.addEventListener('click', function() {
+        const idx = parseInt(this.dataset.idx);
+        favorites.splice(idx,1);
+        saveFavorites();
+        renderFavorites();
+      }));
+    }
+
     function updateResult() {
       const val = parseFloat(inputValue) || 0;
       const result = convert(currentCategory, fromUnit, toUnit, val);
       const display = Number.isFinite(result) ? (Number.isInteger(result) ? result : result.toFixed(6)) : '0';
-      document.getElementById('resultDisplay').value = display;
-      // add recent
+      const resultDisplay = document.getElementById('resultDisplay');
+      if (resultDisplay) resultDisplay.value = display;
       if (val !== 0 && fromUnit !== toUnit) {
         addRecent({ from: fromUnit, to: toUnit, value: val, result: display });
       }
@@ -365,7 +696,7 @@
       });
     }
 
-    // search filter units
+    // ----- SEARCH -----
     searchInput.addEventListener('input', function() {
       const q = this.value.toLowerCase().trim();
       if (!q) { renderCategories(); renderConverter(); return; }
@@ -380,19 +711,51 @@
       }
     });
 
-    // dark mode
+    // ----- DARK MODE -----
     themeToggle.addEventListener('click', function() {
       document.body.classList.toggle('dark');
       this.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
     });
 
-    // init
+    // ----- CLICK HANDLERS FOR NAVIGATION -----
+    function setupNavigation() {
+      // Home link
+      homeLink.addEventListener('click', function() { showPage('home'); });
+      
+      // All blog and footer links
+      document.querySelectorAll('.blog-link[data-page]').forEach(el => {
+        el.addEventListener('click', function(e) {
+          e.stopPropagation();
+          showPage(this.dataset.page);
+        });
+      });
+    }
+
+    // ----- INIT -----
     renderCategories();
     renderConverter();
+    setupNavigation();
 
-    // internal links – prevent 404 (privacy.html exists virtually)
-    document.querySelectorAll('a[href="privacy.html"]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); alert('Privacy page (demo). This would be privacy.html'); }));
-    document.querySelectorAll('.blog-link').forEach(a => a.addEventListener('click', e => { e.preventDefault(); alert('Blog article: ' + a.textContent.trim()); }));
+    // Handle back button / hash
+    window.addEventListener('hashchange', function() {
+      const hash = window.location.hash.replace('#', '');
+      if (hash && pages[hash]) {
+        showPage(hash);
+      } else {
+        showPage('home');
+      }
+    });
+
+    // If there's a hash on load, show that page
+    if (window.location.hash) {
+      const hash = window.location.hash.replace('#', '');
+      if (pages[hash]) {
+        showPage(hash);
+      }
+    }
+
+    // Expose showPage for inline clicks
+    window.showPage = showPage;
   })();
 </script>
 </body>
