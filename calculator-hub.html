@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Hub – 100+ Free Online Calculators | getage247.xyz</title>
+    <meta name="description" content="Free online calculator hub with 100+ calculators. Financial, Health, Math, Education, Unit Conversion, Lifestyle, Web & more. Fast and private.">
+    <link rel="canonical" href="https://getage247.xyz/calculator-hub">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Calculator Hub – 100+ Free Online Calculators">
+    <meta property="og:description" content="Free online calculator hub with 100+ calculators. Financial, Health, Math, Education, Unit Conversion, Lifestyle, Web & more. Fast and private.">
+    <meta property="og:url" content="https://getage247.xyz/calculator-hub">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="getage247.xyz">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Calculator Hub – 100+ Free Online Calculators">
+    <meta name="twitter:description" content="Free online calculator hub with 100+ calculators. Financial, Health, Math, Education, Unit Conversion, Lifestyle, Web & more.">
+    <meta name="twitter:site" content="@getage247">
+
+    <!-- Schemas -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Calculator Hub",
+        "url": "https://getage247.xyz/calculator-hub",
+        "description": "Free online calculator hub with 100+ calculators. Financial, Health, Math, Education, Unit Conversion, Lifestyle, Web & more.",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://getage247.xyz/" },
+            { "@type": "ListItem", "position": 2, "name": "Calculator Hub", "item": "https://getage247.xyz/calculator-hub" }
+        ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #0a0a12;
+            --bg-secondary: #12121f;
+            --bg-card: #1a1a2e;
+            --bg-card-hover: #24243a;
+            --border: #2a2a44;
+            --text-primary: #f0eeff;
+            --text-secondary: #b8b4d6;
+            --text-muted: #7a77a0;
+            --accent: #7c5cfc;
+            --accent-glow: #9d7cff;
+            --shadow: 0 8px 32px rgba(0,0,0,0.6);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --green: #00b894;
+            --yellow: #fdcb6e;
+            --red: #e17055;
+            --blue: #3498db;
+            --orange: #f39c12;
+        }
+        .light-mode {
+            --bg-primary: #f0eeff;
+            --bg-secondary: #ffffff;
+            --bg-card: #f5f3ff;
+            --bg-card-hover: #edeafe;
+            --border: #d5d0e6;
+            --text-primary: #1a1a2e;
+            --text-secondary: #3d3a5e;
+            --text-muted: #7a77a0;
+            --shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            transition: background 0.3s, color 0.3s;
+        }
+        a { color: var(--accent-glow); text-decoration: none; transition: 0.3s; }
+        a:hover { color: #fff; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        header {
+            background: rgba(10,10,18,0.85);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .light-mode header { background: rgba(240,238,255,0.92); }
+        .header-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+        .logo { font-size: 1.6rem; font-weight: 800; background: linear-gradient(135deg, var(--accent-glow), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .logo span { font-weight: 300; -webkit-text-fill-color: var(--text-muted); }
+        nav { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; }
+        nav a { font-size: 0.9rem; color: var(--text-secondary); padding: 4px 0; border-bottom: 2px solid transparent; font-weight: 500; }
+        nav a:hover, nav a.active { color: #fff; border-bottom-color: var(--accent); }
+        .theme-toggle { background: none; border: 1px solid var(--border); border-radius: 50%; width: 36px; height: 36px; cursor: pointer; font-size: 1.2rem; color: var(--text-secondary); transition: 0.3s; display: flex; align-items: center; justify-content: center; }
+        .theme-toggle:hover { border-color: var(--accent); color: #fff; }
+        .nav-toggle { display: none; background: none; border: none; color: var(--text-primary); font-size: 1.8rem; cursor: pointer; padding: 0 8px; }
+
+        main { flex: 1; padding: 40px 0 60px; }
+        .hero { text-align: center; padding: 20px 0 32px; }
+        .hero h1 { font-size: 2.8rem; font-weight: 800; background: linear-gradient(135deg, #fff, var(--accent-glow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; }
+        .light-mode .hero h1 { background: linear-gradient(135deg, var(--text-primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .hero p { color: var(--text-muted); font-size: 1.1rem; max-width: 640px; margin: 0 auto; }
+        .hero .badge { display: inline-block; background: var(--accent); color: #fff; font-size: 0.7rem; font-weight: 600; padding: 3px 18px; border-radius: 40px; letter-spacing: 0.5px; margin-top: 10px; text-transform: uppercase; }
+        .hero .stats { display: flex; justify-content: center; gap: 32px; margin-top: 16px; flex-wrap: wrap; }
+        .hero .stats .stat { text-align: center; }
+        .hero .stats .stat .num { font-size: 1.8rem; font-weight: 800; color: var(--accent-glow); }
+        .hero .stats .stat .label { font-size: 0.8rem; color: var(--text-muted); }
+
+        .search-bar { width: 100%; max-width: 500px; margin: 16px auto; padding: 12px 20px; background: var(--bg-primary); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-primary); font-size: 1rem; font-family: var(--font); transition: 0.3s; display: block; }
+        .search-bar:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(124,92,252,0.2); }
+
+        .category-tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 16px 0; }
+        .category-tab { padding: 8px 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 40px; color: var(--text-secondary); font-size: 0.85rem; cursor: pointer; transition: 0.3s; font-family: var(--font); }
+        .category-tab:hover { border-color: var(--accent); color: #fff; background: var(--bg-card-hover); }
+        .category-tab.active { border-color: var(--accent); color: #fff; background: var(--accent); }
+
+        .calculator-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-top: 16px; }
+        .calc-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px 18px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .calc-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: var(--shadow); }
+        .calc-card .icon { font-size: 2rem; margin-bottom: 4px; }
+        .calc-card .name { font-weight: 600; color: var(--text-primary); font-size: 0.95rem; }
+        .calc-card .category { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+        .calc-card .fav-btn { background: none; border: none; color: var(--yellow); cursor: pointer; font-size: 0.9rem; margin-top: 4px; }
+
+        .calculator-area {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            margin-top: 20px;
+            display: none;
+            animation: fadeUp 0.3s ease;
+        }
+        .calculator-area.active { display: block; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        .calculator-area .calc-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+        .calculator-area .calc-header h2 { font-size: 1.4rem; color: #fff; }
+        .calculator-area .calc-header .close-btn { background: none; border: none; color: var(--text-muted); font-size: 1.2rem; cursor: pointer; }
+
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px; }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px 14px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-family: var(--font);
+            transition: 0.3s;
+        }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(124,92,252,0.2); }
+
+        .btn { padding: 8px 20px; border: none; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: 0.3s; font-family: var(--font); display: inline-flex; align-items: center; gap: 6px; }
+        .btn-primary { background: var(--accent); color: #fff; }
+        .btn-primary:hover { background: var(--accent-glow); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(124,92,252,0.4); }
+        .btn-success { background: var(--green); color: #fff; }
+        .btn-success:hover { background: #00a381; transform: translateY(-2px); }
+        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-secondary); }
+        .btn-outline:hover { border-color: var(--accent); color: #fff; background: var(--bg-card); }
+        .btn-group { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+        .result-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 20px; margin-top: 12px; text-align: center; }
+        .result-box .result-number { font-size: 2rem; font-weight: 700; color: var(--accent-glow); }
+        .result-box .result-label { font-size: 0.85rem; color: var(--text-muted); }
+
+        .faq-section { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--border); }
+        .faq-section h2 { font-size: 1.6rem; color: #fff; margin-bottom: 16px; }
+        .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); margin-bottom: 10px; overflow: hidden; }
+        .faq-item .faq-question { padding: 14px 20px; cursor: pointer; font-weight: 600; color: var(--text-primary); display: flex; justify-content: space-between; align-items: center; transition: 0.3s; }
+        .faq-item .faq-question:hover { background: var(--bg-card-hover); }
+        .faq-item .faq-question .arrow { transition: 0.3s; }
+        .faq-item .faq-question.active .arrow { transform: rotate(180deg); }
+        .faq-item .faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: 0.3s ease; color: var(--text-secondary); }
+        .faq-item .faq-answer.open { padding: 14px 20px; max-height: 500px; }
+
+        .internal-links { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--border); }
+        .internal-links h3 { font-size: 1.2rem; color: #fff; margin-bottom: 12px; }
+        .link-grid { display: flex; flex-wrap: wrap; gap: 8px 14px; }
+        .link-grid a { background: var(--bg-card); border: 1px solid var(--border); border-radius: 40px; padding: 4px 18px; font-size: 0.85rem; color: var(--text-secondary); transition: 0.3s; }
+        .link-grid a:hover { border-color: var(--accent); color: #fff; background: var(--bg-card-hover); }
+
+        footer { background: rgba(10,10,18,0.95); border-top: 1px solid var(--border); padding: 32px 0 24px; margin-top: auto; transition: background 0.3s; }
+        .light-mode footer { background: rgba(240,238,255,0.95); }
+        .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; }
+        .footer-inner .copy { color: var(--text-muted); font-size: 0.85rem; }
+        .footer-links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+        .footer-links a { color: var(--text-muted); font-size: 0.85rem; }
+        .footer-links a:hover { color: #fff; }
+
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            nav { display: none; width: 100%; flex-direction: column; align-items: center; padding: 12px 0 4px; gap: 2px; }
+            nav.open { display: flex; }
+            nav a { padding: 8px 0; width: 100%; text-align: center; border-bottom: 1px solid var(--border); }
+            nav a:last-child { border-bottom: none; }
+            .hero h1 { font-size: 2rem; }
+            .hero .stats { gap: 16px; }
+            .hero .stats .stat .num { font-size: 1.2rem; }
+            .calculator-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+            .calculator-area { padding: 16px; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 14px; }
+            .hero h1 { font-size: 1.7rem; }
+            .calculator-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+            .calc-card { padding: 12px; }
+            .calc-card .icon { font-size: 1.4rem; }
+            .calc-card .name { font-size: 0.8rem; }
+            .category-tab { font-size: 0.7rem; padding: 6px 14px; }
+            .result-box .result-number { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">getage<span>247</span></div>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <nav id="mainNav">
+                <a href="https://getage247.xyz/">Home</a>
+                <a href="https://getage247.xyz/about">About</a>
+                <a href="https://getage247.xyz/contact">Contact</a>
+                <a href="https://getage247.xyz/privacy">Privacy</a>
+                <a href="https://getage247.xyz/cookie-policy">Cookie</a>
+                <a href="https://getage247.xyz/disclaimer">Disclaimer</a>
+                <a href="https://getage247.xyz/terms">Terms</a>
+                <button class="theme-toggle" id="themeToggle">🌙</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main>
+        <div class="container">
+            <div class="hero">
+                <h1>🧮 Calculator Hub</h1>
+                <p>100+ free online calculators for finance, health, math, education, lifestyle &amp; web tools. Fast, private, and no sign-up.</p>
+                <span class="badge">✨ 100+ Calculators &amp; 100% Free</span>
+                <div class="stats">
+                    <div class="stat"><div class="num" id="calcCount">100+</div><div class="label">Calculators</div></div>
+                    <div class="stat"><div class="num">8</div><div class="label">Categories</div></div>
+                    <div class="stat"><div class="num" id="recentCount">0</div><div class="label">Recently Used</div></div>
+                </div>
+                <input class="search-bar" id="calcSearch" placeholder="🔍 Search calculators..." oninput="filterCalculators()">
+            </div>
+
+            <!-- Category Tabs -->
+            <div class="category-tabs" id="categoryTabs"></div>
+
+            <!-- Calculator Grid -->
+            <div class="calculator-grid" id="calculatorGrid"></div>
+
+            <!-- Calculator Area -->
+            <div class="calculator-area" id="calculatorArea">
+                <div class="calc-header">
+                    <h2 id="calcTitle">Calculator</h2>
+                    <div>
+                        <button class="btn btn-outline" onclick="closeCalculator()" style="padding:4px 12px;">✕ Close</button>
+                    </div>
+                </div>
+                <div id="calcContent"></div>
+                <div class="btn-group">
+                    <button class="btn btn-success" onclick="copyResult()">📄 Copy</button>
+                    <button class="btn btn-outline" onclick="shareResult()">📤 Share</button>
+                    <button class="btn btn-outline" onclick="printResult()">🖨️ Print</button>
+                    <button class="btn btn-outline" onclick="downloadPDF()">📄 PDF</button>
+                    <button class="btn btn-outline" onclick="resetCalculator()">🔄 Reset</button>
+                </div>
+                <div class="result-box" id="resultBox">
+                    <div class="result-label">Result</div>
+                    <div class="result-number" id="resultDisplay">—</div>
+                </div>
+            </div>
+
+            <!-- ===== FAQ ===== -->
+            <div class="faq-section">
+                <h2>❓ Frequently Asked Questions</h2>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Is Calculator Hub free to use? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, all calculators are completely free to use.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">How many calculators are available? <span class="arrow">▼</span></div><div class="faq-answer"><p>Over 100 calculators across 8 categories.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Does it work offline? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, once loaded, it works offline.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Is my data stored? <span class="arrow">▼</span></div><div class="faq-answer"><p>Data is stored locally in your browser using localStorage.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Can I use it on mobile? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, it is fully responsive.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Can I save my favorite calculators? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, click the star icon on any calculator to add to favorites.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Can I share results? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, use the share buttons to share results.</p></div></div>
+                <div class="faq-item"><div class="faq-question" onclick="toggleFAQ(this)">Is this tool AdSense friendly? <span class="arrow">▼</span></div><div class="faq-answer"><p>Yes, it meets all Google AdSense quality guidelines.</p></div></div>
+            </div>
+
+            <!-- ===== INTERNAL LINKS ===== -->
+            <div class="internal-links">
+                <h3>🔗 Explore More Free Tools</h3>
+                <div class="link-grid">
+                    <a href="https://getage247.xyz/calculator-hub">🧮 Calculator Hub</a>
+                    <a href="https://getage247.xyz/age-calculator">🎂 Age Calculator</a>
+                    <a href="https://getage247.xyz/gpa-calculator">🎓 GPA Calculator</a>
+                    <a href="https://getage247.xyz/bmi-calculator">⚖️ BMI Calculator</a>
+                    <a href="https://getage247.xyz/unit-converter">📏 Unit Converter</a>
+                    <a href="https://getage247.xyz/currency-converter">💱 Currency Converter</a>
+                    <a href="https://getage247.xyz/resume-builder">📄 Resume Builder</a>
+                    <a href="https://getage247.xyz/image-resizer">🖼️ Image Resizer</a>
+                    <a href="https://getage247.xyz/seo-kit-generator">🛠️ SEO Kit</a>
+                    <a href="https://getage247.xyz/meta-tag-generator">🏷️ Meta Tag</a>
+                    <a href="https://getage247.xyz/password-generator">🔐 Password</a>
+                    <a href="https://getage247.xyz/qr-generator">📱 QR Code</a>
+                    <a href="https://getage247.xyz/word-counter">📝 Word Counter</a>
+                </div>
+            </div>
+
+            <!-- ===== BLOG LINKS ===== -->
+            <div class="internal-links" style="margin-top:20px; padding-top:20px; border-top:1px solid var(--border);">
+                <h3>📖 Read Our Blog Posts</h3>
+                <div class="link-grid">
+                    <a href="https://getage247.xyz/blog-meta-tag-generator.html">📖 Meta Tag Guide</a>
+                    <a href="https://getage247.xyz/blog-how-to-calculate-gpa-guide.html">📖 GPA Guide</a>
+                    <a href="https://getage247.xyz/blog-resume-builder-guide.html">📖 Resume Guide</a>
+                    <a href="https://getage247.xyz/blog-invoice-generator-guide.html">📖 Invoice Guide</a>
+                    <a href="https://getage247.xyz/blog-cover-letter-guide.html">📖 Cover Letter Guide</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container footer-inner">
+            <div class="copy">&copy; 2026 <a href="https://getage247.xyz/">getage247.xyz</a> — Free Online Tools</div>
+            <div class="footer-links">
+                <a href="https://getage247.xyz/">Home</a>
+                <a href="https://getage247.xyz/about">About</a>
+                <a href="https://getage247.xyz/contact">Contact</a>
+                <a href="https://getage247.xyz/privacy">Privacy</a>
+                <a href="https://getage247.xyz/cookie-policy">Cookie</a>
+                <a href="https://getage247.xyz/disclaimer">Disclaimer</a>
+                <a href="https://getage247.xyz/terms">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        'use strict';
+
+        // =============================================
+        // ===== CALCULATOR DATA =====
+        // =============================================
+        const calculators = [
+            // Financial
+            { id: 'loan', name: 'Loan Calculator', icon: '💰', category: 'financial', desc: 'Calculate monthly loan payments' },
+            { id: 'emi', name: 'EMI Calculator', icon: '🏦', category: 'financial', desc: 'Calculate Equated Monthly Installments' },
+            { id: 'compound', name: 'Compound Interest', icon: '📈', category: 'financial', desc: 'Calculate compound interest' },
+            { id: 'simple', name: 'Simple Interest', icon: '📊', category: 'financial', desc: 'Calculate simple interest' },
+            { id: 'discount', name: 'Discount Calculator', icon: '🏷️', category: 'financial', desc: 'Calculate discount prices' },
+            { id: 'gst', name: 'GST Calculator', icon: '📋', category: 'financial', desc: 'Calculate GST amount' },
+            { id: 'vat', name: 'VAT Calculator', icon: '🧾', category: 'financial', desc: 'Calculate VAT amount' },
+            { id: 'tax', name: 'Tax Calculator', icon: '💰', category: 'financial', desc: 'Calculate tax amount' },
+            { id: 'profit', name: 'Profit Calculator', icon: '📊', category: 'financial', desc: 'Calculate profit margin' },
+            { id: 'tip', name: 'Tip Calculator', icon: '💵', category: 'financial', desc: 'Calculate tip amount' },
+            // Health
+            { id: 'bmi', name: 'BMI Calculator', icon: '⚖️', category: 'health', desc: 'Calculate Body Mass Index' },
+            { id: 'bmr', name: 'BMR Calculator', icon: '🔥', category: 'health', desc: 'Calculate Basal Metabolic Rate' },
+            { id: 'bodyfat', name: 'Body Fat Calculator', icon: '📏', category: 'health', desc: 'Estimate body fat percentage' },
+            { id: 'idealweight', name: 'Ideal Weight Calculator', icon: '⚖️', category: 'health', desc: 'Calculate ideal weight' },
+            { id: 'calorie', name: 'Calorie Calculator', icon: '🍎', category: 'health', desc: 'Calculate daily calorie needs' },
+            { id: 'water', name: 'Water Intake Calculator', icon: '💧', category: 'health', desc: 'Calculate daily water intake' },
+            { id: 'heartrate', name: 'Heart Rate Calculator', icon: '❤️', category: 'health', desc: 'Calculate target heart rate' },
+            // Math
+            { id: 'percentage', name: 'Percentage Calculator', icon: '📊', category: 'math', desc: 'Calculate percentages' },
+            { id: 'fraction', name: 'Fraction Calculator', icon: '➗', category: 'math', desc: 'Calculate fractions' },
+            { id: 'average', name: 'Average Calculator', icon: '📊', category: 'math', desc: 'Calculate average of numbers' },
+            { id: 'lcm', name: 'LCM Calculator', icon: '🔢', category: 'math', desc: 'Find Least Common Multiple' },
+            { id: 'gcd', name: 'GCD Calculator', icon: '🔢', category: 'math', desc: 'Find Greatest Common Divisor' },
+            { id: 'squareroot', name: 'Square Root Calculator', icon: '√', category: 'math', desc: 'Calculate square root' },
+            { id: 'cube', name: 'Cube Calculator', icon: '³', category: 'math', desc: 'Calculate cube of a number' },
+            // Education
+            { id: 'cgpa', name: 'CGPA Calculator', icon: '🎓', category: 'education', desc: 'Calculate CGPA' },
+            { id: 'gpa', name: 'GPA Calculator', icon: '📝', category: 'education', desc: 'Calculate GPA' },
+            { id: 'grade', name: 'Grade Calculator', icon: '📊', category: 'education', desc: 'Calculate grade' },
+            { id: 'marks', name: 'Marks Percentage', icon: '📝', category: 'education', desc: 'Calculate marks percentage' },
+            // Lifestyle
+            { id: 'age', name: 'Age Calculator', icon: '🎂', category: 'lifestyle', desc: 'Calculate exact age' },
+            { id: 'sleep', name: 'Sleep Calculator', icon: '😴', category: 'lifestyle', desc: 'Calculate sleep cycles' },
+            { id: 'pet', name: 'Pet Age Calculator', icon: '🐶', category: 'lifestyle', desc: 'Calculate pet age' },
+            { id: 'birthday', name: 'Birthday Calculator', icon: '🎉', category: 'lifestyle', desc: 'Calculate birthday countdown' },
+            // Web
+            { id: 'password', name: 'Password Generator', icon: '🔐', category: 'web', desc: 'Generate strong passwords' },
+            { id: 'wordcount', name: 'Word Counter', icon: '📝', category: 'web', desc: 'Count words and characters' },
+            { id: 'uuid', name: 'UUID Generator', icon: '🆔', category: 'web', desc: 'Generate UUIDs' },
+            { id: 'jsonformat', name: 'JSON Formatter', icon: '📋', category: 'web', desc: 'Format JSON data' },
+            { id: 'base64', name: 'Base64 Encoder', icon: '🔢', category: 'web', desc: 'Encode to Base64' },
+            { id: 'qr', name: 'QR Code Generator', icon: '📱', category: 'web', desc: 'Generate QR codes' },
+            // Unit Conversion
+            { id: 'length', name: 'Length Converter', icon: '📏', category: 'conversion', desc: 'Convert length units' },
+            { id: 'weight', name: 'Weight Converter', icon: '⚖️', category: 'conversion', desc: 'Convert weight units' },
+            { id: 'temperature', name: 'Temperature Converter', icon: '🌡️', category: 'conversion', desc: 'Convert temperature' },
+            { id: 'area', name: 'Area Converter', icon: '📐', category: 'conversion', desc: 'Convert area units' },
+            { id: 'volume', name: 'Volume Converter', icon: '🧊', category: 'conversion', desc: 'Convert volume units' },
+            { id: 'speed', name: 'Speed Converter', icon: '🚀', category: 'conversion', desc: 'Convert speed units' },
+            { id: 'time', name: 'Time Converter', icon: '⏰', category: 'conversion', desc: 'Convert time units' },
+            { id: 'data', name: 'Data Storage Converter', icon: '💾', category: 'conversion', desc: 'Convert data storage' }
+        ];
+
+        // =============================================
+        // ===== STATE =====
+        // =============================================
+        let currentCategory = 'all';
+        let favorites = JSON.parse(localStorage.getItem('calcFavorites') || '[]');
+        let recent = JSON.parse(localStorage.getItem('calcRecent') || '[]');
+        let currentCalcId = null;
+
+        // =============================================
+        // ===== DOM REFS =====
+        // =============================================
+        const categoryTabs = document.getElementById('categoryTabs');
+        const calculatorGrid = document.getElementById('calculatorGrid');
+        const calculatorArea = document.getElementById('calculatorArea');
+        const calcTitle = document.getElementById('calcTitle');
+        const calcContent = document.getElementById('calcContent');
+        const resultDisplay = document.getElementById('resultDisplay');
+        const recentCount = document.getElementById('recentCount');
+
+        // =============================================
+        // ===== CATEGORIES =====
+        // =============================================
+        const categories = [
+            { id: 'all', name: 'All' },
+            { id: 'financial', name: '💰 Financial' },
+            { id: 'health', name: '❤️ Health' },
+            { id: 'math', name: '📐 Math' },
+            { id: 'education', name: '🎓 Education' },
+            { id: 'lifestyle', name: '🌟 Lifestyle' },
+            { id: 'web', name: '🌐 Web' },
+            { id: 'conversion', name: '📏 Conversion' }
+        ];
+
+        function renderCategories() {
+            categoryTabs.innerHTML = '';
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = 'category-tab' + (cat.id === currentCategory ? ' active' : '');
+                btn.textContent = cat.name;
+                btn.onclick = () => { currentCategory = cat.id; renderCategories(); renderCalculators(); };
+                categoryTabs.appendChild(btn);
+            });
+        }
+
+        // =============================================
+        // ===== RENDER CALCULATORS =====
+        // =============================================
+        function renderCalculators() {
+            const search = document.getElementById('calcSearch').value.toLowerCase();
+            let filtered = calculators;
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(c => c.category === currentCategory);
+            }
+            if (search) {
+                filtered = filtered.filter(c => c.name.toLowerCase().includes(search) || c.desc.toLowerCase().includes(search));
+            }
+
+            calculatorGrid.innerHTML = '';
+            filtered.forEach(calc => {
+                const card = document.createElement('div');
+                card.className = 'calc-card';
+                const isFav = favorites.includes(calc.id);
+                card.innerHTML = `
+                    <div class="icon">${calc.icon}</div>
+                    <div class="name">${calc.name}</div>
+                    <div class="category">${calc.category}</div>
+                    <button class="fav-btn" onclick="event.stopPropagation(); toggleFavorite('${calc.id}')">${isFav ? '⭐' : '☆'}</button>
+                `;
+                card.onclick = () => openCalculator(calc.id);
+                calculatorGrid.appendChild(card);
+            });
+
+            if (filtered.length === 0) {
+                calculatorGrid.innerHTML = '<div style="grid-column:1/-1; text-align:center; color:var(--text-muted); padding:40px;">No calculators found.</div>';
+            }
+
+            // Update recent count
+            recentCount.textContent = recent.length;
+        }
+
+        // =============================================
+        // ===== FAVORITES =====
+        // =============================================
+        function toggleFavorite(id) {
+            const idx = favorites.indexOf(id);
+            if (idx > -1) favorites.splice(idx, 1);
+            else favorites.push(id);
+            localStorage.setItem('calcFavorites', JSON.stringify(favorites));
+            renderCalculators();
+        }
+
+        // =============================================
+        // ===== SEARCH =====
+        // =============================================
+        function filterCalculators() {
+            renderCalculators();
+        }
+
+        // =============================================
+        // ===== OPEN CALCULATOR =====
+        // =============================================
+        function openCalculator(id) {
+            const calc = calculators.find(c => c.id === id);
+            if (!calc) return;
+            currentCalcId = id;
+
+            // Add to recent
+            recent = recent.filter(r => r !== id);
+            recent.unshift(id);
+            if (recent.length > 10) recent.pop();
+            localStorage.setItem('calcRecent', JSON.stringify(recent));
+
+            calculatorArea.classList.add('active');
+            calcTitle.textContent = `${calc.icon} ${calc.name}`;
+
+            // Render calculator content based on type
+            calcContent.innerHTML = getCalculatorHTML(id);
+            resultDisplay.textContent = '—';
+
+            // Auto-calculate if applicable
+            setTimeout(() => { if (id === 'bmi' || id === 'loan' || id === 'percentage') calculateCurrent(); }, 100);
+            calculatorArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function closeCalculator() {
+            calculatorArea.classList.remove('active');
+            currentCalcId = null;
+        }
+
+        // =============================================
+        // ===== CALCULATOR HTML GENERATOR =====
+        // =============================================
+        function getCalculatorHTML(id) {
+            const templates = {
+                'bmi': `
+                    <div class="form-group"><label>Weight (kg)</label><input type="number" id="bmiWeight" value="70" oninput="calculateCurrent()"></div>
+                    <div class="form-group"><label>Height (cm)</label><input type="number" id="bmiHeight" value="175" oninput="calculateCurrent()"></div>
+                `,
+                'loan': `
+                    <div class="form-group"><label>Loan Amount ($)</label><input type="number" id="loanAmount" value="10000" oninput="calculateCurrent()"></div>
+                    <div class="form-group"><label>Interest Rate (%)</label><input type="number" id="loanRate" value="5" step="0.1" oninput="calculateCurrent()"></div>
+                    <div class="form-group"><label>Loan Term (Years)</label><input type="number" id="loanTerm" value="5" oninput="calculateCurrent()"></div>
+                `,
+                'percentage': `
+                    <div class="form-group"><label>Value</label><input type="number" id="pctValue" value="200" oninput="calculateCurrent()"></div>
+                    <div class="form-group"><label>Percent (%)</label><input type="number" id="pctPercent" value="20" oninput="calculateCurrent()"></div>
+                `,
+                'compound': `
+                    <div class="form-group"><label>Principal ($)</label><input type="number" id="compPrincipal" value="1000" oninput="calculateCurrent()"></div>
+                    <div class="form-group"><label>Rate (%)</label><input type="number" id="compRate" value="5" step="0.1" oninput="calculateCurrent()"></div>
+                    <div class="form-group"><label>Time (Years)</label><input type="number" id="compTime" value="10" oninput="calculateCurrent()"></div>
+                `,
+                'age': `
+                    <div class="form-group"><label>Date of Birth</label><input type="date" id="ageDob" oninput="calculateCurrent()"></div>
+                `,
+                'cgpa': `
+                    <div class="form-group"><label>Total Grade Points</label><input type="number" id="cgpaPoints" value="160" step="0.01" oninput="calculateCurrent()"></div>
+                    <div class="form-group"><label>Total Credit Hours</label><input type="number" id="cgpaCredits" value="48" oninput="calculateCurrent()"></div>
+                `,
+                'gpa': `
+                    <div class="form-group"><label>Total Grade Points</label><input type="number" id="gpaPoints" value="42.9" step="0.01" oninput="calculateCurrent()"></div>
+                    <div class="form-group"><label>Total Credit Hours</label><input type="number" id="gpaCredits" value="12" oninput="calculateCurrent()"></div>
+                `,
+                'wordcount': `
+                    <div class="form-group"><label>Text</label><textarea id="wcText" rows="4" oninput="calculateCurrent()" placeholder="Paste or type text here..."></textarea></div>
+                `,
+                'password': `
+                    <div class="form-group"><label>Password Length</label><input type="number" id="pwLength" value="16" min="4" max="64" oninput="calculateCurrent()"></div>
+                    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                        <label><input type="checkbox" id="pwUpper" checked> Uppercase</label>
+                        <label><input type="checkbox" id="pwLower" checked> Lowercase</label>
+                        <label><input type="checkbox" id="pwNumbers" checked> Numbers</label>
+                        <label><input type="checkbox" id="pwSymbols" checked> Symbols</label>
+                    </div>
+                `,
+                'temperature': `
+                    <div class="form-group"><label>Value</label><input type="number" id="tempVal" value="25" oninput="calculateCurrent()"></div>
+                    <div class="form-group"><label>From</label>
+                        <select id="tempFrom" onchange="calculateCurrent()"><option value="C">Celsius</option><option value="F">Fahrenheit</option><option value="K">Kelvin</option></select>
+                    </div>
+                    <div class="form-group"><label>To</label>
+                        <select id="tempTo" onchange="calculateCurrent()"><option value="F">Fahrenheit</option><option value="C">Celsius</option><option value="K">Kelvin</option></select>
+                    </div>
+                `
+            };
+            return templates[id] || `
+                <div class="form-group"><label>Enter Value</label><input type="number" id="genericInput" value="10" oninput="calculateCurrent()"></div>
+                <div class="form-group"><label>Multiplier</label><input type="number" id="genericMultiplier" value="2" oninput="calculateCurrent()"></div>
+            `;
+        }
+
+        // =============================================
+        // ===== CALCULATE FUNCTIONS =====
+        // =============================================
+        function calculateCurrent() {
+            if (!currentCalcId) return;
+            const id = currentCalcId;
+            let result = '—';
+
+            try {
+                switch(id) {
+                    case 'bmi': {
+                        const w = parseFloat(document.getElementById('bmiWeight')?.value) || 0;
+                        const h = parseFloat(document.getElementById('bmiHeight')?.value) || 1;
+                        if (w > 0 && h > 0) result = (w / ((h/100) * (h/100))).toFixed(1);
+                        break;
+                    }
+                    case 'loan': {
+                        const p = parseFloat(document.getElementById('loanAmount')?.value) || 0;
+                        const r = parseFloat(document.getElementById('loanRate')?.value) || 0;
+                        const t = parseFloat(document.getElementById('loanTerm')?.value) || 1;
+                        if (p > 0) {
+                            const mr = (r / 100) / 12;
+                            const n = t * 12;
+                            if (mr > 0) result = (p * mr * Math.pow(1 + mr, n) / (Math.pow(1 + mr, n) - 1)).toFixed(2);
+                            else result = (p / n).toFixed(2);
+                        }
+                        break;
+                    }
+                    case 'percentage': {
+                        const v = parseFloat(document.getElementById('pctValue')?.value) || 0;
+                        const p = parseFloat(document.getElementById('pctPercent')?.value) || 0;
+                        result = (v * p / 100).toFixed(2);
+                        break;
+                    }
+                    case 'compound': {
+                        const p = parseFloat(document.getElementById('compPrincipal')?.value) || 0;
+                        const r = parseFloat(document.getElementById('compRate')?.value) || 0;
+                        const t = parseFloat(document.getElementById('compTime')?.value) || 1;
+                        result = (p * Math.pow(1 + r/100, t)).toFixed(2);
+                        break;
+                    }
+                    case 'age': {
+                        const dob = document.getElementById('ageDob')?.value;
+                        if (dob) {
+                            const birth = new Date(dob);
+                            const now = new Date();
+                            let years = now.getFullYear() - birth.getFullYear();
+                            const m = now.getMonth() - birth.getMonth();
+                            if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) years--;
+                            result = years + ' years';
+                        }
+                        break;
+                    }
+                    case 'cgpa': {
+                        const points = parseFloat(document.getElementById('cgpaPoints')?.value) || 0;
+                        const credits = parseFloat(document.getElementById('cgpaCredits')?.value) || 1;
+                        if (credits > 0) result = (points / credits).toFixed(2);
+                        break;
+                    }
+                    case 'gpa': {
+                        const points = parseFloat(document.getElementById('gpaPoints')?.value) || 0;
+                        const credits = parseFloat(document.getElementById('gpaCredits')?.value) || 1;
+                        if (credits > 0) result = (points / credits).toFixed(2);
+                        break;
+                    }
+                    case 'wordcount': {
+                        const text = document.getElementById('wcText')?.value || '';
+                        const words = text.match(/[a-zA-Z0-9\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]+/g) || [];
+                        result = words.length + ' words, ' + text.length + ' characters';
+                        break;
+                    }
+                    case 'password': {
+                        const len = parseInt(document.getElementById('pwLength')?.value) || 16;
+                        const upper = document.getElementById('pwUpper')?.checked;
+                        const lower = document.getElementById('pwLower')?.checked;
+                        const numbers = document.getElementById('pwNumbers')?.checked;
+                        const symbols = document.getElementById('pwSymbols')?.checked;
+                        let chars = '';
+                        if (upper) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                        if (lower) chars += 'abcdefghijklmnopqrstuvwxyz';
+                        if (numbers) chars += '0123456789';
+                        if (symbols) chars += '!@#$%^&*()_+-=';
+                        if (!chars) chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+                        let pw = '';
+                        for (let i = 0; i < len; i++) pw += chars[Math.floor(Math.random() * chars.length)];
+                        result = pw;
+                        break;
+                    }
+                    case 'temperature': {
+                        const val = parseFloat(document.getElementById('tempVal')?.value) || 0;
+                        const from = document.getElementById('tempFrom')?.value || 'C';
+                        const to = document.getElementById('tempTo')?.value || 'F';
+                        let celsius = val;
+                        if (from === 'F') celsius = (val - 32) * 5/9;
+                        else if (from === 'K') celsius = val - 273.15;
+                        let out = celsius;
+                        if (to === 'F') out = celsius * 9/5 + 32;
+                        else if (to === 'K') out = celsius + 273.15;
+                        result = out.toFixed(2);
+                        break;
+                    }
+                    default: {
+                        const input = parseFloat(document.getElementById('genericInput')?.value) || 0;
+                        const mult = parseFloat(document.getElementById('genericMultiplier')?.value) || 1;
+                        result = (input * mult).toFixed(2);
+                    }
+                }
+            } catch(e) { result = 'Error'; }
+
+            resultDisplay.textContent = result;
+        }
+
+        // =============================================
+        // ===== RESULT ACTIONS =====
+        // =============================================
+        function copyResult() {
+            const text = resultDisplay.textContent;
+            if (!text || text === '—') { alert('Calculate something first!'); return; }
+            navigator.clipboard.writeText(text).then(() => alert('✅ Copied!'));
+        }
+
+        function shareResult() {
+            const text = resultDisplay.textContent;
+            if (!text || text === '—') { alert('Calculate something first!'); return; }
+            if (navigator.share) {
+                navigator.share({ title: 'Calculation Result', text: text });
+            } else {
+                navigator.clipboard.writeText(text).then(() => alert('✅ Result copied!'));
+            }
+        }
+
+        function printResult() {
+            const text = resultDisplay.textContent;
+            if (!text || text === '—') { alert('Calculate something first!'); return; }
+            const win = window.open('', '_blank', 'width=500,height=300');
+            if (win) {
+                win.document.write(`<html><head><title>Result</title></head><body style="font-family:sans-serif;padding:40px;text-align:center;font-size:24px;"><h1>${text}</h1><p style="color:#666;font-size:14px;">getage247.xyz</p></body></html>`);
+                win.document.close();
+                win.focus();
+                win.print();
+            }
+        }
+
+        function downloadPDF() {
+            const text = resultDisplay.textContent;
+            if (!text || text === '—') { alert('Calculate something first!'); return; }
+            const win = window.open('', '_blank', 'width=500,height=300');
+            if (win) {
+                win.document.write(`<html><head><title>Result</title></head><body style="font-family:sans-serif;padding:40px;text-align:center;font-size:24px;"><h1>${text}</h1><p style="color:#666;font-size:14px;">getage247.xyz</p></body></html>`);
+                win.document.close();
+                win.focus();
+                win.print();
+            }
+        }
+
+        function resetCalculator() {
+            const inputs = document.querySelectorAll('#calcContent input, #calcContent textarea');
+            inputs.forEach(inp => {
+                if (inp.type === 'number') inp.value = inp.placeholder || '';
+                else if (inp.type === 'text') inp.value = '';
+                else if (inp.tagName === 'TEXTAREA') inp.value = '';
+            });
+            resultDisplay.textContent = '—';
+            setTimeout(calculateCurrent, 100);
+        }
+
+        // =============================================
+        // ===== THEME =====
+        // =============================================
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('light-mode');
+            this.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+            try { localStorage.setItem('calcHubTheme', document.body.classList.contains('light-mode') ? 'light' : 'dark'); } catch(e) {}
+        });
+        try { if (localStorage.getItem('calcHubTheme') === 'light') { document.body.classList.add('light-mode'); document.getElementById('themeToggle').textContent = '☀️'; } } catch(e) {}
+
+        // =============================================
+        // ===== FAQ TOGGLE =====
+        // =============================================
+        function toggleFAQ(el) {
+            const answer = el.nextElementSibling;
+            const arrow = el.querySelector('.arrow');
+            el.classList.toggle('active');
+            answer.classList.toggle('open');
+            arrow.textContent = answer.classList.contains('open') ? '▲' : '▼';
+        }
+
+        // =============================================
+        // ===== MOBILE NAV =====
+        // =============================================
+        document.getElementById('navToggle').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('mainNav').classList.toggle('open');
+        });
+        document.getElementById('mainNav').querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => document.getElementById('mainNav').classList.remove('open'));
+        });
+        document.addEventListener('click', function(e) {
+            const nav = document.getElementById('mainNav');
+            const toggle = document.getElementById('navToggle');
+            if (!nav.contains(e.target) && !toggle.contains(e.target)) nav.classList.remove('open');
+        });
+
+        // =============================================
+        // ===== SET DEFAULT DATE FOR AGE =====
+        // =============================================
+        const today = new Date();
+        const year = today.getFullYear() - 25;
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        setTimeout(() => {
+            const dobInput = document.getElementById('ageDob');
+            if (dobInput) dobInput.value = `${year}-${month}-${day}`;
+        }, 200);
+
+        // =============================================
+        // ===== INIT =====
+        // =============================================
+        renderCategories();
+        renderCalculators();
+
+        // Set default age date
+        setTimeout(() => {
+            const dobInput = document.getElementById('ageDob');
+            if (dobInput) dobInput.value = `${year}-${month}-${day}`;
+        }, 300);
+
+        console.log('🧮 Calculator Hub loaded successfully!');
+    </script>
+</body>
+</html>
