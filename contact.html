@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us – getage247.xyz | Free Online Tools</title>
-    <meta name="description" content="Get in touch with getage247.xyz. Have questions, suggestions, or feedback about our free SEO tools? Contact us today.">
+    <meta name="description" content="Get in touch with getage247.xyz. Have questions, suggestions, or feedback about our free online tools? Contact us today. We'd love to hear from you.">
     <link rel="canonical" href="https://getage247.xyz/contact">
     
     <!-- Open Graph -->
@@ -19,6 +19,40 @@
     <meta name="twitter:title" content="Contact Us – getage247.xyz">
     <meta name="twitter:description" content="Get in touch with getage247.xyz. Have questions, suggestions, or feedback? Contact us today.">
     <meta name="twitter:site" content="@getage247">
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How can I contact getage247.xyz?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can contact us via email at gnlassi.786@gmail.com. We aim to respond within 24-48 hours."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How quickly do you respond to queries?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We aim to respond to all inquiries within 24-48 hours during business days."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I suggest a new tool for the website?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, we welcome suggestions for new tools. Feel free to email us your ideas."
+                }
+            }
+        ]
+    }
+    </script>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -175,90 +209,72 @@
         }
         .page-card .highlight-box p { margin-bottom: 0; }
 
-        /* ===== CONTACT GRID ===== */
-        .contact-grid {
+        .page-card .info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 32px;
             margin-top: 16px;
         }
-        @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { .page-card .info-grid { grid-template-columns: 1fr; } }
 
-        /* ===== FORM ===== */
-        .form-group {
-            margin-bottom: 16px;
-        }
-        .form-group label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 4px;
-        }
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 10px 14px;
-            background: var(--bg-primary);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            color: var(--text-primary);
-            font-size: 0.95rem;
-            font-family: var(--font);
-            transition: 0.3s;
-        }
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(124,92,252,0.2);
-        }
-        .form-group textarea { min-height: 120px; resize: vertical; }
-        .form-group select option { background: var(--bg-card); }
-
-        .btn {
-            padding: 12px 28px;
-            border: none;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.3s;
-            font-family: var(--font);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .btn-primary {
-            background: var(--accent);
-            color: #fff;
-        }
-        .btn-primary:hover {
-            background: var(--accent-glow);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(124,92,252,0.4);
-        }
-
-        /* ===== CONTACT INFO ===== */
-        .contact-info {
+        .page-card .contact-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius-sm);
-            padding: 24px;
+            padding: 24px 28px;
         }
-        .contact-info .info-item {
+        .page-card .contact-card .contact-item {
             display: flex;
             align-items: flex-start;
             gap: 14px;
             padding: 12px 0;
             border-bottom: 1px solid var(--border);
         }
-        .contact-info .info-item:last-child { border-bottom: none; }
-        .contact-info .info-item .icon {
-            font-size: 1.4rem;
-            flex-shrink: 0;
-            margin-top: 2px;
+        .page-card .contact-card .contact-item:last-child { border-bottom: none; }
+        .page-card .contact-card .contact-item .icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+        .page-card .contact-card .contact-item .text { color: var(--text-secondary); }
+        .page-card .contact-card .contact-item .text strong { color: #fff; }
+
+        .page-card .why-list { list-style: none; padding: 0; }
+        .page-card .why-list li { padding: 8px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+        .page-card .why-list li:last-child { border-bottom: none; }
+        .page-card .why-list li .emoji { font-size: 1.2rem; }
+
+        .page-card .faq-mini {
+            margin-top: 24px;
+            padding: 20px 24px;
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
         }
-        .contact-info .info-item .text { color: var(--text-secondary); }
-        .contact-info .info-item .text strong { color: #fff; }
+        .page-card .faq-mini h3 { margin-top: 0; }
+        .page-card .faq-mini .faq-q { font-weight: 600; color: var(--text-primary); margin-top: 8px; }
+        .page-card .faq-mini .faq-a { color: var(--text-secondary); padding-left: 16px; font-size: 0.95rem; }
+
+        /* ===== EMAIL BUTTON ===== */
+        .btn-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: var(--font);
+            text-decoration: none;
+            margin-top: 8px;
+        }
+        .btn-email:hover {
+            background: var(--accent-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(124,92,252,0.4);
+            color: #fff;
+        }
 
         /* ===== INTERNAL LINKS ===== */
         .internal-links {
@@ -336,6 +352,8 @@
             nav a:last-child { border-bottom: none; }
             .page-card h1 { font-size: 2rem; }
             .page-card h2 { font-size: 1.4rem; }
+            .page-card .info-grid { grid-template-columns: 1fr; }
+            .btn-email { width: 100%; justify-content: center; }
             .footer-inner { flex-direction: column; text-align: center; }
             .footer-links { justify-content: center; }
         }
@@ -343,6 +361,7 @@
             .container { padding: 0 14px; }
             .page-card { padding: 18px 14px; }
             .page-card h1 { font-size: 1.7rem; }
+            .page-card .contact-card { padding: 16px; }
         }
     </style>
 </head>
@@ -373,72 +392,50 @@
                 <h1>📬 Contact Us</h1>
                 <p class="subtitle">Have questions, suggestions, or feedback? We'd love to hear from you.</p>
 
-                <div class="contact-grid">
+                <div class="info-grid">
 
-                    <!-- ===== CONTACT FORM ===== -->
+                    <!-- ===== LEFT: CONTACT FORM / EMAIL ===== -->
                     <div>
-                        <h2>📝 Send a Message</h2>
-                        <p style="color: var(--text-muted); font-size: 0.95rem;">Fill out the form below and we'll get back to you within 24–48 hours.</p>
+                        <h2>📝 Send Us a Message</h2>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;">
+                            The fastest way to reach us is via email. Just click the button below and your email client will open with a pre-filled message.
+                        </p>
 
-                        <form id="contactForm" onsubmit="handleSubmit(event)">
-                            <div class="form-group">
-                                <label for="name">Your Name *</label>
-                                <input type="text" id="name" placeholder="Enter your full name" required>
-                            </div>
+                        <a href="mailto:gnlassi.786@gmail.com?subject=Inquiry%20from%20getage247.xyz&body=Hello%20getage247.xyz%20Team%2C%0A%0AI%20have%20a%20question%20about%3A%0A%0A" class="btn-email">
+                            ✉️ Send Email
+                        </a>
 
-                            <div class="form-group">
-                                <label for="email">Email Address *</label>
-                                <input type="email" id="email" placeholder="you@example.com" required>
-                            </div>
+                        <div style="margin-top: 16px; color: var(--text-muted); font-size: 0.9rem;">
+                            <p>📧 <strong style="color: #fff;">Email:</strong> <a href="mailto:gnlassi.786@gmail.com" style="color: var(--accent-glow);">gnlassi.786@gmail.com</a></p>
+                            <p style="margin-top: 4px;">⏱️ <strong style="color: #fff;">Response Time:</strong> We aim to respond within 24–48 hours.</p>
+                        </div>
 
-                            <div class="form-group">
-                                <label for="subject">Subject</label>
-                                <select id="subject">
-                                    <option value="General Inquiry">General Inquiry</option>
-                                    <option value="Feedback / Suggestion">Feedback / Suggestion</option>
-                                    <option value="Bug Report">Bug Report</option>
-                                    <option value="Feature Request">Feature Request</option>
-                                    <option value="Partnership / Collaboration">Partnership / Collaboration</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="message">Message *</label>
-                                <textarea id="message" placeholder="Write your message here..." required></textarea>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">✉️ Send Message</button>
-                        </form>
-
-                        <div id="formSuccess" style="display:none; margin-top:16px; padding:16px; background: rgba(0,184,148,0.15); border:1px solid var(--green); border-radius:var(--radius-sm); color:var(--green);">
-                            ✅ Your message has been sent successfully! We'll get back to you soon.
+                        <div class="highlight-box" style="margin-top: 20px;">
+                            <p><strong>💡 Tip:</strong> For faster response, please include your name and a clear subject line.</p>
                         </div>
                     </div>
 
-                    <!-- ===== CONTACT INFO ===== -->
+                    <!-- ===== RIGHT: CONTACT INFO ===== -->
                     <div>
                         <h2>📌 Get in Touch</h2>
                         <p style="color: var(--text-muted); font-size: 0.95rem;">Reach out to us through the following channels.</p>
 
-                        <div class="contact-info">
-                            <div class="info-item">
+                        <div class="contact-card">
+                            <div class="contact-item">
                                 <span class="icon">📧</span>
                                 <div class="text">
                                     <strong>Email</strong><br>
                                     <a href="mailto:gnlassi.786@gmail.com">gnlassi.786@gmail.com</a>
                                 </div>
                             </div>
-
-                            <div class="info-item">
+                            <div class="contact-item">
                                 <span class="icon">🌐</span>
                                 <div class="text">
                                     <strong>Website</strong><br>
                                     <a href="https://getage247.xyz/" target="_blank">getage247.xyz</a>
                                 </div>
                             </div>
-
-                            <div class="info-item">
+                            <div class="contact-item">
                                 <span class="icon">🕐</span>
                                 <div class="text">
                                     <strong>Response Time</strong><br>
@@ -446,45 +443,66 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div style="margin-top: 16px;">
+                            <h3>📢 Why Contact Us?</h3>
+                            <ul class="why-list">
+                                <li><span class="emoji">💡</span> Have a suggestion for a new tool?</li>
+                                <li><span class="emoji">🐛</span> Found a bug or issue?</li>
+                                <li><span class="emoji">🤝</span> Interested in collaboration?</li>
+                                <li><span class="emoji">📝</span> Feedback on our tools?</li>
+                                <li><span class="emoji">❓</span> Have a question about using our tools?</li>
+                            </ul>
+                        </div>
                     </div>
 
                 </div>
 
-                <!-- ===== INTERNAL LINKS (TOOLS & BLOGS) ===== -->
+                <!-- ===== FAQ MINI SECTION ===== -->
+                <div class="faq-mini">
+                    <h3>❓ Frequently Asked Questions</h3>
+
+                    <div class="faq-q">How can I contact getage247.xyz?</div>
+                    <div class="faq-a">You can contact us via email at <a href="mailto:gnlassi.786@gmail.com">gnlassi.786@gmail.com</a>. We aim to respond within 24-48 hours.</div>
+
+                    <div class="faq-q">How quickly do you respond to queries?</div>
+                    <div class="faq-a">We aim to respond to all inquiries within 24-48 hours during business days.</div>
+
+                    <div class="faq-q">Can I suggest a new tool for the website?</div>
+                    <div class="faq-a">Yes, we welcome suggestions for new tools. Feel free to email us your ideas.</div>
+
+                    <div class="faq-q">Is this website free to use?</div>
+                    <div class="faq-a">Yes, all tools on getage247.xyz are completely free to use. No registration required.</div>
+                </div>
+
+                <!-- ===== INTERNAL LINKS ===== -->
                 <div class="internal-links">
-                    <h3>🔗 Explore More Free Tools &amp; Blogs</h3>
+                    <h3>🔗 Explore More Free Tools</h3>
                     <div class="link-grid">
-                        <!-- Tools -->
-                        <a href="https://getage247.xyz/meta-tag-generator" target="_blank">🏷️ Meta Tag Generator</a>
-                        <a href="https://getage247.xyz/schema-markup-generator" target="_blank">🧩 Schema Markup Generator</a>
-                        <a href="https://getage247.xyz/robots-txt-generator" target="_blank">🤖 Robots.txt Tool</a>
-                        <a href="https://getage247.xyz/age-calculator" target="_blank">📅 Age Calculator</a>
+                        <a href="https://getage247.xyz/age-calculator" target="_blank">🎂 Age Calculator</a>
+                        <a href="https://getage247.xyz/gpa-calculator" target="_blank">🎓 GPA Calculator</a>
                         <a href="https://getage247.xyz/bmi-calculator" target="_blank">⚖️ BMI Calculator</a>
+                        <a href="https://getage247.xyz/percentage-calculator" target="_blank">📊 Percentage Calculator</a>
                         <a href="https://getage247.xyz/unit-converter" target="_blank">📏 Unit Converter</a>
+                        <a href="https://getage247.xyz/currency-converter" target="_blank">💱 Currency Converter</a>
                         <a href="https://getage247.xyz/image-resizer" target="_blank">🖼️ Image Resizer</a>
+                        <a href="https://getage247.xyz/jpg-to-pdf" target="_blank">📄 JPG to PDF</a>
+                        <a href="https://getage247.xyz/seo-kit-generator" target="_blank">🛠️ SEO Kit Generator</a>
+                        <a href="https://getage247.xyz/meta-tag-generator" target="_blank">🏷️ Meta Tag Generator</a>
+                        <a href="https://getage247.xyz/robots-txt-generator" target="_blank">🤖 Robots.txt Generator</a>
+                        <a href="https://getage247.xyz/schema-markup-generator" target="_blank">🧩 Schema Markup Generator</a>
                         <a href="https://getage247.xyz/password-generator" target="_blank">🔐 Password Generator</a>
                         <a href="https://getage247.xyz/qr-generator" target="_blank">📱 QR Code Generator</a>
-                        <a href="https://getage247.xyz/currency-converter" target="_blank">💱 Currency Converter</a>
+                        <a href="https://getage247.xyz/word-counter" target="_blank">📝 Word Counter</a>
                         <a href="https://getage247.xyz/loan-calculator" target="_blank">💰 Loan Calculator</a>
                         <a href="https://getage247.xyz/json-formatter" target="_blank">📋 JSON Formatter</a>
                         <a href="https://getage247.xyz/text-case-converter" target="_blank">🔤 Text Case Converter</a>
                         <a href="https://getage247.xyz/base64-encoder" target="_blank">🔢 Base64 Enc/Dec</a>
-                        <a href="https://getage247.xyz/jpg-to-pdf" target="_blank">📄 JPG to PDF</a>
-                        <a href="https://getage247.xyz/percentage-calculator" target="_blank">📊 Percentage Calc</a>
-                        <a href="https://getage247.xyz/word-counter" target="_blank">📝 Word Counter</a>
                         <a href="https://getage247.xyz/uuid-generator" target="_blank">🆔 UUID Generator</a>
-                        
-                        <!-- Blogs - ONLY WORKING LINKS -->
-                        <a href="https://getage247.xyz/blog-meta-tag-generator.html" target="_blank">📖 Meta Tag Generator Guide</a>
-                        <a href="https://getage247.xyz/blog-meta-tag-adsense-guide.html" target="_blank">📖 AdSense Meta Tag Guide</a>
-                    </div>
-                    
-                    <!-- Note about missing blogs -->
-                    <div style="margin-top: 12px; padding: 12px 16px; background: rgba(225,112,85,0.1); border-radius: 8px; border-left: 3px solid #e17055;">
-                        <p style="font-size: 0.85rem; color: #f8a99a; margin:0;">
-                            <strong>📌 Note:</strong> Schema Markup Guide and Robots.txt Guide are coming soon. 
-                            <a href="https://getage247.xyz/contact" style="color: var(--accent-glow);">Contact us</a> if you'd like early access.
-                        </p>
+                        <a href="https://getage247.xyz/resume-builder" target="_blank">📄 Resume Builder</a>
+                        <a href="https://getage247.xyz/cover-letter-generator" target="_blank">📄 Cover Letter Generator</a>
+                        <a href="https://getage247.xyz/invoice-generator" target="_blank">📄 Invoice Generator</a>
+                        <a href="https://getage247.xyz/calculator-hub" target="_blank">🧮 Calculator Hub</a>
                     </div>
                 </div>
 
@@ -508,52 +526,8 @@
         </div>
     </footer>
 
-    <!-- ===== JAVASCRIPT ===== -->
+    <!-- ===== MOBILE NAV TOGGLE ===== -->
     <script>
-        // ===== FORM HANDLER =====
-        function handleSubmit(e) {
-            e.preventDefault();
-
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value.trim();
-
-            if (!name || !email || !message) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-
-            if (!email.includes('@') || !email.includes('.')) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-
-            // Build mailto link with all fields
-            const mailtoLink = 
-                'mailto:gnlassi.786@gmail.com' +
-                '?subject=' + encodeURIComponent('Contact Form: ' + subject) +
-                '&body=' + encodeURIComponent(
-                    'Name: ' + name + '\n' +
-                    'Email: ' + email + '\n' +
-                    'Subject: ' + subject + '\n\n' +
-                    'Message:\n' + message
-                );
-
-            // Open email client
-            window.location.href = mailtoLink;
-
-            // Show success message
-            document.getElementById('formSuccess').style.display = 'block';
-            document.getElementById('contactForm').reset();
-
-            // Hide success after 5 seconds
-            setTimeout(() => {
-                document.getElementById('formSuccess').style.display = 'none';
-            }, 5000);
-        }
-
-        // ===== MOBILE NAV TOGGLE =====
         document.addEventListener('DOMContentLoaded', function() {
             const toggle = document.getElementById('navToggle');
             const nav = document.getElementById('mainNav');
