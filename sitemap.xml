@@ -163,10 +163,6 @@
 <priority>0.8</priority>
 </url>
 <!--  ===== BLOGS =====  -->
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- 41 BLOG - DATE 2026-06-29 TO 2026-08-08 -->
   <url><loc>https://getage247.xyz/blog-age-calculator.html</loc><lastmod>2026-06-29</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://getage247.xyz/blog-top-5-free-tool.html</loc><lastmod>2026-06-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://getage247.xyz/blog/blog-image-resizer.html</loc><lastmod>2026-07-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
