@@ -162,7 +162,7 @@
 <changefreq>monthly</changefreq>
 <priority>0.8</priority>
 </url>
-<!--  ===== BLOGS =====  --
+<!--  ===== BLOGS =====  -->
 <url><loc>https://getage247.xyz/blog-age-calculator.html</loc><lastmod>2026-08-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://getage247.xyz/blog-bmi-calculator.html</loc><lastmod>2026-08-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 <url><loc>https://getage247.xyz/blog-word-counter.html</loc><lastmod>2026-08-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
