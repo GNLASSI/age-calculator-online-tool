@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Name Generator Hub – Free Business, Brand, Gaming & Username Generator | getage247.xyz</title>
+    <meta name="description" content="Generate free business, brand, startup, gaming, username, fantasy, baby and creative names with getage247 Name Generator Hub. Customize names by category, style, keyword and length.">
+    <link rel="canonical" href="https://getage247.xyz/name-generator-hub.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Name Generator Hub – Free Business, Brand, Gaming & Username Generator">
+    <meta property="og:description" content="Generate free business, brand, startup, gaming, username, fantasy, baby and creative names with getage247 Name Generator Hub.">
+    <meta property="og:url" content="https://getage247.xyz/name-generator-hub.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="getage247.xyz">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Name Generator Hub – Free Name Generator">
+    <meta name="twitter:description" content="Generate free business, brand, gaming, username, fantasy and creative names.">
+    <meta name="twitter:site" content="@getage247">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Name Generator Hub",
+        "url": "https://getage247.xyz/name-generator-hub.html",
+        "description": "Generate free business, brand, startup, gaming, username, fantasy, baby and creative names.",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question","name": "What is a name generator?","acceptedAnswer": {"@type": "Answer","text": "A name generator is a tool that helps you create unique names for businesses, brands, gaming characters, usernames, and more based on your preferences."}},
+            {"@type": "Question","name": "Is the Name Generator Hub free?","acceptedAnswer": {"@type": "Answer","text": "Yes, it is completely free to use with no sign-up required."}},
+            {"@type": "Question","name": "Can I generate business names?","acceptedAnswer": {"@type": "Answer","text": "Yes, select Business Name Generator from the category dropdown."}},
+            {"@type": "Question","name": "Can I generate startup names?","acceptedAnswer": {"@type": "Answer","text": "Yes, select Startup Name Generator from the category dropdown."}},
+            {"@type": "Question","name": "Can I generate gaming names?","acceptedAnswer": {"@type": "Answer","text": "Yes, select from Gaming Name Generator, PUBG Name Generator, Free Fire Name Generator, or Gamer Tag Generator."}},
+            {"@type": "Question","name": "Can I generate PUBG names?","acceptedAnswer": {"@type": "Answer","text": "Yes, select PUBG Name Generator from the category dropdown."}},
+            {"@type": "Question","name": "Can I generate Free Fire names?","acceptedAnswer": {"@type": "Answer","text": "Yes, select Free Fire Name Generator from the category dropdown."}},
+            {"@type": "Question","name": "Can I generate Instagram usernames?","acceptedAnswer": {"@type": "Answer","text": "Yes, select Instagram Username Generator from the category dropdown."}},
+            {"@type": "Question","name": "Can I generate brand names?","acceptedAnswer": {"@type": "Answer","text": "Yes, select Brand Name Generator from the category dropdown."}},
+            {"@type": "Question","name": "Can I save generated names?","acceptedAnswer": {"@type": "Answer","text": "Yes, click the ♡ Save button on any name to save it to your favorites."}},
+            {"@type": "Question","name": "Can I generate names without an API?","acceptedAnswer": {"@type": "Answer","text": "Yes, all generation happens locally in your browser. No API calls needed."}},
+            {"@type": "Question","name": "Are generated names guaranteed to be available?","acceptedAnswer": {"@type": "Answer","text": "No, generated names are suggestions only. You should check domain, social media, and trademark availability independently."}}
+        ]
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f4f7f9;
+            color: #1e293b;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            width: 100%;
+        }
+        a { color: #2563eb; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #2563eb;
+            letter-spacing: -0.5px;
+        }
+        .logo span { color: #1e293b; font-weight: 300; }
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 16px;
+        }
+        nav a {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-weight: 500;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+        }
+        nav a:hover { color: #2563eb; border-bottom-color: #2563eb; text-decoration: none; }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #1e293b;
+        }
+
+        /* ===== MAIN ===== */
+        main { flex: 1; padding: 40px 0 60px; width: 100%; }
+
+        .hero {
+            text-align: center;
+            padding: 20px 0 32px;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        .hero h1 span { color: #2563eb; }
+        .hero p {
+            color: #64748b;
+            font-size: 1.1rem;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: #2563eb;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 3px 18px;
+            border-radius: 40px;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        /* ===== TOOL CARD ===== */
+        .tool-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 32px 36px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            margin-top: 16px;
+            border: 1px solid #e2e8f0;
+            width: 100%;
+            overflow: hidden;
+        }
+        @media (max-width: 768px) {
+            .tool-card { padding: 18px 14px; }
+        }
+
+        /* ===== CONTROLS ===== */
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 14px;
+        }
+        @media (max-width: 500px) {
+            .controls-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 380px) {
+            .controls-grid { grid-template-columns: 1fr; }
+        }
+
+        .form-group { margin-bottom: 6px; }
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .form-group select, .form-group input {
+            width: 100%;
+            padding: 8px 12px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            color: #1e293b;
+            font-size: 0.9rem;
+            font-family: inherit;
+            transition: 0.2s;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        .form-group select:focus, .form-group input:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+        }
+        .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
+
+        .btn {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-primary { background: #2563eb; color: #fff; }
+        .btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
+        .btn-success { background: #059669; color: #fff; }
+        .btn-success:hover { background: #047857; }
+        .btn-outline { background: transparent; border: 1px solid #e2e8f0; color: #475569; }
+        .btn-outline:hover { border-color: #2563eb; color: #2563eb; }
+        .btn-danger { background: #ef4444; color: #fff; }
+        .btn-danger:hover { background: #dc2626; }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+        .btn-group .btn { flex: 0 1 auto; }
+        @media (max-width: 480px) {
+            .btn-group .btn { flex: 1; justify-content: center; font-size: 0.8rem; padding: 8px 12px; }
+        }
+
+        /* ===== RESULTS ===== */
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .results-header h3 { font-size: 1rem; color: #1e293b; }
+        .results-header input {
+            padding: 6px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            min-width: 150px;
+            background: #f8fafc;
+        }
+        .results-header input:focus { outline: none; border-color: #2563eb; }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+        @media (max-width: 550px) {
+            .results-grid { grid-template-columns: 1fr; }
+        }
+
+        .result-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 14px 16px;
+            transition: 0.2s;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .result-card:hover { border-color: #2563eb; }
+        .result-card .name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1e293b;
+            word-break: break-word;
+        }
+        .result-card .actions {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .result-card .actions button {
+            padding: 4px 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+        }
+        .result-card .actions .copy-btn { background: #e2e8f0; color: #1e293b; }
+        .result-card .actions .copy-btn:hover { background: #2563eb; color: #fff; }
+        .result-card .actions .fav-btn { background: #fef3c7; color: #d97706; }
+        .result-card .actions .fav-btn:hover { background: #fbbf24; }
+        .result-card .actions .fav-btn.saved { background: #fbbf24; color: #1e293b; }
+        .result-card .actions .regenerate-btn { background: #e2e8f0; color: #1e293b; }
+        .result-card .actions .regenerate-btn:hover { background: #cbd5e1; }
+
+        /* ===== FAVORITES SECTION ===== */
+        .favorites-section {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .favorites-section h3 {
+            font-size: 1rem;
+            color: #1e293b;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        @media (max-width: 450px) {
+            .favorites-grid { grid-template-columns: 1fr; }
+        }
+        .fav-item {
+            background: #fef3c7;
+            border: 1px solid #fbbf24;
+            border-radius: 8px;
+            padding: 10px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            word-break: break-word;
+        }
+        .fav-item .fav-name { font-weight: 600; color: #1e293b; font-size: 0.9rem; }
+        .fav-item .fav-actions { display: flex; gap: 4px; flex-shrink: 0; }
+        .fav-item .fav-actions button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.8rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #64748b;
+        }
+        .fav-item .fav-actions button:hover { background: #e2e8f0; }
+        .fav-item .fav-actions .remove-fav { color: #ef4444; }
+        .fav-item .fav-actions .remove-fav:hover { background: #fecaca; }
+
+        /* ===== SEO CONTENT ===== */
+        .seo-content {
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .seo-content h2 {
+            font-size: 1.6rem;
+            color: #1e293b;
+            margin: 28px 0 10px;
+        }
+        .seo-content h3 {
+            font-size: 1.2rem;
+            color: #2563eb;
+            margin: 20px 0 8px;
+        }
+        .seo-content p {
+            color: #475569;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        .seo-content ul, .seo-content ol {
+            color: #475569;
+            padding-left: 24px;
+            margin-bottom: 12px;
+        }
+        .seo-content ul li, .seo-content ol li { margin-bottom: 4px; }
+        .seo-content .highlight-box {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        .seo-content .highlight-box p { margin-bottom: 0; color: #1e293b; }
+
+        /* ===== FAQ ===== */
+        .faq-section {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .faq-section h2 { font-size: 1.6rem; color: #1e293b; margin-bottom: 16px; }
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 12px 0;
+        }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item .faq-q {
+            font-weight: 600;
+            color: #1e293b;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-item .faq-q:hover { color: #2563eb; }
+        .faq-item .faq-q .arrow { transition: 0.2s; font-size: 0.8rem; }
+        .faq-item .faq-q.active .arrow { transform: rotate(180deg); }
+        .faq-item .faq-a {
+            padding-top: 6px;
+            color: #475569;
+            display: none;
+            line-height: 1.6;
+        }
+        .faq-item .faq-a.open { display: block; }
+
+        /* ===== RELATED TOOLS ===== */
+        .related-tools {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .related-tools h3 { font-size: 1.1rem; color: #1e293b; margin-bottom: 10px; }
+        .tools-grid-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+        }
+        .tools-grid-mini a {
+            background: #f1f5f9;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #475569;
+            transition: 0.2s;
+            border: 1px solid transparent;
+        }
+        .tools-grid-mini a:hover {
+            background: #2563eb;
+            color: #fff;
+            text-decoration: none;
+            border-color: #2563eb;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            padding: 28px 0 20px;
+            margin-top: auto;
+        }
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+        .footer-inner .copy { color: #94a3b8; font-size: 0.85rem; }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+        }
+        .footer-links a { color: #64748b; font-size: 0.85rem; }
+        .footer-links a:hover { color: #2563eb; text-decoration: none; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 12px 0 4px;
+                gap: 2px;
+            }
+            nav.open { display: flex; }
+            nav a {
+                padding: 8px 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid #e2e8f0;
+            }
+            nav a:last-child { border-bottom: none; }
+            .hero h1 { font-size: 2rem; }
+            .tool-card { padding: 16px; }
+            .controls-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 500px) {
+            .container { padding: 0 12px; }
+            .hero h1 { font-size: 1.6rem; }
+            .controls-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .form-group select, .form-group input { font-size: 0.8rem; padding: 6px 10px; }
+            .results-grid { grid-template-columns: 1fr; }
+            .result-card { padding: 12px; }
+            .result-card .name { font-size: 1rem; }
+            .btn { font-size: 0.8rem; padding: 6px 14px; }
+            .favorites-grid { grid-template-columns: 1fr; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
+        }
+        @media (max-width: 380px) {
+            .controls-grid { grid-template-columns: 1fr; }
+            .results-header { flex-direction: column; align-items: stretch; }
+            .results-header input { min-width: unset; }
+        }
+
+        /* ===== UTILITY ===== */
+        .text-center { text-align: center; }
+        .mt-8 { margin-top: 8px; }
+        .mt-16 { margin-top: 16px; }
+        .gap-8 { gap: 8px; }
+        .flex-wrap { display: flex; flex-wrap: wrap; }
+        .hidden { display: none !important; }
+        .w-full { width: 100%; }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">getage<span>247</span></div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+            <nav id="mainNav">
+                <a href="https://getage247.xyz/">Home</a>
+                <a href="https://getage247.xyz/about">About</a>
+                <a href="https://getage247.xyz/contact">Contact</a>
+                <a href="https://getage247.xyz/privacy">Privacy</a>
+                <a href="https://getage247.xyz/cookie-policy">Cookie</a>
+                <a href="https://getage247.xyz/disclaimer">Disclaimer</a>
+                <a href="https://getage247.xyz/terms">Terms</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main>
+        <div class="container">
+            <div class="hero">
+                <h1>Name Generator Hub – <span>Free Name Generator</span></h1>
+                <p>Generate unique names for business, brands, gaming, social media, fantasy, baby, and more.</p>
+                <span class="badge">✨ 100% Free &amp; No API</span>
+            </div>
+
+            <div class="tool-card">
+                <!-- ===== CONTROLS ===== -->
+                <div class="controls-grid">
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="categorySelect"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Style</label>
+                        <select id="styleSelect">
+                            <option value="professional">Professional</option>
+                            <option value="modern">Modern</option>
+                            <option value="creative">Creative</option>
+                            <option value="unique">Unique</option>
+                            <option value="short">Short</option>
+                            <option value="premium">Premium</option>
+                            <option value="luxury">Luxury</option>
+                            <option value="minimal">Minimal</option>
+                            <option value="cool">Cool</option>
+                            <option value="funny">Funny</option>
+                            <option value="cute">Cute</option>
+                            <option value="powerful">Powerful</option>
+                            <option value="tech">Tech</option>
+                            <option value="gaming">Gaming</option>
+                            <option value="fantasy">Fantasy</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Results</label>
+                        <select id="countSelect">
+                            <option value="5">5</option>
+                            <option value="10" selected>10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Keyword (optional)</label>
+                        <input type="text" id="keywordInput" placeholder="e.g., tech, fashion, gaming" maxlength="20">
+                    </div>
+                    <div class="form-group">
+                        <label>Starting Letter</label>
+                        <select id="letterSelect">
+                            <option value="any">Any</option>
+                            <option value="a">A</option><option value="b">B</option><option value="c">C</option>
+                            <option value="d">D</option><option value="e">E</option><option value="f">F</option>
+                            <option value="g">G</option><option value="h">H</option><option value="i">I</option>
+                            <option value="j">J</option><option value="k">K</option><option value="l">L</option>
+                            <option value="m">M</option><option value="n">N</option><option value="o">O</option>
+                            <option value="p">P</option><option value="q">Q</option><option value="r">R</option>
+                            <option value="s">S</option><option value="t">T</option><option value="u">U</option>
+                            <option value="v">V</option><option value="w">W</option><option value="x">X</option>
+                            <option value="y">Y</option><option value="z">Z</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Name Length</label>
+                        <select id="lengthSelect">
+                            <option value="any">Any</option>
+                            <option value="short">Short</option>
+                            <option value="medium">Medium</option>
+                            <option value="long">Long</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn btn-primary" id="generateBtn">🚀 Generate Names</button>
+                    <button class="btn btn-success" id="copyAllBtn">📄 Copy All</button>
+                    <button class="btn btn-outline" id="generateMoreBtn">🔄 Generate More</button>
+                </div>
+
+                <!-- ===== RESULTS ===== -->
+                <div class="results-header">
+                    <h3>Results (<span id="resultCount">0</span>)</h3>
+                    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                        <input type="text" id="filterInput" placeholder="🔍 Filter results..." oninput="filterResults()">
+                        <select id="sortSelect" onchange="filterResults()">
+                            <option value="default">Default</option>
+                            <option value="az">A-Z</option>
+                            <option value="za">Z-A</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="results-grid" id="resultsGrid"></div>
+
+                <!-- ===== FAVORITES ===== -->
+                <div class="favorites-section" id="favoritesSection">
+                    <h3>
+                        ⭐ Favorites
+                        <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                            <button class="btn btn-outline" style="padding:4px 12px; font-size:0.8rem;" onclick="clearFavorites()">Clear All</button>
+                            <button class="btn btn-outline" style="padding:4px 12px; font-size:0.8rem;" onclick="copyFavorites()">Copy All</button>
+                        </div>
+                    </h3>
+                    <div class="favorites-grid" id="favoritesGrid"></div>
+                </div>
+            </div>
+
+            <!-- ===== SEO CONTENT ===== -->
+            <div class="seo-content">
+                <h2>What Is a Name Generator?</h2>
+                <p>A name generator is a tool that helps you create unique, creative, and relevant names for various purposes. Whether you're starting a business, launching a brand, creating a gaming character, or looking for a username for social media, a name generator can spark ideas and save you hours of brainstorming.</p>
+
+                <div class="highlight-box">
+                    <p><strong>💡 Did You Know?</strong> The right name can increase brand recognition by up to 80%. A good name is memorable, easy to pronounce, and reflects your brand's personality.</p>
+                </div>
+
+                <h2>How the Name Generator Hub Works</h2>
+                <p>The <strong>Name Generator Hub</strong> uses a large built-in word bank with thousands of words across multiple categories. Here's how it works:</p>
+                <ol>
+                    <li><strong>Select a category</strong> – Choose from 31+ categories including business, brand, gaming, username, fantasy, baby, and more.</li>
+                    <li><strong>Choose your style</strong> – Pick a style like Professional, Modern, Creative, Unique, or Cool to match your needs.</li>
+                    <li><strong>Add a keyword (optional)</strong> – Enter a word like "tech" or "fashion" to personalize the results.</li>
+                    <li><strong>Select preferences</strong> – Choose starting letter, name length, and number of results.</li>
+                    <li><strong>Click Generate</strong> – Instantly get unique name suggestions tailored to your preferences.</li>
+                </ol>
+
+                <h2>Business Name Generator</h2>
+                <p>Starting a business? A great business name is the foundation of your brand. The Business Name Generator helps you create professional, memorable names for your new venture. From "NovaTech" to "Summit Solutions," find the perfect name for your company.</p>
+
+                <h2>Brand Name Generator</h2>
+                <p>Building a brand requires a name that stands out. The Brand Name Generator creates names that are modern, premium, and unique. Whether you're launching a fashion line, a tech product, or a lifestyle brand, this tool has you covered.</p>
+
+                <h2>Startup Name Generator</h2>
+                <p>Startups need names that are innovative and memorable. The Startup Name Generator produces creative, modern, and tech-savvy names perfect for the next big thing.</p>
+
+                <h2>Gaming Name Generator</h2>
+                <p>Level up your gaming identity! The Gaming Name Generator creates epic, cool, and unique names for gamers. Whether you need a PUBG name, Free Fire name, or a gamer tag, this tool has everything you need.</p>
+
+                <h2>Username Generator</h2>
+                <p>Finding the perfect username for social media can be challenging. The Username Generator creates creative, unique, and available-sounding usernames for Instagram, TikTok, YouTube, and more.</p>
+
+                <h2>Fantasy Name Generator</h2>
+                <p>Step into a world of imagination! The Fantasy Name Generator creates magical, mystical, and epic names for D&D characters, fantasy novels, and role-playing games.</p>
+
+                <h2>Baby Name Generator</h2>
+                <p>Choosing a baby name is a special journey. The Baby Name Generator offers unique, modern, and classic name suggestions to inspire you.</p>
+
+                <h2>Tips for Choosing a Good Name</h2>
+                <ul>
+                    <li><strong>Keep it simple</strong> – Easy to spell and pronounce names are more memorable.</li>
+                    <li><strong>Make it meaningful</strong> – Choose a name that reflects your brand's values or story.</li>
+                    <li><strong>Check availability</strong> – Always check domain, social media, and trademark availability.</li>
+                    <li><strong>Think long-term</strong> – Choose a name that will grow with your brand.</li>
+                    <li><strong>Test it out</strong> – Say the name out loud and see how it feels.</li>
+                </ul>
+            </div>
+
+            <!-- ===== FAQ ===== -->
+            <div class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">What is a name generator? <span class="arrow">▼</span></div><div class="faq-a">A name generator is a tool that helps you create unique names for businesses, brands, gaming characters, usernames, and more based on your preferences.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Is the Name Generator Hub free? <span class="arrow">▼</span></div><div class="faq-a">Yes, it is completely free to use with no sign-up required.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Can I generate business names? <span class="arrow">▼</span></div><div class="faq-a">Yes, select Business Name Generator from the category dropdown.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Can I generate startup names? <span class="arrow">▼</span></div><div class="faq-a">Yes, select Startup Name Generator from the category dropdown.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Can I generate gaming names? <span class="arrow">▼</span></div><div class="faq-a">Yes, select from Gaming Name Generator, PUBG Name Generator, Free Fire Name Generator, or Gamer Tag Generator.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Can I generate PUBG names? <span class="arrow">▼</span></div><div class="faq-a">Yes, select PUBG Name Generator from the category dropdown.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Can I generate Free Fire names? <span class="arrow">▼</span></div><div class="faq-a">Yes, select Free Fire Name Generator from the category dropdown.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Can I generate Instagram usernames? <span class="arrow">▼</span></div><div class="faq-a">Yes, select Instagram Username Generator from the category dropdown.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Can I generate brand names? <span class="arrow">▼</span></div><div class="faq-a">Yes, select Brand Name Generator from the category dropdown.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Can I save generated names? <span class="arrow">▼</span></div><div class="faq-a">Yes, click the ♡ Save button on any name to save it to your favorites.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Can I generate names without an API? <span class="arrow">▼</span></div><div class="faq-a">Yes, all generation happens locally in your browser. No API calls needed.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Are generated names guaranteed to be available? <span class="arrow">▼</span></div><div class="faq-a">No, generated names are suggestions only. You should check domain, social media, and trademark availability independently.</div></div>
+            </div>
+
+            <!-- ===== RELATED TOOLS ===== -->
+            <div class="related-tools">
+                <h3>🔗 Related Tools</h3>
+                <div class="tools-grid-mini">
+                    <a href="https://getage247.xyz/meta-tag-generator.html">🏷️ Meta Tag Generator</a>
+                    <a href="https://getage247.xyz/seo-kit-generator.html">🛠️ SEO Kit Generator</a>
+                    <a href="https://getage247.xyz/word-counter.html">📝 Word Counter</a>
+                    <a href="https://getage247.xyz/password-generator.html">🔐 Password Generator</a>
+                    <a href="https://getage247.xyz/qr-generator.html">📱 QR Code Generator</a>
+                    <a href="https://getage247.xyz/resume-builder.html">📄 Resume Builder</a>
+                    <a href="https://getage247.xyz/calculator-hub.html">🧮 Calculator Hub</a>
+                    <a href="https://getage247.xyz/unit-converter.html">📏 Unit Converter</a>
+                    <a href="https://getage247.xyz/gpa-calculator.html">🎓 GPA Calculator</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container footer-inner">
+            <div class="copy">&copy; 2026 <a href="https://getage247.xyz/">getage247.xyz</a> — Free Online Tools</div>
+            <div class="footer-links">
+                <a href="https://getage247.xyz/">Home</a>
+                <a href="https://getage247.xyz/about">About</a>
+                <a href="https://getage247.xyz/contact">Contact</a>
+                <a href="https://getage247.xyz/privacy">Privacy</a>
+                <a href="https://getage247.xyz/cookie-policy">Cookie</a>
+                <a href="https://getage247.xyz/disclaimer">Disclaimer</a>
+                <a href="https://getage247.xyz/terms">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        'use strict';
+
+        // =============================================
+        // ===== CATEGORIES =====
+        // =============================================
+        const categories = {
+            'business': 'Business Name Generator',
+            'company': 'Company Name Generator',
+            'startup': 'Startup Name Generator',
+            'brand': 'Brand Name Generator',
+            'product': 'Product Name Generator',
+            'store': 'Store Name Generator',
+            'shopify': 'Shopify Store Name Generator',
+            'restaurant': 'Restaurant Name Generator',
+            'website': 'Website Name Generator',
+            'app': 'App Name Generator',
+            'username': 'Username Generator',
+            'instagram': 'Instagram Username Generator',
+            'tiktok': 'TikTok Username Generator',
+            'youtube': 'YouTube Channel Name Generator',
+            'podcast': 'Podcast Name Generator',
+            'gaming': 'Gaming Name Generator',
+            'pubg': 'PUBG Name Generator',
+            'freefire': 'Free Fire Name Generator',
+            'gamertag': 'Gamer Tag Generator',
+            'clan': 'Clan Name Generator',
+            'fantasygaming': 'Fantasy Gaming Name Generator',
+            'character': 'Character Name Generator',
+            'fantasy': 'Fantasy Name Generator',
+            'dnd': 'D&D Name Generator',
+            'book': 'Book Title Generator',
+            'blog': 'Blog Name Generator',
+            'band': 'Band Name Generator',
+            'team': 'Team Name Generator',
+            'baby': 'Baby Name Generator',
+            'pet': 'Pet Name Generator',
+            'nickname': 'Nickname Generator'
+        };
+
+        // =============================================
+        // ===== WORD BANKS =====
+        // =============================================
+        const wordBanks = {
+            business: ['Nova', 'Prime', 'Vertex', 'Summit', 'Nexus', 'Elite', 'Apex', 'Core', 'Pulse', 'Vibe', 'Flux', 'Zen', 'Aura', 'Blaze', 'Crest', 'Drift', 'Echo', 'Fuse', 'Glimpse', 'Horizon', 'Iris', 'Jade', 'Kaleidoscope', 'Loom', 'Mosaic', 'Nimbus', 'Onyx', 'Pinnacle', 'Quest', 'Radiance', 'Sage', 'Titan', 'Unity', 'Vanguard', 'Whisper', 'Xenon', 'Yonder', 'Zeal'],
+            startup: ['Velocity', 'Ignite', 'Spark', 'Pioneer', 'Fusion', 'Evolve', 'Catalyst', 'Dynamo', 'Envision', 'Forge', 'Genesis', 'Helix', 'Innovate', 'Journey', 'Kinetic', 'Lumina', 'Momentum', 'Nucleus', 'Orbit', 'Propel', 'Quantum', 'Revolution', 'Synthetix', 'Traverse', 'Upward', 'Vital', 'Wander', 'Xenial', 'Zenith'],
+            tech: ['Cloud', 'Code', 'Pixel', 'Logic', 'Data', 'Byte', 'Vector', 'Nexus', 'Agile', 'Clarity', 'Digi', 'Edge', 'Fluent', 'Graph', 'Helix', 'Infin', 'Jolt', 'Kernel', 'Lens', 'Matrix', 'Nano', 'Omni', 'Photon', 'Rapid', 'Sprint', 'Turing', 'Unity', 'Vivid', 'Wave', 'Xeno', 'Yield', 'Zero'],
+            fashion: ['Velvet', 'Suede', 'Luxe', 'Vogue', 'Aura', 'Bloom', 'Chic', 'Drape', 'Elegance', 'Flair', 'Glam', 'Haute', 'Ivory', 'Jewel', 'Knox', 'Lavish', 'Muse', 'Noble', 'Opulent', 'Pristine', 'Quaint', 'Radiant', 'Sleek', 'Tress', 'Unique', 'Vivid', 'Whimsy', 'Zen'],
+            food: ['Taste', 'Spice', 'Grill', 'Kitchen', 'Bistro', 'Savor', 'Zest', 'Aroma', 'Basil', 'Crisp', 'Dough', 'Epice', 'Fork', 'Gusto', 'Herb', 'Infuse', 'Julep', 'Kettle', 'Lemon', 'Morsel', 'Nourish', 'Olive', 'Piquant', 'Quinoa', 'Rye', 'Saffron', 'Truffle', 'Umami', 'Vanilla', 'Wild'],
+            gaming: ['Shadow', 'Venom', 'Blaze', 'Phantom', 'Hunter', 'Titan', 'Apex', 'Cipher', 'Drift', 'Eclipse', 'Fury', 'Ghost', 'Havoc', 'Inferno', 'Jinx', 'Knight', 'Lunar', 'Mystic', 'Night', 'Omega', 'Phantom', 'Raven', 'Strike', 'Thunder', 'Viper', 'Wraith', 'Xenon', 'Zeus', 'Frost', 'Storm'],
+            fantasy: ['Dragon', 'Moon', 'Mystic', 'Raven', 'Storm', 'Aether', 'Blade', 'Crystal', 'Dawn', 'Elder', 'Fang', 'Glimmer', 'Hollow', 'Ivy', 'Jade', 'Kael', 'Lunar', 'Mist', 'Night', 'Onyx', 'Phoenix', 'Quill', 'Rune', 'Sage', 'Thorn', 'Umbra', 'Veil', 'Willow', 'Xen', 'Yen', 'Zen'],
+            baby: ['Aria', 'Leo', 'Mia', 'Liam', 'Ava', 'Noah', 'Emma', 'Ethan', 'Sophia', 'Lucas', 'Isabella', 'Oliver', 'Charlotte', 'Mason', 'Amelia', 'Logan', 'Harper', 'Elijah', 'Ella', 'James', 'Grace', 'Benjamin', 'Lily', 'William', 'Zara', 'Henry', 'Stella', 'Theo', 'Nora', 'Jack'],
+            pet: ['Buddy', 'Max', 'Bella', 'Charlie', 'Luna', 'Rocky', 'Molly', 'Duke', 'Stella', 'Bear', 'Lucy', 'Cooper', 'Sadie', 'Jake', 'Sophie', 'Milo', 'Nala', 'Leo', 'Ginger', 'Riley', 'Rosie', 'Toby', 'Lola', 'Zeus', 'Mia', 'Oliver', 'Daisy', 'Jack', 'Lily', 'Sam'],
+            nature: ['River', 'Sky', 'Mountain', 'Forest', 'Ocean', 'Stone', 'Willow', 'Sun', 'Moon', 'Star', 'Leaf', 'Flower', 'Wind', 'Rain', 'Snow', 'Dawn', 'Dusk', 'Mist', 'Creek', 'Valley', 'Peak', 'Cliff', 'Bay', 'Cove', 'Glen', 'Heath', 'Meadow', 'Ridge', 'Shore', 'Grove'],
+            creative: ['Muse', 'Canvas', 'Palette', 'Brush', 'Sculpt', 'Verse', 'Lyric', 'Sonnet', 'Artisan', 'Craft', 'Dream', 'Vision', 'Spark', 'Imagine', 'Create', 'Design', 'Innovate', 'Origami', 'Prism', 'Quill', 'Render', 'Sketch', 'Thread', 'Vivid', 'Weave', 'Zen']
+        };
+
+        // =============================================
+        // ===== STYLE MAPPING =====
+        // =============================================
+        const styleSuffixes = {
+            professional: ['Solutions', 'Group', 'Corporation', 'Associates', 'Partners', 'Consulting', 'Services', 'Global', 'Ventures', 'Enterprises'],
+            modern: ['One', 'Lab', 'Studio', 'Works', 'Collective', 'Co.', 'Haus', 'Forge', 'Shift', 'Nest', 'Arc', 'Lens', 'Frame', 'Grid', 'Flux'],
+            creative: ['Atelier', 'Collective', 'Workshop', 'Bureau', 'Fabric', 'Guild', 'Studio', 'Project', 'Field', 'Craft'],
+            unique: ['Elevate', 'Pulse', 'Apex', 'Zen', 'Vibe', 'Crest', 'Drift', 'Echo', 'Fuse', 'Glimpse'],
+            short: ['Zen', 'Vox', 'Nex', 'Sol', 'Lux', 'Aer', 'Onyx', 'Jade', 'Kai', 'Leo'],
+            premium: ['Luxury', 'Prestige', 'Vanguard', 'Noble', 'Opulent', 'Exclusive', 'Premier', 'Signature', 'Select', 'Grand'],
+            luxury: ['Bijou', 'Chateau', 'Elegance', 'Glamour', 'Haute', 'Ivory', 'Jewel', 'Opulence', 'Velvet', 'Vogue'],
+            minimal: ['Atom', 'Blank', 'Clear', 'Dot', 'Line', 'Nano', 'Pixel', 'Pure', 'Slim', 'Void'],
+            cool: ['Dope', 'Flex', 'Hype', 'Lit', 'Mood', 'Sage', 'Storm', 'Titan', 'Vibe', 'Wavy'],
+            funny: ['Chuckle', 'Giggle', 'Jester', 'Mirth', 'Punny', 'Quip', 'Snicker', 'Whimsy', 'Zany', 'Bamboozle'],
+            cute: ['Cuddle', 'Doodle', 'Fluffy', 'Giggles', 'Honey', 'Jelly', 'Kitten', 'Lolli', 'Munchkin', 'Nibble'],
+            powerful: ['Apex', 'Dominion', 'Empire', 'Fortress', 'Guardian', 'Invictus', 'Knight', 'Legion', 'Magnus', 'Raptor'],
+            tech: ['Byte', 'Code', 'Data', 'Logic', 'Pixel', 'Vector', 'Agile', 'Cloud', 'Kernel', 'Matrix'],
+            gaming: ['Blaze', 'Cipher', 'Drift', 'Eclipse', 'Fury', 'Ghost', 'Havoc', 'Inferno', 'Jinx', 'Knight'],
+            fantasy: ['Aether', 'Blade', 'Crystal', 'Dawn', 'Elder', 'Fang', 'Glimmer', 'Hollow', 'Ivy', 'Jade']
+        };
+
+        // =============================================
+        // ===== STATE =====
+        // =============================================
+        let currentResults = [];
+        let favorites = JSON.parse(localStorage.getItem('nameGenFavorites') || '[]');
+
+        // =============================================
+        // ===== DOM REFS =====
+        // =============================================
+        const categorySelect = document.getElementById('categorySelect');
+        const styleSelect = document.getElementById('styleSelect');
+        const countSelect = document.getElementById('countSelect');
+        const keywordInput = document.getElementById('keywordInput');
+        const letterSelect = document.getElementById('letterSelect');
+        const lengthSelect = document.getElementById('lengthSelect');
+        const generateBtn = document.getElementById('generateBtn');
+        const copyAllBtn = document.getElementById('copyAllBtn');
+        const generateMoreBtn = document.getElementById('generateMoreBtn');
+        const resultsGrid = document.getElementById('resultsGrid');
+        const resultCount = document.getElementById('resultCount');
+        const filterInput = document.getElementById('filterInput');
+        const sortSelect = document.getElementById('sortSelect');
+        const favoritesGrid = document.getElementById('favoritesGrid');
+
+        // =============================================
+        // ===== POPULATE CATEGORIES =====
+        // =============================================
+        function populateCategories() {
+            categorySelect.innerHTML = '';
+            Object.entries(categories).forEach(([key, label]) => {
+                const opt = document.createElement('option');
+                opt.value = key;
+                opt.textContent = label;
+                categorySelect.appendChild(opt);
+            });
+        }
+
+        // =============================================
+        // ===== GENERATION ENGINE =====
+        // =============================================
+        function generateNames() {
+            const category = categorySelect.value;
+            const style = styleSelect.value;
+            const count = parseInt(countSelect.value);
+            const keyword = keywordInput.value.trim().toLowerCase();
+            const letter = letterSelect.value;
+            const length = lengthSelect.value;
+
+            const bank = getWordBank(category);
+            const suffix = styleSuffixes[style] || [];
+
+            let results = [];
+            let attempts = 0;
+            const maxAttempts = count * 10;
+
+            while (results.length < count && attempts < maxAttempts) {
+                attempts++;
+                let name = generateSingleName(bank, suffix, keyword, style);
+                if (!name) continue;
+
+                // Filter by starting letter
+                if (letter !== 'any' && !name.toLowerCase().startsWith(letter)) continue;
+
+                // Filter by length
+                const len = name.length;
+                if (length === 'short' && len > 6) continue;
+                if (length === 'medium' && (len < 5 || len > 8)) continue;
+                if (length === 'long' && len < 7) continue;
+
+                // Avoid duplicates
+                if (results.some(r => r.toLowerCase() === name.toLowerCase())) continue;
+
+                results.push(name);
+            }
+
+            // If not enough results, try without filters
+            if (results.length < count) {
+                while (results.length < count && attempts < maxAttempts * 2) {
+                    attempts++;
+                    let name = generateSingleName(bank, suffix, keyword, style);
+                    if (!name) continue;
+                    if (results.some(r => r.toLowerCase() === name.toLowerCase())) continue;
+                    results.push(name);
+                }
+            }
+
+            currentResults = results;
+            renderResults(results);
+            resultCount.textContent = results.length;
+        }
+
+        function getWordBank(category) {
+            // Combine base bank with category-specific
+            let base = [];
+            if (wordBanks[category]) base = [...wordBanks[category]];
+            // Add general words
+            const general = ['Apex', 'Core', 'Nova', 'Prime', 'Zen', 'Aura', 'Blaze', 'Crest', 'Drift', 'Echo', 'Fuse', 'Glimpse', 'Horizon', 'Iris', 'Jade', 'Loom', 'Mosaic', 'Nimbus', 'Onyx', 'Pinnacle', 'Quest', 'Radiance', 'Sage', 'Titan', 'Unity', 'Vanguard', 'Whisper', 'Xenon', 'Yonder', 'Zeal'];
+            const combined = [...base, ...general];
+            return combined.filter((v, i, a) => a.indexOf(v) === i);
+        }
+
+        function generateSingleName(bank, suffixes, keyword, style) {
+            if (bank.length === 0) return null;
+
+            const patterns = [
+                // prefix + noun
+                () => {
+                    const p = getRandomFromArray(bank);
+                    const n = getRandomFromArray(bank);
+                    return p + n;
+                },
+                // adjective + noun
+                () => {
+                    const adj = getRandomFromArray(['Bright', 'Clear', 'Daring', 'Eager', 'Fierce', 'Grand', 'Happy', 'Ideal', 'Jolly', 'Kind', 'Lively', 'Mighty', 'Noble', 'Open', 'Proud', 'Quick', 'Radiant', 'Strong', 'True', 'Unified', 'Vivid', 'Wise', 'Youthful', 'Zealous']);
+                    const n = getRandomFromArray(bank);
+                    return adj + n;
+                },
+                // keyword + noun
+                () => {
+                    if (!keyword) return null;
+                    const n = getRandomFromArray(bank);
+                    return capitalize(keyword) + n;
+                },
+                // noun + keyword
+                () => {
+                    if (!keyword) return null;
+                    const n = getRandomFromArray(bank);
+                    return n + capitalize(keyword);
+                },
+                // prefix + keyword
+                () => {
+                    if (!keyword) return null;
+                    const p = getRandomFromArray(['Nova', 'Prime', 'Apex', 'Zen', 'Aura', 'Blaze', 'Crest', 'Echo', 'Fuse', 'Mosaic', 'Onyx', 'Sage', 'Titan', 'Vanguard', 'Whisper']);
+                    return p + capitalize(keyword);
+                },
+                // keyword + suffix
+                () => {
+                    if (!keyword) return null;
+                    const s = getRandomFromArray(suffixes);
+                    return capitalize(keyword) + s;
+                },
+                // two compatible nouns
+                () => {
+                    const n1 = getRandomFromArray(bank);
+                    const n2 = getRandomFromArray(bank);
+                    if (n1 === n2) return null;
+                    return n1 + n2;
+                },
+                // shortened word combinations
+                () => {
+                    const n1 = getRandomFromArray(bank);
+                    const n2 = getRandomFromArray(bank);
+                    if (n1 === n2) return null;
+                    const short1 = n1.substring(0, Math.min(4, n1.length));
+                    const short2 = n2.substring(0, Math.min(4, n2.length));
+                    if (short1 + short2 === short2 + short1) return null;
+                    return short1 + short2;
+                }
+            ];
+
+            // Try patterns
+            for (let i = 0; i < 5; i++) {
+                const pattern = getRandomFromArray(patterns);
+                const result = pattern();
+                if (result && result.length >= 3 && result.length <= 20) {
+                    return result;
+                }
+            }
+
+            // Fallback: two random words
+            const n1 = getRandomFromArray(bank);
+            const n2 = getRandomFromArray(bank);
+            if (n1 && n2) return n1 + n2;
+            return null;
+        }
+
+        function getRandomFromArray(arr) {
+            if (!arr || arr.length === 0) return null;
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        function capitalize(str) {
+            if (!str) return '';
+            return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+        }
+
+        // =============================================
+        // ===== RENDER RESULTS =====
+        // =============================================
+        function renderResults(results) {
+            resultsGrid.innerHTML = '';
+            if (results.length === 0) {
+                resultsGrid.innerHTML = '<div style="grid-column:1/-1; text-align:center; color:#94a3b8; padding:32px;">No names generated. Try different settings.</div>';
+                return;
+            }
+
+            results.forEach((name, index) => {
+                const card = document.createElement('div');
+                card.className = 'result-card';
+                const isFav = favorites.includes(name);
+                card.innerHTML = `
+                    <div class="name">${name}</div>
+                    <div class="actions">
+                        <button class="copy-btn" onclick="copyName('${name}')">📄 Copy</button>
+                        <button class="fav-btn ${isFav ? 'saved' : ''}" onclick="toggleFavorite('${name}')">${isFav ? '⭐' : '☆'} Save</button>
+                        <button class="regenerate-btn" onclick="regenerateName(${index})">🔄</button>
+                    </div>
+                `;
+                resultsGrid.appendChild(card);
+            });
+        }
+
+        // =============================================
+        // ===== FILTER & SORT =====
+        // =============================================
+        function filterResults() {
+            const filter = filterInput.value.toLowerCase();
+            const sort = sortSelect.value;
+            let filtered = currentResults;
+
+            if (filter) {
+                filtered = filtered.filter(name => name.toLowerCase().includes(filter));
+            }
+
+            if (sort === 'az') {
+                filtered = [...filtered].sort((a, b) => a.localeCompare(b));
+            } else if (sort === 'za') {
+                filtered = [...filtered].sort((a, b) => b.localeCompare(a));
+            }
+
+            renderResults(filtered);
+            resultCount.textContent = filtered.length;
+        }
+
+        // =============================================
+        // ===== ACTIONS =====
+        // =============================================
+        function copyName(name) {
+            navigator.clipboard.writeText(name).then(() => {
+                const btn = event.target;
+                const original = btn.textContent;
+                btn.textContent = '✅ Copied!';
+                setTimeout(() => btn.textContent = original, 1500);
+            }).catch(() => {
+                // Fallback
+                const area = document.createElement('textarea');
+                area.value = name;
+                document.body.appendChild(area);
+                area.select();
+                document.execCommand('copy');
+                document.body.removeChild(area);
+                alert('✅ Copied: ' + name);
+            });
+        }
+
+        function regenerateName(index) {
+            const category = categorySelect.value;
+            const style = styleSelect.value;
+            const keyword = keywordInput.value.trim().toLowerCase();
+
+            const bank = getWordBank(category);
+            const suffix = styleSuffixes[style] || [];
+
+            let newName = null;
+            let attempts = 0;
+            while (!newName && attempts < 50) {
+                attempts++;
+                const candidate = generateSingleName(bank, suffix, keyword, style);
+                if (candidate && !currentResults.includes(candidate)) {
+                    newName = candidate;
+                }
+            }
+
+            if (newName) {
+                currentResults[index] = newName;
+                renderResults(currentResults);
+                filterResults();
+            } else {
+                alert('Could not generate a new unique name. Try adjusting settings.');
+            }
+        }
+
+        function copyAllNames() {
+            if (currentResults.length === 0) return;
+            const text = currentResults.join('\n');
+            navigator.clipboard.writeText(text).then(() => {
+                alert('✅ Copied all ' + currentResults.length + ' names!');
+            }).catch(() => {
+                const area = document.createElement('textarea');
+                area.value = text;
+                document.body.appendChild(area);
+                area.select();
+                document.execCommand('copy');
+                document.body.removeChild(area);
+                alert('✅ Copied all names!');
+            });
+        }
+
+        // =============================================
+        // ===== FAVORITES =====
+        // =============================================
+        function toggleFavorite(name) {
+            const index = favorites.indexOf(name);
+            if (index > -1) {
+                favorites.splice(index, 1);
+            } else {
+                favorites.push(name);
+            }
+            localStorage.setItem('nameGenFavorites', JSON.stringify(favorites));
+            renderResults(currentResults);
+            renderFavorites();
+        }
+
+        function renderFavorites() {
+            favoritesGrid.innerHTML = '';
+            if (favorites.length === 0) {
+                favoritesGrid.innerHTML = '<div style="grid-column:1/-1; color:#94a3b8; padding:8px; text-align:center; font-size:0.9rem;">No favorites yet. Click the ♡ button to save names.</div>';
+                return;
+            }
+            favorites.forEach(name => {
+                const div = document.createElement('div');
+                div.className = 'fav-item';
+                div.innerHTML = `
+                    <span class="fav-name">${name}</span>
+                    <div class="fav-actions">
+                        <button onclick="copyName('${name}')" title="Copy">📄</button>
+                        <button class="remove-fav" onclick="removeFavorite('${name}')" title="Remove">✕</button>
+                    </div>
+                `;
+                favoritesGrid.appendChild(div);
+            });
+        }
+
+        function removeFavorite(name) {
+            const index = favorites.indexOf(name);
+            if (index > -1) {
+                favorites.splice(index, 1);
+                localStorage.setItem('nameGenFavorites', JSON.stringify(favorites));
+                renderFavorites();
+                renderResults(currentResults);
+            }
+        }
+
+        function clearFavorites() {
+            if (!confirm('Clear all favorites?')) return;
+            favorites = [];
+            localStorage.setItem('nameGenFavorites', JSON.stringify(favorites));
+            renderFavorites();
+            renderResults(currentResults);
+        }
+
+        function copyFavorites() {
+            if (favorites.length === 0) return;
+            const text = favorites.join('\n');
+            navigator.clipboard.writeText(text).then(() => {
+                alert('✅ Copied all favorites!');
+            }).catch(() => {
+                const area = document.createElement('textarea');
+                area.value = text;
+                document.body.appendChild(area);
+                area.select();
+                document.execCommand('copy');
+                document.body.removeChild(area);
+                alert('✅ Copied all favorites!');
+            });
+        }
+
+        // =============================================
+        // ===== FAQ TOGGLE =====
+        // =============================================
+        function toggleFAQ(el) {
+            const answer = el.nextElementSibling;
+            const arrow = el.querySelector('.arrow');
+            el.classList.toggle('active');
+            answer.classList.toggle('open');
+            arrow.textContent = answer.classList.contains('open') ? '▲' : '▼';
+        }
+
+        // =============================================
+        // ===== MOBILE NAV =====
+        // =============================================
+        document.getElementById('navToggle').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('mainNav').classList.toggle('open');
+        });
+        document.getElementById('mainNav').querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => document.getElementById('mainNav').classList.remove('open'));
+        });
+        document.addEventListener('click', function(e) {
+            const nav = document.getElementById('mainNav');
+            const toggle = document.getElementById('navToggle');
+            if (!nav.contains(e.target) && !toggle.contains(e.target)) nav.classList.remove('open');
+        });
+
+        // =============================================
+        // ===== EVENT LISTENERS =====
+        // =============================================
+        generateBtn.addEventListener('click', generateNames);
+        copyAllBtn.addEventListener('click', copyAllNames);
+        generateMoreBtn.addEventListener('click', generateNames);
+
+        // Auto-generate on load
+        populateCategories();
+        generateNames();
+        renderFavorites();
+
+        console.log('🏷️ Name Generator Hub loaded successfully!');
+    </script>
+</body>
+</html>
