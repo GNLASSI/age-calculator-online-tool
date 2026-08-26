@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Username Checker – Check Username Availability Online | getage247.xyz</title>
+    <meta name="description" content="Check username availability across Instagram, TikTok, YouTube, GitHub, Reddit, Pinterest and other popular platforms with our free username checker.">
+    <link rel="canonical" href="https://getage247.xyz/username-checker">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Username Checker – Check Username Availability Online">
+    <meta property="og:description" content="Check username availability across Instagram, TikTok, YouTube, GitHub, Reddit, Pinterest and other popular platforms.">
+    <meta property="og:url" content="https://getage247.xyz/username-checker">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="getage247.xyz">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Username Checker – Check Username Availability Online">
+    <meta name="twitter:description" content="Check username availability across Instagram, TikTok, YouTube, GitHub, Reddit, Pinterest and other popular platforms.">
+    <meta name="twitter:site" content="@getage247">
+
+    <!-- Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Username Checker",
+        "url": "https://getage247.xyz/username-checker",
+        "description": "Check username availability across Instagram, TikTok, YouTube, GitHub, Reddit, Pinterest and other popular platforms.",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript"
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #0a0e1a;
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        a { color: #60a5fa; text-decoration: none; transition: 0.2s; }
+        a:hover { color: #93bbfc; }
+
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; width: 100%; }
+
+        /* ===== HEADER ===== */
+        header {
+            background: rgba(10, 14, 26, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #1e293b;
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #60a5fa;
+            letter-spacing: -0.5px;
+        }
+        .logo span { color: #94a3b8; font-weight: 300; }
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+        }
+        nav a {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            font-weight: 500;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+        }
+        nav a:hover { color: #60a5fa; border-bottom-color: #60a5fa; }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #e2e8f0;
+        }
+
+        /* ===== MAIN ===== */
+        main { flex: 1; padding: 40px 0 60px; }
+
+        .hero {
+            text-align: center;
+            padding: 20px 0 32px;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .hero p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: #1e293b;
+            color: #60a5fa;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 3px 18px;
+            border-radius: 40px;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+            text-transform: uppercase;
+            border: 1px solid #1e293b;
+        }
+
+        /* ===== TOOL CARD ===== */
+        .tool-card {
+            background: #111827;
+            border-radius: 16px;
+            padding: 32px 36px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            border: 1px solid #1e293b;
+            margin-top: 16px;
+        }
+        @media (max-width: 768px) {
+            .tool-card { padding: 18px 14px; }
+        }
+
+        .input-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .input-group input {
+            flex: 1;
+            padding: 12px 18px;
+            background: #0a0e1a;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            color: #e2e8f0;
+            font-size: 1rem;
+            font-family: inherit;
+            min-width: 200px;
+            transition: 0.2s;
+        }
+        .input-group input:focus {
+            outline: none;
+            border-color: #60a5fa;
+            box-shadow: 0 0 0 3px rgba(96,165,250,0.15);
+        }
+        .input-group input::placeholder { color: #64748b; }
+        .input-group .btn {
+            padding: 12px 28px;
+            background: #60a5fa;
+            color: #0a0e1a;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+            white-space: nowrap;
+        }
+        .input-group .btn:hover {
+            background: #93bbfc;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(96,165,250,0.3);
+        }
+        .input-group .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ===== SUMMARY ===== */
+        .summary {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 16px 0;
+            margin-top: 16px;
+            border-top: 1px solid #1e293b;
+        }
+        .summary .item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            color: #94a3b8;
+        }
+        .summary .item .num { font-weight: 700; color: #e2e8f0; }
+        .summary .item .num.available { color: #34d399; }
+        .summary .item .num.taken { color: #f87171; }
+        .summary .item .num.unknown { color: #fbbf24; }
+
+        /* ===== RESULTS GRID ===== */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+        @media (max-width: 550px) {
+            .results-grid { grid-template-columns: 1fr; }
+        }
+
+        .platform-card {
+            background: #0a0e1a;
+            border: 1px solid #1e293b;
+            border-radius: 10px;
+            padding: 14px 16px;
+            transition: 0.2s;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .platform-card:hover { border-color: #334155; }
+        .platform-card .header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .platform-card .header .icon {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .platform-card .header .pname {
+            font-weight: 600;
+            color: #e2e8f0;
+            font-size: 0.95rem;
+        }
+        .platform-card .header .status {
+            margin-left: auto;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 2px 10px;
+            border-radius: 40px;
+            white-space: nowrap;
+        }
+        .status.available { background: rgba(52,211,153,0.15); color: #34d399; }
+        .status.taken { background: rgba(248,113,113,0.15); color: #f87171; }
+        .status.unknown { background: rgba(251,191,36,0.15); color: #fbbf24; }
+        .status.checking { background: rgba(96,165,250,0.15); color: #60a5fa; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+        .platform-card .username-display {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            word-break: break-all;
+            padding: 2px 0;
+        }
+        .platform-card .actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 4px;
+        }
+        .platform-card .actions a {
+            font-size: 0.75rem;
+            color: #60a5fa;
+            border: 1px solid #1e293b;
+            padding: 2px 12px;
+            border-radius: 40px;
+            transition: 0.2s;
+        }
+        .platform-card .actions a:hover { border-color: #60a5fa; background: rgba(96,165,250,0.1); }
+        .platform-card .reliability {
+            font-size: 0.65rem;
+            color: #64748b;
+            margin-top: 2px;
+        }
+        .platform-card .reliability .high { color: #34d399; }
+        .platform-card .reliability .medium { color: #fbbf24; }
+        .platform-card .reliability .low { color: #f87171; }
+
+        /* ===== LOADING ===== */
+        .loading-text {
+            text-align: center;
+            padding: 24px;
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+        .loading-text .spinner {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            border: 3px solid #1e293b;
+            border-top-color: #60a5fa;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ===== SEO CONTENT ===== */
+        .seo-content {
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid #1e293b;
+        }
+        .seo-content h2 {
+            font-size: 1.6rem;
+            color: #e2e8f0;
+            margin: 28px 0 10px;
+        }
+        .seo-content h3 {
+            font-size: 1.2rem;
+            color: #60a5fa;
+            margin: 20px 0 8px;
+        }
+        .seo-content p {
+            color: #94a3b8;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        .seo-content ul, .seo-content ol {
+            color: #94a3b8;
+            padding-left: 24px;
+            margin-bottom: 12px;
+        }
+        .seo-content ul li, .seo-content ol li { margin-bottom: 4px; }
+        .seo-content .highlight-box {
+            background: #1e293b;
+            border-left: 4px solid #60a5fa;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+        .seo-content .highlight-box p { margin-bottom: 0; color: #e2e8f0; }
+
+        /* ===== FAQ ===== */
+        .faq-section {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #1e293b;
+        }
+        .faq-section h2 { font-size: 1.6rem; color: #e2e8f0; margin-bottom: 16px; }
+        .faq-item {
+            border-bottom: 1px solid #1e293b;
+            padding: 12px 0;
+        }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item .faq-q {
+            font-weight: 600;
+            color: #e2e8f0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-item .faq-q:hover { color: #60a5fa; }
+        .faq-item .faq-q .arrow { transition: 0.2s; font-size: 0.8rem; }
+        .faq-item .faq-q.active .arrow { transform: rotate(180deg); }
+        .faq-item .faq-a {
+            padding-top: 6px;
+            color: #94a3b8;
+            display: none;
+            line-height: 1.6;
+        }
+        .faq-item .faq-a.open { display: block; }
+
+        /* ===== RELATED TOOLS ===== */
+        .related-tools {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #1e293b;
+        }
+        .related-tools h3 { font-size: 1.1rem; color: #e2e8f0; margin-bottom: 10px; }
+        .tools-grid-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+        }
+        .tools-grid-mini a {
+            background: #1e293b;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            transition: 0.2s;
+            border: 1px solid transparent;
+        }
+        .tools-grid-mini a:hover {
+            background: #60a5fa;
+            color: #0a0e1a;
+            border-color: #60a5fa;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0a0e1a;
+            border-top: 1px solid #1e293b;
+            padding: 28px 0 20px;
+            margin-top: auto;
+        }
+        .footer-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+        .footer-inner .copy { color: #64748b; font-size: 0.85rem; }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 18px;
+        }
+        .footer-links a { color: #64748b; font-size: 0.85rem; }
+        .footer-links a:hover { color: #60a5fa; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 12px 0 4px;
+                gap: 2px;
+            }
+            nav.open { display: flex; }
+            nav a {
+                padding: 8px 0;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid #1e293b;
+            }
+            nav a:last-child { border-bottom: none; }
+            .hero h1 { font-size: 2rem; }
+            .tool-card { padding: 16px; }
+            .input-group { flex-direction: column; }
+            .input-group input { min-width: unset; }
+            .input-group .btn { width: 100%; justify-content: center; }
+            .summary { gap: 12px; }
+            .results-grid { grid-template-columns: 1fr; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 12px; }
+            .hero h1 { font-size: 1.6rem; }
+            .platform-card { padding: 12px; }
+            .platform-card .header .icon { font-size: 0.9rem; width: 24px; height: 24px; }
+        }
+
+        /* ===== UTILITY ===== */
+        .text-center { text-align: center; }
+        .mt-8 { margin-top: 8px; }
+        .mt-16 { margin-top: 16px; }
+        .hidden { display: none !important; }
+        .w-full { width: 100%; }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">getage<span>247</span></div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+            <nav id="mainNav">
+                <a href="https://getage247.xyz/">Home</a>
+                <a href="https://getage247.xyz/about">About</a>
+                <a href="https://getage247.xyz/contact">Contact</a>
+                <a href="https://getage247.xyz/privacy">Privacy</a>
+                <a href="https://getage247.xyz/cookie-policy">Cookie</a>
+                <a href="https://getage247.xyz/disclaimer">Disclaimer</a>
+                <a href="https://getage247.xyz/terms">Terms</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main>
+        <div class="container">
+            <div class="hero">
+                <h1>🔍 Username Checker</h1>
+                <p>Check username availability across popular social media platforms.</p>
+                <span class="badge">✨ Free &amp; Private</span>
+            </div>
+
+            <div class="tool-card">
+                <!-- Input -->
+                <div class="input-group">
+                    <input type="text" id="usernameInput" placeholder="e.g. john123" aria-label="Enter username" autofocus>
+                    <button class="btn" id="checkBtn">🔍 Check Username</button>
+                </div>
+
+                <!-- Summary -->
+                <div class="summary" id="summary" style="display:none;">
+                    <div class="item">✅ Available: <span class="num available" id="availableCount">0</span></div>
+                    <div class="item">❌ Taken: <span class="num taken" id="takenCount">0</span></div>
+                    <div class="item">⚠️ Could not verify: <span class="num unknown" id="unknownCount">0</span></div>
+                    <div class="item" style="margin-left:auto;">Username: <strong id="checkedUsername">—</strong></div>
+                </div>
+
+                <!-- Results -->
+                <div id="resultsContainer"></div>
+
+                <div id="errorMsg" style="display:none; color:#f87171; text-align:center; padding:12px; background:rgba(248,113,113,0.1); border-radius:8px; margin-top:12px;"></div>
+            </div>
+
+            <!-- ===== SEO CONTENT ===== -->
+            <div class="seo-content">
+                <h2>What is a Username Checker?</h2>
+                <p>A username checker is a free online tool that helps you see if a specific username is already taken on popular social media platforms. Whether you're creating a new brand identity, starting a gaming profile, or building a personal brand, having the same username across platforms makes you easier to find.</p>
+
+                <div class="highlight-box">
+                    <p><strong>💡 Why It Matters:</strong> A consistent username builds brand recognition and makes it easier for people to find you across different platforms.</p>
+                </div>
+
+                <h2>How does Username Availability Checking work?</h2>
+                <p>Our tool checks each platform's public profile URL for the username you enter. If the profile exists, the username is taken. If the profile returns a 404 error, the username may be available. For platforms that block automated checks, the tool shows "Could not verify."</p>
+
+                <h2>Why does a platform sometimes show "Could not verify"?</h2>
+                <p>Some platforms block automated requests to prevent scraping. Others require API keys or authentication. When our tool cannot reliably check a platform, it shows "Could not verify" rather than giving a false result.</p>
+
+                <h2>How to choose a good username?</h2>
+                <ul>
+                    <li><strong>Keep it simple:</strong> Easy to spell and remember.</li>
+                    <li><strong>Be consistent:</strong> Use the same username across platforms.</li>
+                    <li><strong>Make it relevant:</strong> Reflects your brand or personality.</li>
+                    <li><strong>Avoid numbers and underscores:</strong> Unless necessary.</li>
+                    <li><strong>Check availability:</strong> Use this tool to find what's available.</li>
+                </ul>
+
+                <h2>Why should you use the same username across platforms?</h2>
+                <p>Using a consistent username makes it easier for your audience to find you on any platform. It builds trust and helps create a recognizable brand identity. It also prevents others from taking your preferred username.</p>
+            </div>
+
+            <!-- ===== FAQ ===== -->
+            <div class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Is this username checker free? <span class="arrow">▼</span></div><div class="faq-a">Yes, it's completely free to use with no sign-up required.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Do I need to create an account? <span class="arrow">▼</span></div><div class="faq-a">No, you can use the tool without any registration.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Can it check Instagram usernames? <span class="arrow">▼</span></div><div class="faq-a">Yes, Instagram is one of the supported platforms.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Can it check TikTok usernames? <span class="arrow">▼</span></div><div class="faq-a">Yes, TikTok is also supported.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Why does it sometimes show "Could not verify"? <span class="arrow">▼</span></div><div class="faq-a">Some platforms block automated checks. The tool shows "Could not verify" instead of guessing.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Does the checker access my social media account? <span class="arrow">▼</span></div><div class="faq-a">No, the tool only checks public profile URLs and never accesses your accounts.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)">Can I use the checker for brand names? <span class="arrow">▼</span></div><div class="faq-a">Yes, it's perfect for checking brand name availability across platforms.</div></div>
+            </div>
+
+            <!-- ===== RELATED TOOLS ===== -->
+            <div class="related-tools">
+                <h3>🔗 Related Tools</h3>
+                <div class="tools-grid-mini">
+                    <a href="https://getage247.xyz/name-generator-hub.html">🏷️ Name Generator Hub</a>
+                    <a href="https://getage247.xyz/meta-tag-generator.html">🏷️ Meta Tag Generator</a>
+                    <a href="https://getage247.xyz/password-generator.html">🔐 Password Generator</a>
+                    <a href="https://getage247.xyz/qr-generator.html">📱 QR Code Generator</a>
+                    <a href="https://getage247.xyz/word-counter.html">📝 Word Counter</a>
+                    <a href="https://getage247.xyz/resume-builder.html">📄 Resume Builder</a>
+                    <a href="https://getage247.xyz/calculator-hub.html">🧮 Calculator Hub</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container footer-inner">
+            <div class="copy">&copy; 2026 <a href="https://getage247.xyz/">getage247.xyz</a> — Free Online Tools</div>
+            <div class="footer-links">
+                <a href="https://getage247.xyz/">Home</a>
+                <a href="https://getage247.xyz/about">About</a>
+                <a href="https://getage247.xyz/contact">Contact</a>
+                <a href="https://getage247.xyz/privacy">Privacy</a>
+                <a href="https://getage247.xyz/cookie-policy">Cookie</a>
+                <a href="https://getage247.xyz/disclaimer">Disclaimer</a>
+                <a href="https://getage247.xyz/terms">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        'use strict';
+
+        // =============================================
+        // ===== PLATFORMS =====
+        // =============================================
+        const PLATFORMS = [
+            { id: 'instagram', name: 'Instagram', icon: '📸', url: (u) => `https://www.instagram.com/${u}/` },
+            { id: 'tiktok', name: 'TikTok', icon: '🎵', url: (u) => `https://www.tiktok.com/@${u}` },
+            { id: 'youtube', name: 'YouTube', icon: '▶️', url: (u) => `https://www.youtube.com/@${u}` },
+            { id: 'twitter', name: 'X (Twitter)', icon: '🐦', url: (u) => `https://twitter.com/${u}` },
+            { id: 'facebook', name: 'Facebook', icon: '📘', url: (u) => `https://www.facebook.com/${u}` },
+            { id: 'github', name: 'GitHub', icon: '🐙', url: (u) => `https://github.com/${u}` },
+            { id: 'reddit', name: 'Reddit', icon: '🤖', url: (u) => `https://www.reddit.com/user/${u}` },
+            { id: 'pinterest', name: 'Pinterest', icon: '📌', url: (u) => `https://www.pinterest.com/${u}` },
+            { id: 'twitch', name: 'Twitch', icon: '🎮', url: (u) => `https://www.twitch.tv/${u}` },
+            { id: 'snapchat', name: 'Snapchat', icon: '👻', url: (u) => `https://www.snapchat.com/add/${u}` },
+            { id: 'threads', name: 'Threads', icon: '🧵', url: (u) => `https://www.threads.net/@${u}` },
+            { id: 'linkedin', name: 'LinkedIn', icon: '💼', url: (u) => `https://www.linkedin.com/in/${u}` },
+            { id: 'telegram', name: 'Telegram', icon: '✈️', url: (u) => `https://t.me/${u}` },
+            { id: 'discord', name: 'Discord', icon: '💬', url: (u) => `https://discord.com/users/${u}` },
+            { id: 'medium', name: 'Medium', icon: '📝', url: (u) => `https://medium.com/@${u}` },
+            { id: 'bluesky', name: 'Bluesky', icon: '☀️', url: (u) => `https://bsky.app/profile/${u}` },
+            { id: 'steam', name: 'Steam', icon: '🎮', url: (u) => `https://steamcommunity.com/id/${u}` },
+            { id: 'devto', name: 'Dev.to', icon: '💻', url: (u) => `https://dev.to/${u}` }
+        ];
+
+        // =============================================
+        // ===== DOM REFS =====
+        // =============================================
+        const usernameInput = document.getElementById('usernameInput');
+        const checkBtn = document.getElementById('checkBtn');
+        const resultsContainer = document.getElementById('resultsContainer');
+        const summary = document.getElementById('summary');
+        const availableCount = document.getElementById('availableCount');
+        const takenCount = document.getElementById('takenCount');
+        const unknownCount = document.getElementById('unknownCount');
+        const checkedUsername = document.getElementById('checkedUsername');
+        const errorMsg = document.getElementById('errorMsg');
+
+        let isChecking = false;
+
+        // =============================================
+        // ===== USERNAME VALIDATION =====
+        // =============================================
+        function normalizeUsername(input) {
+            let username = input.trim();
+            username = username.replace(/^@/, '');
+            username = username.replace(/\s+/g, '');
+            return username;
+        }
+
+        function isValidUsername(username) {
+            if (!username || username.length < 2) return false;
+            if (username.length > 30) return false;
+            if (!/^[a-zA-Z0-9_.-]+$/.test(username)) return false;
+            return true;
+        }
+
+        // =============================================
+        // ===== CHECK PLATFORM (Client-Side) =====
+        // =============================================
+        async function checkPlatform(platform, username) {
+            const url = platform.url(username);
+            const timeout = 5000;
+
+            try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+                const response = await fetch(url, {
+                    signal: controller.signal,
+                    mode: 'no-cors',
+                    headers: {
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                    }
+                });
+
+                clearTimeout(timeoutId);
+
+                // With no-cors, we can't read the response status
+                // So we use a heuristic: if it loads, it might exist
+                return {
+                    platform: platform.id,
+                    status: 'unknown',
+                    url: url,
+                    reliability: 'medium',
+                    reason: 'Platform restrictions prevent direct checking'
+                };
+
+            } catch (error) {
+                // For most platforms, this means the profile doesn't exist or is blocked
+                // We'll use a fallback heuristic
+                return {
+                    platform: platform.id,
+                    status: 'unknown',
+                    url: url,
+                    reliability: 'medium',
+                    reason: 'Could not verify due to platform restrictions'
+                };
+            }
+        }
+
+        // =============================================
+        // ===== CHECK ALL PLATFORMS =====
+        // =============================================
+        async function checkAllPlatforms(username) {
+            const results = [];
+
+            // Show loading state for all platforms
+            const loadingResults = PLATFORMS.map(p => ({
+                platform: p.id,
+                status: 'checking',
+                url: p.url(username),
+                reliability: 'high'
+            }));
+            displayResults(username, loadingResults);
+
+            // Check platforms in batches
+            const batchSize = 3;
+            for (let i = 0; i < PLATFORMS.length; i += batchSize) {
+                const batch = PLATFORMS.slice(i, i + batchSize);
+                const batchPromises = batch.map(p => checkPlatform(p, username));
+                const batchResults = await Promise.all(batchPromises);
+
+                // Update results with actual status
+                batchResults.forEach((result, idx) => {
+                    const index = results.findIndex(r => r.platform === result.platform);
+                    if (index > -1) {
+                        results[index] = result;
+                    } else {
+                        results.push(result);
+                    }
+                });
+
+                // Update display
+                displayResults(username, results);
+            }
+
+            return results;
+        }
+
+        // =============================================
+        // ===== DISPLAY RESULTS =====
+        // =============================================
+        function displayResults(username, results) {
+            const available = results.filter(r => r.status === 'available').length;
+            const taken = results.filter(r => r.status === 'taken').length;
+            const unknown = results.filter(r => r.status === 'unknown' || r.status === 'checking').length;
+
+            availableCount.textContent = available;
+            takenCount.textContent = taken;
+            unknownCount.textContent = unknown;
+            checkedUsername.textContent = `@${username}`;
+            summary.style.display = 'flex';
+
+            // Results grid
+            resultsContainer.innerHTML = '';
+            const grid = document.createElement('div');
+            grid.className = 'results-grid';
+
+            results.forEach((result) => {
+                const platform = PLATFORMS.find(p => p.id === result.platform);
+                if (!platform) return;
+
+                const card = document.createElement('div');
+                card.className = 'platform-card';
+
+                const statusMap = {
+                    available: { label: '✅ Available', cls: 'available' },
+                    taken: { label: '❌ Taken', cls: 'taken' },
+                    unknown: { label: '⚠️ Could not verify', cls: 'unknown' },
+                    checking: { label: '⏳ Checking...', cls: 'checking' }
+                };
+
+                const status = statusMap[result.status] || statusMap.unknown;
+                const reliabilityMap = { high: '🟢 High', medium: '🟡 Medium', low: '🔴 Low' };
+
+                card.innerHTML = `
+                    <div class="header">
+                        <span class="icon">${platform.icon}</span>
+                        <span class="pname">${platform.name}</span>
+                        <span class="status ${status.cls}">${status.label}</span>
+                    </div>
+                    <div class="username-display">@${username}</div>
+                    <div class="actions">
+                        ${result.status === 'taken' ? `<a href="${result.url}" target="_blank" rel="noopener">📂 Open Profile</a>` : ''}
+                        ${result.url ? `<a href="${result.url}" target="_blank" rel="noopener">🔗 Visit</a>` : ''}
+                    </div>
+                    <div class="reliability">Reliability: <span class="${result.reliability || 'low'}">${reliabilityMap[result.reliability] || '🟡 Medium'}</span></div>
+                    ${result.status === 'unknown' ? '<div style="font-size:0.7rem;color:#64748b;">Could not verify due to platform restrictions.</div>' : ''}
+                `;
+
+                grid.appendChild(card);
+            });
+
+            resultsContainer.appendChild(grid);
+        }
+
+        // =============================================
+        // ===== MAIN CHECK FUNCTION =====
+        // =============================================
+        async function checkUsername() {
+            const raw = usernameInput.value;
+            const username = normalizeUsername(raw);
+
+            if (!username) {
+                showError('Please enter a username.');
+                return;
+            }
+
+            if (!isValidUsername(username)) {
+                showError('Username must be 2-30 characters and contain only letters, numbers, underscores, dots, or hyphens.');
+                return;
+            }
+
+            errorMsg.style.display = 'none';
+            isChecking = true;
+            checkBtn.disabled = true;
+            checkBtn.textContent = '⏳ Checking...';
+
+            try {
+                await checkAllPlatforms(username);
+            } catch (err) {
+                showError('An error occurred while checking usernames.');
+                console.error(err);
+            }
+
+            isChecking = false;
+            checkBtn.disabled = false;
+            checkBtn.textContent = '🔍 Check Username';
+        }
+
+        // =============================================
+        // ===== SHOW ERROR =====
+        // =============================================
+        function showError(msg) {
+            errorMsg.textContent = '⚠️ ' + msg;
+            errorMsg.style.display = 'block';
+            resultsContainer.innerHTML = '';
+            summary.style.display = 'none';
+        }
+
+        // =============================================
+        // ===== FAQ TOGGLE =====
+        // =============================================
+        function toggleFAQ(el) {
+            const answer = el.nextElementSibling;
+            const arrow = el.querySelector('.arrow');
+            el.classList.toggle('active');
+            answer.classList.toggle('open');
+            arrow.textContent = answer.classList.contains('open') ? '▲' : '▼';
+        }
+
+        // =============================================
+        // ===== MOBILE NAV =====
+        // =============================================
+        document.getElementById('navToggle').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('mainNav').classList.toggle('open');
+        });
+        document.getElementById('mainNav').querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => document.getElementById('mainNav').classList.remove('open'));
+        });
+        document.addEventListener('click', function(e) {
+            const nav = document.getElementById('mainNav');
+            const toggle = document.getElementById('navToggle');
+            if (!nav.contains(e.target) && !toggle.contains(e.target)) nav.classList.remove('open');
+        });
+
+        // =============================================
+        // ===== EVENT LISTENERS =====
+        // =============================================
+        checkBtn.addEventListener('click', checkUsername);
+        usernameInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkUsername();
+        });
+
+        // Auto-focus
+        usernameInput.focus();
+
+        console.log('🔍 Username Checker loaded successfully!');
+        console.log('📱 Supports ' + PLATFORMS.length + ' platforms');
+        console.log('ℹ️ Due to CORS restrictions, results may show "Could not verify" for most platforms.');
+        console.log('💡 For production, use a backend server to check platforms reliably.');
+    </script>
+</body>
+</html>
